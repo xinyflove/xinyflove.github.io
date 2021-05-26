@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="负载均衡,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="location 块的基本语法是： 1location [=|~|~*|^~|@] pattern &amp;#123;....&amp;#125; [=|~|~*|^~|@] 被称作 location modifier ，这会定义 Nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）。">
+<meta name="keywords" content="负载均衡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 配置location和rewrite规则写法总结">
+<meta property="og:url" content="https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="location 块的基本语法是： 1location [=|~|~*|^~|@] pattern &amp;#123;....&amp;#125; [=|~|~*|^~|@] 被称作 location modifier ，这会定义 Nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-25T07:50:05.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx 配置location和rewrite规则写法总结">
+<meta name="twitter:description" content="location 块的基本语法是： 1location [=|~|~*|^~|@] pattern &amp;#123;....&amp;#125; [=|~|~*|^~|@] 被称作 location modifier ，这会定义 Nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/">
+
+
+
+
+
+  <title>Nginx 配置location和rewrite规则写法总结 | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Nginx 配置location和rewrite规则写法总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-01T09:10:33+08:00">
+                2020-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/01/Nginx-配置location和rewrite规则写法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/01/Nginx-配置location和rewrite规则写法总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>location 块的基本语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123;....&#125;</span><br></pre></td></tr></table></figure>
+<p><code>[=|~|~*|^~|@]</code> 被称作 location modifier ，这会定义 Nginx 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）。</p>
+<a id="more"></a>
+<h2 id="location正则写法"><a href="#location正则写法" class="headerlink" title="location正则写法"></a>location正则写法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">  # 精确匹配 / ，主机名后面不能带任何字符串</span><br><span class="line">  [ configuration A ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">  # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求</span><br><span class="line">  # 但是正则和最长字符串会优先匹配</span><br><span class="line">  [ configuration B ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /documents/ &#123;</span><br><span class="line">  # 匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索</span><br><span class="line">  # 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</span><br><span class="line">  [ configuration C ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ /documents/Abc &#123;</span><br><span class="line">  # 匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索</span><br><span class="line">  # 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</span><br><span class="line">  [ configuration CC ] </span><br><span class="line">&#125;</span><br><span class="line">location ^~ /images/ &#123;</span><br><span class="line">  # 匹配任何以 /images/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。</span><br><span class="line">  [ configuration D ] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|jpeg)$ &#123;</span><br><span class="line">  # 匹配所有以 gif,jpg或jpeg 结尾的请求</span><br><span class="line">  # 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则</span><br><span class="line">  [ configuration E ] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /images/ &#123;</span><br><span class="line">  # 字符匹配到 /images/，继续往下，会发现 ^~ 存在</span><br><span class="line">  [ configuration F ] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /images/abc &#123;</span><br><span class="line">  # 最长字符匹配到 /images/abc，继续往下，会发现 ^~ 存在</span><br><span class="line">  # F与G的放置顺序是没有关系的</span><br><span class="line">  [ configuration G ] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ /images/abc/ &#123;</span><br><span class="line">  # 只有去掉 config D 才有效：先最长匹配 config G 开头的地址，继续往下搜索，匹配到这一条正则，采用</span><br><span class="line">  [ configuration H ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* /js/.*/\.js</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>=</code> 开头表示精确匹配，如 A 中只匹配根目录结尾的请求，后面不能带任何字符串。</li>
+<li><code>^~</code> 开头表示uri以某个常规字符串开头，不是正则匹配</li>
+<li><code>~</code> 开头表示区分大小写的正则匹配;</li>
+<li><code>~*</code> 开头表示不区分大小写的正则匹配</li>
+<li><code>/</code> 通用匹配, 如果没有其它匹配,任何请求都会匹配到</li>
+</ul>
+<p><strong>顺序不等于优先级：</strong></p>
+<p><code>(location =) &gt; (location 完整路径) &gt; (location ^~ 路径) &gt; (location ~,~* 正则顺序) &gt; (location 部分起始路径) &gt; (/)</code></p>
+<p>上面的匹配结果。按照上面的location写法，以下的匹配示例成立：</p>
+<ul>
+<li>/ -&gt; config A 精确完全匹配，即使/index.html也匹配不了</li>
+<li>/downloads/download.html -&gt; config B 匹配B以后，往下没有任何匹配，采用B</li>
+<li>/images/1.gif -&gt; configuration D 匹配到F，往下匹配到D，停止往下</li>
+<li>/images/abc/def -&gt; config D 最长匹配到G，往下匹配D，停止往下</li>
+</ul>
+<p>你可以看到 任何以/images/开头的都会匹配到D并停止，FG写在这里是没有任何意义的，H是永远轮不到的，这里只是为了说明匹配顺序</p>
+<ul>
+<li>/documents/document.html -&gt; config C 匹配到C，往下没有任何匹配，采用C</li>
+<li>/documents/1.jpg -&gt; configuration E 匹配到C，往下正则匹配到E</li>
+<li>/documents/Abc.jpg -&gt; config CC 最长匹配到C，往下正则顺序匹配到CC，不会往下到E</li>
+</ul>
+<h3 id="实际使用建议"><a href="#实际使用建议" class="headerlink" title="实际使用建议"></a>实际使用建议</h3><p>所以实际使用中，个人觉得至少有三个匹配规则定义，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location = / &#123;</span><br><span class="line">    proxy_pass http://tomcat:8080/index</span><br><span class="line">&#125;</span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ /static/ &#123;</span><br><span class="line">    root /webroot/static/;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;</span><br><span class="line">    root /webroot/res/;</span><br><span class="line">&#125;</span><br><span class="line"># 第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line"># 非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line"># 毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了</span><br><span class="line">location / &#123;</span><br><span class="line">    proxy_pass http://tomcat:8080/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Rewrite规则"><a href="#Rewrite规则" class="headerlink" title="Rewrite规则"></a>Rewrite规则</h2><p>rewrite功能就是，使用nginx提供的全局变量或自己设置的变量，结合正则表达式和标志位实现url重写以及重定向。rewrite只能放在<code>server{}</code>,<code>location{}</code>,<code>if{}</code>中，并且只能对域名后边的除去传递的参数外的字符串起作用，例如<code>http://seanlook.com/a/we/index.php?id=1&amp;u=str</code> 只对<code>/a/we/index.php</code>重写。语法<code>rewrite regex replacement [flag]</code>;</p>
+<p>如果相对域名或参数字符串起作用，可以使用全局变量匹配，也可以使用proxy_pass反向代理。</p>
+<p>表明看rewrite和location功能有点像，都能实现跳转，主要区别在于rewrite是在同一域名内更改获取资源的路径，而location是对一类路径做控制访问或反向代理，可以proxy_pass到其他机器。很多情况下rewrite也会写在location里，它们的执行顺序是：</p>
+<ol>
+<li>执行server块的rewrite指令</li>
+<li>执行location匹配</li>
+<li>执行选定的location中的rewrite指令</li>
+</ol>
+<p>如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件；循环超过10次，则返回<code>500 Internal Server Error</code>错误。</p>
+<h3 id="flag标志位"><a href="#flag标志位" class="headerlink" title="flag标志位"></a>flag标志位</h3><ul>
+<li>last : 相当于Apache的[L]标记，表示完成rewrite</li>
+<li>break : 停止执行当前虚拟主机的后续rewrite指令集</li>
+<li>redirect : 返回302临时重定向，地址栏会显示跳转后的地址</li>
+<li>permanent : 返回301永久重定向，地址栏会显示跳转后的地址</li>
+</ul>
+<p>因为301和302不能简单的只返回状态码，还必须有重定向的URL，这就是return指令无法返回301,302的原因了。这里 last 和 break 区别有点难以理解：</p>
+<ol>
+<li>last一般写在server和if中，而break一般使用在location中</li>
+<li>last不终止重写后的url匹配，即新的url会再从server走一遍匹配流程，而break终止重写后的匹配</li>
+<li>break和last都能组织继续执行后面的rewrite指令</li>
+</ol>
+<h3 id="if指令与全局变量"><a href="#if指令与全局变量" class="headerlink" title="if指令与全局变量"></a>if指令与全局变量</h3><p><strong>if判断指令</strong></p>
+<p>语法为<code>if(condition){...}</code>，对给定的条件condition进行判断。如果为真，大括号内的rewrite指令将被执行，if条件(conditon)可以是如下任何内容：</p>
+<ul>
+<li>当表达式只是一个变量时，如果值为空或任何以0开头的字符串都会当做false</li>
+<li>直接比较变量和内容时，使用=或!=</li>
+<li>~正则表达式匹配，~*不区分大小写的匹配，!~区分大小写的不匹配</li>
+</ul>
+<blockquote>
+<p><code>-f</code>和<code>!-f</code>用来判断是否存在文件<br><code>-d</code>和<code>!-d</code>用来判断是否存在目录<br><code>-e</code>和<code>!-e</code>用来判断是否存在文件或目录<br><code>-x</code>和<code>!-x</code>用来判断文件是否可执行</p>
+</blockquote>
+<p><strong>例如：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">    rewrite ^(.*)$ /msie/$1 break;</span><br><span class="line">&#125; //如果UA包含&quot;MSIE&quot;，rewrite请求到/msid/目录下</span><br><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">    set $id $1;</span><br><span class="line"> &#125; //如果cookie匹配正则，设置变量$id等于正则引用部分</span><br><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">    return 405;</span><br><span class="line">&#125; //如果提交方法为POST，则返回状态405（Method not allowed）。return不能返回301,302</span><br><span class="line">if ($slow) &#123;</span><br><span class="line">    limit_rate 10k;</span><br><span class="line">&#125; //限速，$slow可以通过 set 指令设置</span><br><span class="line">if (!-f $request_filename)&#123;</span><br><span class="line">    break;</span><br><span class="line">    proxy_pass  http://127.0.0.1; </span><br><span class="line">&#125; //如果请求的文件名不存在，则反向代理到localhost 。这里的break也是停止rewrite检查</span><br><span class="line">if ($args ~ post=140)&#123;</span><br><span class="line">    rewrite ^ http://example.com/ permanent;</span><br><span class="line">&#125; //如果query string中包含&quot;post=140&quot;，永久重定向到example.com</span><br><span class="line">location ~* \.(gif|jpg|png|swf|flv)$ &#123;</span><br><span class="line">    valid_referers none blocked www.jefflei.com www.leizhenfang.com;</span><br><span class="line">    if ($invalid_referer) &#123;</span><br><span class="line">        return 404;</span><br><span class="line">    &#125; //防盗链</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>全局变量</strong></p>
+<p>下面是可以用作if判断的全局变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$args ： #这个变量等于请求行中的参数，同$query_string</span><br><span class="line">$content_length ： 请求头中的Content-length字段。</span><br><span class="line">$content_type ： 请求头中的Content-Type字段。</span><br><span class="line">$document_root ： 当前请求在root指令中指定的值。</span><br><span class="line">$host ： 请求主机头字段，否则为服务器名称。</span><br><span class="line">$http_user_agent ： 客户端agent信息</span><br><span class="line">$http_cookie ： 客户端cookie信息</span><br><span class="line">$limit_rate ： 这个变量可以限制连接速率。</span><br><span class="line">$request_method ： 客户端请求的动作，通常为GET或POST。</span><br><span class="line">$remote_addr ： 客户端的IP地址。</span><br><span class="line">$remote_port ： 客户端的端口。</span><br><span class="line">$remote_user ： 已经经过Auth Basic Module验证的用户名。</span><br><span class="line">$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。</span><br><span class="line">$scheme ： HTTP方法（如http，https）。</span><br><span class="line">$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</span><br><span class="line">$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。</span><br><span class="line">$server_name ： 服务器名称。</span><br><span class="line">$server_port ： 请求到达服务器的端口号。</span><br><span class="line">$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</span><br><span class="line">$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</span><br><span class="line">$document_uri ： 与$uri相同。</span><br></pre></td></tr></table></figure>
+<p>例：<code>http://localhost:88/test1/test2/test.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$host：localhost</span><br><span class="line">$server_port：88</span><br><span class="line">$request_uri：http://localhost:88/test1/test2/test.php</span><br><span class="line">$document_uri：/test1/test2/test.php</span><br><span class="line">$document_root：/var/www/html</span><br><span class="line">$request_filename：/var/www/html/test1/test2/test.php</span><br></pre></td></tr></table></figure>
+<h3 id="常用正则"><a href="#常用正则" class="headerlink" title="常用正则"></a>常用正则</h3><ul>
+<li><code>.</code> ： 匹配除换行符以外的任意字符</li>
+<li><code>?</code> ： 重复0次或1次</li>
+<li><code>+</code> ： 重复1次或更多次</li>
+<li><code>*</code> ： 重复0次或更多次</li>
+<li><code>\d</code> ：匹配数字</li>
+<li><code>^</code> ： 匹配字符串的开始</li>
+<li><code>$</code> ： 匹配字符串的介绍</li>
+<li><code>{n}</code> ： 重复n次</li>
+<li><code>{n,}</code> ： 重复n次或更多次</li>
+<li><code>[c]</code> ： 匹配单个字符c</li>
+<li><code>[a-z]</code> ： 匹配a-z小写字母的任意一个</li>
+</ul>
+<p>小括号<code>()</code>之间匹配的内容，可以在后面通过<code>$1</code>来引用，<code>$2</code>表示的是前面第二个<code>()</code>里的内容。正则里面容易让人困惑的是<code>\</code>转义特殊字符。</p>
+<h4 id="rewrite实例"><a href="#rewrite实例" class="headerlink" title="rewrite实例"></a>rewrite实例</h4><p><strong>例1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    # 定义image日志格式</span><br><span class="line">    log_format imagelog &apos;[$time_local] &apos; $image_file &apos; &apos; $image_type &apos; &apos; $body_bytes_sent &apos; &apos; $status;</span><br><span class="line">    # 开启重写日志</span><br><span class="line">    rewrite_log on;</span><br><span class="line"> </span><br><span class="line">    server &#123;</span><br><span class="line">        root /home/www;</span><br><span class="line"> </span><br><span class="line">        location / &#123;</span><br><span class="line">                # 重写规则信息</span><br><span class="line">                error_log logs/rewrite.log notice; </span><br><span class="line">                # 注意这里要用‘’单引号引起来，避免&#123;&#125;</span><br><span class="line">                rewrite &apos;^/images/([a-z]&#123;2&#125;)/([a-z0-9]&#123;5&#125;)/(.*)\.(png|jpg|gif)$&apos; /data?file=$3.$4;</span><br><span class="line">                # 注意不能在上面这条规则后面加上“last”参数，否则下面的set指令不会执行</span><br><span class="line">                set $image_file $3;</span><br><span class="line">                set $image_type $4;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        location /data &#123;</span><br><span class="line">                # 指定针对图片的日志格式，来分析图片类型和大小</span><br><span class="line">                access_log logs/images.log mian;</span><br><span class="line">                root /data/images;</span><br><span class="line">                # 应用前面定义的变量。判断首先文件在不在，不在再判断目录在不在，如果还不在就跳转到最后一个url里</span><br><span class="line">                try_files /$arg_file /image404.html;</span><br><span class="line">        &#125;</span><br><span class="line">        location = /image404.html &#123;</span><br><span class="line">                # 图片不存在返回特定的信息</span><br><span class="line">                return 404 &quot;image not found\n&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对形如<code>/images/ef/uh7b3/test.png</code>的请求，重写到<code>/data?file=test.png</code>，于是匹配到<code>location /data</code>，先看<code>/data/images/test.png</code>文件存不存在，如果存在则正常响应，如果不存在则重写<code>tryfiles</code>到新的<code>image404 location</code>，直接返回<code>404</code>状态码。</p>
+<p><strong>例2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^/images/(.*)_(\d+)x(\d+)\.(png|jpg|gif)$ /resizer/$1.$4?width=$2&amp;height=$3? last;</span><br></pre></td></tr></table></figure>
+<p>对形如<code>/images/bla_500x400.jpg</code>的文件请求，重写到<code>/resizer/bla.jpg?width=500&amp;height=400</code>地址，并会继续尝试匹配<code>location</code>。</p>
+<blockquote>
+<p>上述内容转载自【Sean’s Notes】博客文章：<a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-location-rewrite/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/" title="Nginx 配置location和rewrite规则写法总结">https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/负载均衡/" rel="tag"># 负载均衡</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/31/Nginx-负载均衡配置/" rel="next" title="Nginx 负载均衡配置">
+                <i class="fa fa-chevron-left"></i> Nginx 负载均衡配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/11/Linux-监控命令整理/" rel="prev" title="Linux 监控命令整理">
+                Linux 监控命令整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#location正则写法"><span class="nav-number">1.</span> <span class="nav-text">location正则写法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用建议"><span class="nav-number">1.1.</span> <span class="nav-text">实际使用建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rewrite规则"><span class="nav-number">2.</span> <span class="nav-text">Rewrite规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flag标志位"><span class="nav-number">2.1.</span> <span class="nav-text">flag标志位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if指令与全局变量"><span class="nav-number">2.2.</span> <span class="nav-text">if指令与全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用正则"><span class="nav-number">2.3.</span> <span class="nav-text">常用正则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rewrite实例"><span class="nav-number">2.3.1.</span> <span class="nav-text">rewrite实例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

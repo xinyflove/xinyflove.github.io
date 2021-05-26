@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="package,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="良好软件设计的一个标志是代码的模块化和可维护性。在Laravel中，将几段代码分组到一个可以重用的逻辑模块中称为“包(package)”。 今天，我们来看看如何从头开始在Laravel 5.6中创建我们自己的包。别让这件事动摇你。创建一个包并不像看起来那么复杂。这里有几个简单的步骤，您可以使用它们创建自己的包。 当然，没有创建通用包的诀窍，因此作为一个示例，让我们尝试创建一个“To Do List">
+<meta name="keywords" content="package">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在Laravel(5.6版本)中创建包(package)">
+<meta property="og:url" content="https://xinyufeng.net/2019/02/15/如何在Laravel-5-6版本-中创建包-package/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="良好软件设计的一个标志是代码的模块化和可维护性。在Laravel中，将几段代码分组到一个可以重用的逻辑模块中称为“包(package)”。 今天，我们来看看如何从头开始在Laravel 5.6中创建我们自己的包。别让这件事动摇你。创建一个包并不像看起来那么复杂。这里有几个简单的步骤，您可以使用它们创建自己的包。 当然，没有创建通用包的诀窍，因此作为一个示例，让我们尝试创建一个“To Do List">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-25T07:50:04.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在Laravel(5.6版本)中创建包(package)">
+<meta name="twitter:description" content="良好软件设计的一个标志是代码的模块化和可维护性。在Laravel中，将几段代码分组到一个可以重用的逻辑模块中称为“包(package)”。 今天，我们来看看如何从头开始在Laravel 5.6中创建我们自己的包。别让这件事动摇你。创建一个包并不像看起来那么复杂。这里有几个简单的步骤，您可以使用它们创建自己的包。 当然，没有创建通用包的诀窍，因此作为一个示例，让我们尝试创建一个“To Do List">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2019/02/15/如何在Laravel-5-6版本-中创建包-package/">
+
+
+
+
+
+  <title>如何在Laravel(5.6版本)中创建包(package) | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2019/02/15/如何在Laravel-5-6版本-中创建包-package/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何在Laravel(5.6版本)中创建包(package)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-15T22:41:36+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP框架/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP框架</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP框架/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/15/如何在Laravel-5-6版本-中创建包-package/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/15/如何在Laravel-5-6版本-中创建包-package/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>良好软件设计的一个标志是代码的模块化和可维护性。在Laravel中，将几段代码分组到一个可以重用的逻辑模块中称为“包(package)”。</p>
+<p>今天，我们来看看如何从头开始<strong>在Laravel 5.6中创建我们自己的包</strong>。别让这件事动摇你。创建一个包并不像看起来那么复杂。这里有几个简单的步骤，您可以使用它们创建自己的包。</p>
+<p>当然，没有创建通用包的诀窍，因此作为一个示例，让我们尝试创建一个“To Do List”包。</p>
+<p>在这个示例的过程中，我们将介绍迁移(migrations)、路由(routes)、视图(views)和对其他包的依赖关系等概念。</p>
+<p>准备好开始了吗?我们开始吧!</p>
+<a id="more"></a>
+<h2 id="Step-1-安装-Laravel-5-6"><a href="#Step-1-安装-Laravel-5-6" class="headerlink" title="Step 1: 安装 Laravel 5.6"></a>Step 1: 安装 Laravel 5.6</h2><p>安装最新的Laravel版本或指定版本。为此，请转到项目目录并运行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist laravel/laravel .</span><br></pre></td></tr></table></figure></p>
+<p>详细的<a href="https://laravel.com/docs/5.6/installation#installation" title="文档" target="_blank" rel="noopener">Laravel文档</a>还介绍了其他选项。</p>
+<h2 id="Step-2-创建文件夹结构"><a href="#Step-2-创建文件夹结构" class="headerlink" title="Step 2: 创建文件夹结构"></a>Step 2: 创建文件夹结构</h2><p>接下来，我们继续在项目目录中创建一个packages文件夹。命名包的约定如下<code>[创建者或供应商]/[包名]</code>。</p>
+<p>例如，“laravel/framework”包的供应商是“laravel”，包名是“framework”。<br>另一个流行的包是“laravelcollective/html”包，这里的供应商是“laravelcollective”，包名是“html”。</p>
+<p>类似地，让我们将包命名为“wisdmlabs/todolist”。在“packages”文件夹中创建如下文件夹:</p>
+<ul>
+<li>packages<ul>
+<li>wisdmlabs<ul>
+<li>todolist</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我们需要在package文件夹下创建一个“src”文件夹。</p>
+<ul>
+<li>packages<ul>
+<li>wisdmlabs<ul>
+<li>todolist<ul>
+<li>src</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Step-3-创建-Composer-文件"><a href="#Step-3-创建-Composer-文件" class="headerlink" title="Step 3: 创建 Composer 文件"></a>Step 3: 创建 Composer 文件</h2><p>每个包都应该有一个“composer.json”文件，它将包含所有包及其依赖项。在“todolist”文件夹中运行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer init</span><br></pre></td></tr></table></figure>
+<p>系统将提示您了解有关该包的详细信息。您可以通过按enter键跳过，它将接受默认值。您可以在稍后在“composer.json”文件中更改此信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;wisdmlabs/todolist&quot;,</span><br><span class="line">    &quot;description&quot;: &quot;You can create the to-do-list of your task.&quot;,</span><br><span class="line">    &quot;authors&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;John Doe&quot;,</span><br><span class="line">            &quot;email&quot;: &quot;john.doe@wisdmlabs.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;minimum-stability&quot;: &quot;dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-4-从主要-Composer-JSON-文件加载这个包"><a href="#Step-4-从主要-Composer-JSON-文件加载这个包" class="headerlink" title="Step 4: 从主要 Composer.JSON 文件加载这个包"></a>Step 4: 从主要 Composer.JSON 文件加载这个包</h2><p>现在，这个“composer.json”文件用于当前根目录每个Laravel应用。我们需求我们的包对应用程序可见。</p>
+<p>在autoload &gt; psr-4”添加我们的包的命名空间(namespace)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;autoload&quot;: &#123;</span><br><span class="line">        &quot;classmap&quot;: [</span><br><span class="line">	...</span><br><span class="line">        ],</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;App\\&quot;: &quot;app/&quot;,</span><br><span class="line">            &quot;Wisdmlabs\\Todolist\\&quot;: &quot;packages/wisdmlabs/todolist/src/&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<font color="red">这里要注意一下，”Wisdmlabs\Todolist\“中的大小写一定要跟后面使用的保持一致，否则会出现错误！！！</font>
+
+<h2 id="Step-5-为包创建服务提供者"><a href="#Step-5-为包创建服务提供者" class="headerlink" title="Step 5: 为包创建服务提供者"></a>Step 5: 为包创建服务提供者</h2><p><strong>服务提供者</strong>是我们的包的访问点。该类维护与包相关的所有信息，如视图(views)、迁移(migration)和路由(routes)加载的位置。您可以在<a href="https://laravel.com/docs/5.6/packages#service-providers" title="官方的Laravel文档" target="_blank" rel="noopener">官方的Laravel文档</a>中了解更多关于服务提供商的信息。</p>
+<p>让我们使用artisan命令创建一个服务提供者。运行以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:provider TodolistServiceProvider</span><br></pre></td></tr></table></figure>
+<p>它将生成一个文件“TodolistServiceProvider.php”。可以在“app/Providers”目录下找到。现在把文件移到我们的包中，即在packages/wisdmlabs/todolist/scr文件夹中。不要忘记将文件的名称空间更改为“wisdmlabs\todolist”。</p>
+<ul>
+<li>packages<ul>
+<li>wisdmlabs<ul>
+<li>todolist<ul>
+<li>src<ul>
+<li>TodolistServiceProvider.php</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在该文件中，您将注意到两个函数boot()和register()。boot()函数用于初始化某些路由或添加事件侦听器。register()函数用于将我们的包绑定到app容器内的类。</p>
+<p>但是在引导或注册包之前，我们需要在文件“config/app.php”中向服务提供者提供服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&apos;providers&apos; =&gt; [</span><br><span class="line">        /*</span><br><span class="line">         * Application Service Providers...</span><br><span class="line">         */</span><br><span class="line">         ...</span><br><span class="line">        App\Providers\RouteServiceProvider::class,</span><br><span class="line">        Wisdmlabs\Todolist\TodolistServiceProvider::class,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+<h2 id="Step-6-创建迁移-Migration"><a href="#Step-6-创建迁移-Migration" class="headerlink" title="Step 6: 创建迁移(Migration)"></a>Step 6: 创建迁移(Migration)</h2><p>接下来，我们首先需要使用以下artisan命令创建迁移(migration):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:migration create_task_table --create=tasks</span><br></pre></td></tr></table></figure>
+<p>是不是提示了 <code>Class &#39;Wisdmlabs\Todolist\TodolistServiceProvider&#39; not found</code> 这个错误？哈哈，要先执行性如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer dump-autoload</span><br></pre></td></tr></table></figure>
+<p>在执行创建迁移命令，是不是成功了。</p>
+<p>迁移被创建在这个位置<code>database/migrations/*_create_task_table.php</code>。我们将把这个迁移文件移到我们的包中<code>packages/wisdmlabs/todolist/src/migrations/*_create_task_table.php</code>。</p>
+<p>现在，我们可以修改这个迁移文件，为我们的表添加列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line"></span><br><span class="line">class CreateTaskTable extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     *</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    public function up()</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::create(&apos;tasks&apos;, function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;increments(&apos;id&apos;);</span><br><span class="line">            $table-&gt;string(&apos;name&apos;);</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     *</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    public function down()</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&apos;tasks&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-7-为表-Table-创建模型-Model"><a href="#Step-7-为表-Table-创建模型-Model" class="headerlink" title="Step 7: 为表(Table)创建模型(Model)"></a>Step 7: 为表(Table)创建模型(Model)</h2><p>完成上述操作后，我们将为表创建一个 eloquent 模型，以便使用 eloquent 的方法轻松地创建(create)、更新(update)和删除(delete)表中的数据。</p>
+<p>运行以下artisan命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:model Task</span><br></pre></td></tr></table></figure>
+<p>现在，移动“Task.php”文件从 app/Task.php 到我们的包文件夹 packages/wisdmlabs/todolist/src/Task.php。同样，不要忘记将文件的名称空间更改为“wisdmlabs\todolist”。</p>
+<p>现在将必要的信息添加到模型(Task.php)中，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace wisdmlabs\todolist;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Model of the table tasks.</span><br><span class="line"> */</span><br><span class="line">class Task extends Model</span><br><span class="line">&#123;</span><br><span class="line">    protected $table = &apos;tasks&apos;;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [</span><br><span class="line">        &apos;name&apos;,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-8-创建一个控制器-Controller"><a href="#Step-8-创建一个控制器-Controller" class="headerlink" title="Step 8: 创建一个控制器(Controller)"></a>Step 8: 创建一个控制器(Controller)</h2><p>让我们通过运行artisan命令来创建控制器:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller TaskController</span><br></pre></td></tr></table></figure>
+<p>接下来，将控制器(TaskController)从 app/Http/Controllers/TaskController.php 移动到 packages/wisdmlabs/todolist/TaskController.php，并将名称空间更改为“wisdmlabs\todolist”。</p>
+<p>我们的控制器将为我们的to-do-list包提供必要的方法。这是主文件，将包含所有逻辑。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace wisdmlabs\todolist;</span><br><span class="line"></span><br><span class="line">use App\Http\Controllers\Controller;</span><br><span class="line">use Illuminate\Http\Request;</span><br><span class="line">use Wisdmlabs\Todolist\Task;</span><br><span class="line"></span><br><span class="line">class TaskController extends Controller</span><br><span class="line">&#123;</span><br><span class="line">    public function index()</span><br><span class="line">    &#123;</span><br><span class="line">        return redirect()-&gt;route(&apos;task.create&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function create()</span><br><span class="line">    &#123;</span><br><span class="line">        $tasks = Task::all();</span><br><span class="line">        $submit = &apos;Add&apos;;</span><br><span class="line">        return view(&apos;wisdmlabs.todolist.list&apos;, compact(&apos;tasks&apos;, &apos;submit&apos;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function store()</span><br><span class="line">    &#123;</span><br><span class="line">        $input = Request::all();</span><br><span class="line">        Task::create($input);</span><br><span class="line">        return redirect()-&gt;route(&apos;task.create&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function edit($id)</span><br><span class="line">    &#123;</span><br><span class="line">        $tasks = Task::all();</span><br><span class="line">        $task = $tasks-&gt;find($id);</span><br><span class="line">        $submit = &apos;Update&apos;;</span><br><span class="line">        return view(&apos;wisdmlabs.todolist.list&apos;, compact(&apos;tasks&apos;, &apos;task&apos;, &apos;submit&apos;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function update($id)</span><br><span class="line">    &#123;</span><br><span class="line">        $input = Request::all();</span><br><span class="line">        $task = Task::findOrFail($id);</span><br><span class="line">        $task-&gt;update($input);</span><br><span class="line">        return redirect()-&gt;route(&apos;task.create&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function destroy($id)</span><br><span class="line">    &#123;</span><br><span class="line">        $task = Task::findOrFail($id);</span><br><span class="line">        $task-&gt;delete();</span><br><span class="line">        return redirect()-&gt;route(&apos;task.create&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-9-创建路由文件-Routes"><a href="#Step-9-创建路由文件-Routes" class="headerlink" title="Step 9: 创建路由文件(Routes)"></a>Step 9: 创建路由文件(Routes)</h2><p>在 “wisdmlabs/todolist/src” 文件夹中创建一个新文件，并命名为 “routes.php”。定义我们将在包中使用的路由。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">Route::resource(&apos;/task&apos;, &apos;Wisdmlabs\Todolist\TaskController&apos;);</span><br></pre></td></tr></table></figure>
+<h2 id="Step-10-创建视图-Views"><a href="#Step-10-创建视图-Views" class="headerlink" title="Step 10: 创建视图(Views)"></a>Step 10: 创建视图(Views)</h2><p>要创建视图，我们必须在 “wisdmlabs/todolist/src/” 下创建一个 “views” 文件夹。现在，为该文件夹下的每个必需视图创建一个文件。</p>
+<p>我们将创建两个视图: 1)app.blade——用于每个待办事项 和 2)列表。刀片-用于待办事项列表。</p>
+<p>在app.blade.php下添加的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;TO DO List&lt;/title&gt;</span><br><span class="line">    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        @yield(&apos;content&apos;)</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>在list.blade.php下添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">@extends(&apos;wisdmlabs.todolist.app&apos;)</span><br><span class="line">@section(&apos;content&apos;)</span><br><span class="line">    @if(isset($task))</span><br><span class="line">        &lt;h3&gt;Edit : &lt;/h3&gt;</span><br><span class="line">        &#123;!! Form::model($task, [&apos;route&apos; =&gt; [&apos;task.update&apos;, $task-&gt;id], &apos;method&apos; =&gt; &apos;patch&apos;]) !!&#125;</span><br><span class="line">    @else</span><br><span class="line">        &lt;h3&gt;Add New Task : &lt;/h3&gt;</span><br><span class="line">        &#123;!! Form::open([&apos;route&apos; =&gt; &apos;task.store&apos;]) !!&#125;</span><br><span class="line">    @endif</span><br><span class="line">        &lt;div class=&quot;form-inline&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &#123;!! Form::text(&apos;name&apos;,null,[&apos;class&apos; =&gt; &apos;form-control&apos;]) !!&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &#123;!! Form::submit($submit, [&apos;class&apos; =&gt; &apos;btn btn-primary form-control&apos;]) !!&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &#123;!! Form::close() !!&#125;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;h4&gt;Tasks To Do : &lt;/h4&gt;</span><br><span class="line">    &lt;table class=&quot;table table-bordered table-striped&quot;&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Action&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            @foreach($tasks as $task)</span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td&gt;&#123;&#123; $task-&gt;name &#125;&#125;&lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &#123;!! Form::open([&apos;route&apos; =&gt; [&apos;task.destroy&apos;, $task-&gt;id], &apos;method&apos; =&gt; &apos;delete&apos;]) !!&#125;</span><br><span class="line">                            &lt;div class=&apos;btn-group&apos;&gt;</span><br><span class="line">                                &lt;a href=&quot;&#123;!! route(&apos;task.edit&apos;, [$task-&gt;id]) !!&#125;&quot; class=&apos;btn btn-default btn-xs&apos;&gt;&lt;i class=&quot;glyphicon glyphicon-edit&quot;&gt;&lt;/i&gt;&lt;/a&gt;</span><br><span class="line">                                &#123;!! Form::button(&apos;&lt;i class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/i&gt;&apos;, [&apos;type&apos; =&gt; &apos;submit&apos;, &apos;class&apos; =&gt; &apos;btn btn-danger btn-xs&apos;, &apos;onclick&apos; =&gt; &quot;return confirm(&apos;Are you sure?&apos;)&quot;]) !!&#125;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &#123;!! Form::close() !!&#125;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            @endforeach</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">@endsection</span><br></pre></td></tr></table></figure>
+<h2 id="Step-11-更新服务提供者以加载包"><a href="#Step-11-更新服务提供者以加载包" class="headerlink" title="Step 11:更新服务提供者以加载包"></a>Step 11:更新服务提供者以加载包</h2><p>我们已经到了倒数第二步——加载路由、迁移、视图等等。如果希望包的用户能够编辑视图，那么可以在服务提供者中发布视图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace wisdmlabs\todolist;</span><br><span class="line"></span><br><span class="line">use Illuminate\Support\ServiceProvider;</span><br><span class="line"></span><br><span class="line">class TodolistServiceProvider extends ServiceProvider</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Bootstrap services.</span><br><span class="line">     *</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    public function boot()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;loadRoutesFrom(__DIR__.&apos;/routes.php&apos;);</span><br><span class="line">        $this-&gt;loadMigrationsFrom(__DIR__.&apos;/migrations&apos;);</span><br><span class="line">        $this-&gt;loadViewsFrom(__DIR__.&apos;/views&apos;, &apos;todolist&apos;);</span><br><span class="line">        $this-&gt;publishes([</span><br><span class="line">            __DIR__.&apos;/views&apos; =&gt; base_path(&apos;resources/views/wisdmlabs/todolist&apos;),</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Register services.</span><br><span class="line">     *</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    public function register()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;app-&gt;make(&apos;Wisdmlabs\Todolist\TaskController&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在您可以通过artisan命令发布视图:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish</span><br></pre></td></tr></table></figure>
+<p>会出现如下选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Which provider or tag&apos;s files would you like to publish?:</span><br><span class="line">  [0] Publish files from all providers and tags listed below</span><br><span class="line">  [1] Provider: Fideloper\Proxy\TrustedProxyServiceProvider</span><br><span class="line">  [2] Provider: Illuminate\Mail\MailServiceProvider</span><br><span class="line">  [3] Provider: Illuminate\Notifications\NotificationServiceProvider</span><br><span class="line">  [4] Provider: Illuminate\Pagination\PaginationServiceProvider</span><br><span class="line">  [5] Provider: Laravel\Tinker\TinkerServiceProvider</span><br><span class="line">  [6] Provider: wisdmlabs\todolist\TodolistServiceProvider</span><br><span class="line">  [7] Tag: laravel-mail</span><br><span class="line">  [8] Tag: laravel-notifications</span><br><span class="line">  [9] Tag: laravel-pagination</span><br></pre></td></tr></table></figure>
+<p>我们输入 6 回车，提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copied Directory [\packages\wisdmlabs\todolist\src\views] To [\resources\views\wisdmlabs\todolist]</span><br><span class="line">Publishing complete.</span><br></pre></td></tr></table></figure>
+<p>上面的命令将在views文件夹 “/resources/views/wissdmlabs/todolist/” 下创建包的文件夹。现在，用户可以更改屏幕的视图。</p>
+<ul>
+<li>views<ul>
+<li>wisdmlabs<ul>
+<li>todolist<ul>
+<li>app.blade.php</li>
+<li>list.blade.php</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Step-12-更新编写器文件"><a href="#Step-12-更新编写器文件" class="headerlink" title="Step 12:更新编写器文件"></a>Step 12:更新编写器文件</h2><p>在最后一步中，我们在包中包含了 “laravelcollective/html package”。为此，我们必须在我们的包 “composition .json” 中添加包的依赖项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;wisdmlabs/todolist&quot;,</span><br><span class="line">    &quot;description&quot;: &quot;You can create the to-do-list of your task.&quot;,</span><br><span class="line">    &quot;authors&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;John Doe&quot;,</span><br><span class="line">            &quot;email&quot;: &quot;john.doe@wisdmlabs.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;minimum-stability&quot;: &quot;dev&quot;,</span><br><span class="line">    &quot;require&quot;: &#123;</span><br><span class="line">        &quot;laravelcollective/html&quot;: &quot;^5.5&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extra&quot;: &#123;</span><br><span class="line">        &quot;laravel&quot;: &#123;</span><br><span class="line">            &quot;providers&quot;: [</span><br><span class="line">                &quot;wisdmlabs\\todolist\\TodolistServiceProvider&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;autoload&quot;: &#123;</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;Wisdmlabs\\Todolist\\&quot;: &quot;src/&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以添加 extra 对象在 “composer.json”，它会加载我们的包，这样用户就不用添加我们的 package 在 “config/app” provider 数组中。包将自动加载。</p>
+<p>转载 <a href="https://wisdmlabs.com/blog/create-package-laravel/" target="_blank" rel="noopener">https://wisdmlabs.com/blog/create-package-laravel/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2019/02/15/如何在Laravel-5-6版本-中创建包-package/" title="如何在Laravel(5.6版本)中创建包(package)">https://xinyufeng.net/2019/02/15/如何在Laravel-5-6版本-中创建包-package/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/package/" rel="tag"># package</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/15/Laravel-artisan-常用命令/" rel="next" title="Laravel artisan 常用命令">
+                <i class="fa fa-chevron-left"></i> Laravel artisan 常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/25/thinkcmf5-的-nginx-常用配置/" rel="prev" title="thinkcmf5 的 nginx 常用配置">
+                thinkcmf5 的 nginx 常用配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-安装-Laravel-5-6"><span class="nav-number">1.</span> <span class="nav-text">Step 1: 安装 Laravel 5.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-创建文件夹结构"><span class="nav-number">2.</span> <span class="nav-text">Step 2: 创建文件夹结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-创建-Composer-文件"><span class="nav-number">3.</span> <span class="nav-text">Step 3: 创建 Composer 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-从主要-Composer-JSON-文件加载这个包"><span class="nav-number">4.</span> <span class="nav-text">Step 4: 从主要 Composer.JSON 文件加载这个包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-为包创建服务提供者"><span class="nav-number">5.</span> <span class="nav-text">Step 5: 为包创建服务提供者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-创建迁移-Migration"><span class="nav-number">6.</span> <span class="nav-text">Step 6: 创建迁移(Migration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-为表-Table-创建模型-Model"><span class="nav-number">7.</span> <span class="nav-text">Step 7: 为表(Table)创建模型(Model)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-8-创建一个控制器-Controller"><span class="nav-number">8.</span> <span class="nav-text">Step 8: 创建一个控制器(Controller)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-9-创建路由文件-Routes"><span class="nav-number">9.</span> <span class="nav-text">Step 9: 创建路由文件(Routes)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-10-创建视图-Views"><span class="nav-number">10.</span> <span class="nav-text">Step 10: 创建视图(Views)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-11-更新服务提供者以加载包"><span class="nav-number">11.</span> <span class="nav-text">Step 11:更新服务提供者以加载包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-12-更新编写器文件"><span class="nav-number">12.</span> <span class="nav-text">Step 12:更新编写器文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
