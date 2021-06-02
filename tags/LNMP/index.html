@@ -388,7 +388,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-count">148</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -410,7 +410,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1095,7 +1095,18 @@
 
 </body>
 </html>
-         return resultRight.id - resultLeft.id;
+h === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
                 }
               });
               var searchResultList = '<ul class=\"search-result-list\">';
