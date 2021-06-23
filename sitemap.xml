@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/shopex/index.html</loc>
+    <loc>https://xinyufeng.net/documents/shopex/app_develop.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/shopex/app_develop.html</loc>
+    <loc>https://xinyufeng.net/documents/shopex/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/vendor.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/tinker.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/tinker.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/vendor.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/migration.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/middleware.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/middleware.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/migration.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -205,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/gate-policy.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/laravel/index.html</loc>
+    <loc>https://xinyufeng.net/documents/laravel/gate-policy.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/go/index.html</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xinyufeng.net/documents/laravel/blade.html</loc>
     
     <lastmod>2021-05-25</lastmod>
@@ -240,7 +233,7 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/git/lesson_4.html</loc>
+    <loc>https://xinyufeng.net/documents/go/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -255,6 +248,13 @@
   
   <url>
     <loc>https://xinyufeng.net/documents/git/workflow.html</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/documents/git/lesson_4.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/Javascript/index.html</loc>
+    <loc>https://xinyufeng.net/documents/es6/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/documents/es6/index.html</loc>
+    <loc>https://xinyufeng.net/documents/Javascript/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -317,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/categories/index.html</loc>
+    <loc>https://xinyufeng.net/awesome/wechat.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -331,14 +331,7 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/awesome/wechat.html</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/awesome/python.html</loc>
+    <loc>https://xinyufeng.net/categories/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -346,6 +339,13 @@
   
   <url>
     <loc>https://xinyufeng.net/awesome/software.html</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/awesome/python.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -387,14 +387,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/about/index.html</loc>
+    <loc>https://xinyufeng.net/awesome/blog.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/awesome/blog.html</loc>
+    <loc>https://xinyufeng.net/about/index.html</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -471,14 +471,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/11/03/Linux%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AA%E6%95%B0/</loc>
+    <loc>https://xinyufeng.net/2020/10/28/MySQL-%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6-bin-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%A5%E6%BA%90%E5%92%8C%E6%B8%85%E7%90%86%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/10/28/MySQL-%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6-bin-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%A5%E6%BA%90%E5%92%8C%E6%B8%85%E7%90%86%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://xinyufeng.net/2020/11/03/Linux%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AA%E6%95%B0/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -506,13 +506,6 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/10/04/CentOS6-5%E4%B8%8Bautoconf%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E5%88%B0autoconf2-68%E7%89%88%E6%9C%AC/</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xinyufeng.net/2020/09/28/%E8%A7%A3%E5%86%B3CentOS7%E7%BD%91%E5%8D%A1%E8%BF%9E%E4%B8%8D%E4%B8%8A%E7%BD%91%E4%B8%94%E9%87%8D%E5%90%AF%E6%8A%A5%E9%94%99/</loc>
     
     <lastmod>2021-05-25</lastmod>
@@ -520,7 +513,7 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/10/21/Linux%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4-ps-ef-%E5%92%8C-ps-aux-%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <loc>https://xinyufeng.net/2020/10/04/CentOS6-5%E4%B8%8Bautoconf%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E5%88%B0autoconf2-68%E7%89%88%E6%9C%AC/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -528,6 +521,13 @@
   
   <url>
     <loc>https://xinyufeng.net/2020/10/04/lnmp1-7-%E5%AE%89%E8%A3%85-redis-%E6%89%A9%E5%B1%95/</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/2020/10/21/Linux%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4-ps-ef-%E5%92%8C-ps-aux-%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -569,14 +569,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/08/06/CentOS-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
+    <loc>https://xinyufeng.net/2020/07/21/%E4%BD%BF%E7%94%A8-nvm-%E7%AE%A1%E7%90%86%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84-nodejs-%E4%B8%8E-npm/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/07/21/%E4%BD%BF%E7%94%A8-nvm-%E7%AE%A1%E7%90%86%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84-nodejs-%E4%B8%8E-npm/</loc>
+    <loc>https://xinyufeng.net/2020/08/06/CentOS-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -604,6 +604,13 @@
   </url>
   
   <url>
+    <loc>https://xinyufeng.net/2020/06/09/Windows-Terminal-Error-creating-winpty-ConnectNamedPipe-failed-Windows-error-232/</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xinyufeng.net/2020/06/12/Linux%E4%B8%8BPHP%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85-configure%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2021-05-25</lastmod>
@@ -612,13 +619,6 @@
   
   <url>
     <loc>https://xinyufeng.net/2020/06/12/Windows%E4%B8%8B%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E7%AB%AF%E5%8F%A3%E8%A2%AB%E8%B0%81%E5%8D%A0%E7%94%A8/</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/2020/06/09/Windows-Terminal-Error-creating-winpty-ConnectNamedPipe-failed-Windows-error-232/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -891,14 +891,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/02/02/%E8%A7%A3%E5%86%B3GitHub%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</loc>
+    <loc>https://xinyufeng.net/2020/02/04/Nginx-%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2020/02/04/Nginx-%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/</loc>
+    <loc>https://xinyufeng.net/2020/02/02/%E8%A7%A3%E5%86%B3GitHub%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1038,6 +1038,13 @@
   </url>
   
   <url>
+    <loc>https://xinyufeng.net/2019/11/14/Linux-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E9%99%90%E5%88%B6%E5%85%B6%E8%AE%BF%E9%97%AE%E7%9B%AE%E5%BD%95/</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xinyufeng.net/2019/11/19/JS-%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%A4%9A%E6%9D%A1%E5%90%8C%E6%A0%B7name%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1/</loc>
     
     <lastmod>2021-05-25</lastmod>
@@ -1053,13 +1060,6 @@
   
   <url>
     <loc>https://xinyufeng.net/2019/11/28/JQuery%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/2019/11/14/Linux-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E9%99%90%E5%88%B6%E5%85%B6%E8%AE%BF%E9%97%AE%E7%9B%AE%E5%BD%95/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1150,14 +1150,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/06/14/CentOS%E4%B8%8A-libreoffice-%E5%92%8C-unoconv-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4-%E5%AE%9E%E7%8E%B0word%E8%BD%AChtml/</loc>
+    <loc>https://xinyufeng.net/2019/06/15/PHP-%E6%89%A7%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/06/15/PHP-%E6%89%A7%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</loc>
+    <loc>https://xinyufeng.net/2019/06/14/CentOS%E4%B8%8A-libreoffice-%E5%92%8C-unoconv-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4-%E5%AE%9E%E7%8E%B0word%E8%BD%AChtml/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1213,13 +1213,6 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/05/24/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8cp%E5%91%BD%E4%BB%A4%E6%8A%A5-cp-omitting-directory%E9%94%99%E8%AF%AF/</loc>
-    
-    <lastmod>2021-05-25</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xinyufeng.net/2019/05/22/PHP-%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85-%E5%90%84%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2021-05-25</lastmod>
@@ -1227,7 +1220,7 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/05/15/CentOS-%E6%B7%BB%E5%8A%A0nginx%E5%88%B0%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1-service/</loc>
+    <loc>https://xinyufeng.net/2019/05/24/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8cp%E5%91%BD%E4%BB%A4%E6%8A%A5-cp-omitting-directory%E9%94%99%E8%AF%AF/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1241,14 +1234,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/05/14/%E9%98%BF%E9%87%8C%E4%BA%91%E6%95%B0%E6%8D%AE%E7%9B%98%E6%8C%82%E8%BD%BD%E5%92%8C%E5%8D%B8%E8%BD%BD/</loc>
+    <loc>https://xinyufeng.net/2019/05/15/CentOS-%E6%B7%BB%E5%8A%A0nginx%E5%88%B0%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1-service/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/2019/04/19/git-pull-error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</loc>
+    <loc>https://xinyufeng.net/2019/05/14/%E9%98%BF%E9%87%8C%E4%BA%91%E6%95%B0%E6%8D%AE%E7%9B%98%E6%8C%82%E8%BD%BD%E5%92%8C%E5%8D%B8%E8%BD%BD/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1263,6 +1256,13 @@
   
   <url>
     <loc>https://xinyufeng.net/2019/04/24/ThinkPHP5-1-%E5%8A%A9%E6%89%8B%E5%87%BD%E6%95%B0input-%E7%94%A8%E6%B3%95/</loc>
+    
+    <lastmod>2021-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/2019/04/19/git-pull-error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</loc>
     
     <lastmod>2021-05-25</lastmod>
     
@@ -1446,14 +1446,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/artisan/</loc>
+    <loc>https://xinyufeng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2/</loc>
+    <loc>https://xinyufeng.net/tags/artisan/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1516,6 +1516,13 @@
   </url>
   
   <url>
+    <loc>https://xinyufeng.net/tags/MySQL%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2021-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://xinyufeng.net/tags/Hexo%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
@@ -1531,13 +1538,6 @@
   
   <url>
     <loc>https://xinyufeng.net/tags/ThinkPHP5-1/</loc>
-    <lastmod>2021-06-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/tags/MySQL%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1586,14 +1586,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/%E5%85%B6%E4%BB%96/</loc>
+    <loc>https://xinyufeng.net/tags/PHP%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/PHP%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83/</loc>
+    <loc>https://xinyufeng.net/tags/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1635,14 +1635,14 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/jQuery/</loc>
+    <loc>https://xinyufeng.net/tags/Webpack/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/Webpack/</loc>
+    <loc>https://xinyufeng.net/tags/jQuery/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1859,20 +1859,6 @@
   </url>
   
   <url>
-    <loc>https://xinyufeng.net/tags/CentOS/</loc>
-    <lastmod>2021-06-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/tags/%E9%95%9C%E5%83%8F/</loc>
-    <lastmod>2021-06-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://xinyufeng.net/tags/nvm/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
@@ -1881,6 +1867,20 @@
   
   <url>
     <loc>https://xinyufeng.net/tags/Nodejs/</loc>
+    <lastmod>2021-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/tags/CentOS/</loc>
+    <lastmod>2021-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xinyufeng.net/tags/%E9%95%9C%E5%83%8F/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2134,6 +2134,13 @@
   </url>
   
   <url>
+    <loc>https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JavaScript/</loc>
+    <lastmod>2021-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://xinyufeng.net/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
@@ -2142,13 +2149,6 @@
   
   <url>
     <loc>https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Nodejs/</loc>
-    <lastmod>2021-06-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JavaScript/</loc>
     <lastmod>2021-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
