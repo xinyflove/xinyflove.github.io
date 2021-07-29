@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2021-06-23T08:29:45.896Z</updated>
+  <updated>2021-07-29T07:22:32.064Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certifica</title>
+    <link href="https://xinyufeng.net/2021/07/29/%E8%A7%A3%E5%86%B3PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/"/>
+    <id>https://xinyufeng.net/2021/07/29/解决PHP报错-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/</id>
+    <published>2021-07-29T07:11:15.000Z</published>
+    <updated>2021-07-29T07:22:32.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>PHP程序在调用<code>https</code>链接时报错”cURL error 60: SSL certificate problem: unable to get local issuer<br>  certifica”，这是因为没有配置信任的服务器HTTPS验证。默认情况下，cURL被设为不信任任何CAS，因此浏览器无法通过HTTPS访问你服务器</p><p>解决方法：</p><a id="more"></a><p>下载cacert.pem文件</p><p><a href="https://curl.se/docs/caextract.html" target="_blank" rel="noopener">https://curl.se/docs/caextract.html</a></p><p>下载后的文件放到php的<code>extras/ssl</code>目录下</p><p>我这里是Windows系统PHPStudy集成工具</p><p><code>D:\phpstudy_pro\Extensions\php\php7.2.9nts\extras\ssl</code></p><p>修改php.ini</p><p><code>D:\phpstudy_pro\Extensions\php\php7.2.9nts\php.ini</code></p><p>添加或修改</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">; php.ini Options  ;</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">curl.cainfo</span> = <span class="string">"D:\phpstudy_pro\Extensions\php\php7.2.9nts\extras\ssl\cacert.pem"</span></span><br></pre></td></tr></table></figure><p>且需要打开<code>php_openssl</code>扩展</p><p>重启环境</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PHP程序在调用&lt;code&gt;https&lt;/code&gt;链接时报错”cURL error 60: SSL certificate problem: unable to get local issuer&lt;br&gt;  certifica”，这是因为没有配置信任的服务器HTTPS验证。默认情况下，cURL被设为不信任任何CAS，因此浏览器无法通过HTTPS访问你服务器&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="PHP" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/PHP/"/>
+    
+    
+      <category term="PHP报错" scheme="https://xinyufeng.net/tags/PHP%E6%8A%A5%E9%94%99/"/>
+    
+  </entry>
   
   <entry>
     <title>Yii2 form 表单</title>
@@ -538,32 +563,6 @@
     
     
       <category term="高并发" scheme="https://xinyufeng.net/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决php-fpm进程不释放内存问题</title>
-    <link href="https://xinyufeng.net/2020/10/21/%E8%A7%A3%E5%86%B3php-fpm%E8%BF%9B%E7%A8%8B%E4%B8%8D%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/"/>
-    <id>https://xinyufeng.net/2020/10/21/解决php-fpm进程不释放内存问题/</id>
-    <published>2020-10-21T04:35:20.000Z</published>
-    <updated>2021-05-25T07:50:05.034Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近遇到网站打不开了，报502，重启php-fpm就好了，然而过段时间又报502，查找了一些资料，应该是PHP-FPM进程不释放内存造成的。</p><blockquote><p>LNMP架构中PHP是运行在FastCGI模式下，按照官方的说法，php-cgi会在每个请求结束的时候会回收脚本使用的全部内存，但是并不会释放给操作系统，而是继续持有以应对下一次PHP请求。而PHP-FPM是FastCGI进程管理器，用于控制php的内存和进程等</p></blockquote><p>解决的办法就是通过优化PHP-FPM的总进程数和单个进程占用的内存，从而解决PHP-FPM进程占用内存大和不释放内存的问题。</p><a id="more"></a><h2 id="分析判断PHP-FPM内存占用情况"><a href="#分析判断PHP-FPM内存占用情况" class="headerlink" title="分析判断PHP-FPM内存占用情况"></a>分析判断PHP-FPM内存占用情况</h2><p>如果你发现服务器出现了卡顿的情况，首先查看一下内存的占用情况，常用的命令就是top、free、glances等。</p><p>参考一下链接：</p><p><a href="https://www.binbinbiji.com/php/2120.html" target="_blank" rel="noopener">https://www.binbinbiji.com/php/2120.html</a></p><p><a href="https://wzfou.com/php-fpm/" target="_blank" rel="noopener">https://wzfou.com/php-fpm/</a></p><p><a href="https://www.php.cn/php-ask-430799.html" target="_blank" rel="noopener">https://www.php.cn/php-ask-430799.html</a></p><p><a href="https://blog.csdn.net/qq_32352565/article/details/79255765" target="_blank" rel="noopener">https://blog.csdn.net/qq_32352565/article/details/79255765</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近遇到网站打不开了，报502，重启php-fpm就好了，然而过段时间又报502，查找了一些资料，应该是PHP-FPM进程不释放内存造成的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LNMP架构中PHP是运行在FastCGI模式下，按照官方的说法，php-cgi会在每个请求结束的时候会回收脚本使用的全部内存，但是并不会释放给操作系统，而是继续持有以应对下一次PHP请求。而PHP-FPM是FastCGI进程管理器，用于控制php的内存和进程等&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;解决的办法就是通过优化PHP-FPM的总进程数和单个进程占用的内存，从而解决PHP-FPM进程占用内存大和不释放内存的问题。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xinyufeng.net/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="LNMP" scheme="https://xinyufeng.net/tags/LNMP/"/>
     
   </entry>
   
