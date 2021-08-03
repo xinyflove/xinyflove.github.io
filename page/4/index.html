@@ -312,6 +312,532 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/09/11/Linux-监控命令整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/Linux-监控命令整理/" itemprop="url">Linux 监控命令整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-11T16:38:24+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/11/Linux-监控命令整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/11/Linux-监控命令整理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Linux系统监控命令速查手册"><a href="#Linux系统监控命令速查手册" class="headerlink" title="Linux系统监控命令速查手册"></a>Linux系统监控命令速查手册</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能作用</th>
+<th>用法举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>free</code></td>
+<td>查看内存使用情况，包括物理内存和虚拟内存</td>
+<td><code>free -h</code>或<code>free -m</code></td>
+</tr>
+<tr>
+<td><code>vmstat</code></td>
+<td>对系统的整体情况进行统计，包括内核进程、虚拟内存、磁盘、陷阱和 CPU 活动的统计信息</td>
+<td><code>vmstat 2 100</code></td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>实时显示系统中各个进程的资源占用状况及总体状况</td>
+<td><code>top</code></td>
+</tr>
+<tr>
+<td><code>mpstat</code></td>
+<td>实时系统监控工具，它会报告与CPU相关的统计信息</td>
+<td><code>mpstat</code></td>
+</tr>
+<tr>
+<td><code>sar</code></td>
+<td>收集、报告和保存CPU、内存、输入输出端口使用情况</td>
+<td><code>sar -n DEV 3 100</code></td>
+</tr>
+<tr>
+<td><code>netstat</code></td>
+<td>检验本机各端口的网络连接情况，用于显示与IP、TCP、UDP和ICMP协议相关的统计数据</td>
+<td><code>netstat -a</code></td>
+</tr>
+<tr>
+<td><code>tcpdump</code></td>
+<td>用于捕捉或者过滤网络上指定接口上接收或者传输的TCP/IP包</td>
+<td><code>tcpdump -i eth0 -c 3</code></td>
+</tr>
+<tr>
+<td><code>IPTraf</code></td>
+<td>用来生成包括TCP信息、UDP计数、ICMP和OSPF信息、以太网负载信息、节点状态信息、IP校验和错误等等统计数据</td>
+<td><code>iptraf</code></td>
+</tr>
+<tr>
+<td><code>df</code></td>
+<td>检查linux的文件系统的磁盘空间占用情况</td>
+<td><code>df -h</code></td>
+</tr>
+<tr>
+<td><code>iostat</code></td>
+<td>收集显示系统存储设备输入和输出状态统计</td>
+<td><code>iostat -x -k 2 100</code></td>
+</tr>
+<tr>
+<td><code>iotop</code></td>
+<td>用来监视磁盘I/O使用状况的top类工具</td>
+<td><code>iotop</code></td>
+</tr>
+<tr>
+<td><code>lsof</code></td>
+<td>用于以列表的形式显示所有打开的文件和进程</td>
+<td><code>lsof</code></td>
+</tr>
+<tr>
+<td><code>atop</code></td>
+<td>显示的是各种系统资源（CPU, memory, network, I/O, kernel）的综合，并且在高负载的情况下进行了彩色标注</td>
+<td><code>atop</code></td>
+</tr>
+<tr>
+<td><code>htop</code></td>
+<td>它和top命令十分相似，高级的交互式的实时linux进程监控工具</td>
+<td><code>htop</code></td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td>最基本同时也是非常强大的进程查看命令</td>
+<td><code>ps aux</code></td>
+</tr>
+<tr>
+<td><code>glances</code></td>
+<td>监视 CPU，平均负载，内存，网络流量，磁盘 I/O，其他处理器 和 文件系统 空间的利用情况</td>
+<td><code>glances</code></td>
+</tr>
+<tr>
+<td><code>dstat</code></td>
+<td>全能系统信息统计工具，可用于替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具</td>
+<td><code>dstat</code></td>
+</tr>
+<tr>
+<td><code>uptime</code></td>
+<td>用于查看服务器运行了多长时间以及有多少个用户登录，快速获知服务器的负荷情况</td>
+<td><code>uptime</code></td>
+</tr>
+<tr>
+<td><code>dmesg</code></td>
+<td>主要用来显示内核信息。使用dmesg可以有效诊断机器硬件故障或者添加硬件出现的问题。</td>
+<td><code>dmesg</code></td>
+</tr>
+<tr>
+<td><code>mpstat</code></td>
+<td>用于报告多路CPU主机的每颗CPU活动情况，以及整个主机的CPU情况。</td>
+<td><code>mpstat 2 3</code></td>
+</tr>
+<tr>
+<td><code>nmon</code></td>
+<td>监控CPU、内存、I/O、文件系统及网络资源。对于内存的使用，它可以实时的显示 总/剩余内存、交换空间等信息。</td>
+<td><code>nmon</code></td>
+</tr>
+<tr>
+<td><code>mytop</code></td>
+<td>用于监控 mysql 的线程和性能。它能让你实时查看数据库以及正在处理哪些查询。</td>
+<td><code>mytop</code></td>
+</tr>
+<tr>
+<td><code>iftop</code></td>
+<td>用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等</td>
+<td><code>iftop</code></td>
+</tr>
+<tr>
+<td><code>jnettop</code></td>
+<td>以相同的方式来监测网络流量但比 iftop 更形象。它还支持自定义的文本输出，并能以友好的交互方式来深度分析日志。</td>
+<td><code>jnettop</code></td>
+</tr>
+<tr>
+<td><code>ngrep</code></td>
+<td>网络层的 grep。它使用 pcap ，允许通过指定扩展正则表达式或十六进制表达式来匹配数据包。</td>
+<td><code>ngrep</code></td>
+</tr>
+<tr>
+<td><code>nmap</code></td>
+<td>可以扫描你服务器开放的端口并且可以检测正在使用哪个操作系统</td>
+<td><code>nmap</code></td>
+</tr>
+<tr>
+<td><code>du</code></td>
+<td>查看Linux系统中某目录的大小</td>
+<td><code>du -sh 目录名</code></td>
+</tr>
+<tr>
+<td><code>fdisk</code></td>
+<td>查看硬盘及分区信息</td>
+<td><code>fdisk -l</code></td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/11/Linux-监控命令整理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/09/01/Nginx-配置location和rewrite规则写法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/01/Nginx-配置location和rewrite规则写法总结/" itemprop="url">Nginx 配置location和rewrite规则写法总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-01T09:10:33+08:00">
+                2020-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/01/Nginx-配置location和rewrite规则写法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/01/Nginx-配置location和rewrite规则写法总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>location 块的基本语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123;....&#125;</span><br></pre></td></tr></table></figure>
+<p><code>[=|~|~*|^~|@]</code> 被称作 location modifier ，这会定义 Nginx 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/01/Nginx-配置location和rewrite规则写法总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/08/31/Nginx-负载均衡配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1836,402 +2362,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/06/05/js和canvas实现多张图片拼接成一张图片/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Peak Xin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peak Xin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/js和canvas实现多张图片拼接成一张图片/" itemprop="url">js和canvas实现多张图片拼接成一张图片</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:55:20+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/05/js和canvas实现多张图片拼接成一张图片/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/05/js和canvas实现多张图片拼接成一张图片/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="选择多张图片从上到下排列合成一张图片"><a href="#选择多张图片从上到下排列合成一张图片" class="headerlink" title="选择多张图片从上到下排列合成一张图片"></a>选择多张图片从上到下排列合成一张图片</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>拼长图<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"uploadInput"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">style</span>=<span class="string">"display: none;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"uploadInput"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid #333; cursor: pointer; padding: 5px 20px;"</span>&gt;</span></span><br><span class="line">        点击选择图片</span><br><span class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"imageBox"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">// 拼出来的图片的宽度</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> width = <span class="number">300</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 拼出来的图片的质量，0-1之间，越大质量越好</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> encoderOptions = <span class="number">0.5</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 图片选择输入框</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> uploadInput = <span class="built_in">document</span>.getElementById(<span class="string">'uploadInput'</span>);</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 图片展示框</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> imageBox = <span class="built_in">document</span>.getElementById(<span class="string">'imageBox'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">// 给图片选择输入框添加change监听事件</span></span></span><br><span class="line"><span class="javascript">        uploadInput.addEventListener(<span class="string">'change'</span>, event =&gt; &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> files = <span class="built_in">Array</span>.from(event.target.files); <span class="comment">// 将图片文件对象转换为数组</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            filesToInstances(files, instances =&gt; &#123;</span></span><br><span class="line"><span class="undefined">                drawImages(instances, finalImageUrl =&gt; &#123;</span></span><br><span class="line"><span class="xml">                    imageBox.innerHTML = `<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">$&#123;finalImageUrl&#125;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">download</span> <span class="attr">href</span>=<span class="string">$&#123;finalImageUrl&#125;</span>&gt;</span>点击下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span>`;</span></span><br><span class="line"><span class="undefined">                &#125;);</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /**</span></span><br><span class="line"><span class="undefined">         * 根据图片文件拿到图片实例</span></span><br><span class="line"><span class="undefined">         * @param files 图片文件对象数组</span></span><br><span class="line"><span class="undefined">         * @param callback</span></span><br><span class="line"><span class="undefined">         */</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> filesToInstances = <span class="function">(<span class="params">files, callback</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> length = files.length; <span class="comment">// 文件个数</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> instances = []; <span class="comment">// 文件实例数组</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> finished = <span class="number">0</span>; <span class="comment">// 转换成功个数</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 遍历图片文件数组</span></span></span><br><span class="line"><span class="javascript">            files.forEach(<span class="function">(<span class="params">file, index</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 把文件读为 dataUrl</span></span></span><br><span class="line"><span class="undefined">                reader.readAsDataURL(file);</span></span><br><span class="line"><span class="javascript">                reader.onload = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> image = <span class="keyword">new</span> Image();</span></span><br><span class="line"><span class="javascript">                    image.src = e.target.result; <span class="comment">// 获取图片文件的base64数据</span></span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 解决跨域</span></span></span><br><span class="line"><span class="javascript">                    <span class="comment">// image.setAttribute('crossOrigin', 'anonymous');   </span></span></span><br><span class="line"><span class="javascript">                    <span class="comment">// image.src = e.target.result + '?time=' + new Date().valueOf();</span></span></span><br><span class="line"><span class="javascript">                    image.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// 图片实例化成功后存起来</span></span></span><br><span class="line"><span class="undefined">                        instances[index] = image;</span></span><br><span class="line"><span class="undefined">                        finished++;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (finished === length) &#123; <span class="comment">// 如果全部完成转换，调用回调函数</span></span></span><br><span class="line"><span class="undefined">                            callback(instances);</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /**</span></span><br><span class="line"><span class="undefined">         * 拼图</span></span><br><span class="line"><span class="undefined">         * @param images 图片实例数组</span></span><br><span class="line"><span class="undefined">         * @param callback</span></span><br><span class="line"><span class="undefined">         */</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> drawImages = <span class="function">(<span class="params">images, callback</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> heights = images.map(<span class="function"><span class="params">item</span> =&gt;</span> width / item.width * item.height); <span class="comment">// 计算获取每个图片文件根据指定width后的高度</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>); <span class="comment">// 创建canvas元素</span></span></span><br><span class="line"><span class="javascript">            canvas.width = width; <span class="comment">// canvas宽度</span></span></span><br><span class="line"><span class="javascript">            canvas.height = heights.reduce(<span class="function">(<span class="params">total, current</span>) =&gt;</span> total + current); <span class="comment">// 计算heights数组元素相加后的总和为canvas的高度</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> context = canvas.getContext(<span class="string">'2d'</span>); <span class="comment">// 创建渲染</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> y = <span class="number">0</span>; <span class="comment">// canvas Y轴坐标</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 遍历图片实例数组</span></span></span><br><span class="line"><span class="javascript">            images.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> height = heights[index];</span></span><br><span class="line"><span class="undefined">                context.drawImage(item, 0, y, width, height);</span></span><br><span class="line"><span class="javascript">                y += height; <span class="comment">// Y轴坐标加上上一张图片高度</span></span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// canvas数据放到回调函数</span></span></span><br><span class="line"><span class="javascript">            callback(canvas.toDataURL(<span class="string">'image/jpeg'</span>, encoderOptions));</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/05/js和canvas实现多张图片拼接成一张图片/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/06/05/申请免费HTTPS证书方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Peak Xin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peak Xin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/申请免费HTTPS证书方法/" itemprop="url">申请免费HTTPS证书方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T14:42:20+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/" itemprop="url" rel="index">
-                    <span itemprop="name">运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/05/申请免费HTTPS证书方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/05/申请免费HTTPS证书方法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  230
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h2><p>如果你仅需要一个单域名的证书，可以使用阿里云的免费证书，申请链接：<a href="https://common-buy.aliyun.com/?commodityCode=cas#/buy" target="_blank" rel="noopener">https://common-buy.aliyun.com/?commodityCode=cas#/buy</a></p>
-<ol>
-<li>选择域名类型：单域名</li>
-<li>选择证书类型：DV SSL</li>
-<li>选择加密等级：免费版</li>
-<li>选择证书品牌：DigiCert</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/05/申请免费HTTPS证书方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2279,7 +2414,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">152</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

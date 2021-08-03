@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>Linux服务器性能查看常用命令</title>
+      <link href="2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="实时显示系统中各个进程的资源占用状况"><a href="#实时显示系统中各个进程的资源占用状况" class="headerlink" title="实时显示系统中各个进程的资源占用状况"></a>实时显示系统中各个进程的资源占用状况</h2><p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</p><p><a href="https://www.runoob.com/linux/linux-comm-top.html" target="_blank" rel="noopener">详情</a></p><a id="more"></a><h2 id="显示系统内存的使用情况"><a href="#显示系统内存的使用情况" class="headerlink" title="显示系统内存的使用情况"></a>显示系统内存的使用情况</h2><p>free 命令显示系统内存的使用情况，包括物理内存、交换内存(swap)和内核缓冲区内存</p><p><a href="https://www.runoob.com/linux/linux-comm-free.html" target="_blank" rel="noopener">详情</a></p><h2 id="显示目前文件系统磁盘使用情况统计"><a href="#显示目前文件系统磁盘使用情况统计" class="headerlink" title="显示目前文件系统磁盘使用情况统计"></a>显示目前文件系统磁盘使用情况统计</h2><p>Linux df（英文全拼：disk free） 命令用于显示目前在 Linux 系统上的文件系统磁盘使用情况统计。</p><p><a href="https://www.runoob.com/linux/linux-comm-df.html" target="_blank" rel="noopener">详情</a></p><h2 id="展现给定时间间隔的服务器的状态值"><a href="#展现给定时间间隔的服务器的状态值" class="headerlink" title="展现给定时间间隔的服务器的状态值"></a>展现给定时间间隔的服务器的状态值</h2><p>vmstat命令是最常见的Linux/Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。</p><h2 id="获取主机运行时间和查询系统负载信息"><a href="#获取主机运行时间和查询系统负载信息" class="headerlink" title="获取主机运行时间和查询系统负载信息"></a>获取主机运行时间和查询系统负载信息</h2><p>uptime命令主要用于获取主机运行时间和查询linux系统负载等信息</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ThinkPHP 数据库无法连接 Could not connect: No such file or directory</title>
+      <link href="2021/08/03/ThinkPHP-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5-Could-not-connect-No-such-file-or-directory/"/>
+      <url>2021/08/03/ThinkPHP-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5-Could-not-connect-No-such-file-or-directory/</url>
+      
+        <content type="html"><![CDATA[<p>使用ThinkPHP框架数据库无法连接，报错<code>Could not connect: No such file or directory</code>，原因是<code>/tmp/</code>目录下没有<code>mysql.sock</code>文件。</p><p>解决方法：</p><p>先找到mysql的<code>mysql.sock</code>文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find / -name mysql.sock</span></span><br><span class="line">/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure></p><p>创建软连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock</span></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> PHP框架 </category>
+          
+          <category> ThinkPHP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库操作 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解决PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certifica</title>
       <link href="2021/07/29/%E8%A7%A3%E5%86%B3PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/"/>
       <url>2021/07/29/%E8%A7%A3%E5%86%B3PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/</url>
