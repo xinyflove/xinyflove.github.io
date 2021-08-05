@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2021-08-03T06:59:57.707Z</updated>
+  <updated>2021-08-05T08:07:30.318Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL 数据库保留最近7天数据备份</title>
+    <link href="https://xinyufeng.net/2021/08/05/MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%9D%E7%95%99%E6%9C%80%E8%BF%917%E5%A4%A9%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/"/>
+    <id>https://xinyufeng.net/2021/08/05/MySQL-数据库保留最近7天数据备份/</id>
+    <published>2021-08-05T07:45:18.000Z</published>
+    <updated>2021-08-05T08:07:30.318Z</updated>
+    
+    <content type="html"><![CDATA[<p>为了防止数据丢失，我们会对数据库进行备份，下面介绍在Linux系统下如何定时备份数据库并保留最近7天的数据备份</p><p>参数准备：</p><ul><li>host:<code>127.0.0.1</code></li><li>数据库用户名:<code>root</code></li><li>数据库密码:<code>123456</code></li><li>数据库名称:<code>test</code></li><li>数据库备份目录：<code>/sqlbackup</code></li><li>数据库备份格式：<code>test_年月日_时分秒.sql</code></li></ul><p>首先写一个命令脚本 <code>data_backup.sh</code></p><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"><span class="comment"># 数据库备份</span></span><br><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除七天前的数据备份</span></span><br><span class="line">find /sqlbackup -mtime +7 -name <span class="string">"test*.sql"</span> -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line"><span class="comment"># 数据库备份</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysqldump  -h127.0.0.1 -uroot -p123456 <span class="built_in">test</span>  &gt; /sqlbackup/test_$(date +%Y%m%d_%H%M%S).sql</span><br></pre></td></tr></table></figure><p>脚步我们暂时放在<code>/</code>目录</p><p>然后写定时任务</p><p>如果是用root用户执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br></pre></td></tr></table></figure><p>如果是用www用户执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -uwww -e</span></span><br></pre></td></tr></table></figure><p>每天凌晨0点执行一次</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 * * * /data_backup.sh &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了防止数据丢失，我们会对数据库进行备份，下面介绍在Linux系统下如何定时备份数据库并保留最近7天的数据备份&lt;/p&gt;
+&lt;p&gt;参数准备：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;host:&lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库用户名:&lt;code&gt;root&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库密码:&lt;code&gt;123456&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库名称:&lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库备份目录：&lt;code&gt;/sqlbackup&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库备份格式：&lt;code&gt;test_年月日_时分秒.sql&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先写一个命令脚本 &lt;code&gt;data_backup.sh&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+    
+    
+      <category term="MySQL语句" scheme="https://xinyufeng.net/tags/MySQL%E8%AF%AD%E5%8F%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux服务器性能查看常用命令</title>
@@ -539,29 +573,6 @@
     
     
       <category term="Linux命令" scheme="https://xinyufeng.net/tags/Linux%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL 日志文件 **-bin.** 文件的来源和清理方法</title>
-    <link href="https://xinyufeng.net/2020/10/28/MySQL-%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6-bin-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%A5%E6%BA%90%E5%92%8C%E6%B8%85%E7%90%86%E6%96%B9%E6%B3%95/"/>
-    <id>https://xinyufeng.net/2020/10/28/MySQL-日志文件-bin-文件的来源和清理方法/</id>
-    <published>2020-10-28T01:54:29.000Z</published>
-    <updated>2021-05-25T07:50:05.036Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于某种原因，查看磁盘使用情况，居然写满了，查询大文件 <code>find / -type f -size +10M  | xargs ls -lh</code>，发现有几个 iZ2zeas5yzkwntw819wx2mZ-bin.000013、iZ2zeas5yzkwntw819wx2mZ-bin.000014等类似数据库文件，每个文件大小都在1.1G，那么些文件是干吗的？这是数据库的操作日志，例如UPDATE一个表，或者DELETE一些数据，即使该语句没有匹配的数据，这个命令也会存储到日志文件中，还包括每个语句执行的时间，也会记录进去的。</p><p><strong>这样文件做主要有以下两个作用：</strong></p><a id="more"></a><ol><li><p>数据恢复</p><p> 如果你的数据库出问题了，而你之前有过备份，那么可以看日志文件，找出是哪个命令导致你的数据库出问题了，想办法挽回损失。</p></li><li><p>主从服务器之间同步数据</p><p> 主服务器上所有的操作都在记录日志中，从服务器可以根据该日志来进行，以确保两个同步。</p></li></ol><p><strong>处理此类文件方法：</strong></p><ol><li>如果只有一个mysql服务器，那么在<code>my.cnf</code>配置文件中把<code>log-bin</code>这一行注释掉即可</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#log-bin</span><br></pre></td></tr></table></figure><p>然后重启mysql <code>service mysqld restart</code> （重启的方法其中一种）</p><ol start="2"><li>如果需要mysql主从服务器，最好控制一下这些日志文件保留的天数，在<code>my.cnf</code>修改</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expire_logs_days = 7</span><br></pre></td></tr></table></figure><p>表示保留7天的日志，这样老日志会自动被清理掉。然后重启mysql</p><p><strong>清理日志方法为：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PURGE MASTER LOGS TO &apos;iZ2zeas5yzkwntw819wx2mZ-bin.000013&apos;;</span><br><span class="line">PURGE MASTER LOGS BEFORE &apos;2020-10-28 22:00:00&apos;;</span><br></pre></td></tr></table></figure><p>如果你确定从服务器已经同步过了，跟主服务器一样了，那么可以直接<code>RESET MASTER</code>将这些文件删除。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; reset master;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure><p>好了,我们再来查看下mysql文件夹占用多少空间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@iZm5eae8wzyq0xrh8j2i1eZ ~]# du -h --max-depth=1 /data/mysql/3306/</span><br><span class="line">4.0K/data/mysql/3306/test</span><br><span class="line">41M/data/mysql/3306/powermedia</span><br><span class="line">16M/data/mysql/3306/dlcm</span><br><span class="line">51M/data/mysql/3306/weizan_jiawo</span><br><span class="line">51M/data/mysql/3306/weizan112</span><br><span class="line">636K/data/mysql/3306/performance_schema</span><br><span class="line">25M/data/mysql/3306/mysql</span><br><span class="line">3G/data/mysql/3306/</span><br></pre></td></tr></table></figure><p>整个数据库目录占用3G左右，加上跑了很久和有不少项目的数据库，也差不多了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于某种原因，查看磁盘使用情况，居然写满了，查询大文件 &lt;code&gt;find / -type f -size +10M  | xargs ls -lh&lt;/code&gt;，发现有几个 iZ2zeas5yzkwntw819wx2mZ-bin.000013、iZ2zeas5yzkwntw819wx2mZ-bin.000014等类似数据库文件，每个文件大小都在1.1G，那么些文件是干吗的？这是数据库的操作日志，例如UPDATE一个表，或者DELETE一些数据，即使该语句没有匹配的数据，这个命令也会存储到日志文件中，还包括每个语句执行的时间，也会记录进去的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这样文件做主要有以下两个作用：&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="https://xinyufeng.net/categories/MySQL/"/>
-    
-    
-      <category term="数据库优化" scheme="https://xinyufeng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
