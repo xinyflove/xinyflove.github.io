@@ -312,6 +312,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2021/04/13/安装-closurecompiler-1-6-1-失败/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/13/安装-closurecompiler-1-6-1-失败/" itemprop="url">安装 closurecompiler@1.6.1 失败</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-13T14:57:54+08:00">
+                2021-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">Nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/04/13/安装-closurecompiler-1-6-1-失败/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/04/13/安装-closurecompiler-1-6-1-失败/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  446
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在安装<code>grunt</code>的时候，提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm i</span><br><span class="line">√ Installed 8 packages</span><br><span class="line">√ Linked 53 latest versions</span><br><span class="line">[1/1] scripts.install grunt-closurecompiler@0.9.9 ? closurecompiler@&gt;=1.2 run <span class="string">"npm run-script configure"</span>, root: <span class="string">"D:\\phpStudy\\PHPTutorial\\WWW\\gdfront\\ueditor_old\\node_modules\\_closurecompiler@1.6.1@closurecompiler"</span></span><br><span class="line"></span><br><span class="line">&gt; closurecompiler@1.6.1 configure D:\phpStudy\PHPTutorial\WWW\gdfront\ueditor_old\node_modules\_closurecompiler@1.6.1@closurecompiler</span><br><span class="line">&gt; node scripts/configure.js</span><br><span class="line"></span><br><span class="line">Configuring ClosureCompiler.js 1.6.1 ...</span><br><span class="line"></span><br><span class="line">  Downloading https://dl.google.com/closure-compiler/compiler-latest.tar.gz ...</span><br><span class="line">  ? Download failed: Error: Download failed: HTTP status code 404</span><br><span class="line"></span><br><span class="line">  ? Unfortunately, ClosureCompiler.js could not be configured.</span><br><span class="line">    See: https://github.com/dcodeIO/ClosureCompiler.js (create an issue maybe)</span><br><span class="line"></span><br><span class="line">npm ERR! code ELIFECYCLE</span><br><span class="line">npm ERR! errno 1</span><br><span class="line">npm ERR! closurecompiler@1.6.1 configure: `node scripts/configure.js`</span><br><span class="line">npm ERR! Exit status 1</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! Failed at the closurecompiler@1.6.1 configure script.</span><br><span class="line">npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     C:\Users\Caffrey\.npminstall_tarball\_logs\2021-04-13T06_53_17_040Z-debug.log</span><br><span class="line">[npminstall:runscript:error] grunt-closurecompiler@0.9.9 ? closurecompiler@&gt;=1.2 scripts.install run <span class="string">"npm run-script configure"</span> error: Error [RunScriptError]: Run <span class="string">"C:\Windows\system32\cmd.exe /d /s /c npm run-script configure"</span> error, <span class="built_in">exit</span> code 1</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\nvm\v12.18.0\node_modules\cnpm\node_modules\runscript\index.js:96:21)</span><br><span class="line">    at ChildProcess.emit (events.js:315:20)</span><br><span class="line">    at maybeClose (internal/child_process.js:1021:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5) &#123;</span><br><span class="line">  stdio: [Object],</span><br><span class="line">  exitcode: 1</span><br><span class="line">&#125;</span><br><span class="line">× Install fail! RunScriptError: post install error, please remove node_modules before retry!</span><br><span class="line">Run <span class="string">"C:\Windows\system32\cmd.exe /d /s /c npm run-script configure"</span> error, <span class="built_in">exit</span> code 1</span><br><span class="line">RunScriptError: Run <span class="string">"C:\Windows\system32\cmd.exe /d /s /c npm run-script configure"</span> error, <span class="built_in">exit</span> code 1</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\nvm\v12.18.0\node_modules\cnpm\node_modules\runscript\index.js:96:21)</span><br><span class="line">    at ChildProcess.emit (events.js:315:20)</span><br><span class="line">    at maybeClose (internal/child_process.js:1021:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)</span><br><span class="line">npminstall version: 3.28.0</span><br><span class="line">npminstall args: D:\Program Files\nodejs\node.exe D:\nvm\v12.18.0\node_modules\cnpm\node_modules\npminstall\bin\install.js --fix-bug-versions --china --userconfig=C:\Users\Caffrey\.cnpmrc --disturl=https://npm.taobao.org/mirrors/node --registry=https://r.npm.taobao.org</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/13/安装-closurecompiler-1-6-1-失败/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2021/03/11/JS点击空白处关闭弹窗方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2105,197 +2293,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/10/28/Linux查找指定大小范围内的文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Peak Xin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peak Xin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/28/Linux查找指定大小范围内的文件/" itemprop="url">Linux查找指定大小范围内的文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-28T14:18:28+08:00">
-                2020-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/10/28/Linux查找指定大小范围内的文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/28/Linux查找指定大小范围内的文件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  180
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>查找大小在某个范围内的文件使用<code>-size</code>参数，<code>-size +n</code>表示大于n单位的范围，<code>-size –n</code>表示小于n单位的范围。例如，查找大于1m且小于10mk的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size +1M -size -10M</span><br></pre></td></tr></table></figure>
-<p><strong>说明：</strong></p>
-<p><code>-type f</code> 表示只查找文件，过滤掉文件夹，块文件等。</p>
-<p>将查出来的文件以详细列表形式显示出来</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/10/28/Linux查找指定大小范围内的文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2348,7 +2345,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2370,7 +2367,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
