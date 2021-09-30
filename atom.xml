@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2021-09-15T08:01:01.176Z</updated>
+  <updated>2021-09-30T07:20:14.284Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Git替代由FTP上传更新代码</title>
+    <link href="https://xinyufeng.net/2021/09/30/%E4%BD%BF%E7%94%A8Git%E6%9B%BF%E4%BB%A3%E7%94%B1FTP%E4%B8%8A%E4%BC%A0%E6%9B%B4%E6%96%B0%E4%BB%A3%E7%A0%81/"/>
+    <id>https://xinyufeng.net/2021/09/30/使用Git替代由FTP上传更新代码/</id>
+    <published>2021-09-30T07:06:17.000Z</published>
+    <updated>2021-09-30T07:20:14.284Z</updated>
+    
+    <content type="html"><![CDATA[<p>单位以前服务器代码更新使用的是FTP上传，这样无法保证服务器代码和仓库代码保持一致，忍不了了，果断改成git拉取</p><p>第一步，有代码的管理仓库</p><p>第二步，拉取服务器的代码到本地，然后再提交到代码仓库，保持当前服务器和代码库文件和文件内容一致</p><p>第三步，在服务器上安装git，并生成公钥</p><p>第四步，把服务器的公钥配置到代码库的部署公钥管理中</p><p>第五步，在服务器上代码根目录初始化git</p><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost project]<span class="comment"># git init</span></span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> /data/www/html/project/.git/</span><br></pre></td></tr></table></figure><p>第六步，添加远程代码库地址</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost project]<span class="comment"># git remote add origin git@gitee.com:xxxxx/project.git</span></span><br></pre></td></tr></table></figure><p>第七步，拉取代码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost project]<span class="comment"># git pull</span></span><br><span class="line">remote: Enumerating objects: 894, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (894/894), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (824/824), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 4211 (delta 380), reused 370 (delta 55), pack-reused 3317</span><br><span class="line">Receiving objects: 100% (4211/4211), 42.83 MiB | 9.86 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (1953/1953), <span class="keyword">done</span>.</span><br><span class="line">From gitee.com:xxxxx/project</span><br><span class="line"> * [new branch]      master     -&gt; origin/master</span><br><span class="line">You asked me to pull without telling me <span class="built_in">which</span> branch you</span><br><span class="line">want to merge with, and <span class="string">'branch.master.merge'</span> <span class="keyword">in</span></span><br><span class="line">your configuration file does not tell me, either. Please</span><br><span class="line">specify <span class="built_in">which</span> branch you want to use on the <span class="built_in">command</span> line and</span><br><span class="line">try again (e.g. <span class="string">'git pull &lt;repository&gt; &lt;refspec&gt;'</span>).</span><br><span class="line">See git-pull(1) <span class="keyword">for</span> details.</span><br><span class="line"></span><br><span class="line">If you often merge with the same branch, you may want to</span><br><span class="line">use something like the following <span class="keyword">in</span> your configuration file:</span><br><span class="line"></span><br><span class="line">    [branch <span class="string">"master"</span>]</span><br><span class="line">    remote = &lt;nickname&gt;</span><br><span class="line">    merge = &lt;remote-ref&gt;</span><br><span class="line"></span><br><span class="line">    [remote <span class="string">"&lt;nickname&gt;"</span>]</span><br><span class="line">    url = &lt;url&gt;</span><br><span class="line">    fetch = &lt;refspec&gt;</span><br><span class="line"></span><br><span class="line">See git-config(1) <span class="keyword">for</span> details.</span><br><span class="line">You have new mail <span class="keyword">in</span> /var/spool/mail/root</span><br></pre></td></tr></table></figure><p>第八步，本地关联远程分支</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost project]<span class="comment"># git branch --set-upstream master origin/master</span></span><br><span class="line">Branch master <span class="built_in">set</span> up to track remote branch master from origin.</span><br></pre></td></tr></table></figure><p>这样就可以了，然后在执行 <code>git pull</code> 看一下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost project]<span class="comment"># git pull</span></span><br><span class="line">Already up-to-date.</span><br></pre></td></tr></table></figure><p>更新已完成，这样更新代码是不是很爽呢O(∩_∩)O哈哈~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单位以前服务器代码更新使用的是FTP上传，这样无法保证服务器代码和仓库代码保持一致，忍不了了，果断改成git拉取&lt;/p&gt;
+&lt;p&gt;第一步，有代码的管理仓库&lt;/p&gt;
+&lt;p&gt;第二步，拉取服务器的代码到本地，然后再提交到代码仓库，保持当前服务器和代码库文件和文件内容一致&lt;/p&gt;
+&lt;p&gt;第三步，在服务器上安装git，并生成公钥&lt;/p&gt;
+&lt;p&gt;第四步，把服务器的公钥配置到代码库的部署公钥管理中&lt;/p&gt;
+&lt;p&gt;第五步，在服务器上代码根目录初始化git&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="版本管理" scheme="https://xinyufeng.net/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="Git" scheme="https://xinyufeng.net/tags/Git/"/>
+    
+      <category term="FTP" scheme="https://xinyufeng.net/tags/FTP/"/>
+    
+  </entry>
   
   <entry>
     <title>Yii2.0框架模型添加/修改/删除数据操作示例</title>
@@ -551,31 +580,6 @@
     
     
       <category term="WebSocket" scheme="https://xinyufeng.net/tags/WebSocket/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows下PHP安装Redis扩展</title>
-    <link href="https://xinyufeng.net/2020/11/06/Windows%E4%B8%8BPHP%E5%AE%89%E8%A3%85Redis%E6%89%A9%E5%B1%95/"/>
-    <id>https://xinyufeng.net/2020/11/06/Windows下PHP安装Redis扩展/</id>
-    <published>2020-11-06T09:12:31.000Z</published>
-    <updated>2021-05-25T07:50:05.037Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="查看phpinfo信息"><a href="#查看phpinfo信息" class="headerlink" title="查看phpinfo信息"></a>查看phpinfo信息</h2><p>查看phpinfo信息，注意红框信息，来选择对应的redis扩展版本。</p><p><a href="/2020/11/06/Windows下PHP安装Redis扩展/20201106171548.png"><img src="/2020/11/06/Windows下PHP安装Redis扩展/20201106171548.png" alt></a></p><a id="more"></a><h2 id="下载redis-dll"><a href="#下载redis-dll" class="headerlink" title="下载redis.dll"></a>下载redis.dll</h2><p><a href="https://windows.php.net/downloads/pecl/releases/redis/" target="_blank" rel="noopener">https://windows.php.net/downloads/pecl/releases/redis/</a></p><p><a href="/2020/11/06/Windows下PHP安装Redis扩展/20201110170808.png"><img src="/2020/11/06/Windows下PHP安装Redis扩展/20201110170808.png" alt></a></p><h2 id="下载igbinary-dll"><a href="#下载igbinary-dll" class="headerlink" title="下载igbinary.dll"></a>下载igbinary.dll</h2><p><a href="https://windows.php.net/downloads/pecl/releases/igbinary/" target="_blank" rel="noopener">https://windows.php.net/downloads/pecl/releases/igbinary/</a></p><p>参照redis.dll下载对应的版本</p><h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><p>解压缩后，将 php_redis.dll 和 php_igbinary.dll 拷贝至php的 ext 目录下</p><p>修改php.ini，在该文件中加入：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; php_redis</span></span><br><span class="line"><span class="attr">extension</span>=php_igbinary.dll</span><br><span class="line"><span class="attr">extension</span>=php_redis.dll</span><br></pre></td></tr></table></figure><p>重启后，使用phpinfo查看扩展是否成功安装</p><p><a href="/2020/11/06/Windows下PHP安装Redis扩展/20201110171508.png"><img src="/2020/11/06/Windows下PHP安装Redis扩展/20201110171508.png" alt></a></p><p>打开redis服务后，可以用如下测试是否能够调用</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//连接本地的 Redis 服务</span></span><br><span class="line">$redis = <span class="keyword">new</span> Redis();</span><br><span class="line">$redis-&gt;connect(<span class="string">'127.0.0.1'</span>, <span class="number">6379</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Connection to server sucessfully"</span>;</span><br><span class="line"><span class="comment">//设置 redis 字符串数据</span></span><br><span class="line">$redis-&gt;set(<span class="string">"test-name"</span>, <span class="string">"Redis Test"</span>);</span><br><span class="line"><span class="comment">// 获取存储的数据并输出</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Stored string in redis:: "</span> . $redis-&gt;get(<span class="string">"test-name"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;查看phpinfo信息&quot;&gt;&lt;a href=&quot;#查看phpinfo信息&quot; class=&quot;headerlink&quot; title=&quot;查看phpinfo信息&quot;&gt;&lt;/a&gt;查看phpinfo信息&lt;/h2&gt;&lt;p&gt;查看phpinfo信息，注意红框信息，来选择对应的redis扩展版本。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;/2020/11/06/Windows下PHP安装Redis扩展/20201106171548.png&quot;&gt;&lt;img src=&quot;/2020/11/06/Windows下PHP安装Redis扩展/20201106171548.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="后端开发" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="PHP" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/PHP/"/>
-    
-    
-      <category term="PHP扩展" scheme="https://xinyufeng.net/tags/PHP%E6%89%A9%E5%B1%95/"/>
     
   </entry>
   
