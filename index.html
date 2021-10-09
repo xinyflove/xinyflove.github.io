@@ -312,6 +312,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2021/10/09/Yii2-0框架数据库查询总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/09/Yii2-0框架数据库查询总结/" itemprop="url">Yii2.0框架数据库查询总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-09T09:26:38+08:00">
+                2021-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP框架/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP框架</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP框架/Yii/" itemprop="url" rel="index">
+                    <span itemprop="name">Yii</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/10/09/Yii2-0框架数据库查询总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/09/Yii2-0框架数据库查询总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  943
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">User::find()-&gt;all();    <span class="comment">// 返回所有数据；</span></span><br><span class="line"> </span><br><span class="line">User::findOne($id);   <span class="comment">// 返回 主键 id 为定值 的一条数据；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;where([<span class="string">'age'</span> =&gt; <span class="string">'18'</span>])-&gt;one();   <span class="comment">// 返回 ['age' =&gt; '18'] 的一条数据；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;where([<span class="string">'age'</span> =&gt; <span class="string">'18'</span>])-&gt;all();   <span class="comment">// 返回 ['age' =&gt; '18'] 的所有数据；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;orderBy(<span class="string">'id DESC'</span>)-&gt;all();   <span class="comment">// 排序查询, DESC:降序,ASC:升序；</span></span><br><span class="line"> </span><br><span class="line">User::findBySql(<span class="string">'SELECT * FROM user'</span>)-&gt;all();  <span class="comment">// 用 sql 语句查询 user 表里面的所有数据；</span></span><br><span class="line"> </span><br><span class="line">User::findBySql(<span class="string">'SELECT * FROM user'</span>)-&gt;one();  <span class="comment">// 用 sql  语句查询 user 表里面的一条数据；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;andWhere([<span class="string">'sex'</span> =&gt; <span class="string">'男'</span>, <span class="string">'age'</span> =&gt; <span class="string">'24'</span>])-&gt;count(<span class="string">'id'</span>);   <span class="comment">// 统计符合条件的总条数；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;andFilterWhere([<span class="string">'like'</span>, <span class="string">'name'</span>, <span class="string">'腾哥'</span>]); <span class="comment">// 用 like 查询数据，生成 name LIKE '%腾哥%'</span></span><br><span class="line"></span><br><span class="line">User::find()-&gt;andFilterWhere([<span class="string">'like'</span>, <span class="string">'name'</span>, <span class="string">'%腾哥'</span>, <span class="keyword">false</span>]); <span class="comment">// 用 like 查询数据，生成 name LIKE '%腾哥'</span></span><br><span class="line"></span><br><span class="line">User::find()-&gt;andFilterWhere([<span class="string">'like'</span>, <span class="string">'name'</span>, <span class="string">'腾哥%'</span>, <span class="keyword">false</span>]); <span class="comment">// 用 like 查询数据，生成 name LIKE '腾哥%'</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;one();    <span class="comment">// 返回一条数据；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;count();    <span class="comment">// 返回记录的数量；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;average();    <span class="comment">// 返回指定列的平均值；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;min();    <span class="comment">// 返回指定列的最小值 ；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;max();    <span class="comment">// 返回指定列的最大值 ；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;scalar();    <span class="comment">// 返回值的第一行第一列的查询结果；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;column();    <span class="comment">// 返回查询结果中的第一列的值；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;exists();    <span class="comment">// 返回一个值指示是否包含查询结果的数据行；</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;batch(<span class="number">10</span>);  <span class="comment">// 每次取 10 条数据</span></span><br><span class="line"> </span><br><span class="line">User::find()-&gt;each(<span class="number">10</span>);  <span class="comment">// 每次取 10 条数据， 迭代查询</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/10/09/Yii2-0框架数据库查询总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2021/09/30/使用Git替代由FTP上传更新代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2085,205 +2283,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2021/06/02/如何关闭MySQL日志，删除mysql-bin-0000-日志文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Peak Xin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peak Xin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/06/02/如何关闭MySQL日志，删除mysql-bin-0000-日志文件/" itemprop="url">如何关闭MySQL日志，删除mysql-bin.0000*日志文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-02T18:42:32+08:00">
-                2021-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/06/02/如何关闭MySQL日志，删除mysql-bin-0000-日志文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/06/02/如何关闭MySQL日志，删除mysql-bin-0000-日志文件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  396
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>LNMP一键安装包安装的MySQL默认是开启了二进制日志文件的，如果数据操作比较频繁就会产生大量的日志，在<code>/usr/local/mysql/var/</code>下面产生<code>mysql-bin.0000*</code> 类似的文件，而且一般都在几十MB到几个GB，更甚会吃掉整个硬盘空间，从来导致mysql无法启动或报错。</p>
-<p>如何关闭MySQL的日志功能：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/06/02/如何关闭MySQL日志，删除mysql-bin-0000-日志文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2336,7 +2335,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">157</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
