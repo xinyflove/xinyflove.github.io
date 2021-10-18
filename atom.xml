@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2021-10-18T03:21:36.957Z</updated>
+  <updated>2021-10-18T11:00:55.234Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yii2模型通过中间表关联</title>
+    <link href="https://xinyufeng.net/2021/10/18/Yii2%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%BF%87%E4%B8%AD%E9%97%B4%E8%A1%A8%E5%85%B3%E8%81%94/"/>
+    <id>https://xinyufeng.net/2021/10/18/Yii2模型通过中间表关联/</id>
+    <published>2021-10-18T10:54:12.000Z</published>
+    <updated>2021-10-18T11:00:55.234Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>Order</code> 模型</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">db</span>\<span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getItems</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasMany(Item::className(), [<span class="string">'id'</span> =&gt; <span class="string">'item_id'</span>])</span><br><span class="line">            -&gt;viaTable(OrderItem::tableName(), [<span class="string">'order_id'</span> =&gt; <span class="string">'id'</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>OrderItem</code> 模型是 <code>Order</code> 与 <code>Item</code> 的中间表</p><p><code>order</code> 表的主键 <code>id</code> 与 <code>order-item</code> 表 <code>order_id</code> 关联</p><p><code>item</code> 表的主键 <code>id</code> 与 <code>order-item</code> 表 <code>order_id</code> 关联</p><p>通过Order模型获取关联的Item表数据</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$order = Order::find()-&gt;all();</span><br><span class="line">$order-&gt;items-&gt;item表的字段</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;Order&lt;/code&gt; 模型&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;li
+      
+    
+    </summary>
+    
+      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Yii" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Yii/"/>
+    
+    
+      <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Yii2模型自动生成新增和修改时间</title>
+    <link href="https://xinyufeng.net/2021/10/18/Yii2%E6%A8%A1%E5%9E%8B%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E5%A2%9E%E5%92%8C%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/"/>
+    <id>https://xinyufeng.net/2021/10/18/Yii2模型自动生成新增和修改时间/</id>
+    <published>2021-10-18T10:50:09.000Z</published>
+    <updated>2021-10-18T10:53:01.387Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用 <code>timeStampBehavior</code></p><p>这个行为支持在 <code>Active Record</code> 存储时自动更新它的时间戳属性</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">models</span>\<span class="title">User</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">ActiveRecord</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">behaviors</span>\<span class="title">TimestampBehavior</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">behaviors</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            [</span><br><span class="line">                <span class="string">'class'</span> =&gt; TimestampBehavior::className(),</span><br><span class="line">                <span class="string">'attributes'</span> =&gt; [</span><br><span class="line">                    ActiveRecord::EVENT_BEFORE_INSERT =&gt; [<span class="string">'created_at'</span>, <span class="string">'updated_at'</span>],</span><br><span class="line">                    ActiveRecord::EVENT_BEFORE_UPDATE =&gt; [<span class="string">'updated_at'</span>],</span><br><span class="line">                ],</span><br><span class="line">                <span class="comment">// if you're using datetime instead of UNIX timestamp:</span></span><br><span class="line">                <span class="comment">// 'value' =&gt; new Expression('NOW()'),</span></span><br><span class="line">            ],</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上指定的行为数组：</p><p>当记录插入时，行为将当前时间戳赋值给 <code>created_at</code> 和 <code>updated_at</code> 属性；<br>当记录更新时，行为将当前时间戳赋值给 <code>updated_at</code> 属性。</p><p><code>TimestampBehavior</code> 行为还提供了一个有用的方法 <code>touch()</code>， 这个方法能将当前时间戳赋值给指定属性并保存到数据库：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user-&gt;touch(<span class="string">'login_time'</span>);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用 &lt;code&gt;timeStampBehavior&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这个行为支持在 &lt;code&gt;Active Record&lt;/code&gt; 存储时自动更新它的时间戳属性&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Yii" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Yii/"/>
+    
+    
+      <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Yii2.0框架数据库查询总结</title>
@@ -511,71 +568,6 @@
       <category term="UEditor" scheme="https://xinyufeng.net/tags/UEditor/"/>
     
       <category term="编辑器" scheme="https://xinyufeng.net/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>H5直播实现方案</title>
-    <link href="https://xinyufeng.net/2021/01/26/H5%E7%9B%B4%E6%92%AD%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
-    <id>https://xinyufeng.net/2021/01/26/H5直播实现方案/</id>
-    <published>2021-01-26T07:46:33.000Z</published>
-    <updated>2021-05-25T07:50:05.040Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://gitee.com/peakxin/h5-live" target="_blank" rel="noopener">Demo地址</a></p><h2 id="视频编码格式"><a href="#视频编码格式" class="headerlink" title="视频编码格式"></a>视频编码格式</h2><ul><li>视频文件格式（容器格式）</li><li>视频编解码器（视频编码格式）</li><li>视频一开始由两个端采集，视频输入口、音频输入口。采集的数据会分别进行相关处理，简而言之就是：将视频/音频流通过一定的手段转换为比特流并且压缩，最终，这里将比特流以一定顺序放到一个盒子里进行存放，从而声称我们最终所看到的音视频格式。如：mp3/mp4/flv</li></ul><a id="more"></a><h2 id="常用直播协议"><a href="#常用直播协议" class="headerlink" title="常用直播协议"></a>常用直播协议</h2><table><thead><tr><th>协议</th><th>原理</th><th>传输协议</th><th>播放器</th><th>延时</th><th>兼容</th></tr></thead><tbody><tr><td>RTMP</td><td>每个时刻的数据收到后立即转发</td><td>TCP</td><td>flash</td><td>1-3s</td><td>需要flash播放器，H5上依赖第三方插件(如：video.js )</td></tr><tr><td>HLS</td><td>集合一段时间的数据m3u8，生成ts切片文件，播放完一个列表，在更新下一个列表</td><td>HTTP</td><td><code>video</code></td><td>5-20s</td><td>H5上直接可播放</td></tr><tr><td>HTTP-FLV</td><td>同RTMP</td><td>HTTP</td><td><code>video</code></td><td>1-3s</td><td>依赖第三方插件，IOS无法播放</td></tr></tbody></table><h3 id="RTMP"><a href="#RTMP" class="headerlink" title="RTMP"></a>RTMP</h3><p>RTMP，全称 <strong>Real Time Messaging Protocol</strong>，即<strong>实时消息传送协议</strong>，基于TCP。是 Macromedia 开发的一套视频直播协议，现在属于 Adobe，可用于拉流和推流。基于TCP。协议中的基本数据单元成为消息（Message），传输的过程中消息会被拆分为更小的消息块（Chunk）单元。最后将分割后的消息块通过 TCP 协议传输，接收端再反解接收的消息块恢复成流媒体数据</p><h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>使用第三方插件<a href="https://videojs.com/" target="_blank" rel="noopener">video.js</a>，因为video.js把flash的兼容去掉了，还需使用<a href="https://github.com/videojs/videojs-flash" target="_blank" rel="noopener">videojs-flash</a></p><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul><li>RTMP是专为流媒体开发的协议，对底层优化比其他协议更加优秀，同时他Adobe flash支持好，基本上所有的编码器（摄像头之类）都支持RTMP输出</li><li>RTMP由TCP长连接协议，所以客户端向服务端推流这些操作而言，延时性很低。</li><li>pc 主要是 windows ，windows的浏览器基本都支持flash，另外 RTMP适合长时间播放</li><li>最后RTMP的延迟相对较低，一般延时1-3s</li></ul><h4 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h4><ul><li>使用Flash播放，现在各大浏览器厂商已经默认禁用Flash</li><li>基于TCP协议，非公共端口，可能会被防火墙阻拦</li></ul><h3 id="HLS"><a href="#HLS" class="headerlink" title="HLS"></a>HLS</h3><p>HLS全称<strong>HTTP Live Streaming</strong>，是一个基于http的流媒体通信协议，由Apple公司实现，<strong>只能用于拉流</strong>，在移动端上的兼容性非常好，是移动端的主流直播解决方案。</p><p>HLS的工作原理简单来说就是把一段视频流，分成一个个小的基于HTTP的文件来下载。当媒体流正在播放时，客户端可以根据当前网络环境，方便地在不同的码率流中做切换，以实现更好的观影体验。</p><h4 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h4><p>直接使用标签播放</p><p>为更好的兼容性，也可以使用videoJS，但是还需要多引入一个插件 <a href="https://github.com/videojs/http-streaming" target="_blank" rel="noopener">videojs-http-streaming</a></p><p>HLS协议拉到的视频格式是 .m3u8（无法用浏览器直接打开，可以下载VLC这个工具来播放），下图是一个m3u8的文件在浏览器中播放，浏览器获取m3u8的文件后，会再去下载一个.m3u8的文件，注意此时的文件类型是m3u，浏览器会根据这个文件的playlist去下载ts文件，也就是视频切片（这个地址可以直接复制到浏览器打开），然后按顺序播放ts文件。当一个playlist的ts文件播放完后，浏览器会再去下载m3u8文件，获取新的playlist，周而复始。</p><p><strong>m3u8 文件信息</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#EXTM3U                            # m3u文件头</span><br><span class="line">#EXT-X-VERSION:3 </span><br><span class="line">#EXT-X-MEDIA-SEQUENCE:2133         # 第一个TS分片的序列号</span><br><span class="line">#EXT-X-TARGETDURATION:6            # 每个分片TS的最大时长</span><br><span class="line">#EXTINF:6.375,                     # 指定每个媒体段(ts)的持续时间，仅对后面的 URI 有效</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696415663.ts?auth_key=1587706605-0-0-10fedd520ec472c1a5dc39d0dcf2984f</span><br><span class="line">#EXTINF:6.375,</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696421958.ts?auth_key=1587706605-0-0-c8d8918ccba170a99f518b55aa2ea290</span><br><span class="line">#EXTINF:6.375,</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696428405.ts?auth_key=1587706605-0-0-f00ab35ac2c77091ac1e7ef693cde112</span><br><span class="line">#EXTINF:6.375,</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696434822.ts?auth_key=1587706605-0-0-08051ceb940b5d0a52292ab9c6e510dd</span><br><span class="line">#EXTINF:6.375,</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696441198.ts?auth_key=1587706605-0-0-fba4c6b281980017fa08a6139fc74a9d</span><br><span class="line">#EXTINF:6.375,</span><br><span class="line">huputv-ali-live.arenacdn.com_SFlDeHJTSU51NTdV_pbk550-1587696447480.ts?auth_key=1587706605-0-0-c3b335be3abe37b37af3339875610851</span><br></pre></td></tr></table></figure><p>HLS的延时高的原因之一是，要生成切片才能推送数据，如果每个 ts 按照 5 秒来切分，一个 m3u8 放 6 个 ts 索引，那么至少就会带来 30 秒的延迟。如果减少每个 ts 的长度，减少 m3u8 中的索引数，延时确实会减少，但会带来更频繁的缓冲，对服务端的请求压力也会成倍增加。所以只能根据实际情况找到一个折中的点。</p><h4 id="项目中的一个小问题"><a href="#项目中的一个小问题" class="headerlink" title="项目中的一个小问题"></a>项目中的一个小问题</h4><p>在项目中，这个m3u8的地址是由前端通过接口请求后端得到的，而我们后端也是需要去像厂家拉流，这就存在一个问题，有可能后端把地址推送给我们了，但是ts文件还未生成，也就是没有playlist，这时候就会导致视频播放错误，可以通过video的onerror事件监听，把m3u8的地址重新赋值给video的src属性。</p><h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h4><ul><li>使用H5标签即可播放</li><li>穿透防火墙。基于 HTTP/80 传输，有效避免防火墙拦截</li><li>性能高。通过 HTTP 传输， 支持网络分发，CDN 支持良好，且自带多码率自适应，Apple 在提出 HLS 时，就已经考虑了码流自适应的问题</li></ul><h4 id="劣势-1"><a href="#劣势-1" class="headerlink" title="劣势"></a>劣势</h4><ul><li>延时较高，HLS 的延迟基本在 10s+ 以上</li><li>会下载非常多的ts文件</li></ul><h3 id="HTTP-FLV"><a href="#HTTP-FLV" class="headerlink" title="HTTP-FLV"></a>HTTP-FLV</h3><p>FLV (Flash Video) 是 Adobe 公司推出的另一种视频格式，文件后缀.flv，是一种在网络上传输的流媒体数据存储容器格式。HttpFlv 就是 http+flv，将音视频数据封装成FLV格式，然后通过 HTTP 协议传输给客户端。</p><h4 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h4><p>使用B站的开源方案<a href="https://github.com/Bilibili/flv.js" target="_blank" rel="noopener">flv.js</a>插件，该插件依赖于<a href="https://w3c.github.io/media-source/" target="_blank" rel="noopener">Media Source Extensions</a>，而Media Source Extensions在IOS上兼容性很差，但在ipadOS13以上全支持（这个大家可以持续关注下）</p><h4 id="优势-2"><a href="#优势-2" class="headerlink" title="优势"></a>优势</h4><ul><li>延时低</li><li>基于http协议，可穿透防火墙</li><li>不依赖Flash</li></ul><h4 id="劣势-2"><a href="#劣势-2" class="headerlink" title="劣势"></a>劣势</h4><ul><li>移动端IOS设备兼容性差</li></ul><h3 id="DASH"><a href="#DASH" class="headerlink" title="DASH"></a>DASH</h3><p>DASH的全称是Dynamic Adaptive Streaming over HTTP，是HLS的一种可替代方案。youtube用的是DASH。DASH会通过media presentation description (MPD)将视频内容切片成一个很短的文件片段，每个切片都有多个不同的码率，DASH Client可以根据网络的情况选择一个码率进行播放，支持在不同码率之间无缝切换。</p><p>可使用插件<a href="https://github.com/Dash-Industry-Forum/dash.js" target="_blank" rel="noopener">dash.js</a>来播放</p><h2 id="第三方插件"><a href="#第三方插件" class="headerlink" title="第三方插件"></a>第三方插件</h2><p><a href="https://github.com/surmon-china/vue-video-player" target="_blank" rel="noopener">适用于 Vue 的 video.js播放器组件</a></p><h2 id="参考文章和资料"><a href="#参考文章和资料" class="headerlink" title="参考文章和资料"></a>参考文章和资料</h2><p><a href="https://developer.apple.com/streaming/" target="_blank" rel="noopener">Apple官方的HLS文档</a><br><a href="https://zhuanlan.zhihu.com/p/48100533" target="_blank" rel="noopener">RTMP、HTTP-FLV、HLS，你了解常见的三大直播协议吗</a><br><a href="https://www.jianshu.com/p/32417d8ee5b6" target="_blank" rel="noopener">理解RTMP、HttpFlv和HLS的正确姿势</a><br><a href="https://imququ.com/post/html5-live-player-1.html" target="_blank" rel="noopener">HTML5 视频直播（一）</a><br><a href="https://tools.ietf.org/html/rfc8216" target="_blank" rel="noopener">HTTP Live Streaming</a><br><a href="https://www.bilibili.com/read/cv855111/" target="_blank" rel="noopener">我们为什么使用DASH</a><br><a href="https://github.com/gwuhaolin/blog/issues/3" target="_blank" rel="noopener">使用flv.js做直播</a></p><p><strong>参考地址：</strong><br><a href="https://github.com/Tiramisupxl/blog/issues/1" target="_blank" rel="noopener">https://github.com/Tiramisupxl/blog/issues/1</a><br><a href="https://segmentfault.com/a/1190000037750253" target="_blank" rel="noopener">https://segmentfault.com/a/1190000037750253</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://gitee.com/peakxin/h5-live&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Demo地址&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;视频编码格式&quot;&gt;&lt;a href=&quot;#视频编码格式&quot; class=&quot;headerlink&quot; title=&quot;视频编码格式&quot;&gt;&lt;/a&gt;视频编码格式&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;视频文件格式（容器格式）&lt;/li&gt;
-&lt;li&gt;视频编解码器（视频编码格式）&lt;/li&gt;
-&lt;li&gt;视频一开始由两个端采集，视频输入口、音频输入口。采集的数据会分别进行相关处理，简而言之就是：将视频/音频流通过一定的手段转换为比特流并且压缩，最终，这里将比特流以一定顺序放到一个盒子里进行存放，从而声称我们最终所看到的音视频格式。如：mp3/mp4/flv&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="前端开发" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="HTML" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/HTML/"/>
-    
-    
-      <category term="直播" scheme="https://xinyufeng.net/tags/%E7%9B%B4%E6%92%AD/"/>
-    
-      <category term="H5直播" scheme="https://xinyufeng.net/tags/H5%E7%9B%B4%E6%92%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务商分账和电商收付通的区别</title>
-    <link href="https://xinyufeng.net/2021/01/06/%E6%9C%8D%E5%8A%A1%E5%95%86%E5%88%86%E8%B4%A6%E5%92%8C%E7%94%B5%E5%95%86%E6%94%B6%E4%BB%98%E9%80%9A%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>https://xinyufeng.net/2021/01/06/服务商分账和电商收付通的区别/</id>
-    <published>2021-01-06T01:39:49.000Z</published>
-    <updated>2021-05-25T07:50:05.040Z</updated>
-    
-    <content type="html"><![CDATA[<p>服务商分账和电商收付通的区别：</p><ol><li>多个店铺商品合并支付</li><li>分账可以到个人微信支付</li></ol><p><a href="https://pay.weixin.qq.com/wiki/doc/apiv3/open/pay/chapter3_3_0.shtml" target="_blank" rel="noopener">电商收付通</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;服务商分账和电商收付通的区别：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;多个店铺商品合并支付&lt;/li&gt;
-&lt;li&gt;分账可以到个人微信支付&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&quot;https://pay.weixin.qq.com/wiki/doc/apiv3/open/pay/cha
-      
-    
-    </summary>
-    
-      <category term="微信开发" scheme="https://xinyufeng.net/categories/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="微信支付" scheme="https://xinyufeng.net/categories/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
-    
-    
-      <category term="支付" scheme="https://xinyufeng.net/tags/%E6%94%AF%E4%BB%98/"/>
-    
-      <category term="微信支付" scheme="https://xinyufeng.net/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
     
   </entry>
   
