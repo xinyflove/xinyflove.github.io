@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  12345$user = new User();$user-&amp;gt;save();// 添加数据$user-&amp;gt;insert();// 添加数据$id = $user">
+<meta name="description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  1$user = new User();">
 <meta name="keywords" content="Yii技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yii2.0框架模型添加&#x2F;修改&#x2F;删除数据操作示例">
 <meta property="og:url" content="https://xinyufeng.net/2021/09/15/Yii2-0框架模型添加-修改-删除数据操作示例/index.html">
 <meta property="og:site_name" content="Peak Xin">
-<meta property="og:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  12345$user = new User();$user-&amp;gt;save();// 添加数据$user-&amp;gt;insert();// 添加数据$id = $user">
+<meta property="og:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  1$user = new User();">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-09-15T08:01:01.176Z">
+<meta property="og:updated_time" content="2021-10-15T08:51:51.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2.0框架模型添加&#x2F;修改&#x2F;删除数据操作示例">
-<meta name="twitter:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  12345$user = new User();$user-&amp;gt;save();// 添加数据$user-&amp;gt;insert();// 添加数据$id = $user">
+<meta name="twitter:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  1$user = new User();">
 
 
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  526
+                  531
                 </span>
               
 
@@ -467,7 +467,7 @@
 <h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><ol>
 <li>new一个模型</li>
 </ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">$user-&gt;save();<span class="comment">// 添加数据</span></span><br><span class="line">$user-&gt;insert();<span class="comment">// 添加数据</span></span><br><span class="line">$id = $user-&gt;attributes[<span class="string">'id'</span>];<span class="comment">// 获取当前添加数据后的自增id</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user = <span class="keyword">new</span> User();</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <ol start="2">
 <li>模型属性赋值</li>
@@ -479,7 +479,11 @@
 <p>方式三</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'Peak'</span>,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="number">18</span></span><br><span class="line">];</span><br><span class="line">$user-&gt;setAttributes($data);</span><br></pre></td></tr></table></figure>
 <p>方式四</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'Peak'</span>,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="number">18</span></span><br><span class="line">];</span><br><span class="line">$user-&gt;load($data, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">if</span> ($model-&gt;validate()) &#123;<span class="comment">// 数据校验</span></span><br><span class="line">    $model-&gt;save();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'Peak'</span>,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="number">18</span></span><br><span class="line">];</span><br><span class="line">$user-&gt;load($data, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">if</span> ($user-&gt;validate()) &#123;<span class="comment">// 数据校验</span></span><br><span class="line">    $user-&gt;save();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>数据保存</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$user-&gt;save();<span class="comment">// 添加数据</span></span><br><span class="line">$user-&gt;insert();<span class="comment">// 添加数据</span></span><br><span class="line">$id = $user-&gt;attributes[<span class="string">'id'</span>];<span class="comment">// 获取当前添加数据后的自增id</span></span><br></pre></td></tr></table></figure>
 <p><strong>Tip</strong></p>
 <p>对<code>load()</code>方法解读：</p>
 <p>通过查看<code>load()</code>方法可知，<code>load()</code>方法有两个参数，第一个参数 <code>$data</code> 是要填充的数据，第二个参数 <code>$formName</code> 是选择指定的模型</p>
