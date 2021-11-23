@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="如果在view中直接添加js代码，如下： 12345&amp;lt;script&amp;gt;    $(function()&amp;#123;        alert(&apos;js code&apos;);    &amp;#125;);&amp;lt;/script&amp;gt; 会提示没有$ is not defined错误，这是因为view中添加js代码的前面没有引用juqery.js，默认全局的jquery则是在文件尾添加。 解决方法：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-11-12T03:10:54.878Z">
+<meta property="og:updated_time" content="2021-11-17T02:33:38.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2如何在View中加入JS代码">
 <meta name="twitter:description" content="如果在view中直接添加js代码，如下： 12345&amp;lt;script&amp;gt;    $(function()&amp;#123;        alert(&apos;js code&apos;);    &amp;#125;);&amp;lt;/script&amp;gt; 会提示没有$ is not defined错误，这是因为view中添加js代码的前面没有引用juqery.js，默认全局的jquery则是在文件尾添加。 解决方法：">
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  140
+                  259
                 </span>
               
 
@@ -468,14 +468,24 @@
 <ol>
 <li>在js代码前引入js库</li>
 </ol>
-<p>1.1 引入方式1</p>
+<p><strong>1.1 引入方式1</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>=Html::jsFile(<span class="string">'@web/jquery.js'</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1.2 引入方式2</p>
+<p><strong>1.2 引入方式2</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">$this</span>-&gt;registerJsFile(<span class="string">'@web/js/jquery.js'</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>使用全局的js库</li>
 </ol>
+<p><strong>方法一</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$js = <span class="string">&lt;&lt;&lt;JS</span></span><br><span class="line"><span class="string">$(function()&#123;</span></span><br><span class="line"><span class="string">    alert('js code');</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">JS;</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;registerJs($js);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>方法二</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;registerJs(<span class="string">"</span></span><br><span class="line"><span class="string">$(function () &#123;</span></span><br><span class="line"><span class="string">// 想要写的js代码吧</span></span><br><span class="line"><span class="string">$......</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">"</span>, \yii\web\View::POS_END);</span><br></pre></td></tr></table></figure>
+<p><code>$this</code>指<code>yii\web\View</code>对象,用于管理和渲染视图</p>
+<ul>
+<li>第一个参数：就是我们要写的js代码块</li>
+<li>第二个参数：指定代码块插入在页面的具体位置<br><code>\yii\web\View::POS_END</code>意思就是页面底部<code>&lt;/body&gt;</code>之前插入</li>
+<li>第三个参数：js代码块的一个id标示，不指定会默认生成</li>
+</ul>
+
       
     </div>
     
@@ -562,6 +572,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2021/11/16/Yii2-GridView-表格用法/" rel="prev" title="Yii2 GridView 表格用法">
+                Yii2 GridView 表格用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -633,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">162</span>
+                  <span class="site-state-item-count">163</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
