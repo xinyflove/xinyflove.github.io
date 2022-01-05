@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  1$user = new User();">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-15T08:51:51.379Z">
+<meta property="og:updated_time" content="2022-01-05T05:59:24.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2.0框架模型添加&#x2F;修改&#x2F;删除数据操作示例">
 <meta name="twitter:description" content="这篇文章主要介绍了Yii2.0框架模型添加/修改/删除数据操作,结合实例形式分析了Yii2.0使用模型操作数据的添加、修改、删除相关实现技巧,需要的朋友可以参考下  以下实例以模型 User 为例： 添加数据 new一个模型  1$user = new User();">
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  531
+                  602
                 </span>
               
 
@@ -492,7 +492,12 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    <span class="string">'User'</span> =&gt; [</span><br><span class="line">        <span class="string">'name'</span> =&gt; <span class="string">'Peak'</span>,</span><br><span class="line">        <span class="string">'age'</span> =&gt; <span class="number">18</span></span><br><span class="line">    ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <p>如果 $formName 传空字符串，则 $data 传递参数格式为：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'Peak'</span>,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="number">18</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$user = $User::findOne($id);</span><br><span class="line">$user-&gt;name = <span class="string">'Peak2'</span>;</span><br><span class="line">$data = $user-&gt;update();<span class="comment">// 修改</span></span><br><span class="line">$data = $user-&gt;save();<span class="comment">// 修改</span></span><br><span class="line"><span class="comment">//修改单个字段</span></span><br><span class="line">$data = Uesr::updateAllCounters([<span class="string">'name'</span> =&gt; <span class="string">'Peak3'</span>], [<span class="string">'id'</span> =&gt; $id]);<span class="comment">// 参数1为要修改的字段，参数2为修改条件</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><p>方法一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$user = $User::findOne($id);</span><br><span class="line">$user-&gt;name = <span class="string">'Peak2'</span>;</span><br><span class="line">$data = $user-&gt;update();<span class="comment">// 修改</span></span><br><span class="line">$data = $user-&gt;save();<span class="comment">// 修改</span></span><br></pre></td></tr></table></figure>
+<p>方法二</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将值进行 累加 或者 累减</span></span><br><span class="line"><span class="comment">// $count = 1, 就是加一</span></span><br><span class="line"><span class="comment">// $count = -1, 就是减一</span></span><br><span class="line">$data = Uesr::updateAllCounters([<span class="string">'sort'</span> =&gt; $count], [<span class="string">'id'</span> =&gt; $id]);<span class="comment">// 参数1为要修改的字段，参数2为修改条件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数都是固定值</span></span><br></pre></td></tr></table></figure>
+<p>方法三</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数都是固定值</span></span><br><span class="line">Uesr::updateAll([<span class="string">'status'</span> =&gt; <span class="number">1</span>],[<span class="string">'status'</span> =&gt; <span class="number">0</span>,<span class="string">'flag'</span> =&gt; <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数有范围值</span></span><br><span class="line">Uesr::updateAll([<span class="string">'status'</span> =&gt; <span class="number">1</span>],[<span class="string">'and'</span>, [<span class="string">'status'</span> =&gt; <span class="number">0</span>],[<span class="string">'&lt;&gt;'</span>, <span class="string">'flag'</span>, <span class="number">1</span>]]);</span><br></pre></td></tr></table></figure>
 <h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>方法一</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除数据</span></span><br><span class="line">$user = User::find()-&gt;where([<span class="string">'id'</span> =&gt; <span class="number">1</span>])-&gt;one();<span class="comment">// 获取id为1的数据</span></span><br><span class="line">$user-&gt;delete();<span class="comment">//删除数据</span></span><br></pre></td></tr></table></figure>
 <p>方法二</p>
@@ -835,7 +840,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
