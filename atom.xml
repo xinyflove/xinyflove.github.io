@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2021-12-01T01:31:10.663Z</updated>
+  <updated>2022-01-11T05:22:32.401Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP GD库转换输出为base64</title>
+    <link href="https://xinyufeng.net/2022/01/11/PHP-GD%E5%BA%93%E8%BD%AC%E6%8D%A2%E8%BE%93%E5%87%BA%E4%B8%BAbase64/"/>
+    <id>https://xinyufeng.net/2022/01/11/PHP-GD库转换输出为base64/</id>
+    <published>2022-01-11T05:12:56.000Z</published>
+    <updated>2022-01-11T05:22:32.401Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用GD库的 <code>imagejpeg()</code> / <code>imagepng()</code> 处理图片，它们直接写入所述图像数据，以输出流（或文件）。</p><p>如果你想获取图片文件内容则通过如下方法：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $img = 要处理的图像资源;</span></span><br><span class="line">ob_start();<span class="comment">// 打开输出控制缓冲</span></span><br><span class="line">imagepng($img);<span class="comment">// 显示PNG图像</span></span><br><span class="line">$image_data = ob_get_contents();<span class="comment">// 返回输出缓冲区的内容</span></span><br><span class="line">imagedestroy($img);<span class="comment">// 释放与 image 关联的内存</span></span><br><span class="line">ob_end_clean();<span class="comment">// 清空（擦除）缓冲区并关闭输出缓冲</span></span><br></pre></td></tr></table></figure><p><code>$image_data</code>得到的数据就是图片文件的数据内容</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用GD库的 &lt;code&gt;imagejpeg()&lt;/code&gt; / &lt;code&gt;imagepng()&lt;/code&gt; 处理图片，它们直接写入所述图像数据，以输出流（或文件）。&lt;/p&gt;
+&lt;p&gt;如果你想获取图片文件内容则通过如下方法：&lt;/p&gt;
+&lt;figure class=&quot;hig
+      
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="PHP" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/PHP/"/>
+    
+    
+      <category term="GD库" scheme="https://xinyufeng.net/tags/GD%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>windows下本地搭建https服务器</title>
@@ -550,34 +579,6 @@
     
     
       <category term="MySQL配置" scheme="https://xinyufeng.net/tags/MySQL%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LNMP环境 Nginx 502 Bad Gateway错误可能原因及解决方法</title>
-    <link href="https://xinyufeng.net/2021/06/02/LNMP%E7%8E%AF%E5%A2%83-Nginx-502-Bad-Gateway%E9%94%99%E8%AF%AF%E5%8F%AF%E8%83%BD%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>https://xinyufeng.net/2021/06/02/LNMP环境-Nginx-502-Bad-Gateway错误可能原因及解决方法/</id>
-    <published>2021-06-02T10:06:23.000Z</published>
-    <updated>2021-06-02T10:41:48.530Z</updated>
-    
-    <content type="html"><![CDATA[<p>在使用lnmp环境时，偶尔会遇到nginx返回502错误，这里我以lnmp一键安装进行说明</p><p><strong>原因一：安装时php没有安装成功</strong></p><p>查看一下是否存在<code>/usr/local/php/sbin/php-fpm</code>，如果没有肯定没安装成功。</p><p><strong>原因二：eaccelerator配置项</strong></p><p>在<code>php.ini</code>里，<code>eaccelerator</code>配置项一定要放在<code>Zend Optimizer</code>配置之前，否则也可能引起502 Bad Gateway。php一些模块之间也可能会造成502，如Zend GuardLoader与Opcache，ioncube与Zend GuardLoader等，一般可以通过注释掉一个然后重启php-fpm，然后看是否还502进行排除。</p><p><strong>原因三：php-cgi进程</strong></p><p>在安装好使用过程中出现502问题，一般是因为默认<code>php-cgi</code>进程是<code>5</code>个，可能因为<code>phpcgi</code>进程不够用而造成502，需要修改<code>/usr/local/php/etc/php-fpm.conf</code> 将其中的<code>max_children</code>值适当增加，如果php已升级到<code>5.3.*</code>以上且使用的是<code>dynamic</code>模式，需要调整<code>pm.min_spare_servers</code>和<code>pm.max_spare_servers</code>的值适当增加。<br><a id="more"></a><br>最大值可以按<code>内存xxMB/2/20</code> 的整数来算（内存以MB为单位进行计算，/ 为除，取整数），最小值可以按<code>内存/2/40</code> 的整数来算，可以少点或多大，可以自己调整运行看看，同时<code>pm.max_children</code>也调整为和<code>pm.max_spare_servers</code>的值一样。</p><p>也有可能是<code>max_requests</code>值不够用。</p><p><strong>原因四：php执行超时</strong></p><p>php执行超时，修改<code>/usr/local/php/etc/php.ini</code> 将<code>max_execution_time</code> 改为<code>300</code> 或直接改成<code>0</code> 不限制，同时还需要修改<code>/usr/local/php/etc/php-fpm.conf</code> 调整<code>request_terminate_timeout</code>的值，再<code>/etc/init.d/php-fpm restart</code>重启使其生效。</p><p><strong>原因五：磁盘空间不足</strong></p><p>使用命令<code>df -h</code>查看一下磁盘空间，磁盘空间不足，如mysql日志占用大量空间清理一下磁盘上的文件，有部分剩余空间，重启即可恢复。</p><p><strong>原因六：查看php-cgi或php-fpm进程是否在运行</strong></p><p>查看php-fpm是否开启，命令：<code>ps -ef|grep php</code></p><p>查看php-fpm的位置，命令：<code>whereis php-fpm</code></p><p><strong>原因七：nginx.conf配置</strong></p><p>将nginx.conf里的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_connect_timeout</span><br><span class="line">fastcgi_send_timeout</span><br><span class="line">fastcgi_read_timeout</span><br></pre></td></tr></table></figure><p>都调大一点。</p><p><strong>原因八：</strong></p><p><a href="https://bbs.vpser.net/thread-1654-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-1654-1-1.html</a></p><p><strong>原因九：</strong></p><p>不要按网上找到的教程随便修改配置，网上找到的可能会路径不一样，也可能会导致502或有相关的错误产生，例如网上其他的教程可以使用的是<code>9000</code>端口，而lnmp默认使用<code>socket</code>，你如果按网上的教程设置的端口或<code>socket</code>路径不一样那肯定100% 502无疑。</p><p>LNMP默认使用<code>unix</code>套接字，虚拟主机配置文件里 <code>fastcgi_pass</code>参数为<code>unix:/tmp/php-cgi.sock;</code> 需要确保<code>/usr/local/php/etc/php-fpm.cnf</code> 里的设置，php 5.2为<code>/tmp/php-cgi.sock</code> php 5.3及以上版本为<code>listen = /tmp/php-cgi.sock</code> ，同时<code>/usr/local/nginx/conf/nginx.conf</code> 及其<code>/usr/local/nginx/conf/vhost/</code> 下面的虚拟主机配置里的<code>fastcgi_pass  unix:/tmp/php-cgi.sock;</code> 不一致就必定502。</p><p>有时候<code>unix</code>套接字模式下可能会502，可以尝试改成<code>tcp/ip</code>的方式 php 5.2下<code>/tmp/php-cgi.sock</code>替换为<code>127.0.0.1:9000</code>  php 5.3及以上版本<code>listen = /tmp/php-cgi.sock</code>替换为<code>listen = 127.0.0.1:9000</code>，nginx配置文件及虚拟主机配置文件里<code>fastcgi_pass  unix:/tmp/php-cgi.sock;</code>替换为<code>fastcgi_pass  127.0.0.1:9000;</code>  之后重启试试。</p><p>十、如果虚拟主机的日志文件过大也可能会造成502问题。<br>建议定期清空一下虚拟主机的日志文件。</p><p>十一、有些程序或者程序的主题有死循环或其他非常占用资源的代码也可能会引起502，可以尝试暂时注释掉可能的主机的配置文件，重启看看是否还会502。</p><p>十二、如果以上方法都试过，但还有时会出现502错，可以尝试添加502自动重启脚本：<a href="https://bbs.vpser.net/thread-1913-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-1913-1-1.html</a></p><p>十三、实在找不到原因可以开启slowlog看看慢日志是否有相关有用的信息：<a href="https://bbs.vpser.net/viewthread.php?tid=10251&amp;page=1&amp;fromuid=3#pid30582" target="_blank" rel="noopener">https://bbs.vpser.net/viewthread.php?tid=10251&amp;page=1&amp;fromuid=3#pid30582</a></p><p>十四、升级PHP后出现502，可能php没升级成功。<br>如果是1.0之前的版本升级PHP到5.4或5.5后，可能是因为这个原因：<a href="https://bbs.vpser.net/thread-10763-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-10763-1-1.html</a></p><p>十五、CentOS 6 下，wordpress访问后台、安装wp、安装插件报502错误的解决方法：<a href="https://bbs.vpser.net/thread-10767-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-10767-1-1.html</a></p><p>参考地址：<a href="https://bbs.vpser.net/thread-1144-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-1144-1-1.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在使用lnmp环境时，偶尔会遇到nginx返回502错误，这里我以lnmp一键安装进行说明&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;原因一：安装时php没有安装成功&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;查看一下是否存在&lt;code&gt;/usr/local/php/sbin/php-fpm&lt;/code&gt;，如果没有肯定没安装成功。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;原因二：eaccelerator配置项&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在&lt;code&gt;php.ini&lt;/code&gt;里，&lt;code&gt;eaccelerator&lt;/code&gt;配置项一定要放在&lt;code&gt;Zend Optimizer&lt;/code&gt;配置之前，否则也可能引起502 Bad Gateway。php一些模块之间也可能会造成502，如Zend GuardLoader与Opcache，ioncube与Zend GuardLoader等，一般可以通过注释掉一个然后重启php-fpm，然后看是否还502进行排除。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;原因三：php-cgi进程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在安装好使用过程中出现502问题，一般是因为默认&lt;code&gt;php-cgi&lt;/code&gt;进程是&lt;code&gt;5&lt;/code&gt;个，可能因为&lt;code&gt;phpcgi&lt;/code&gt;进程不够用而造成502，需要修改&lt;code&gt;/usr/local/php/etc/php-fpm.conf&lt;/code&gt; 将其中的&lt;code&gt;max_children&lt;/code&gt;值适当增加，如果php已升级到&lt;code&gt;5.3.*&lt;/code&gt;以上且使用的是&lt;code&gt;dynamic&lt;/code&gt;模式，需要调整&lt;code&gt;pm.min_spare_servers&lt;/code&gt;和&lt;code&gt;pm.max_spare_servers&lt;/code&gt;的值适当增加。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xinyufeng.net/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="LNMP" scheme="https://xinyufeng.net/tags/LNMP/"/>
     
   </entry>
   
