@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-03-28T02:02:19.606Z</updated>
+  <updated>2022-04-06T08:14:44.492Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yii2模型的关联模型使用</title>
+    <link href="https://xinyufeng.net/2022/04/06/Yii2%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B3%E8%81%94%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xinyufeng.net/2022/04/06/Yii2模型的关联模型使用/</id>
+    <published>2022-04-06T07:55:21.000Z</published>
+    <updated>2022-04-06T08:14:44.492Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>Active Record</code> 可以将相关数据集中进来， 使其可以通过原始数据轻松访问。 例如，客户数据与订单数据相关 因为一个客户可能已经存放了一个或多个订单。这种关系通过适当的声明， 你可以使用 <code>$customer-&gt;orders</code> 表达式访问客户的订单信息 这表达式将返回包含 <code>Order Active Record</code> 实例的客户订单信息的数组。</p><p><strong>声明关联关系</strong></p><p>你必须先在 <code>Active Record</code> 类中定义关联关系，才能使用 <code>Active Record</code> 的关联数据。 简单地为每个需要定义关联关系声明一个 关联方法 即可，如下所示，</p><a id="more"></a><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">extends</span> <span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getOrders</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasMany(Order::className(), [<span class="string">'customer_id'</span> =&gt; <span class="string">'id'</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getCustomer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasOne(Customer::className(), [<span class="string">'id'</span> =&gt; <span class="string">'customer_id'</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上述的代码中，我们为 <code>Customer</code> 类声明了一个 <code>orders</code> 关联， 和为 <code>Order</code> 声明了一个 <code>customer</code> 关联。</p><p>每个关联方法必须这样命名：<code>getXyz</code>。然后我们通过 <code>xyz</code>（首字母小写）调用这个关联名。 请注意关联名是<em>大小写敏感</em>的。</p><p>当声明一个关联关系的时候，必须指定好以下的信息：</p><ul><li>关联的对应关系：通过调用 <code>hasMany()</code> 或者 <code>hasOne()</code> 指定。在上面的例子中，您可以很容易看出这样的关联声明： 一个客户可以有很多订单，而每个订单只有一个客户。</li><li>相关联 <code>Active Record</code> 类名：用来指定为 <code>hasMany()</code> 或者 <code>hasOne()</code> 方法的第一个参数。 推荐的做法是调用 <code>Xyz::className()</code> 来获取类名称的字符串，以便您 可以使用 IDE 的自动补全，以及让编译阶段的错误检测生效。</li><li>两组数据的关联列：用以指定两组数据相关的列（<code>hasOne()</code>/<code>hasMany()</code> 的第二个参数）。 数组的值填的是主数据的列（当前要声明关联的 <code>Active Record</code> 类为主数据）， 而数组的键要填的是相关数据的列。</li></ul><p>一个简单的口诀，先附表的主键，后主表的主键。 正如上面的例子，<code>customer_id</code> 是 <code>Order</code> 的属性，而 <code>id</code>是 <code>Customer</code> 的属性。 （译者注：<code>hasMany()</code> 的第二个参数，这个数组键值顺序不要弄反了）</p><p><strong>访问关联数据</strong></p><p>定义了关联关系后，你就可以通过关联名访问相应的关联数据了。就像 访问一个由关联方法定义的对象一样，具体概念请查看 属性。 因此，现在我们可以称它为 关联属性 了。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SELECT * FROM `customer` WHERE `id` = 123</span></span><br><span class="line">$customer = Customer::findOne(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// SELECT * FROM `order` WHERE `customer_id` = 123</span></span><br><span class="line"><span class="comment">// $orders 是由 Order 类组成的数组</span></span><br><span class="line">$orders = $customer-&gt;orders;</span><br></pre></td></tr></table></figure><blockquote><p>提示： 当你通过 <code>getter</code> 方法 <code>getXyz()</code> 声明了一个叫 <code>xyz</code> 的关联属性，你就可以像 属性 那样访问 <code>xyz</code>。注意这个命名是<em>区分大小写</em>的。</p></blockquote><p>如果使用 <code>hasMany()</code>声明关联关系，则访问此关联属性 将返回相关的 <code>Active Record</code> 实例的数组； 如果使用 <code>hasOne()</code> 声明关联关系，访问此关联属性 将返回相关的 <code>Active Record</code> 实例，如果没有找到相关数据的话，则返回 <code>null</code>。</p><p>当你第一次访问关联属性时，将执行 SQL 语句获取数据，如 上面的例子所示。如果再次访问相同的属性，将返回先前的结果，而不会重新执行 SQL 语句。要强制重新执行 SQL 语句，你应该先 <code>unset</code> 这个关联属性， 如：<code>unset($ customer-&gt; orders)</code>。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$customer-&gt;orders; <span class="comment">// 获得 `Order` 对象的数组</span></span><br><span class="line">$customer-&gt;getOrders(); <span class="comment">// 返回 ActiveQuery 类的实例</span></span><br></pre></td></tr></table></figure><p><strong>设置别名</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getCustomer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasOne(Customer::className(), [<span class="string">'id'</span> =&gt; <span class="string">'customer_id'</span>])-&gt;alias(<span class="string">'c'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>关联查询 </p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$order = Order::find()-&gt;joinWith(<span class="string">'customer'</span>)</span><br><span class="line">            -&gt;where([<span class="string">'filter1'</span>=&gt;$filter1, <span class="string">'filter2'</span>=&gt;$filter2])</span><br><span class="line">            -&gt;andWhere([<span class="string">'='</span>, <span class="string">'c.filter3'</span>, $filter3])</span><br><span class="line">            -&gt;andWhere([<span class="string">'&lt;='</span>, <span class="string">'cfilter4'</span>, $filter4])</span><br><span class="line">            -&gt;one();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;Active Record&lt;/code&gt; 可以将相关数据集中进来， 使其可以通过原始数据轻松访问。 例如，客户数据与订单数据相关 因为一个客户可能已经存放了一个或多个订单。这种关系通过适当的声明， 你可以使用 &lt;code&gt;$customer-&amp;gt;orders&lt;/code&gt; 表达式访问客户的订单信息 这表达式将返回包含 &lt;code&gt;Order Active Record&lt;/code&gt; 实例的客户订单信息的数组。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;声明关联关系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;你必须先在 &lt;code&gt;Active Record&lt;/code&gt; 类中定义关联关系，才能使用 &lt;code&gt;Active Record&lt;/code&gt; 的关联数据。 简单地为每个需要定义关联关系声明一个 关联方法 即可，如下所示，&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Yii" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Yii/"/>
+    
+    
+      <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL5.7.26错误问题 mysqld.exe: Error while setting value &#39;STRICT_TRANS_TABLES, NO_ZERO_IN_DATE, NO_ZERO_DATE, ERROR_FOR_DIVISION_BY_ZERO, NO_AUTO_CREATE_USER, NO_ENGINE_SUBSTITUTION&#39; to &#39;sql_mode&#39;</title>
@@ -555,31 +581,6 @@
     
     
       <category term="数据库操作" scheme="https://xinyufeng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certifica</title>
-    <link href="https://xinyufeng.net/2021/07/29/%E8%A7%A3%E5%86%B3PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/"/>
-    <id>https://xinyufeng.net/2021/07/29/解决PHP报错-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/</id>
-    <published>2021-07-29T07:11:15.000Z</published>
-    <updated>2021-07-29T07:22:32.064Z</updated>
-    
-    <content type="html"><![CDATA[<p>PHP程序在调用<code>https</code>链接时报错”cURL error 60: SSL certificate problem: unable to get local issuer<br>  certifica”，这是因为没有配置信任的服务器HTTPS验证。默认情况下，cURL被设为不信任任何CAS，因此浏览器无法通过HTTPS访问你服务器</p><p>解决方法：</p><a id="more"></a><p>下载cacert.pem文件</p><p><a href="https://curl.se/docs/caextract.html" target="_blank" rel="noopener">https://curl.se/docs/caextract.html</a></p><p>下载后的文件放到php的<code>extras/ssl</code>目录下</p><p>我这里是Windows系统PHPStudy集成工具</p><p><code>D:\phpstudy_pro\Extensions\php\php7.2.9nts\extras\ssl</code></p><p>修改php.ini</p><p><code>D:\phpstudy_pro\Extensions\php\php7.2.9nts\php.ini</code></p><p>添加或修改</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">; php.ini Options  ;</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">curl.cainfo</span> = <span class="string">"D:\phpstudy_pro\Extensions\php\php7.2.9nts\extras\ssl\cacert.pem"</span></span><br></pre></td></tr></table></figure><p>且需要打开<code>php_openssl</code>扩展</p><p>重启环境</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PHP程序在调用&lt;code&gt;https&lt;/code&gt;链接时报错”cURL error 60: SSL certificate problem: unable to get local issuer&lt;br&gt;  certifica”，这是因为没有配置信任的服务器HTTPS验证。默认情况下，cURL被设为不信任任何CAS，因此浏览器无法通过HTTPS访问你服务器&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="后端开发" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="PHP" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/PHP/"/>
-    
-    
-      <category term="PHP报错" scheme="https://xinyufeng.net/tags/PHP%E6%8A%A5%E9%94%99/"/>
     
   </entry>
   
