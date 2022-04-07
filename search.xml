@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Vue Antd Admin 跨域代理配置</title>
+      <link href="2022/04/07/Vue-Antd-Admin-%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"/>
+      <url>2022/04/07/Vue-Antd-Admin-%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<ol><li>修改文件 <code>src\services\api.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨域代理前缀</span></span><br><span class="line"><span class="keyword">const</span> API_PROXY_PREFIX=<span class="string">'/adminapi'</span></span><br><span class="line"><span class="keyword">const</span> BASE_URL = process.env.NODE_ENV === <span class="string">'production'</span> ? process.env.VUE_APP_API_BASE_URL : API_PROXY_PREFIX</span><br><span class="line"><span class="comment">//const BASE_URL = process.env.VUE_APP_API_BASE_URL</span></span><br></pre></td></tr></table></figure><ol start="2"><li>修改文件<code>vue.config.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/adminapi'</span>: &#123; <span class="comment">//此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致</span></span><br><span class="line">        target: process.env.VUE_APP_API_BASE_URL,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">'^/adminapi'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后重启<code>yarn serve</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端框架 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 技巧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Yii2模型的关联模型使用</title>
       <link href="2022/04/06/Yii2%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B3%E8%81%94%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/"/>
       <url>2022/04/06/Yii2%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B3%E8%81%94%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/</url>

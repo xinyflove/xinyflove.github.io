@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-06T08:14:44.492Z</updated>
+  <updated>2022-04-07T08:52:39.136Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue Antd Admin 跨域代理配置</title>
+    <link href="https://xinyufeng.net/2022/04/07/Vue-Antd-Admin-%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xinyufeng.net/2022/04/07/Vue-Antd-Admin-跨域代理配置/</id>
+    <published>2022-04-07T05:07:19.000Z</published>
+    <updated>2022-04-07T08:52:39.136Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>修改文件 <code>src\services\api.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨域代理前缀</span></span><br><span class="line"><span class="keyword">const</span> API_PROXY_PREFIX=<span class="string">'/adminapi'</span></span><br><span class="line"><span class="keyword">const</span> BASE_URL = process.env.NODE_ENV === <span class="string">'production'</span> ? process.env.VUE_APP_API_BASE_URL : API_PROXY_PREFIX</span><br><span class="line"><span class="comment">//const BASE_URL = process.env.VUE_APP_API_BASE_URL</span></span><br></pre></td></tr></table></figure><ol start="2"><li>修改文件<code>vue.config.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/adminapi'</span>: &#123; <span class="comment">//此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致</span></span><br><span class="line">        target: process.env.VUE_APP_API_BASE_URL,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">'^/adminapi'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后重启<code>yarn serve</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;修改文件 &lt;code&gt;src\services\api.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span clas
+      
+    
+    </summary>
+    
+      <category term="前端框架" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Vue" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue/"/>
+    
+    
+      <category term="教程" scheme="https://xinyufeng.net/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="技巧" scheme="https://xinyufeng.net/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Yii2模型的关联模型使用</title>
@@ -553,34 +585,6 @@
     
     
       <category term="Linux命令" scheme="https://xinyufeng.net/tags/Linux%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ThinkPHP 数据库无法连接 Could not connect: No such file or directory</title>
-    <link href="https://xinyufeng.net/2021/08/03/ThinkPHP-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5-Could-not-connect-No-such-file-or-directory/"/>
-    <id>https://xinyufeng.net/2021/08/03/ThinkPHP-数据库无法连接-Could-not-connect-No-such-file-or-directory/</id>
-    <published>2021-08-03T06:33:08.000Z</published>
-    <updated>2021-08-03T06:40:37.973Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用ThinkPHP框架数据库无法连接，报错<code>Could not connect: No such file or directory</code>，原因是<code>/tmp/</code>目录下没有<code>mysql.sock</code>文件。</p><p>解决方法：</p><p>先找到mysql的<code>mysql.sock</code>文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find / -name mysql.sock</span></span><br><span class="line">/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure></p><p>创建软连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;使用ThinkPHP框架数据库无法连接，报错&lt;code&gt;Could not connect: No such file or directory&lt;/code&gt;，原因是&lt;code&gt;/tmp/&lt;/code&gt;目录下没有&lt;code&gt;mysql.sock&lt;/code&gt;文件。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="ThinkPHP" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/ThinkPHP/"/>
-    
-    
-      <category term="数据库操作" scheme="https://xinyufeng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/"/>
     
   </entry>
   
