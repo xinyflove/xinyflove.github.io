@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-07T08:52:39.136Z</updated>
+  <updated>2022-04-08T02:02:03.093Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vue 中的代理proxy配置</title>
+    <link href="https://xinyufeng.net/2022/04/08/Vue-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86proxy%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xinyufeng.net/2022/04/08/Vue-中的代理proxy配置/</id>
+    <published>2022-04-08T01:06:57.000Z</published>
+    <updated>2022-04-08T02:02:03.093Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们本地开发调试一般是 <code>npm run serve</code> 或 <code>yarn serve</code>，然后打开 <code>localhost:8080</code>（本机的IP），此时如果调用后端接口，可能会产生跨域，那如何解决呢？</p><p><strong>解决跨域的方案</strong></p><ol><li>jsonp<ul><li>只支持GET请求，JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。</li></ul></li><li>cors<ul><li>CORS支持所有类型的HTTP请求，是跨域HTTP请求的根本解决方案</li></ul></li><li>Node中间件代理(两次跨域)<ul><li>通过同源策略对服务器不加限制。</li></ul></li><li>Nginx反向代理<ul><li>通过同源策略对服务器不加限制。</li></ul></li></ol><p>日常工作中，生产环境用得比较多的跨域方案是cors和nginx反向代理。<br>本地项目中调试用的最多的就是 node 代理，当然像 nginx、charles（抓包工具）做代理也可以，只要你会配置。<br><a id="more"></a></p><p>vue 中的 <code>proxy</code> 就是利用了 Node 代理，原理是因为服务器端没有跨域，使用的是 <a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a> 这个模块（这个模块相当于是node.js的一个插件）</p><p><strong>案例</strong></p><ol><li>你要调取的接口是 <code>http://dev.com/api/test</code>，然后你可以在本地调 <code>http://localhost:8080/api/test</code>，如<code>axios.get(&#39;/api/test&#39;)</code></li></ol><p>配置代理后，会做如下转发：</p><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/api/test</code><br><code>http://localhost:8080/admin/api/test</code> -&gt; <code>http://dev.com/admin/api/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-cli3.0 里面的 vue.config.js做配置</span></span><br><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'http://dev.com'</span>,<span class="comment">// 后端接口域名</span></span><br><span class="line">        ws: <span class="literal">true</span>,<span class="comment">//如果要代理 websockets，配置这个参数</span></span><br><span class="line">        secure: <span class="literal">false</span>,<span class="comment">// 如果是https接口，需要配置这个参数</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,<span class="comment">// 是否跨域</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><ol start="2"><li>当你调后端接口的命名没有统一给接口前加 <code>/api</code> 这类的标识，那么你可以自己加，也就是你可以在本地调 <code>http://localhost:8080/api/test</code>，如<code>axios.get(&#39;/api/test&#39;)</code>，而你要的目标接口是 <code>http://dev.com/test</code>，你就可以用 <code>pathRewrite</code>，遇到 <code>/api</code> 就去找代理 <code>http://dev.com/test</code> 并且把 <code>/api</code> 重写为 <code>/</code>。</li></ol><p>所以转发效果就是：</p><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-cli3.0 里面的 vue.config.js做配置</span></span><br><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'http://dev.com'</span>,<span class="comment">// 后端接口域名</span></span><br><span class="line">        ws: <span class="literal">true</span>,<span class="comment">//如果要代理 websockets，配置这个参数</span></span><br><span class="line">        secure: <span class="literal">false</span>,<span class="comment">// 如果是https接口，需要配置这个参数</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,<span class="comment">// 是否跨域</span></span><br><span class="line">        pathRewrite:&#123;<span class="comment">// 路径重写</span></span><br><span class="line">            <span class="string">'^/api'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><ol start="3"><li>对所有的接口都代理的，不止是检测到 <code>/api</code> 的接口，比如：</li></ol><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/api/test</code><br><code>http://localhost:8080/test</code> -&gt; <code>http://dev.com/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    proxy: <span class="string">'http:///dev.com'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>常用的devServer配置</strong></p><p><a href="https://webpack.docschina.org/configuration/dev-server/" target="_blank" rel="noopener">DevServer配置文档</a></p><ol><li>devServer.disableHostCheck</li></ol><p>当设置为<code>true</code>时，此选项将绕过主机检查。不建议这样做，因为不检查主机的应用程序容易受到DNS重新绑定攻击。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    disableHostCheck: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>devServer.publicPath</li></ol><p>假设服务器在<code>http://localhost:8080</code>下运行，<code>output.filename</code>设置为<code>bundle.js</code>。默认情况下，<code>devServer.publicPath</code>是<code>/</code>，所以你的包可以作为<code>http://localhost:8080/bundle.js</code> 使用。将<code>devServer.publicPath</code>更改为 <code>/assets/</code> 就变为 <code>http://localhost:8080/assets/bundle.js</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    publicPath: <span class="string">'/assets/'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>确保devServer.publicPath始终以正斜杠开头和结尾。</p></blockquote><p><strong>常用vue/cli3的配置</strong></p><p><a href="https://cli.vuejs.org/zh/config/" target="_blank" rel="noopener">vue/cli3配置文档</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们本地开发调试一般是 &lt;code&gt;npm run serve&lt;/code&gt; 或 &lt;code&gt;yarn serve&lt;/code&gt;，然后打开 &lt;code&gt;localhost:8080&lt;/code&gt;（本机的IP），此时如果调用后端接口，可能会产生跨域，那如何解决呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决跨域的方案&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;jsonp&lt;ul&gt;
+&lt;li&gt;只支持GET请求，JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;cors&lt;ul&gt;
+&lt;li&gt;CORS支持所有类型的HTTP请求，是跨域HTTP请求的根本解决方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Node中间件代理(两次跨域)&lt;ul&gt;
+&lt;li&gt;通过同源策略对服务器不加限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Nginx反向代理&lt;ul&gt;
+&lt;li&gt;通过同源策略对服务器不加限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;日常工作中，生产环境用得比较多的跨域方案是cors和nginx反向代理。&lt;br&gt;本地项目中调试用的最多的就是 node 代理，当然像 nginx、charles（抓包工具）做代理也可以，只要你会配置。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端框架" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Vue" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue/"/>
+    
+    
+      <category term="Vue教程" scheme="https://xinyufeng.net/tags/Vue%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue Antd Admin 跨域代理配置</title>
     <link href="https://xinyufeng.net/2022/04/07/Vue-Antd-Admin-%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"/>
     <id>https://xinyufeng.net/2022/04/07/Vue-Antd-Admin-跨域代理配置/</id>
     <published>2022-04-07T05:07:19.000Z</published>
-    <updated>2022-04-07T08:52:39.136Z</updated>
+    <updated>2022-04-08T02:02:07.405Z</updated>
     
     <content type="html"><![CDATA[<ol><li>修改文件 <code>src\services\api.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨域代理前缀</span></span><br><span class="line"><span class="keyword">const</span> API_PROXY_PREFIX=<span class="string">'/adminapi'</span></span><br><span class="line"><span class="keyword">const</span> BASE_URL = process.env.NODE_ENV === <span class="string">'production'</span> ? process.env.VUE_APP_API_BASE_URL : API_PROXY_PREFIX</span><br><span class="line"><span class="comment">//const BASE_URL = process.env.VUE_APP_API_BASE_URL</span></span><br></pre></td></tr></table></figure><ol start="2"><li>修改文件<code>vue.config.js</code></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/adminapi'</span>: &#123; <span class="comment">//此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致</span></span><br><span class="line">        target: process.env.VUE_APP_API_BASE_URL,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">'^/adminapi'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后重启<code>yarn serve</code></p>]]></content>
     
@@ -42,9 +86,9 @@
       <category term="Vue" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue/"/>
     
     
-      <category term="教程" scheme="https://xinyufeng.net/tags/%E6%95%99%E7%A8%8B/"/>
+      <category term="Vue教程" scheme="https://xinyufeng.net/tags/Vue%E6%95%99%E7%A8%8B/"/>
     
-      <category term="技巧" scheme="https://xinyufeng.net/tags/%E6%8A%80%E5%B7%A7/"/>
+      <category term="Vue技巧" scheme="https://xinyufeng.net/tags/Vue%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -562,29 +606,6 @@
     
     
       <category term="MySQL语句" scheme="https://xinyufeng.net/tags/MySQL%E8%AF%AD%E5%8F%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux服务器性能查看常用命令</title>
-    <link href="https://xinyufeng.net/2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://xinyufeng.net/2021/08/03/Linux服务器性能查看常用命令/</id>
-    <published>2021-08-03T06:43:41.000Z</published>
-    <updated>2021-08-03T06:59:57.707Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="实时显示系统中各个进程的资源占用状况"><a href="#实时显示系统中各个进程的资源占用状况" class="headerlink" title="实时显示系统中各个进程的资源占用状况"></a>实时显示系统中各个进程的资源占用状况</h2><p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</p><p><a href="https://www.runoob.com/linux/linux-comm-top.html" target="_blank" rel="noopener">详情</a></p><a id="more"></a><h2 id="显示系统内存的使用情况"><a href="#显示系统内存的使用情况" class="headerlink" title="显示系统内存的使用情况"></a>显示系统内存的使用情况</h2><p>free 命令显示系统内存的使用情况，包括物理内存、交换内存(swap)和内核缓冲区内存</p><p><a href="https://www.runoob.com/linux/linux-comm-free.html" target="_blank" rel="noopener">详情</a></p><h2 id="显示目前文件系统磁盘使用情况统计"><a href="#显示目前文件系统磁盘使用情况统计" class="headerlink" title="显示目前文件系统磁盘使用情况统计"></a>显示目前文件系统磁盘使用情况统计</h2><p>Linux df（英文全拼：disk free） 命令用于显示目前在 Linux 系统上的文件系统磁盘使用情况统计。</p><p><a href="https://www.runoob.com/linux/linux-comm-df.html" target="_blank" rel="noopener">详情</a></p><h2 id="展现给定时间间隔的服务器的状态值"><a href="#展现给定时间间隔的服务器的状态值" class="headerlink" title="展现给定时间间隔的服务器的状态值"></a>展现给定时间间隔的服务器的状态值</h2><p>vmstat命令是最常见的Linux/Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。</p><h2 id="获取主机运行时间和查询系统负载信息"><a href="#获取主机运行时间和查询系统负载信息" class="headerlink" title="获取主机运行时间和查询系统负载信息"></a>获取主机运行时间和查询系统负载信息</h2><p>uptime命令主要用于获取主机运行时间和查询linux系统负载等信息</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;实时显示系统中各个进程的资源占用状况&quot;&gt;&lt;a href=&quot;#实时显示系统中各个进程的资源占用状况&quot; class=&quot;headerlink&quot; title=&quot;实时显示系统中各个进程的资源占用状况&quot;&gt;&lt;/a&gt;实时显示系统中各个进程的资源占用状况&lt;/h2&gt;&lt;p&gt;top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.runoob.com/linux/linux-comm-top.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;详情&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xinyufeng.net/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="Linux命令" scheme="https://xinyufeng.net/tags/Linux%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
