@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-08T02:02:03.093Z</updated>
+  <updated>2022-04-12T07:52:18.825Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器 Cookie 的使用</title>
+    <link href="https://xinyufeng.net/2022/04/12/%E6%B5%8F%E8%A7%88%E5%99%A8-Cookie-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xinyufeng.net/2022/04/12/浏览器-Cookie-的使用/</id>
+    <published>2022-04-12T07:31:11.000Z</published>
+    <updated>2022-04-12T07:52:18.825Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Cookie介绍"><a href="#Cookie介绍" class="headerlink" title="Cookie介绍"></a>Cookie介绍</h2><p>主要用于存储访问过的网站数据，把浏览器的信息存储到本地电脑中，实现客户端和服务器端的通讯。</p><h2 id="Cookie特点"><a href="#Cookie特点" class="headerlink" title="Cookie特点"></a>Cookie特点</h2><ul><li>以文本形式保存(.txt)</li><li>Cookie存储信息不安全（不能存放重要的信息）</li><li>Cookie中有域（domain）和路径的概念,浏览器是一个比较安全的环境，所以不同的域之间不能直接访问（js的同源策略限制）</li></ul><a id="more"></a><h2 id="Cookie的常用属性"><a href="#Cookie的常用属性" class="headerlink" title="Cookie的常用属性"></a>Cookie的常用属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Name：cookie的名字(键)</span><br><span class="line">Value：cookie存放的值</span><br><span class="line">Expires：指cookie过期的时间（该时间为世界时间  UTC时间）也称为格林威治时间</span><br><span class="line">Max-Age: 指cookie最大的存活有效期（单位：秒）</span><br><span class="line">Domain: 指的是cookie当前的域</span><br><span class="line">Path:指cookie当前的路径</span><br><span class="line">Size: 指cookie存放的大小</span><br><span class="line">Secure: 指cooke的安全属性</span><br></pre></td></tr></table></figure><h2 id="JavaScript操作Cookie"><a href="#JavaScript操作Cookie" class="headerlink" title="JavaScript操作Cookie"></a>JavaScript操作Cookie</h2><ol><li>document.cookie 属性创建、读取、删除 cookie</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">'name=Peak'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie);</span><br></pre></td></tr></table></figure><ol start="2"><li>设置cookie失效时间</li></ol><p>设置一个10分钟后失效的Cookie</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name, value, expire</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> expires = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() + loginRes.data.expire * <span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">document</span>.cookie = <span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>;expires=<span class="subst">$&#123;expires&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">setCookie(<span class="string">'name'</span>, <span class="string">'Peak'</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure><blockquote><p>注意：过期时间是格林威治时间（UTC时间）</p></blockquote><ol start="3"><li>提前清除cookie</li></ol><p>把过期时间设置为小于当前时间即可</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setCookie(<span class="string">'name'</span>, <span class="string">'Peak'</span>, <span class="number">-1</span>);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Cookie介绍&quot;&gt;&lt;a href=&quot;#Cookie介绍&quot; class=&quot;headerlink&quot; title=&quot;Cookie介绍&quot;&gt;&lt;/a&gt;Cookie介绍&lt;/h2&gt;&lt;p&gt;主要用于存储访问过的网站数据，把浏览器的信息存储到本地电脑中，实现客户端和服务器端的通讯。&lt;/p&gt;
+&lt;h2 id=&quot;Cookie特点&quot;&gt;&lt;a href=&quot;#Cookie特点&quot; class=&quot;headerlink&quot; title=&quot;Cookie特点&quot;&gt;&lt;/a&gt;Cookie特点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;以文本形式保存(.txt)&lt;/li&gt;
+&lt;li&gt;Cookie存储信息不安全（不能存放重要的信息）&lt;/li&gt;
+&lt;li&gt;Cookie中有域（domain）和路径的概念,浏览器是一个比较安全的环境，所以不同的域之间不能直接访问（js的同源策略限制）&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="前端开发" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="JavaScript" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JavaScript/"/>
+    
+    
+      <category term="JS方法" scheme="https://xinyufeng.net/tags/JS%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="JS技巧" scheme="https://xinyufeng.net/tags/JS%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue 中的代理proxy配置</title>
@@ -572,40 +603,6 @@
     
     
       <category term="Blob" scheme="https://xinyufeng.net/tags/Blob/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL 数据库保留最近7天数据备份</title>
-    <link href="https://xinyufeng.net/2021/08/05/MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%9D%E7%95%99%E6%9C%80%E8%BF%917%E5%A4%A9%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/"/>
-    <id>https://xinyufeng.net/2021/08/05/MySQL-数据库保留最近7天数据备份/</id>
-    <published>2021-08-05T07:45:18.000Z</published>
-    <updated>2021-08-05T08:07:30.318Z</updated>
-    
-    <content type="html"><![CDATA[<p>为了防止数据丢失，我们会对数据库进行备份，下面介绍在Linux系统下如何定时备份数据库并保留最近7天的数据备份</p><p>参数准备：</p><ul><li>host:<code>127.0.0.1</code></li><li>数据库用户名:<code>root</code></li><li>数据库密码:<code>123456</code></li><li>数据库名称:<code>test</code></li><li>数据库备份目录：<code>/sqlbackup</code></li><li>数据库备份格式：<code>test_年月日_时分秒.sql</code></li></ul><p>首先写一个命令脚本 <code>data_backup.sh</code></p><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"><span class="comment"># 数据库备份</span></span><br><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除七天前的数据备份</span></span><br><span class="line">find /sqlbackup -mtime +7 -name <span class="string">"test*.sql"</span> -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line"><span class="comment"># 数据库备份</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysqldump  -h127.0.0.1 -uroot -p123456 <span class="built_in">test</span>  &gt; /sqlbackup/test_$(date +%Y%m%d_%H%M%S).sql</span><br></pre></td></tr></table></figure><p>脚步我们暂时放在<code>/</code>目录</p><p>然后写定时任务</p><p>如果是用root用户执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br></pre></td></tr></table></figure><p>如果是用www用户执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -uwww -e</span></span><br></pre></td></tr></table></figure><p>每天凌晨0点执行一次</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 * * * /data_backup.sh &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为了防止数据丢失，我们会对数据库进行备份，下面介绍在Linux系统下如何定时备份数据库并保留最近7天的数据备份&lt;/p&gt;
-&lt;p&gt;参数准备：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;host:&lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库用户名:&lt;code&gt;root&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库密码:&lt;code&gt;123456&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库名称:&lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库备份目录：&lt;code&gt;/sqlbackup&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库备份格式：&lt;code&gt;test_年月日_时分秒.sql&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;首先写一个命令脚本 &lt;code&gt;data_backup.sh&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
-    
-    
-      <category term="MySQL语句" scheme="https://xinyufeng.net/tags/MySQL%E8%AF%AD%E5%8F%A5/"/>
     
   </entry>
   
