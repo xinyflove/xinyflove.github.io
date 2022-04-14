@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2022/04/14/AntD-Vue-table-设置rowClassName不生效的问题/">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2022/04/14/Antd-Vue-table-设置rowClassName不生效的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Peak Xin">
@@ -331,7 +331,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/04/14/AntD-Vue-table-设置rowClassName不生效的问题/" itemprop="url">AntD Vue table 设置rowClassName不生效的问题</a></h1>
+                <a class="post-title-link" href="/2022/04/14/Antd-Vue-table-设置rowClassName不生效的问题/" itemprop="url">Antd Vue table 设置rowClassName不生效的问题</a></h1>
         
 
         <div class="post-meta">
@@ -395,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2022/04/14/AntD-Vue-table-设置rowClassName不生效的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/04/14/AntD-Vue-table-设置rowClassName不生效的问题/" itemprop="commentCount"></span>
+                <a href="/2022/04/14/Antd-Vue-table-设置rowClassName不生效的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/04/14/Antd-Vue-table-设置rowClassName不生效的问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,13 +456,13 @@
 
       
         
-          <p>使用 AntD Vue table 利用 <code>rowClassName</code> 自定义带斑马纹的表格，设置后并未生效</p>
+          <p>使用 Antd Vue table 利用 <code>rowClassName</code> 自定义带斑马纹的表格，设置后并未生效</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;a-table</span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"ant-table-striped"</span></span><br><span class="line">    size=<span class="string">"middle"</span></span><br><span class="line">    :columns=<span class="string">"columns"</span></span><br><span class="line">    :dataSource=<span class="string">"data"</span></span><br><span class="line">    :rowClassName=<span class="string">"(_record, index) =&gt; (index % 2 === 1 ? 'table-striped' : null)"</span></span><br><span class="line">    bordered</span><br><span class="line">  /&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped lang=&quot;less&quot;&gt;</span><br><span class="line">.ant-table-striped .table-striped td &#123;</span><br><span class="line">  background-color: #fafafa;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 <p>原因是这样的样式不能放在<code>scoped</code>中，应写在全局样式中</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2022/04/14/AntD-Vue-table-设置rowClassName不生效的问题/#more" rel="contents">
+            <a class="btn" href="/2022/04/14/Antd-Vue-table-设置rowClassName不生效的问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
