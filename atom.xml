@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-14T08:46:30.711Z</updated>
+  <updated>2022-04-18T01:48:19.624Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL 导入数据</title>
+    <link href="https://xinyufeng.net/2022/04/18/MySQL-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/"/>
+    <id>https://xinyufeng.net/2022/04/18/MySQL-导入数据/</id>
+    <published>2022-04-18T01:42:05.000Z</published>
+    <updated>2022-04-18T01:48:19.624Z</updated>
+    
+    <content type="html"><![CDATA[<p>给大家介绍几种常用简单的MySQL导入数据命令</p><ol><li>MySQL命令导入</li></ol><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -用户名 -p 表名 &lt; /要导入的文件路径.sql </span></span><br><span class="line">Enter password: 输入密码</span><br></pre></td></tr></table></figure><p>实例：</p><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -root -p test &lt; /usr/local/src/test.sql </span></span><br><span class="line">Enter password: 123123</span><br></pre></td></tr></table></figure><p>以上命令将将备份的整个数据库 test.sql 导入。</p><ol start="2"><li>source 命令导入</li></ol><p>source 命令导入数据库需要先登录到数库终端：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database db1;      <span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; use db1;                  <span class="comment"># 使用已创建的数据库 </span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8;           <span class="comment"># 设置编码</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span>/usr/<span class="built_in">local</span>/src/db1.sql  <span class="comment"># 导入备份数据库</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给大家介绍几种常用简单的MySQL导入数据命令&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MySQL命令导入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用 mysql 命令导入语法格式为：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+    
+    
+      <category term="MySQL命令" scheme="https://xinyufeng.net/tags/MySQL%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>Antd Vue table 设置rowClassName不生效的问题</title>
@@ -579,32 +611,6 @@
     
     
       <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021-08-13之后 Github新安全提交措施处理</title>
-    <link href="https://xinyufeng.net/2021/09/01/2021-08-13%E4%B9%8B%E5%90%8E-Github%E6%96%B0%E5%AE%89%E5%85%A8%E6%8F%90%E4%BA%A4%E6%8E%AA%E6%96%BD%E5%A4%84%E7%90%86/"/>
-    <id>https://xinyufeng.net/2021/09/01/2021-08-13之后-Github新安全提交措施处理/</id>
-    <published>2021-09-01T07:29:37.000Z</published>
-    <updated>2021-09-15T07:39:12.900Z</updated>
-    
-    <content type="html"><![CDATA[<p>往GitHub仓库 <code>push</code> 代码时，一直报如下错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</span><br><span class="line">remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.</span><br><span class="line">fatal: unable to access &apos;https://github.com/&lt;user&gt;/&lt;repo&gt;/&apos;: The requested URL returned error: 403</span><br></pre></td></tr></table></figure><p>原来在2021年8月13日之后，如果你还用账户密码来操作 Github 上的仓库，就会收到以上警告</p><p>现在提交GitHub仓库代码必须使用个人访问令牌（personal access token），就是把你的密码替换成token</p><p>至于为什么要改成使用token，肯定是为了安全角度考虑，具体说明参考官网文档<a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations" target="_blank" rel="noopener">https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations</a></p><a id="more"></a><p>获取Token步骤</p><ol><li><p>在个人设置页面找到<a href="https://github.com/settings/profile" target="_blank" rel="noopener">Settings</a></p></li><li><p>选择开发者设置<a href="https://github.com/settings/apps" target="_blank" rel="noopener">Developer setting</a></p></li><li><p>选择个人访问令牌<a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal access tokens</a>，然后选中生成令牌「Generate new token」</p></li><li><p>设置<code>token</code>的有效期，访问权限等</p><ul><li>选择要授予此令牌<code>token</code>的范围或权限</li><li>要使用<code>token</code>从命令行访问仓库，请选择repo</li><li>要使用<code>token</code>从命令行删除仓库，请选择<code>delete_repo</code></li><li>其他根据需要进行勾选</li></ul></li><li><p>生成令牌 「Generate token」</p></li></ol><blockquote><p>注意：记得把你的<code>token</code>保存下来，因为你再次刷新网页的时候，你已经没有办法看到它了。</p></blockquote><ol start="6"><li>之后用自己生成的<code>token</code>登录，把上面生成的<code>token</code>粘贴到输入密码的位置，然后成功<code>push</code>代码</li></ol><p>也可以 把<code>token</code>直接添加远程仓库链接中，这样就可以避免同一个仓库每次提交代码都要输入<code>token</code>了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git</span><br></pre></td></tr></table></figure><p><code>&lt;your_token&gt;</code>：换成你自己得到的token<br><code>&lt;USERNAME&gt;</code>：是你自己github的用户名<br><code>&lt;REPO&gt;</code>：是你的仓库名称 </p><p>例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://ghp_xxxxxxx@github.com/username/pero.git</span><br></pre></td></tr></table></figure><p>这样再使用终端 <code>git push</code> 就成功啦</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;往GitHub仓库 &lt;code&gt;push&lt;/code&gt; 代码时，一直报如下错误&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fatal: unable to access &amp;apos;https://github.com/&amp;lt;user&amp;gt;/&amp;lt;repo&amp;gt;/&amp;apos;: The requested URL returned error: 403&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;原来在2021年8月13日之后，如果你还用账户密码来操作 Github 上的仓库，就会收到以上警告&lt;/p&gt;
-&lt;p&gt;现在提交GitHub仓库代码必须使用个人访问令牌（personal access token），就是把你的密码替换成token&lt;/p&gt;
-&lt;p&gt;至于为什么要改成使用token，肯定是为了安全角度考虑，具体说明参考官网文档&lt;a href=&quot;https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="版本管理" scheme="https://xinyufeng.net/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="GitHub" scheme="https://xinyufeng.net/tags/GitHub/"/>
     
   </entry>
   
