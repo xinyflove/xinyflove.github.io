@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-18T01:48:19.624Z</updated>
+  <updated>2022-04-24T02:21:23.353Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xinyufeng.net/2022/04/18/MySQL-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/"/>
     <id>https://xinyufeng.net/2022/04/18/MySQL-导入数据/</id>
     <published>2022-04-18T01:42:05.000Z</published>
-    <updated>2022-04-18T01:48:19.624Z</updated>
+    <updated>2022-04-24T02:21:23.353Z</updated>
     
-    <content type="html"><![CDATA[<p>给大家介绍几种常用简单的MySQL导入数据命令</p><ol><li>MySQL命令导入</li></ol><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -用户名 -p 表名 &lt; /要导入的文件路径.sql </span></span><br><span class="line">Enter password: 输入密码</span><br></pre></td></tr></table></figure><p>实例：</p><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -root -p test &lt; /usr/local/src/test.sql </span></span><br><span class="line">Enter password: 123123</span><br></pre></td></tr></table></figure><p>以上命令将将备份的整个数据库 test.sql 导入。</p><ol start="2"><li>source 命令导入</li></ol><p>source 命令导入数据库需要先登录到数库终端：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database db1;      <span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; use db1;                  <span class="comment"># 使用已创建的数据库 </span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8;           <span class="comment"># 设置编码</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span>/usr/<span class="built_in">local</span>/src/db1.sql  <span class="comment"># 导入备份数据库</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>给大家介绍几种常用简单的MySQL导入数据命令</p><ol><li>MySQL命令导入</li></ol><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -u用户名 -p 表名 &lt; /要导入的文件路径.sql </span></span><br><span class="line">Enter password: 输入密码</span><br></pre></td></tr></table></figure><p>实例：</p><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -uroot -p test &lt; /usr/local/src/test.sql </span></span><br><span class="line">Enter password: 123123</span><br></pre></td></tr></table></figure><p>以上命令将将备份的整个数据库 test.sql 导入。</p><ol start="2"><li>source 命令导入</li></ol><p>source 命令导入数据库需要先登录到数库终端：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database db1;      <span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; use db1;                  <span class="comment"># 使用已创建的数据库 </span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8;           <span class="comment"># 设置编码</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span>/usr/<span class="built_in">local</span>/src/db1.sql  <span class="comment"># 导入备份数据库</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
