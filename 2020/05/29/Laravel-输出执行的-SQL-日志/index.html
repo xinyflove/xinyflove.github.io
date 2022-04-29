@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="我们在使用Laravel框架时，免不了要打印一下程序中SQL的执行情况 临时输出执行的 SQL 日志12345DB::enableQueryLog();// 开启日志支持// 程序中执行SQL的代码dd(DB::getQueryLog());// 输出执行的 SQL 日志">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-25T07:50:05.025Z">
+<meta property="og:updated_time" content="2022-04-29T07:47:00.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel 输出执行的 SQL 日志">
 <meta name="twitter:description" content="我们在使用Laravel框架时，免不了要打印一下程序中SQL的执行情况 临时输出执行的 SQL 日志12345DB::enableQueryLog();// 开启日志支持// 程序中执行SQL的代码dd(DB::getQueryLog());// 输出执行的 SQL 日志">
@@ -464,7 +464,7 @@
 <h2 id="临时输出执行的-SQL-日志"><a href="#临时输出执行的-SQL-日志" class="headerlink" title="临时输出执行的 SQL 日志"></a>临时输出执行的 SQL 日志</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DB::enableQueryLog();<span class="comment">// 开启日志支持</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序中执行SQL的代码</span></span><br><span class="line"></span><br><span class="line">dd(DB::getQueryLog());<span class="comment">// 输出执行的 SQL 日志</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="SQL-日志存放到log文件中"><a href="#SQL-日志存放到log文件中" class="headerlink" title="SQL 日志存放到log文件中"></a>SQL 日志存放到log文件中</h2><ol>
-<li>在 <code>app/Providers/EventServicePorvider.php</code> 文件中 添加要注册的事件</li>
+<li>在 <code>app/Providers/EventServiceProvider.php</code> 文件中 添加要注册的事件</li>
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The event listener mappings for the application.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@var</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">protected</span> $listen = [</span><br><span class="line">    <span class="comment">//........</span></span><br><span class="line">    <span class="string">'Illuminate\Database\Events\QueryExecuted'</span> =&gt; [</span><br><span class="line">        <span class="string">'App\Listeners\QueryListener'</span>,</span><br><span class="line">    ],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <ol start="2">
