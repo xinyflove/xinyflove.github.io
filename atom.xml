@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-04-28T05:29:31.734Z</updated>
+  <updated>2022-04-29T05:33:28.324Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel 缓存操作</title>
+    <link href="https://xinyufeng.net/2022/04/29/Laravel-%E7%BC%93%E5%AD%98%E6%93%8D%E4%BD%9C/"/>
+    <id>https://xinyufeng.net/2022/04/29/Laravel-缓存操作/</id>
+    <published>2022-04-29T03:18:42.000Z</published>
+    <updated>2022-04-29T05:33:28.324Z</updated>
+    
+    <content type="html"><![CDATA[<p>Laravel为不同的缓存系统封装了统一的API，缓存配置文件<code>./config/cache.php</code></p><p><strong>主要的缓存类型(驱动)</strong></p><ul><li>file - 文件，默认使用</li><li>memcached - memcached</li><li>redis - redis</li><li>database - 数据库</li></ul><p>默认laravel支持缓存介质：<code>apc</code>, <code>array</code>, <code>database</code>, <code>file</code>, <code>memcached</code>, <code>redis</code></p><p>在配置文件<code>.env</code>中修改驱动类型</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CACHE_DRIVER=file</span><br></pre></td></tr></table></figure><h2 id="设置缓存"><a href="#设置缓存" class="headerlink" title="设置缓存"></a>设置缓存</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Cache</span>; <span class="comment">// Cache门面</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加 如果key不存在则添加成功，如果key存在，返回false</span></span><br><span class="line">Cache::add(<span class="string">'key'</span>, <span class="string">'value'</span>, $seconds);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 不管key值是否存，都可以设置成功</span></span><br><span class="line">Cache::put(<span class="string">'key'</span>, <span class="string">'value'</span>, $seconds);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置永久缓存</span></span><br><span class="line">Cache::forever(<span class="string">'key'</span>, <span class="string">'value'</span>);</span><br></pre></td></tr></table></figure><blockquote><p>文件所生成的地方在 <code>./storage/framework/cache/data/</code> 目录下</p></blockquote><h2 id="获取缓存数据"><a href="#获取缓存数据" class="headerlink" title="获取缓存数据"></a>获取缓存数据</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$value = Cache::get(<span class="string">'key'</span>);</span><br><span class="line"></span><br><span class="line">$value = Cache::get(<span class="string">'key'</span>, <span class="string">'default'</span>);</span><br><span class="line"></span><br><span class="line">$value = Cache::get(<span class="string">'key'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取的同时并存储</span></span><br><span class="line">$value = Cache::remember(<span class="string">'users'</span>, $minutes, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'key不存的时候返回的数据'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="检查缓存项是否存在"><a href="#检查缓存项是否存在" class="headerlink" title="检查缓存项是否存在"></a>检查缓存项是否存在</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查缓存的key值是否存在，存在返回true否则返回false</span></span><br><span class="line">Cache::has(<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure><h2 id="删除缓存数据"><a href="#删除缓存数据" class="headerlink" title="删除缓存数据"></a>删除缓存数据</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先获取再删除</span></span><br><span class="line">$value = Cache::pull(<span class="string">'key'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除单个</span></span><br><span class="line">Cache::forget(<span class="string">'key'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除所有的缓存</span></span><br><span class="line">Cache::flush();</span><br></pre></td></tr></table></figure><h2 id="缓存辅助函数"><a href="#缓存辅助函数" class="headerlink" title="缓存辅助函数"></a>缓存辅助函数</h2><p>除了使用 <code>Cache</code> 门面或缓存契约，还可以使用全局的 <code>cache()</code> 函数来通过缓存获取和存储数据。当带有一个字符串参数的 <code>cache()</code> 函数被调用时，会返回给定键对应的缓存值（取值）：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$value = cache(<span class="string">'key'</span>);</span><br></pre></td></tr></table></figure><p>如果你提供了键值对数组和一个过期时间给该函数，则会在指定的有效期内存储缓存值（存储）：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cache([<span class="string">'key'</span> =&gt; <span class="string">'value'</span>], $seconds);</span><br><span class="line"></span><br><span class="line">cache([<span class="string">'key'</span> =&gt; <span class="string">'value'</span>], now()-&gt;addMinutes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure><p><code>cache()</code> 函数不带任何参数被调用时会返回 Illuminate\Contracts\Cache\Factory 实现的实例，从而允许你调用其它缓存方法：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cache()-&gt;remember(<span class="string">'users'</span>, $seconds, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> DB::table(<span class="string">'users'</span>)-&gt;get();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Laravel为不同的缓存系统封装了统一的API，缓存配置文件&lt;code&gt;./config/cache.php&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主要的缓存类型(驱动)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;file - 文件，默认使用&lt;/li&gt;
+&lt;li&gt;memcached - memcached&lt;/li&gt;
+&lt;li&gt;redis - redis&lt;/li&gt;
+&lt;li&gt;database - 数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;默认laravel支持缓存介质：&lt;code&gt;apc&lt;/code&gt;, &lt;code&gt;array&lt;/code&gt;, &lt;code&gt;database&lt;/code&gt;, &lt;code&gt;file&lt;/code&gt;, &lt;code&gt;memcached&lt;/code&gt;, &lt;code&gt;redis&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在配置文件&lt;code&gt;.env&lt;/code&gt;中修改驱动类型&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Laravel" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Laravel/"/>
+    
+    
+      <category term="Laravel技巧" scheme="https://xinyufeng.net/tags/Laravel%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel 表单验证 validate 规则参数</title>
@@ -568,35 +601,6 @@
       
         &lt;p&gt;&lt;code&gt;Order&lt;/code&gt; 模型&lt;/p&gt;
 &lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;li
-      
-    
-    </summary>
-    
-      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="Yii" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Yii/"/>
-    
-    
-      <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Yii2模型自动生成新增和修改时间</title>
-    <link href="https://xinyufeng.net/2021/10/18/Yii2%E6%A8%A1%E5%9E%8B%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%B0%E5%A2%9E%E5%92%8C%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/"/>
-    <id>https://xinyufeng.net/2021/10/18/Yii2模型自动生成新增和修改时间/</id>
-    <published>2021-10-18T10:50:09.000Z</published>
-    <updated>2021-10-18T10:53:01.387Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用 <code>timeStampBehavior</code></p><p>这个行为支持在 <code>Active Record</code> 存储时自动更新它的时间戳属性</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">models</span>\<span class="title">User</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">ActiveRecord</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">behaviors</span>\<span class="title">TimestampBehavior</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">ActiveRecord</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">behaviors</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            [</span><br><span class="line">                <span class="string">'class'</span> =&gt; TimestampBehavior::className(),</span><br><span class="line">                <span class="string">'attributes'</span> =&gt; [</span><br><span class="line">                    ActiveRecord::EVENT_BEFORE_INSERT =&gt; [<span class="string">'created_at'</span>, <span class="string">'updated_at'</span>],</span><br><span class="line">                    ActiveRecord::EVENT_BEFORE_UPDATE =&gt; [<span class="string">'updated_at'</span>],</span><br><span class="line">                ],</span><br><span class="line">                <span class="comment">// if you're using datetime instead of UNIX timestamp:</span></span><br><span class="line">                <span class="comment">// 'value' =&gt; new Expression('NOW()'),</span></span><br><span class="line">            ],</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上指定的行为数组：</p><p>当记录插入时，行为将当前时间戳赋值给 <code>created_at</code> 和 <code>updated_at</code> 属性；<br>当记录更新时，行为将当前时间戳赋值给 <code>updated_at</code> 属性。</p><p><code>TimestampBehavior</code> 行为还提供了一个有用的方法 <code>touch()</code>， 这个方法能将当前时间戳赋值给指定属性并保存到数据库：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user-&gt;touch(<span class="string">'login_time'</span>);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;使用 &lt;code&gt;timeStampBehavior&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这个行为支持在 &lt;code&gt;Active Record&lt;/code&gt; 存储时自动更新它的时间戳属性&lt;/p&gt;
-&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
       
     
     </summary>
