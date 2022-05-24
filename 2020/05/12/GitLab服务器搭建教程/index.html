@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="安装前准备 VMWare虚拟机 版本推荐CentOS7（我当前使用的版本是CentOS7） 配置好Linux的IP地址 保证Gitlab可用运行内存大于4G(否则虚拟机会变得非常消耗磁盘读写) 安装依赖软件  1yum -y install policycoreutils openssh-server openssh-clients postfix 设置postfix开机自启，并启动，postfi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-25T07:50:05.022Z">
+<meta property="og:updated_time" content="2022-05-24T08:24:39.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitLab服务器搭建教程">
 <meta name="twitter:description" content="安装前准备 VMWare虚拟机 版本推荐CentOS7（我当前使用的版本是CentOS7） 配置好Linux的IP地址 保证Gitlab可用运行内存大于4G(否则虚拟机会变得非常消耗磁盘读写) 安装依赖软件  1yum -y install policycoreutils openssh-server openssh-clients postfix 设置postfix开机自启，并启动，postfi">
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  711
+                  781
                 </span>
               
 
@@ -496,7 +496,13 @@
 <p>如果访问的时候报502错误，修改权限</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 755 /var/<span class="built_in">log</span>/gitlab</span><br></pre></td></tr></table></figure>
 <h2 id="修改root密码"><a href="#修改root密码" class="headerlink" title="修改root密码"></a>修改root密码</h2><p>第一次访问时，会自动跳转到修改root密码的界面，填写好密码确认即可。愉快地开始管理你的项目吧！</p>
-
+<h2 id="GitLab邮箱配置"><a href="#GitLab邮箱配置" class="headerlink" title="GitLab邮箱配置"></a>GitLab邮箱配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.gitlab.com/omnibus/settings/smtp.html" target="_blank" rel="noopener">参考官方文档</a></p>
+<p><strong>重启配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-ctl reconfigure</span></span><br><span class="line"><span class="comment"># gitlab-ctl restart</span></span><br></pre></td></tr></table></figure>
+<p><strong>进入控制台（等待进入控制台）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-rails console</span></span><br></pre></td></tr></table></figure>
+<h1 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Loading production environment (Rails 6.1.4.7)</span><br><span class="line">irb(main):001:0&gt;Notify.test_email(<span class="string">"接收邮箱"</span>,<span class="string">"标题"</span>,<span class="string">"内容"</span>).deliver_now</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -809,7 +815,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装GitLab"><span class="nav-number">2.</span> <span class="nav-text">安装GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载GitLab安装包"><span class="nav-number">2.1.</span> <span class="nav-text">下载GitLab安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改GitLab配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改GitLab配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问GitLab页面"><span class="nav-number">3.</span> <span class="nav-text">访问GitLab页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改root密码"><span class="nav-number">4.</span> <span class="nav-text">修改root密码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装GitLab"><span class="nav-number">2.</span> <span class="nav-text">安装GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载GitLab安装包"><span class="nav-number">2.1.</span> <span class="nav-text">下载GitLab安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改GitLab配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改GitLab配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问GitLab页面"><span class="nav-number">3.</span> <span class="nav-text">访问GitLab页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改root密码"><span class="nav-number">4.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab邮箱配置"><span class="nav-number">5.</span> <span class="nav-text">GitLab邮箱配置</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#执行测试"><span class="nav-number"></span> <span class="nav-text">执行测试</span></a></li></div>
             
 
           </div>
