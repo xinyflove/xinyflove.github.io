@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content=".table {     width: 100%;     margin-top: 5%; } .table ul {     padding: 0; } .table ul li {     float: left;     width: 31%;     height: 100px;     list-style-type: none !important;     border: 1px">
+<meta name="description" content="常用命令查找文件名中包含特定字符的文件使用格式： 1find 目录 -name &amp;apos;*特定字符串*&amp;apos; 如： 123# find ./ -name &apos;*2022-08-10*&apos;# find ./ -name &apos;2022-08-10*&apos;# find ./ -name &apos;*2022-08-10&apos; 查找目录下文件内容包含特定字符串的所有文件方式1 grep 命令 Linux grep 命">
 <meta name="keywords" content="Peak Xin, 博客, PHP博客, 技术博客, PHP, Laravel">
 <meta property="og:type" content="website">
-<meta property="og:title" content="开发文档">
-<meta property="og:url" content="https://xinyufeng.net/documents/index.html">
+<meta property="og:title" content="Linux 文档">
+<meta property="og:url" content="https://xinyufeng.net/documents/linux/index.html">
 <meta property="og:site_name" content="Peak Xin">
-<meta property="og:description" content=".table {     width: 100%;     margin-top: 5%; } .table ul {     padding: 0; } .table ul li {     float: left;     width: 31%;     height: 100px;     list-style-type: none !important;     border: 1px">
+<meta property="og:description" content="常用命令查找文件名中包含特定字符的文件使用格式： 1find 目录 -name &amp;apos;*特定字符串*&amp;apos; 如： 123# find ./ -name &apos;*2022-08-10*&apos;# find ./ -name &apos;2022-08-10*&apos;# find ./ -name &apos;*2022-08-10&apos; 查找目录下文件内容包含特定字符串的所有文件方式1 grep 命令 Linux grep 命">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-08-10T08:22:39.545Z">
+<meta property="og:updated_time" content="2022-08-10T08:39:53.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开发文档">
-<meta name="twitter:description" content=".table {     width: 100%;     margin-top: 5%; } .table ul {     padding: 0; } .table ul li {     float: left;     width: 31%;     height: 100px;     list-style-type: none !important;     border: 1px">
+<meta name="twitter:title" content="Linux 文档">
+<meta name="twitter:description" content="常用命令查找文件名中包含特定字符的文件使用格式： 1find 目录 -name &amp;apos;*特定字符串*&amp;apos; 如： 123# find ./ -name &apos;*2022-08-10*&apos;# find ./ -name &apos;2022-08-10*&apos;# find ./ -name &apos;*2022-08-10&apos; 查找目录下文件内容包含特定字符串的所有文件方式1 grep 命令 Linux grep 命">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://xinyufeng.net/documents/">
+  <link rel="canonical" href="https://xinyufeng.net/documents/linux/">
 
 
 
 
 
-  <title>开发文档 | Peak Xin</title>
+  <title>Linux 文档 | Peak Xin</title>
   
 
 
@@ -305,7 +305,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">开发文档</h1>
+	<h1 class="post-title" itemprop="name headline">Linux 文档</h1>
 
 
 
@@ -317,35 +317,28 @@
       <div class="post-body">
         
         
-          
-<style>
-.table {
-    width: 100%;
-    margin-top: 5%;
-}
-.table ul {
-    padding: 0;
-}
-.table ul li {
-    float: left;
-    width: 31%;
-    height: 100px;
-    list-style-type: none !important;
-    border: 1px solid #d6d5d5;
-    margin: 1%;
-    text-align: center;
-    line-height: 100px;
-    font-size: 18px;
-}
-.table ul:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-</style>
-
-<div class="table"><ul><li><a href="es6/index.html">ES6 文档</a></li><li><a href="git/index.html">学习 Git 教程</a></li><li><a href="go/index.html">Go 开发文档</a></li><li><a href="javascript/index.html">JavaScript 文档</a></li><li><a href="laravel/index.html">Laravel 开发文档</a></li><li><a href="nodejs/index.html">Nodejs 文档</a></li><li><a href="react/index.html">React 开发文档</a></li><li><a href="shopex/index.html">ShopEX B2B2C 开发文档</a></li><li><a href="webpack/index.html">Webpack 开发文档</a></li><li><a href="wechat/index.html">微信开发文档</a></li>li&gt;<a href="linux/index.html">Linux 文档</a></ul></div>
-
+          <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="查找文件名中包含特定字符的文件"><a href="#查找文件名中包含特定字符的文件" class="headerlink" title="查找文件名中包含特定字符的文件"></a>查找文件名中包含特定字符的文件</h3><p>使用格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find 目录 -name &apos;*特定字符串*&apos;</span><br></pre></td></tr></table></figure>
+<p>如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find ./ -name '*2022-08-10*'</span></span><br><span class="line"><span class="comment"># find ./ -name '2022-08-10*'</span></span><br><span class="line"><span class="comment"># find ./ -name '*2022-08-10'</span></span><br></pre></td></tr></table></figure>
+<h3 id="查找目录下文件内容包含特定字符串的所有文件"><a href="#查找目录下文件内容包含特定字符串的所有文件" class="headerlink" title="查找目录下文件内容包含特定字符串的所有文件"></a>查找目录下文件内容包含特定字符串的所有文件</h3><p><strong>方式1 grep 命令</strong></p>
+<p>Linux <code>grep</code> 命令用于查找文件里符合条件的字符串。<code>grep</code> 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 <code>grep</code> 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 <code>-</code>，则 <code>grep</code> 指令会从标准输入设备读取数据。</p>
+<p>使用格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rn &quot;特定字符串&quot; ./</span><br></pre></td></tr></table></figure>
+<p>如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grep -rn "Peak Xin" *</span></span><br></pre></td></tr></table></figure>
+<p>选项说明：</p>
+<ul>
+<li><code>-r</code>:递归查找</li>
+<li><code>-n</code>:显示行号</li>
+<li><code>-R</code>:查找所有文件包含子目录</li>
+<li><code>-i</code>:忽略大小写</li>
+<li><code>*</code>:表示当前目录所有文件，也可以是某个文件名。</li>
+</ul>
+<p><strong>方式2 find 命令（知道文件的目录）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find ./ -name "*.*" | xargs grep "Peak"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># find . | xargs grep -ri "Peak"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># find . | xargs grep -ri "Peak" -l  #-l 表示只显示文件名</span></span><br></pre></td></tr></table></figure>
+<p><strong>方式3 不知道文件的目录，知道文件的类型</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find / -type f -name "*.txt" | xargs grep "Peak"</span></span><br></pre></td></tr></table></figure>
         
       </div>
       
@@ -363,6 +356,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -383,8 +383,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -533,6 +542,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找文件名中包含特定字符的文件"><span class="nav-number">1.1.</span> <span class="nav-text">查找文件名中包含特定字符的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找目录下文件内容包含特定字符串的所有文件"><span class="nav-number">1.2.</span> <span class="nav-text">查找目录下文件内容包含特定字符串的所有文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
