@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="安装前准备 VMWare虚拟机 版本推荐CentOS7（我当前使用的版本是CentOS7） 配置好Linux的IP地址 保证Gitlab可用运行内存大于4G(否则虚拟机会变得非常消耗磁盘读写) 安装依赖软件  1yum -y install policycoreutils openssh-server openssh-clients postfix 设置postfix开机自启，并启动，postfi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-05-24T08:24:39.217Z">
+<meta property="og:updated_time" content="2022-08-17T01:15:07.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitLab服务器搭建教程">
 <meta name="twitter:description" content="安装前准备 VMWare虚拟机 版本推荐CentOS7（我当前使用的版本是CentOS7） 配置好Linux的IP地址 保证Gitlab可用运行内存大于4G(否则虚拟机会变得非常消耗磁盘读写) 安装依赖软件  1yum -y install policycoreutils openssh-server openssh-clients postfix 设置postfix开机自启，并启动，postfi">
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  781
+                  1.2k
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -502,7 +502,34 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-ctl reconfigure</span></span><br><span class="line"><span class="comment"># gitlab-ctl restart</span></span><br></pre></td></tr></table></figure>
 <p><strong>进入控制台（等待进入控制台）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-rails console</span></span><br></pre></td></tr></table></figure>
-<h1 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Loading production environment (Rails 6.1.4.7)</span><br><span class="line">irb(main):001:0&gt;Notify.test_email(<span class="string">"接收邮箱"</span>,<span class="string">"标题"</span>,<span class="string">"内容"</span>).deliver_now</span><br></pre></td></tr></table></figure>
+<h2 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Loading production environment (Rails 6.1.4.7)</span><br><span class="line">irb(main):001:0&gt;Notify.test_email(<span class="string">"接收邮箱"</span>,<span class="string">"标题"</span>,<span class="string">"内容"</span>).deliver_now</span><br></pre></td></tr></table></figure>
+<h2 id="修改GitLab-SSH-端口"><a href="#修改GitLab-SSH-端口" class="headerlink" title="修改GitLab SSH 端口"></a>修改GitLab SSH 端口</h2><p>使用 SSH 克隆仓库链接 默认端口是 <code>22</code>，修改 <code>vim /etc/gitlab/gitlab.rb</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[<span class="string">'gitlab_shell_ssh_port'</span>] = 2222</span><br></pre></td></tr></table></figure>
+<p>修改后，重置配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-ctl reconfigure</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改-GitLab-域名"><a href="#修改-GitLab-域名" class="headerlink" title="修改 GitLab 域名"></a>修改 GitLab 域名</h2><p>GitLab默认Nginx<code>80</code>端口</p>
+<p><strong>如果机器未占有<code>80</code>端口，可以直接替换成域名，解析后就可以直接访问</strong></p>
+<p>查看当前绑定的域名或者IP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grep "^external_url" /etc/gitlab/gitlab.rb</span></span><br></pre></td></tr></table></figure>
+<p>打开配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/gitlab/gitlab.rb</span></span><br></pre></td></tr></table></figure></p>
+<p>修改成域名访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># external_url 'http://gitlab.yuming.com'</span></span><br></pre></td></tr></table></figure></p>
+<p>重新跑一下配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-ctl reconfigure</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>如果机器80端口以占有，需要修改GitLab端口</strong></p>
+<p>查看默认端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grep "'listen_port" /etc/gitlab/gitlab.rb</span></span><br></pre></td></tr></table></figure></p>
+<p>打开配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/gitlab/gitlab.rb</span></span><br></pre></td></tr></table></figure></p>
+<p>找到取消注释，修改端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx[<span class="string">'listen_port'</span>] = 8086</span><br></pre></td></tr></table></figure></p>
+<p>重新跑一下配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure></p>
+<p>查看Nginx中GitLab配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat ~git/nginx/conf/gitlab-http.conf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###################################</span></span><br><span class="line"><span class="comment">##         configuration         ##</span></span><br><span class="line"><span class="comment">###################################</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123; <span class="comment">## HTTPS server</span></span><br><span class="line">  listen *:8086;</span><br><span class="line">  server_name gitlab.yuming.com;</span><br><span class="line">  ······</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>重启gitlab<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab-ctl restart</span></span><br></pre></td></tr></table></figure></p>
+<p>浏览器访问 <strong>域名:端口</strong></p>
+<p>如果想直接域名不加端口访问，则需要配置反向代理</p>
+<p>在Nginx新增配置文件</p>
+<p><code>/usr/local/nginx/conf/vhost/gitlab.new.com.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name git.pennonedu.com;</span><br><span class="line">    index index.php index.html index.htm default.php default.htm default.html;</span><br><span class="line">    root /www/wwwroot/git.pennonedu.com;</span><br><span class="line">    </span><br><span class="line">    proxy_pass http://127.0.0.1:8086;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">    </span><br><span class="line">    add_header X-Cache <span class="variable">$upstream_cache_status</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Set Nginx Cache</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">set</span> <span class="variable">$static_fileozqOzGtC</span> 0;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="variable">$uri</span> ~* <span class="string">"\.(gif|png|jpg|css|js|woff|woff2)$"</span> )</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="built_in">set</span> <span class="variable">$static_fileozqOzGtC</span> 1;</span><br><span class="line">    	expires 12h;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="variable">$static_fileozqOzGtC</span> = 0 )</span><br><span class="line">    &#123;</span><br><span class="line">      add_header Cache-Control no-cache;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启Nginx，直接可以用域名访问</p>
+
       
     </div>
     
@@ -815,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装GitLab"><span class="nav-number">2.</span> <span class="nav-text">安装GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载GitLab安装包"><span class="nav-number">2.1.</span> <span class="nav-text">下载GitLab安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改GitLab配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改GitLab配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问GitLab页面"><span class="nav-number">3.</span> <span class="nav-text">访问GitLab页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改root密码"><span class="nav-number">4.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab邮箱配置"><span class="nav-number">5.</span> <span class="nav-text">GitLab邮箱配置</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#执行测试"><span class="nav-number"></span> <span class="nav-text">执行测试</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装GitLab"><span class="nav-number">2.</span> <span class="nav-text">安装GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载GitLab安装包"><span class="nav-number">2.1.</span> <span class="nav-text">下载GitLab安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改GitLab配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改GitLab配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问GitLab页面"><span class="nav-number">3.</span> <span class="nav-text">访问GitLab页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改root密码"><span class="nav-number">4.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab邮箱配置"><span class="nav-number">5.</span> <span class="nav-text">GitLab邮箱配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行测试"><span class="nav-number">6.</span> <span class="nav-text">执行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改GitLab-SSH-端口"><span class="nav-number">7.</span> <span class="nav-text">修改GitLab SSH 端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-GitLab-域名"><span class="nav-number">8.</span> <span class="nav-text">修改 GitLab 域名</span></a></li></ol></div>
             
 
           </div>
