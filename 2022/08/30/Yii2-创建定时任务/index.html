@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="在我们项目开发中，需要使用定时任务来完成批处理业务，下面通过Yii2框架来实现定时任务 Yii2框架定时任务代码统一放在 ./console 目录下 简单的定时任务脚步文件首先在console/controller目录下创建一个定时任务控制器TestController.php">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-08-30T07:27:53.952Z">
+<meta property="og:updated_time" content="2022-08-30T07:38:50.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2 创建定时任务">
 <meta name="twitter:description" content="在我们项目开发中，需要使用定时任务来完成批处理业务，下面通过Yii2框架来实现定时任务 Yii2框架定时任务代码统一放在 ./console 目录下 简单的定时任务脚步文件首先在console/controller目录下创建一个定时任务控制器TestController.php">
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  473
+                  573
                 </span>
               
 
@@ -481,6 +481,16 @@
 <blockquote>
 <p>注意：设置参数别名后，使用别名参数用一个横杆（-）链接。</p>
 </blockquote>
+<h2 id="在Linux配置crontab"><a href="#在Linux配置crontab" class="headerlink" title="在Linux配置crontab"></a>在Linux配置crontab</h2><p>执行命令<code>crontab -e</code>，我们以每分钟执行一次为例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * /usr/bin/php /var/www/html/yii2-project/yii <span class="built_in">test</span>/<span class="keyword">do</span> &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<ul>
+<li><code>/usr/bin/php</code> 是php运行文件</li>
+<li><code>/var/www/html/yii2-project/yii</code> 项目目录中的yii 文件</li>
+<li><code>test/do</code> 是执行脚步命令</li>
+<li><code>&gt;/dev/null 2&gt;&amp;1</code> 这么写就行哈，可自行查找</li>
+</ul>
+<p>保存退出即可。</p>
 
       
     </div>
@@ -790,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的定时任务脚步文件"><span class="nav-number">1.</span> <span class="nav-text">简单的定时任务脚步文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递参数"><span class="nav-number">2.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置参数别名"><span class="nav-number">3.</span> <span class="nav-text">设置参数别名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的定时任务脚步文件"><span class="nav-number">1.</span> <span class="nav-text">简单的定时任务脚步文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递参数"><span class="nav-number">2.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置参数别名"><span class="nav-number">3.</span> <span class="nav-text">设置参数别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Linux配置crontab"><span class="nav-number">4.</span> <span class="nav-text">在Linux配置crontab</span></a></li></ol></div>
             
 
           </div>
