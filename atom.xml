@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2022-08-30T07:38:50.480Z</updated>
+  <updated>2022-10-18T02:37:00.089Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux环境安装nvm</title>
+    <link href="https://xinyufeng.net/2022/10/18/Linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85nvm/"/>
+    <id>https://xinyufeng.net/2022/10/18/Linux环境安装nvm/</id>
+    <published>2022-10-18T02:24:41.000Z</published>
+    <updated>2022-10-18T02:37:00.089Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>nvm是一个管理node多版本的工具<br>系统为CentOS7</p></blockquote><ol><li>下载nvm安装包</li></ol><p>官方下载：<a href="https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz</a></p><ol start="2"><li>加压nvm压缩包</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 进入文件下载目录</span><br><span class="line">[root@localhost ~]<span class="comment"># cd /usr/local/src</span></span><br><span class="line">// 解压文件到 root/.nvm</span><br><span class="line">[root@localhost ~]<span class="comment"># tar -zxvf nvm-0.39.2.tar.gz --strip-components 1  -C /root/.nvm</span></span><br></pre></td></tr></table></figure><a id="more"></a><ol start="3"><li>配置环境</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vi ~/.bashrc</span></span><br></pre></td></tr></table></figure><p>在<code>~/.bashrc</code>的末尾，添加如下语句：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure><p><code>wq</code>保存文件并退出</p><ol start="4"><li>配置生效(重启配置)</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure><ol start="5"><li>验证nvm是否安装成功</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># nvm -v</span></span><br><span class="line">0.39.2</span><br><span class="line">[root@localhost ~]<span class="comment"># nvm --version</span></span><br><span class="line">0.39.2</span><br></pre></td></tr></table></figure><p><strong>常用操作</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nvm常用命令</span></span><br><span class="line">nvm ls-remote           // 查看目前线上所能安装的所有 node 版本</span><br><span class="line">nvm install 12.22.12    // 安装node</span><br><span class="line">nvm uninstall 14.13.2   // 移除 node</span><br><span class="line">nvm use 14.13.2         // 使用 node </span><br><span class="line">nvm ls                  // 查看目前已安装的 node 及当前所使用的 node</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;nvm是一个管理node多版本的工具&lt;br&gt;系统为CentOS7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;下载nvm安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;官方下载：&lt;a href=&quot;https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;加压nvm压缩包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 进入文件下载目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cd /usr/local/src&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 解压文件到 root/.nvm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# tar -zxvf nvm-0.39.2.tar.gz --strip-components 1  -C /root/.nvm&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="前端框架" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Nodejs" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Nodejs/"/>
+    
+    
+      <category term="nvm" scheme="https://xinyufeng.net/tags/nvm/"/>
+    
+      <category term="Nodejs" scheme="https://xinyufeng.net/tags/Nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>Yii2 创建定时任务</title>
@@ -567,33 +603,6 @@
 &lt;h2 id=&quot;表格整体配置&quot;&gt;&lt;a href=&quot;#表格整体配置&quot; class=&quot;headerlink&quot; title=&quot;表格整体配置&quot;&gt;&lt;/a&gt;表格整体配置&lt;/h2&gt;&lt;h3 id=&quot;自定义行样式&quot;&gt;&lt;a href=&quot;#自定义行样式&quot; class=&quot;headerlink&quot; title=&quot;自定义行样式&quot;&gt;&lt;/a&gt;自定义行样式&lt;/h3&gt;&lt;p&gt;单数行为绿色背景，偶数行为红色背景&lt;/p&gt;
 &lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?&lt;/span&gt;= GridView::widget([&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// ......&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;dataProvider&quot;&lt;/span&gt; =&amp;gt; $dataProvider,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;rowOptions&quot;&lt;/span&gt; =&amp;gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($model, $key, $index, $grid)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; [&lt;span class=&quot;string&quot;&gt;&quot;class&quot;&lt;/span&gt; =&amp;gt; $index % &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; == &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ? &lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt; : &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// ......&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]); &lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;red&lt;/code&gt;和&lt;code&gt;green&lt;/code&gt;需要有对应的样式实现&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="PHP框架" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="Yii" scheme="https://xinyufeng.net/categories/PHP%E6%A1%86%E6%9E%B6/Yii/"/>
-    
-    
-      <category term="Yii技巧" scheme="https://xinyufeng.net/tags/Yii%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Yii2如何在View中加入JS代码</title>
-    <link href="https://xinyufeng.net/2021/11/12/Yii2%E5%A6%82%E4%BD%95%E5%9C%A8View%E4%B8%AD%E5%8A%A0%E5%85%A5JS%E4%BB%A3%E7%A0%81/"/>
-    <id>https://xinyufeng.net/2021/11/12/Yii2如何在View中加入JS代码/</id>
-    <published>2021-11-12T03:01:29.000Z</published>
-    <updated>2021-11-17T02:33:38.490Z</updated>
-    
-    <content type="html"><![CDATA[<p>如果在view中直接添加js代码，如下：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="string">'js code'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure><p>会提示没有<code>$ is not defined</code>错误，这是因为view中添加js代码的前面没有引用juqery.js，默认全局的jquery则是在文件尾添加。</p><p>解决方法：</p><a id="more"></a><ol><li>在js代码前引入js库</li></ol><p><strong>1.1 引入方式1</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>=Html::jsFile(<span class="string">'@web/jquery.js'</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p><strong>1.2 引入方式2</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">$this</span>-&gt;registerJsFile(<span class="string">'@web/js/jquery.js'</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><ol start="2"><li>使用全局的js库</li></ol><p><strong>方法一</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$js = <span class="string">&lt;&lt;&lt;JS</span></span><br><span class="line"><span class="string">$(function()&#123;</span></span><br><span class="line"><span class="string">    alert('js code');</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">JS;</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;registerJs($js);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p><strong>方法二</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;registerJs(<span class="string">"</span></span><br><span class="line"><span class="string">$(function () &#123;</span></span><br><span class="line"><span class="string">// 想要写的js代码吧</span></span><br><span class="line"><span class="string">$......</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">"</span>, \yii\web\View::POS_END);</span><br></pre></td></tr></table></figure><p><code>$this</code>指<code>yii\web\View</code>对象,用于管理和渲染视图</p><ul><li>第一个参数：就是我们要写的js代码块</li><li>第二个参数：指定代码块插入在页面的具体位置<br><code>\yii\web\View::POS_END</code>意思就是页面底部<code>&lt;/body&gt;</code>之前插入</li><li>第三个参数：js代码块的一个id标示，不指定会默认生成</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如果在view中直接添加js代码，如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;string&quot;&gt;&#39;js code&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;&lt;span class=&quot;regexp&quot;&gt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;会提示没有&lt;code&gt;$ is not defined&lt;/code&gt;错误，这是因为view中添加js代码的前面没有引用juqery.js，默认全局的jquery则是在文件尾添加。&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;/p&gt;
     
     </summary>
     

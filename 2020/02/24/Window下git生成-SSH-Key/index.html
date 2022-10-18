@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://xinyufeng.net/2020/02/24/Window下git生成-SSH-Key/20200224142816.png">
 <meta property="og:image" content="https://xinyufeng.net/2020/02/24/Window下git生成-SSH-Key/20200224143424.png">
 <meta property="og:image" content="https://xinyufeng.net/2020/02/24/Window下git生成-SSH-Key/20200224143939.png">
-<meta property="og:updated_time" content="2021-05-25T07:50:05.011Z">
+<meta property="og:updated_time" content="2022-09-15T05:58:46.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Window下git生成 SSH Key">
 <meta name="twitter:description" content="我们使用 GitHub、GitLab 或者 Bitbucket 等仓库时，可能需要 ssh 认证，所以需要生成它的 ssh key。  首先你得安装git工具  下载地址：https://git-scm.com/downloads  打开 git 命令行">
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  241
+                  248
                 </span>
               
 
@@ -480,7 +480,9 @@
 <ol start="5">
 <li>生成密钥</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C “邮箱帐号@gmail.com”</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ssh-keygen -t rsa -C “邮箱帐号@gmail.com”</span></span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ssh-keygen -t rsa</span></span><br></pre></td></tr></table></figure>
 <p> 连续按三次回车，这里设置的密码就为空了，并且创建了key。</p>
 <p> <img src="/2020/02/24/Window下git生成-SSH-Key/20200224143939.png" alt="生成密钥"></p>
 <p> 最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code></p>
@@ -658,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-count">182</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
