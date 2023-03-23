@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2023-03-16T02:38:13.741Z</updated>
+  <updated>2023-03-23T11:48:24.188Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录 ThinkCMF 框架 X2.2.3 版本漏洞发现与解决</title>
+    <link href="https://xinyufeng.net/2023/03/23/%E8%AE%B0%E5%BD%95-ThinkCMF-%E6%A1%86%E6%9E%B6-X2-2-3-%E7%89%88%E6%9C%AC%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0%E4%B8%8E%E8%A7%A3%E5%86%B3/"/>
+    <id>https://xinyufeng.net/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/</id>
+    <published>2023-03-23T11:25:31.000Z</published>
+    <updated>2023-03-23T11:48:24.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>接到网警通知，说网站有安全漏洞，根据网警提供的检测报告，经过各种尝试，终于复现了，现在记录这一激动人心的时刻</p><p>网站是基于ThinkCMF框架搭建的，查看版本是<code>X2.2.3</code>，根据网警提供的检测报告在postman工具上操作复现漏洞情况</p><ul><li>使用POST方式请求首页链接地址</li><li>使用form-data提交参数</li><li>参数<code>content=&lt;php&gt;die(assert(&#39;ev&#39;.&#39;a&#39;.&#39;l(&quot;&#39;.&#39;e&#39;.&#39;va&#39;.&#39;l(bas&#39;.&#39;e64_de&#39;.&#39;code(\&quot;cGhwaW5mbygpOw==\&quot;));;return 1;&quot;)&#39;))&lt;/php&gt;</code></li><li>参数<code>a=fetch</code></li></ul><p>点击发送，看看结果，意不意外惊不惊喜！</p><a id="more"></a><p><a href="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/1.png"><img src="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/1.png" alt></a></p><p>居然打印出了<code>phpinfo()</code></p><p>那找解决方法吧，升级框架肯定是不现实的，好歹是找了解决方案</p><p>原因是构造<code>a</code>参数的<code>fetch</code>方法和<code>display</code>方法导致了这个漏洞</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加载模板和页面输出 可以返回输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@access</span> public</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $templateFile 模板文件名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $charset 模板输出字符集</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $contentType 输出类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $content 模板输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">display</span><span class="params">($templateFile = <span class="string">''</span>, $charset = <span class="string">''</span>, $contentType = <span class="string">''</span>, $content = <span class="string">''</span>, $prefix = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">parent</span>::display(<span class="keyword">$this</span>-&gt;parseTemplate($templateFile), $charset, $contentType,$content,$prefix);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取输出页面内容</span></span><br><span class="line"><span class="comment"> * 调用内置的模板引擎fetch方法，</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@access</span> protected</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $templateFile 指定要调用的模板文件</span></span><br><span class="line"><span class="comment"> * 默认为空 由系统自动定位模板文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $content 模板输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $prefix 模板缓存前缀*</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fetch</span><span class="params">($templateFile=<span class="string">''</span>,$content=<span class="string">''</span>,$prefix=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">    $templateFile = <span class="keyword">empty</span>($content)?<span class="keyword">$this</span>-&gt;parseTemplate($templateFile):<span class="string">''</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">parent</span>::fetch($templateFile,$content,$prefix);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将<code>HomebaseController.class.php</code>和<code>AdminbaseController.class.php</code>类中<code>display</code>和<code>fetch</code>函数修饰符改为<code>protected</code></p><p>因为它的这两个方法是公用的，我们需要把它改为私用的，这样才可以不被前端的用户去任意的利用。</p><p>修复后，再次访问，解决了</p><p><a href="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/2.png"><img src="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/2.png" alt></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接到网警通知，说网站有安全漏洞，根据网警提供的检测报告，经过各种尝试，终于复现了，现在记录这一激动人心的时刻&lt;/p&gt;
+&lt;p&gt;网站是基于ThinkCMF框架搭建的，查看版本是&lt;code&gt;X2.2.3&lt;/code&gt;，根据网警提供的检测报告在postman工具上操作复现漏洞情况&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用POST方式请求首页链接地址&lt;/li&gt;
+&lt;li&gt;使用form-data提交参数&lt;/li&gt;
+&lt;li&gt;参数&lt;code&gt;content=&amp;lt;php&amp;gt;die(assert(&amp;#39;ev&amp;#39;.&amp;#39;a&amp;#39;.&amp;#39;l(&amp;quot;&amp;#39;.&amp;#39;e&amp;#39;.&amp;#39;va&amp;#39;.&amp;#39;l(bas&amp;#39;.&amp;#39;e64_de&amp;#39;.&amp;#39;code(\&amp;quot;cGhwaW5mbygpOw==\&amp;quot;));;return 1;&amp;quot;)&amp;#39;))&amp;lt;/php&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;参数&lt;code&gt;a=fetch&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点击发送，看看结果，意不意外惊不惊喜！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="安全漏洞" scheme="https://xinyufeng.net/categories/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/"/>
+    
+    
+      <category term="安全漏洞" scheme="https://xinyufeng.net/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel 模型关联查询已物理删除的数据设置默认值</title>
@@ -613,35 +643,6 @@
     
     
       <category term="JS技巧" scheme="https://xinyufeng.net/tags/JS%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP GD库转换输出为base64</title>
-    <link href="https://xinyufeng.net/2022/01/11/PHP-GD%E5%BA%93%E8%BD%AC%E6%8D%A2%E8%BE%93%E5%87%BA%E4%B8%BAbase64/"/>
-    <id>https://xinyufeng.net/2022/01/11/PHP-GD库转换输出为base64/</id>
-    <published>2022-01-11T05:12:56.000Z</published>
-    <updated>2022-01-11T06:41:13.553Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用GD库的 <code>imagejpeg()</code> / <code>imagepng()</code> 处理图片，它们直接写入所述图像数据，以输出流（或文件）。</p><p>如果你想获取图片文件内容则通过如下方法：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $img = 要处理的图像资源;</span></span><br><span class="line">ob_start();<span class="comment">// 打开输出控制缓冲</span></span><br><span class="line">imagepng($img);<span class="comment">// 显示PNG图像</span></span><br><span class="line">$image_data = ob_get_contents();<span class="comment">// 返回输出缓冲区的内容</span></span><br><span class="line">imagedestroy($img);<span class="comment">// 释放与 image 关联的内存</span></span><br><span class="line">ob_end_clean();<span class="comment">// 清空（擦除）缓冲区并关闭输出缓冲</span></span><br></pre></td></tr></table></figure><p><code>$image_data</code>得到的数据就是图片文件的数据内容 或者 直接返回 <code>ob_end_clean()</code>是一样的</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;使用GD库的 &lt;code&gt;imagejpeg()&lt;/code&gt; / &lt;code&gt;imagepng()&lt;/code&gt; 处理图片，它们直接写入所述图像数据，以输出流（或文件）。&lt;/p&gt;
-&lt;p&gt;如果你想获取图片文件内容则通过如下方法：&lt;/p&gt;
-&lt;figure class=&quot;hig
-      
-    
-    </summary>
-    
-      <category term="后端开发" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="PHP" scheme="https://xinyufeng.net/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/PHP/"/>
-    
-    
-      <category term="GD库" scheme="https://xinyufeng.net/tags/GD%E5%BA%93/"/>
     
   </entry>
   
