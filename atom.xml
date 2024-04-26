@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2024-04-08T01:24:47.757Z</updated>
+  <updated>2024-04-26T06:11:30.973Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web开发中的网络安全: 常见攻击及防范策略</title>
+    <link href="https://xinyufeng.net/2024/04/26/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%B8%B8%E8%A7%81%E6%94%BB%E5%87%BB%E5%8F%8A%E9%98%B2%E8%8C%83%E7%AD%96%E7%95%A5/"/>
+    <id>https://xinyufeng.net/2024/04/26/Web开发中的网络安全-常见攻击及防范策略/</id>
+    <published>2024-04-26T01:15:06.000Z</published>
+    <updated>2024-04-26T06:11:30.973Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Web开发的世界里，网络攻击是一种常见且潜在的威胁。理解这些攻击如何运作并采取措施防范它们对于构建安全的Web应用至关重要。本文将介绍几种常见的Web攻击，提供防范策略，并以实例说明如何防止这些攻击。</p><a id="more"></a><h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p><strong>概要: </strong></p><p>SQL注入攻击是攻击者在Web表单输入或URL查询参数中插入恶意的SQL语句，旨在操作后端数据库。</p><p><strong>实例: </strong></p><p>假设一个网站的登录URL是<code>http://example.com/login?username=user&amp;password=pass</code>，<br>如果攻击者更改此URL为<code>http://example.com/login?username=admin&#39;%20--%20&amp;password=aabb</code>, 并且应用程序没有将输入作为字符串处理，<br>则会执行<code>SELECT * FROM users WHERE username=&#39;admin&#39; -- &#39; AND password=&#39;aabb&#39;</code>，<br>由于<code>--</code>注释了后面的SQL语句，所以最终SQL语句为<code>SELECT * FROM users WHERE username=&#39;admin&#39;</code>，<br>那么这个SQL注入就会绕过身份验证。</p><p><strong>防范策略: </strong></p><ol><li><strong>使用参数化查询</strong>：使用参数化查询可以有效防止SQL注入攻击，因为参数化查询会将用户输入的数据作为参数传递，而不是直接拼接到SQL语句中。</li><li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li><li><strong>最小权限原则</strong>：数据库用户应该以最小权限原则进行配置，即给予应用程序访问数据库的最小权限，避免过高的权限级别。</li><li><strong>错误消息处理</strong>：避免将数据库错误信息直接暴露给用户，这可能会泄露敏感信息给攻击者。</li><li><strong>定期更新和监控</strong>：定期更新数据库和应用程序，监控数据库操作日志，及时发现异常操作。</li></ol><h2 id="跨站脚本攻击（XSS）"><a href="#跨站脚本攻击（XSS）" class="headerlink" title="跨站脚本攻击（XSS）"></a>跨站脚本攻击（XSS）</h2><p><strong>概要: </strong></p><p>跨站脚本攻击（XSS）是一种利用Web应用漏洞将恶意代码注入到Web页面上的攻击。攻击者可以利用XSS漏洞将恶意代码注入到Web页面中，然后通过用户点击链接或打开特殊链接来执行恶意代码。</p><p><strong>实例: </strong></p><p>假设一个网站有一个评论功能，用户可以输入评论内容，然后评论内容会显示在页面上。如果攻击者将恶意代码（例如<code>&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code>）注入到评论内容中，<br>当其他用户查看这条评论时，这段脚本会在他们的浏览器上执行，从而窃取用户信息或执行其他恶意操作。</p><p><strong>防范策略: </strong></p><ol><li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li><li><strong>输出编码</strong>：对输出数据进行编码，以防止攻击者通过编码方式注入恶意代码。</li><li><strong>白名单过滤</strong>：使用白名单过滤，只允许指定的HTML标签和属性，防止攻击者通过非法标签或属性注入恶意代码。</li><li><strong>严格Content-Security-Policy（CSP）</strong>：使用CSP来限制页面加载的资源，防止攻击者通过非法资源注入恶意代码。</li><li><strong>定期更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li></ol><h2 id="跨站请求伪造（CSRF）"><a href="#跨站请求伪造（CSRF）" class="headerlink" title="跨站请求伪造（CSRF）"></a>跨站请求伪造（CSRF）</h2><p><strong>概要: </strong></p><p>跨站请求伪造（CSRF）是一种利用Web应用漏洞将恶意请求注入到Web页面上的攻击。攻击者可以利用CSRF漏洞将恶意请求注入到Web页面中，然后通过用户点击链接或打开特殊链接来执行恶意请求。</p><p><strong>实例: </strong></p><p>用户登录到他们的银行账户，并在另一个标签页打开了一个看似无害的网站。这个网站包含了一个看不见的表单，自动提交转账到攻击者账户的请求。由于用户已经登录，请求带有有效的认证，所以转账得以执行。</p><p><strong>防范策略: </strong></p><ol><li><strong>验证来源</strong>：在请求中验证来源，确保请求来自受信任的来源。</li><li><strong>使用CSRF令牌</strong>：在每个请求中包含一个唯一的CSRF令牌，并在服务器端验证令牌。</li><li><strong>使用同源策略和CORS</strong>：使用同源策略和CORS来限制跨域请求，防止攻击者通过非法请求注入请求。</li><li><strong>严格Content-Security-Policy（CSP）</strong>：使用CSP来限制页面加载的资源，防止攻击者通过非法资源注入请求。</li><li><strong>定期更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li></ol><h2 id="拒绝服务攻击（DoS）"><a href="#拒绝服务攻击（DoS）" class="headerlink" title="拒绝服务攻击（DoS）"></a>拒绝服务攻击（DoS）</h2><p><strong>概要: </strong></p><p>拒绝服务攻击（DoS）是一种利用Web应用漏洞将服务器或网络资源耗尽的攻击。攻击者可以利用DoS漏洞将服务器或网络资源耗尽，导致服务不可用或拒绝服务。</p><p><strong>实例: </strong></p><p>假设一个网站有一个评论功能，用户可以输入评论内容，然后评论内容会显示在页面上。如果攻击者将大量的恶意请求注入到评论功能中，<br>当服务器或网络资源耗尽时，攻击者可以导致服务器或网络资源耗尽，从而导致服务不可用或拒绝服务。</p><p><strong>防范策略: </strong></p><ol><li><strong>负载均衡</strong>：使用负载均衡来分散请求，防止单个服务器或网络资源耗尽。</li><li><strong>流量控制</strong>：使用流量控制来限制请求的速率，防止单个服务器或网络资源耗尽。</li><li><strong>采用云防御服务</strong>：使用云防御服务来保护Web应用，例如AWS Shield、Cloudflare、阿里云的云盾等。</li><li><strong>定时更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li></ol><h2 id="本地文件包含（LFI）"><a href="#本地文件包含（LFI）" class="headerlink" title="本地文件包含（LFI）"></a>本地文件包含（LFI）</h2><p><strong>概要: </strong></p><p>本地文件包含攻击发生在应用程序包含动态文件时，但没有适当验证用户的输入。</p><p><strong>实例: </strong></p><p>网站URL如<code>http://example.com/index.php?page=about</code>用于动态加载页面内容。攻击者可以通过更改URL为<code>http://example.com/index.php?page=../../../../etc/passwd</code>来尝试访问敏感的服务器文件。</p><p><strong>防范策略: </strong></p><ol><li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li><li><strong>白名单过滤</strong>：使用白名单过滤，只允许指定的文件类型，防止攻击者通过非法文件类型注入恶意代码。</li><li><strong>限制文件包含函数只能加载特定目录下的文件</strong>：使用限制文件包含函数只能加载特定目录下的文件，防止攻击者通过非法文件路径注入恶意代码。</li><li><strong>禁用不必要的PHP功能</strong>：例如eval()函数，防止攻击者通过非法函数注入恶意代码。</li></ol><h2 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h2><p><strong>概要: </strong></p><p>DNS劫持攻击发生在DNS服务器被攻击时，攻击者可以劫持DNS服务器，将用户指向恶意网站。</p><p><strong>实例: </strong></p><p>假设DNS服务器被攻击，攻击者可以劫持DNS服务器，将用户指向恶意网站。</p><p><strong>防范策略: </strong></p><ol><li><strong>定期更新DNS服务器</strong>：定期更新DNS服务器，确保DNS服务器的配置正确。</li><li><strong>使用DNS缓存</strong>：使用DNS缓存，防止攻击者通过DNS劫持攻击。</li><li><strong>使用DNSSEC</strong>：使用DNSSEC，防止攻击者通过DNS劫持攻击。</li><li><strong>定期更新和监控</strong>：定期更新DNS服务器和DNSSEC，监控DNS服务器的日志，及时发现异常操作。</li></ol><p>Web安全不是一个一次性的任务，而是一个持续的过程。通过理解各种Web攻击，实施合适的防御措施，并定期进行安全审计，你将能够建立一个更加安全的网络环境。开发人员、系统管理员和所有IT专业人员都应致力于提高他们的网络安全知识，以营造一个更为安全的网络空间。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Web开发的世界里，网络攻击是一种常见且潜在的威胁。理解这些攻击如何运作并采取措施防范它们对于构建安全的Web应用至关重要。本文将介绍几种常见的Web攻击，提供防范策略，并以实例说明如何防止这些攻击。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="网络安全" scheme="https://xinyufeng.net/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="网络攻击" scheme="https://xinyufeng.net/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>相同地域云服务器间内网通信配置</title>
@@ -142,7 +164,7 @@
     <link href="https://xinyufeng.net/2023/03/23/%E8%AE%B0%E5%BD%95-ThinkCMF-%E6%A1%86%E6%9E%B6-X2-2-3-%E7%89%88%E6%9C%AC%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0%E4%B8%8E%E8%A7%A3%E5%86%B3/"/>
     <id>https://xinyufeng.net/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/</id>
     <published>2023-03-23T11:25:31.000Z</published>
-    <updated>2023-03-23T11:48:24.188Z</updated>
+    <updated>2024-04-26T02:56:55.839Z</updated>
     
     <content type="html"><![CDATA[<p>接到网警通知，说网站有安全漏洞，根据网警提供的检测报告，经过各种尝试，终于复现了，现在记录这一激动人心的时刻</p><p>网站是基于ThinkCMF框架搭建的，查看版本是<code>X2.2.3</code>，根据网警提供的检测报告在postman工具上操作复现漏洞情况</p><ul><li>使用POST方式请求首页链接地址</li><li>使用form-data提交参数</li><li>参数<code>content=&lt;php&gt;die(assert(&#39;ev&#39;.&#39;a&#39;.&#39;l(&quot;&#39;.&#39;e&#39;.&#39;va&#39;.&#39;l(bas&#39;.&#39;e64_de&#39;.&#39;code(\&quot;cGhwaW5mbygpOw==\&quot;));;return 1;&quot;)&#39;))&lt;/php&gt;</code></li><li>参数<code>a=fetch</code></li></ul><p>点击发送，看看结果，意不意外惊不惊喜！</p><a id="more"></a><p><a href="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/1.png"><img src="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/1.png" alt></a></p><p>居然打印出了<code>phpinfo()</code></p><p>那找解决方法吧，升级框架肯定是不现实的，好歹是找了解决方案</p><p>原因是构造<code>a</code>参数的<code>fetch</code>方法和<code>display</code>方法导致了这个漏洞</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加载模板和页面输出 可以返回输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@access</span> public</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $templateFile 模板文件名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $charset 模板输出字符集</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $contentType 输出类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $content 模板输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">display</span><span class="params">($templateFile = <span class="string">''</span>, $charset = <span class="string">''</span>, $contentType = <span class="string">''</span>, $content = <span class="string">''</span>, $prefix = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">parent</span>::display(<span class="keyword">$this</span>-&gt;parseTemplate($templateFile), $charset, $contentType,$content,$prefix);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取输出页面内容</span></span><br><span class="line"><span class="comment"> * 调用内置的模板引擎fetch方法，</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@access</span> protected</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $templateFile 指定要调用的模板文件</span></span><br><span class="line"><span class="comment"> * 默认为空 由系统自动定位模板文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $content 模板输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $prefix 模板缓存前缀*</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">fetch</span><span class="params">($templateFile=<span class="string">''</span>,$content=<span class="string">''</span>,$prefix=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">    $templateFile = <span class="keyword">empty</span>($content)?<span class="keyword">$this</span>-&gt;parseTemplate($templateFile):<span class="string">''</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">parent</span>::fetch($templateFile,$content,$prefix);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将<code>HomebaseController.class.php</code>和<code>AdminbaseController.class.php</code>类中<code>display</code>和<code>fetch</code>函数修饰符改为<code>protected</code></p><p>因为它的这两个方法是公用的，我们需要把它改为私用的，这样才可以不被前端的用户去任意的利用。</p><p>修复后，再次访问，解决了</p><p><a href="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/2.png"><img src="/2023/03/23/记录-ThinkCMF-框架-X2-2-3-版本漏洞发现与解决/2.png" alt></a></p>]]></content>
     
@@ -160,7 +182,7 @@
     
     </summary>
     
-      <category term="安全漏洞" scheme="https://xinyufeng.net/categories/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/"/>
+      <category term="网络安全" scheme="https://xinyufeng.net/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
     
       <category term="安全漏洞" scheme="https://xinyufeng.net/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/"/>
@@ -605,50 +627,6 @@
       <category term="JS方法" scheme="https://xinyufeng.net/tags/JS%E6%96%B9%E6%B3%95/"/>
     
       <category term="JS技巧" scheme="https://xinyufeng.net/tags/JS%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue 中的代理proxy配置</title>
-    <link href="https://xinyufeng.net/2022/04/08/Vue-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86proxy%E9%85%8D%E7%BD%AE/"/>
-    <id>https://xinyufeng.net/2022/04/08/Vue-中的代理proxy配置/</id>
-    <published>2022-04-08T01:06:57.000Z</published>
-    <updated>2022-04-08T02:02:03.093Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们本地开发调试一般是 <code>npm run serve</code> 或 <code>yarn serve</code>，然后打开 <code>localhost:8080</code>（本机的IP），此时如果调用后端接口，可能会产生跨域，那如何解决呢？</p><p><strong>解决跨域的方案</strong></p><ol><li>jsonp<ul><li>只支持GET请求，JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。</li></ul></li><li>cors<ul><li>CORS支持所有类型的HTTP请求，是跨域HTTP请求的根本解决方案</li></ul></li><li>Node中间件代理(两次跨域)<ul><li>通过同源策略对服务器不加限制。</li></ul></li><li>Nginx反向代理<ul><li>通过同源策略对服务器不加限制。</li></ul></li></ol><p>日常工作中，生产环境用得比较多的跨域方案是cors和nginx反向代理。<br>本地项目中调试用的最多的就是 node 代理，当然像 nginx、charles（抓包工具）做代理也可以，只要你会配置。<br><a id="more"></a></p><p>vue 中的 <code>proxy</code> 就是利用了 Node 代理，原理是因为服务器端没有跨域，使用的是 <a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a> 这个模块（这个模块相当于是node.js的一个插件）</p><p><strong>案例</strong></p><ol><li>你要调取的接口是 <code>http://dev.com/api/test</code>，然后你可以在本地调 <code>http://localhost:8080/api/test</code>，如<code>axios.get(&#39;/api/test&#39;)</code></li></ol><p>配置代理后，会做如下转发：</p><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/api/test</code><br><code>http://localhost:8080/admin/api/test</code> -&gt; <code>http://dev.com/admin/api/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-cli3.0 里面的 vue.config.js做配置</span></span><br><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'http://dev.com'</span>,<span class="comment">// 后端接口域名</span></span><br><span class="line">        ws: <span class="literal">true</span>,<span class="comment">//如果要代理 websockets，配置这个参数</span></span><br><span class="line">        secure: <span class="literal">false</span>,<span class="comment">// 如果是https接口，需要配置这个参数</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,<span class="comment">// 是否跨域</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><ol start="2"><li>当你调后端接口的命名没有统一给接口前加 <code>/api</code> 这类的标识，那么你可以自己加，也就是你可以在本地调 <code>http://localhost:8080/api/test</code>，如<code>axios.get(&#39;/api/test&#39;)</code>，而你要的目标接口是 <code>http://dev.com/test</code>，你就可以用 <code>pathRewrite</code>，遇到 <code>/api</code> 就去找代理 <code>http://dev.com/test</code> 并且把 <code>/api</code> 重写为 <code>/</code>。</li></ol><p>所以转发效果就是：</p><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-cli3.0 里面的 vue.config.js做配置</span></span><br><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'http://dev.com'</span>,<span class="comment">// 后端接口域名</span></span><br><span class="line">        ws: <span class="literal">true</span>,<span class="comment">//如果要代理 websockets，配置这个参数</span></span><br><span class="line">        secure: <span class="literal">false</span>,<span class="comment">// 如果是https接口，需要配置这个参数</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,<span class="comment">// 是否跨域</span></span><br><span class="line">        pathRewrite:&#123;<span class="comment">// 路径重写</span></span><br><span class="line">            <span class="string">'^/api'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><ol start="3"><li>对所有的接口都代理的，不止是检测到 <code>/api</code> 的接口，比如：</li></ol><p><code>http://localhost:8080/api/test</code> -&gt; <code>http://dev.com/api/test</code><br><code>http://localhost:8080/test</code> -&gt; <code>http://dev.com/test</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    proxy: <span class="string">'http:///dev.com'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>常用的devServer配置</strong></p><p><a href="https://webpack.docschina.org/configuration/dev-server/" target="_blank" rel="noopener">DevServer配置文档</a></p><ol><li>devServer.disableHostCheck</li></ol><p>当设置为<code>true</code>时，此选项将绕过主机检查。不建议这样做，因为不检查主机的应用程序容易受到DNS重新绑定攻击。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    disableHostCheck: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>devServer.publicPath</li></ol><p>假设服务器在<code>http://localhost:8080</code>下运行，<code>output.filename</code>设置为<code>bundle.js</code>。默认情况下，<code>devServer.publicPath</code>是<code>/</code>，所以你的包可以作为<code>http://localhost:8080/bundle.js</code> 使用。将<code>devServer.publicPath</code>更改为 <code>/assets/</code> 就变为 <code>http://localhost:8080/assets/bundle.js</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    publicPath: <span class="string">'/assets/'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>确保devServer.publicPath始终以正斜杠开头和结尾。</p></blockquote><p><strong>常用vue/cli3的配置</strong></p><p><a href="https://cli.vuejs.org/zh/config/" target="_blank" rel="noopener">vue/cli3配置文档</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们本地开发调试一般是 &lt;code&gt;npm run serve&lt;/code&gt; 或 &lt;code&gt;yarn serve&lt;/code&gt;，然后打开 &lt;code&gt;localhost:8080&lt;/code&gt;（本机的IP），此时如果调用后端接口，可能会产生跨域，那如何解决呢？&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;解决跨域的方案&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;jsonp&lt;ul&gt;
-&lt;li&gt;只支持GET请求，JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;cors&lt;ul&gt;
-&lt;li&gt;CORS支持所有类型的HTTP请求，是跨域HTTP请求的根本解决方案&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Node中间件代理(两次跨域)&lt;ul&gt;
-&lt;li&gt;通过同源策略对服务器不加限制。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Nginx反向代理&lt;ul&gt;
-&lt;li&gt;通过同源策略对服务器不加限制。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;日常工作中，生产环境用得比较多的跨域方案是cors和nginx反向代理。&lt;br&gt;本地项目中调试用的最多的就是 node 代理，当然像 nginx、charles（抓包工具）做代理也可以，只要你会配置。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端框架" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="Vue" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue/"/>
-    
-    
-      <category term="Vue教程" scheme="https://xinyufeng.net/tags/Vue%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
