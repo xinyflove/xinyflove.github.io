@@ -75,6 +75,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Git 如何撤销修改</title>
+    <url>/2019/02/11/Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
+    <content><![CDATA[<h2 id="工作区撤销修改"><a href="#工作区撤销修改" class="headerlink" title="工作区撤销修改"></a>工作区撤销修改</h2><p>我们在工作区修改了文件内容，还没有添加（git add）到缓存区，想要撤销修改，使用 <code>git checkout -- file</code> 命令  </p>
+<p><strong>撤销修改指定文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- filename</span><br></pre></td></tr></table></figure></p>
+<p><strong>撤销修改全部文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Laravel where 多条件查询</title>
     <url>/2019/02/12/Laravel-where-%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<p>在查询数据中，会有多个过滤条件，有的还需要或(<code>or</code>)，下面以Laravel数据库操作中的 <strong>查询构建器</strong> 为例，分情况说明如何组装查询语句。</p>
@@ -164,20 +178,6 @@
       </categories>
       <tags>
         <tag>artisan</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 如何撤销修改</title>
-    <url>/2019/02/11/Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
-    <content><![CDATA[<h2 id="工作区撤销修改"><a href="#工作区撤销修改" class="headerlink" title="工作区撤销修改"></a>工作区撤销修改</h2><p>我们在工作区修改了文件内容，还没有添加（git add）到缓存区，想要撤销修改，使用 <code>git checkout -- file</code> 命令  </p>
-<p><strong>撤销修改指定文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- filename</span><br></pre></td></tr></table></figure></p>
-<p><strong>撤销修改全部文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -387,32 +387,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certific</title>
-    <url>/2019/03/12/PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certific/</url>
-    <content><![CDATA[<p>报错信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cURL error 60: SSL certificate problem: unable to get local issuer certific   ate (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure></p>
-<p>解决方法：</p>
-<a id="more"></a>
-<p>要解决此错误，需要定义CURL证书颁发机构信息路径<br>要做到些,</p>
-<ol>
-<li>在这里下载最新的curl认可证书:<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="noopener">https://curl.haxx.se/ca/cacert.pem</a></li>
-<li>保存cacert.pem文件在一个可以引入的目录。</li>
-<li>然后，在php.ini文件中，向下滚动到找到[curl]的位置。</li>
-<li>您应该看到CURLOPT_CAINFO选项被注释掉了。取消注释并指向cacert.pem文件。你应该有这样一行:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl.cainfo = “证书目录\cacert.pem”</span><br></pre></td></tr></table></figure>
-<p>保存并关闭php.ini。重新启动web服务器并再次尝试您的请求。<br>如果没有设置正确的位置，将会得到CURL 77错误。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cURL error 77: error setting certificate verify locations:</span><br><span class="line">    CAfile: certificate D:\phpStudy\PHPTutorial\php\php-7.2.1-nts\extras\ssl\</span><br><span class="line">  cacert.pem</span><br><span class="line">    CApath: none (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure>
-<p>参考文档：<br><a href="https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)" target="_blank" rel="noopener">https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)</a></p>
-]]></content>
-      <categories>
-        <category>后端开发</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>cURL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SVN被锁定 提示：svn is already locked 解决方案</title>
     <url>/2019/03/14/SVN%E8%A2%AB%E9%94%81%E5%AE%9A-%E6%8F%90%E7%A4%BA%EF%BC%9Asvn-is-already-locked-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<p>今天使用SVN，在项目根目录下，拉取项目代码的时候提示<code>svn is already locked</code>SVN被锁定错误，<br>解决方法：<br>在项目根目录，右击，选择<code>clean up</code><br><img src="/2019/03/14/SVN被锁定-提示：svn-is-already-locked-解决方案/2019031405455722.png" alt="在这里插入图片描述"></p>
@@ -510,6 +484,68 @@
       </tags>
   </entry>
   <entry>
+    <title>PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certific</title>
+    <url>/2019/03/12/PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certific/</url>
+    <content><![CDATA[<p>报错信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cURL error 60: SSL certificate problem: unable to get local issuer certific   ate (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：</p>
+<a id="more"></a>
+<p>要解决此错误，需要定义CURL证书颁发机构信息路径<br>要做到些,</p>
+<ol>
+<li>在这里下载最新的curl认可证书:<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="noopener">https://curl.haxx.se/ca/cacert.pem</a></li>
+<li>保存cacert.pem文件在一个可以引入的目录。</li>
+<li>然后，在php.ini文件中，向下滚动到找到[curl]的位置。</li>
+<li>您应该看到CURLOPT_CAINFO选项被注释掉了。取消注释并指向cacert.pem文件。你应该有这样一行:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl.cainfo = “证书目录\cacert.pem”</span><br></pre></td></tr></table></figure>
+<p>保存并关闭php.ini。重新启动web服务器并再次尝试您的请求。<br>如果没有设置正确的位置，将会得到CURL 77错误。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cURL error 77: error setting certificate verify locations:</span><br><span class="line">    CAfile: certificate D:\phpStudy\PHPTutorial\php\php-7.2.1-nts\extras\ssl\</span><br><span class="line">  cacert.pem</span><br><span class="line">    CApath: none (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure>
+<p>参考文档：<br><a href="https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)" target="_blank" rel="noopener">https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)</a></p>
+]]></content>
+      <categories>
+        <category>后端开发</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>cURL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql 1055 错误 SELECT list is not in GROUP BY clause and contains nonaggregated column</title>
+    <url>/2019/04/04/Mysql-1055-%E9%94%99%E8%AF%AF-SELECT-list-is-not-in-GROUP-BY-clause-and-contains-nonaggregated-column/</url>
+    <content><![CDATA[<p>使用 <code>GROUP BY</code> 语句出现错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[SQL]SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id</span><br><span class="line"></span><br><span class="line">[Err] 1055 - Expression <span class="comment">#1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'xyzj_sql_0320.sq_resident_family_info.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>可以看到我的SQL语句是</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id</span><br></pre></td></tr></table></figure>
+<p>查询资料得知，执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">select @@global.sql_mode;</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT @@sql_mode</span><br></pre></td></tr></table></figure></p>
+<p>结果为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+<p>含有 <code>ONLY_FULL_GROUP_BY</code>，说明设置了此模式。mysql5.7.5后，ONLY_FULL_GROUP_BY 默认为真，那么此时select中的字段必须出现在group by中。</p>
+<p>那么在我的SQL语句中<code>select</code>了<code>id</code>和<code>sq_resident_id</code>，那么这两个字段都得在<code>GROUP_BY</code>中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id, id</span><br></pre></td></tr></table></figure>
+<p>这样执行就不会报错了，但是我不需要分组<code>id</code>字段，去掉即可，然后我要统计<code>sq_resident_id</code>字段的重复值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	count(id), sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY</span><br><span class="line">	sq_resident_id</span><br></pre></td></tr></table></figure>
+<p>总结，如果 <code>sql_mode</code> 设置了 <code>ONLY_FULL_GROUP_BY</code> ，那么<code>select</code>字段要出现在<code>GROUP_BY</code>中</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><p>复制查询<code>sql_mode</code>的结果，去掉<code>ONLY_FULL_GROUP_BY,</code>，然后执行sql命令</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">SESSION</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：该方法仅用于临时修改，重启mysql后，以上设置失效。</strong></p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>启动mysql时，增加sql_model选项，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysqld --sql_mode=&quot;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot; [...其它选项]</span><br></pre></td></tr></table></figure>
+<h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h3><p>Linux服务下，修改my.conf (Windows下修改my.ini),在<code>[mysqld]</code>节点下，最末尾添加<code>sql_mode</code>配置，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line"></span><br><span class="line">[其它节点配置]</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>建议使用第三种方法</strong></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL错误</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 主题开发指南</title>
     <url>/2019/04/15/hexo-theme-guide/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文记录开发一个Hexo主题的流程，尽量用简洁、通俗易懂的文字内容呈现给大家。</p>
@@ -569,42 +605,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mysql 1055 错误 SELECT list is not in GROUP BY clause and contains nonaggregated column</title>
-    <url>/2019/04/04/Mysql-1055-%E9%94%99%E8%AF%AF-SELECT-list-is-not-in-GROUP-BY-clause-and-contains-nonaggregated-column/</url>
-    <content><![CDATA[<p>使用 <code>GROUP BY</code> 语句出现错误：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[SQL]SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id</span><br><span class="line"></span><br><span class="line">[Err] 1055 - Expression <span class="comment">#1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'xyzj_sql_0320.sq_resident_family_info.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>可以看到我的SQL语句是</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id</span><br></pre></td></tr></table></figure>
-<p>查询资料得知，执行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">select @@global.sql_mode;</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT @@sql_mode</span><br></pre></td></tr></table></figure></p>
-<p>结果为</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
-<p>含有 <code>ONLY_FULL_GROUP_BY</code>，说明设置了此模式。mysql5.7.5后，ONLY_FULL_GROUP_BY 默认为真，那么此时select中的字段必须出现在group by中。</p>
-<p>那么在我的SQL语句中<code>select</code>了<code>id</code>和<code>sq_resident_id</code>，那么这两个字段都得在<code>GROUP_BY</code>中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	id,sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY sq_resident_id, id</span><br></pre></td></tr></table></figure>
-<p>这样执行就不会报错了，但是我不需要分组<code>id</code>字段，去掉即可，然后我要统计<code>sq_resident_id</code>字段的重复值</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	count(id), sq_resident_id</span><br><span class="line">FROM</span><br><span class="line">	sq_resident_family_info</span><br><span class="line">GROUP BY</span><br><span class="line">	sq_resident_id</span><br></pre></td></tr></table></figure>
-<p>总结，如果 <code>sql_mode</code> 设置了 <code>ONLY_FULL_GROUP_BY</code> ，那么<code>select</code>字段要出现在<code>GROUP_BY</code>中</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><p>复制查询<code>sql_mode</code>的结果，去掉<code>ONLY_FULL_GROUP_BY,</code>，然后执行sql命令</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">SESSION</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：该方法仅用于临时修改，重启mysql后，以上设置失效。</strong></p>
-<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>启动mysql时，增加sql_model选项，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysqld --sql_mode=&quot;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot; [...其它选项]</span><br></pre></td></tr></table></figure>
-<h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h3><p>Linux服务下，修改my.conf (Windows下修改my.ini),在<code>[mysqld]</code>节点下，最末尾添加<code>sql_mode</code>配置，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line"></span><br><span class="line">[其它节点配置]</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><strong>建议使用第三种方法</strong></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL错误</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Axure8注册码，亲测可用</title>
     <url>/2019/04/16/Axure8%E6%B3%A8%E5%86%8C%E7%A0%81%EF%BC%8C%E4%BA%B2%E6%B5%8B%E5%8F%AF%E7%94%A8/</url>
     <content><![CDATA[<p>转自 <a href="https://blog.csdn.net/a13103861409/article/details/89011082" target="_blank" rel="noopener">https://blog.csdn.net/a13103861409/article/details/89011082</a></p>
@@ -641,34 +641,6 @@
       </categories>
       <tags>
         <tag>MySQL语句</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git pull error: Your local changes to the following files would be overwritten by merge:</title>
-    <url>/2019/04/19/git-pull-error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</url>
-    <content><![CDATA[<p>一个项目，用家里和公司两台电脑开发，比如在公司修改了如下文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">├── a.php // 未修改</span><br><span class="line">├── b.php // 修改</span><br><span class="line">├── c.php // 新建</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>忘记提交了，然后在家修改如下文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">├── a.php // 未修改</span><br><span class="line">├── b.php // 修改</span><br><span class="line">├── c.php // 新建</span><br></pre></td></tr></table></figure></p>
-<p>并提交了。第二天来到公司<code>git pull</code>时候报错：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: Your <span class="built_in">local</span> changes to the following files would be overwritten by merge:</span><br><span class="line">b.php</span><br><span class="line">Please commit your changes or stash them before you merge.</span><br><span class="line">error: The following untracked working tree files would be overwritten by merge:</span><br><span class="line">c.php</span><br><span class="line">Please move or remove them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure></p>
-<p><strong>解决方案1：如果你想保留公司本地修改的代码，并把git服务器上的代码pull到本地（公司本地昨天修改的代码将会被暂时封存起来）</strong></p>
-<p>1.1代码贮藏<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure></p>
-<p>1.2拉取版本库代码<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
-<p>此时还是会报错：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: The following untracked working tree files would be overwritten by merge:</span><br><span class="line">        c.php</span><br><span class="line">Please move or remove them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure></p>
-<p>因为文件c.php是新建文件，提示要把文件c.php先移走或删除，那么我们再把c.php移走，然后在拉取</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Updating 9cccba7..ebfcf6d</span><br><span class="line">Fast-forward</span><br><span class="line"> b.php         |   2 +-</span><br><span class="line"> 10 files changed, 467 insertions(+), 13 deletions(-)</span><br><span class="line"> create mode 100644 c.php</span><br></pre></td></tr></table></figure>
-<p>1.3取出贮藏，并把刚刚移走的文件移动回来<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash pop</span><br></pre></td></tr></table></figure></p>
-<p>然后可以使用<code>git diff -w +文件名</code> 来确认代码自动合并的情况.</p>
-<p><strong>解决方案2：如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pull</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>其中git reset是针对版本,如果想针对文件回退本地修改,使用</p>
-<p><code>git checkout HEAD [file]</code></p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -714,6 +686,34 @@
       </categories>
       <tags>
         <tag>ThinkPHP5.1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git pull error: Your local changes to the following files would be overwritten by merge:</title>
+    <url>/2019/04/19/git-pull-error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</url>
+    <content><![CDATA[<p>一个项目，用家里和公司两台电脑开发，比如在公司修改了如下文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">├── a.php // 未修改</span><br><span class="line">├── b.php // 修改</span><br><span class="line">├── c.php // 新建</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>忘记提交了，然后在家修改如下文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">├── a.php // 未修改</span><br><span class="line">├── b.php // 修改</span><br><span class="line">├── c.php // 新建</span><br></pre></td></tr></table></figure></p>
+<p>并提交了。第二天来到公司<code>git pull</code>时候报错：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: Your <span class="built_in">local</span> changes to the following files would be overwritten by merge:</span><br><span class="line">b.php</span><br><span class="line">Please commit your changes or stash them before you merge.</span><br><span class="line">error: The following untracked working tree files would be overwritten by merge:</span><br><span class="line">c.php</span><br><span class="line">Please move or remove them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决方案1：如果你想保留公司本地修改的代码，并把git服务器上的代码pull到本地（公司本地昨天修改的代码将会被暂时封存起来）</strong></p>
+<p>1.1代码贮藏<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure></p>
+<p>1.2拉取版本库代码<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
+<p>此时还是会报错：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: The following untracked working tree files would be overwritten by merge:</span><br><span class="line">        c.php</span><br><span class="line">Please move or remove them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure></p>
+<p>因为文件c.php是新建文件，提示要把文件c.php先移走或删除，那么我们再把c.php移走，然后在拉取</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Updating 9cccba7..ebfcf6d</span><br><span class="line">Fast-forward</span><br><span class="line"> b.php         |   2 +-</span><br><span class="line"> 10 files changed, 467 insertions(+), 13 deletions(-)</span><br><span class="line"> create mode 100644 c.php</span><br></pre></td></tr></table></figure>
+<p>1.3取出贮藏，并把刚刚移走的文件移动回来<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash pop</span><br></pre></td></tr></table></figure></p>
+<p>然后可以使用<code>git diff -w +文件名</code> 来确认代码自动合并的情况.</p>
+<p><strong>解决方案2：如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pull</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>其中git reset是针对版本,如果想针对文件回退本地修改,使用</p>
+<p><code>git checkout HEAD [file]</code></p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -916,6 +916,56 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux中使用cp命令报 cp:omitting directory错误</title>
+    <url>/2019/05/24/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8cp%E5%91%BD%E4%BB%A4%E6%8A%A5-cp-omitting-directory%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<p>在Linux系统中使用cp命令对文件夹或者目录进行复制操作时，有时候会出现 <code>cp:omitting directiory</code>的错误提示</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cp test test1</span></span><br><span class="line">cp: omitting directory ‘<span class="built_in">test</span>’</span><br></pre></td></tr></table></figure>
+<p>这是因为test目录下还有目录，不能直接进行拷贝</p>
+<p>我们先找下<code>cp</code>的命令帮助，输入<code>cp --h</code>，其中一个<code>-r</code>，可以解决这个问题</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cp --h</span></span><br><span class="line">Usage: cp [OPTION]... [-T] SOURCE DEST</span><br><span class="line">  or:  cp [OPTION]... SOURCE... DIRECTORY</span><br><span class="line">  or:  cp [OPTION]... -t DIRECTORY SOURCE...</span><br><span class="line">Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.</span><br><span class="line"></span><br><span class="line">Mandatory arguments to long options are mandatory <span class="keyword">for</span> short options too.</span><br><span class="line">  -a, --archive                same as -dR --preserve=all</span><br><span class="line">      --attributes-only        don<span class="string">'t copy the file data, just the attributes</span></span><br><span class="line"><span class="string">      --backup[=CONTROL]       make a backup of each existing destination file</span></span><br><span class="line"><span class="string">  -b                           like --backup but does not accept an argument</span></span><br><span class="line"><span class="string">      --copy-contents          copy contents of special files when recursive</span></span><br><span class="line"><span class="string">  -d                           same as --no-dereference --preserve=links</span></span><br><span class="line"><span class="string">  -f, --force                  if an existing destination file cannot be</span></span><br><span class="line"><span class="string">                                 opened, remove it and try again (this option</span></span><br><span class="line"><span class="string">                                 is ignored when the -n option is also used)</span></span><br><span class="line"><span class="string">  -i, --interactive            prompt before overwrite (overrides a previous -n</span></span><br><span class="line"><span class="string">                                  option)</span></span><br><span class="line"><span class="string">  -H                           follow command-line symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -l, --link                   hard link files instead of copying</span></span><br><span class="line"><span class="string">  -L, --dereference            always follow symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -n, --no-clobber             do not overwrite an existing file (overrides</span></span><br><span class="line"><span class="string">                                 a previous -i option)</span></span><br><span class="line"><span class="string">  -P, --no-dereference         never follow symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -p                           same as --preserve=mode,ownership,timestamps</span></span><br><span class="line"><span class="string">      --preserve[=ATTR_LIST]   preserve the specified attributes (default:</span></span><br><span class="line"><span class="string">                                 mode,ownership,timestamps), if possible</span></span><br><span class="line"><span class="string">                                 additional attributes: context, links, xattr,</span></span><br><span class="line"><span class="string">                                 all</span></span><br><span class="line"><span class="string">  -c                           deprecated, same as --preserve=context</span></span><br><span class="line"><span class="string">      --no-preserve=ATTR_LIST  don'</span>t preserve the specified attributes</span><br><span class="line">      --parents                use full <span class="built_in">source</span> file name under DIRECTORY</span><br><span class="line">  -R, -r, --recursive          copy directories recursively</span><br><span class="line">      --reflink[=WHEN]         control <span class="built_in">clone</span>/CoW copies. See below</span><br><span class="line">      --remove-destination     remove each existing destination file before</span><br><span class="line">                                 attempting to open it (contrast with --force)</span><br><span class="line">      --sparse=WHEN            control creation of sparse files. See below</span><br><span class="line">      --strip-trailing-slashes  remove any trailing slashes from each SOURCE</span><br><span class="line">                                 argument</span><br><span class="line">  -s, --symbolic-link          make symbolic links instead of copying</span><br><span class="line">  -S, --suffix=SUFFIX          override the usual backup suffix</span><br><span class="line">  -t, --target-directory=DIRECTORY  copy all SOURCE arguments into DIRECTORY</span><br><span class="line">  -T, --no-target-directory    treat DEST as a normal file</span><br><span class="line">  -u, --update                 copy only when the SOURCE file is newer</span><br><span class="line">                                 than the destination file or when the</span><br><span class="line">                                 destination file is missing</span><br><span class="line">  -v, --verbose                explain what is being <span class="keyword">done</span></span><br><span class="line">  -x, --one-file-system        stay on this file system</span><br><span class="line">  -Z                           <span class="built_in">set</span> SELinux security context of destination</span><br></pre></td></tr></table></figure>
+<p>在<code>cp</code>命令后添加<code>-r</code>选项(OPTION)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -r <span class="built_in">test</span> test1</span><br></pre></td></tr></table></figure>
+<p>没有报错，复制成功。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux删除文件出现rm: cannot remove .user.ini: Operation not permitted</title>
+    <url>/2019/05/24/Linux%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%87%BA%E7%8E%B0rm-cannot-remove-user-ini-Operation-not-permitted/</url>
+    <content><![CDATA[<p>再使用 <code>rm -rf</code>命令时。居然会报错，报错信息如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rm -rf test</span></span><br><span class="line">rm: cannot remove <span class="built_in">test</span>/.user.ini : Operation not permitted</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：</p>
+<ul>
+<li>a：让文件或目录仅供附加用途。</li>
+<li>b：不更新文件或目录的最后存取时间。</li>
+<li>c：将文件或目录压缩后存放。</li>
+<li>d：将文件或目录排除在倾倒操作之外。</li>
+<li>i：不得任意更动文件或目录。</li>
+<li>s：保密性删除文件或目录。</li>
+<li>S：即时更新文件或目录。</li>
+<li>u：预防以外删除。</li>
+</ul>
+<p>语法<code>chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录...]</code>参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
+<p>进入到<code>.user.ini</code>所在目录，执行一下 <code>lsattr -a</code>，查看文件下下边包含文件的属性，看到<code>.user.ini</code>有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
+<p>然后执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr -i .user.ini</span><br></pre></td></tr></table></figure>
+<p>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PHP 编译安装 各参数配置详解</title>
     <url>/2019/05/22/PHP-%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85-%E5%90%84%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<h2 id="php编译安装的基本步骤"><a href="#php编译安装的基本步骤" class="headerlink" title="php编译安装的基本步骤"></a>php编译安装的基本步骤</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//首先要下载一个php的安装包,例如:php-5.6.33.tar.gz,</span><br><span class="line"></span><br><span class="line"><span class="comment"># tar zxvf php-5.6.33.tar.gz    // 解压php安装包,得到一个php-5.6.33的文件夹</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cd php-5.6.33    // 进入php-5.6.33安装目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ./configure    // 对php的安装进行配置,后面要加配置选项</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># make &amp;&amp; make install    // 编译安装</span></span><br><span class="line"></span><br><span class="line">//编译安装完成之后,需要从解压后的文件夹中把php.ini-development </span><br><span class="line">//或是 php.ini-production 重命名成php.ini 复制到php安装文件中的相应位置,</span><br><span class="line">//可在phpinfo中查看相应位置.</span><br><span class="line">//把/usr/<span class="built_in">local</span>/etc/php-fpm.conf.default  复制到当前文件夹下,保存为php-fpm.conf</span><br></pre></td></tr></table></figure>
@@ -984,56 +1034,6 @@
       </categories>
       <tags>
         <tag>LNMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux中使用cp命令报 cp:omitting directory错误</title>
-    <url>/2019/05/24/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8cp%E5%91%BD%E4%BB%A4%E6%8A%A5-cp-omitting-directory%E9%94%99%E8%AF%AF/</url>
-    <content><![CDATA[<p>在Linux系统中使用cp命令对文件夹或者目录进行复制操作时，有时候会出现 <code>cp:omitting directiory</code>的错误提示</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cp test test1</span></span><br><span class="line">cp: omitting directory ‘<span class="built_in">test</span>’</span><br></pre></td></tr></table></figure>
-<p>这是因为test目录下还有目录，不能直接进行拷贝</p>
-<p>我们先找下<code>cp</code>的命令帮助，输入<code>cp --h</code>，其中一个<code>-r</code>，可以解决这个问题</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cp --h</span></span><br><span class="line">Usage: cp [OPTION]... [-T] SOURCE DEST</span><br><span class="line">  or:  cp [OPTION]... SOURCE... DIRECTORY</span><br><span class="line">  or:  cp [OPTION]... -t DIRECTORY SOURCE...</span><br><span class="line">Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.</span><br><span class="line"></span><br><span class="line">Mandatory arguments to long options are mandatory <span class="keyword">for</span> short options too.</span><br><span class="line">  -a, --archive                same as -dR --preserve=all</span><br><span class="line">      --attributes-only        don<span class="string">'t copy the file data, just the attributes</span></span><br><span class="line"><span class="string">      --backup[=CONTROL]       make a backup of each existing destination file</span></span><br><span class="line"><span class="string">  -b                           like --backup but does not accept an argument</span></span><br><span class="line"><span class="string">      --copy-contents          copy contents of special files when recursive</span></span><br><span class="line"><span class="string">  -d                           same as --no-dereference --preserve=links</span></span><br><span class="line"><span class="string">  -f, --force                  if an existing destination file cannot be</span></span><br><span class="line"><span class="string">                                 opened, remove it and try again (this option</span></span><br><span class="line"><span class="string">                                 is ignored when the -n option is also used)</span></span><br><span class="line"><span class="string">  -i, --interactive            prompt before overwrite (overrides a previous -n</span></span><br><span class="line"><span class="string">                                  option)</span></span><br><span class="line"><span class="string">  -H                           follow command-line symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -l, --link                   hard link files instead of copying</span></span><br><span class="line"><span class="string">  -L, --dereference            always follow symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -n, --no-clobber             do not overwrite an existing file (overrides</span></span><br><span class="line"><span class="string">                                 a previous -i option)</span></span><br><span class="line"><span class="string">  -P, --no-dereference         never follow symbolic links in SOURCE</span></span><br><span class="line"><span class="string">  -p                           same as --preserve=mode,ownership,timestamps</span></span><br><span class="line"><span class="string">      --preserve[=ATTR_LIST]   preserve the specified attributes (default:</span></span><br><span class="line"><span class="string">                                 mode,ownership,timestamps), if possible</span></span><br><span class="line"><span class="string">                                 additional attributes: context, links, xattr,</span></span><br><span class="line"><span class="string">                                 all</span></span><br><span class="line"><span class="string">  -c                           deprecated, same as --preserve=context</span></span><br><span class="line"><span class="string">      --no-preserve=ATTR_LIST  don'</span>t preserve the specified attributes</span><br><span class="line">      --parents                use full <span class="built_in">source</span> file name under DIRECTORY</span><br><span class="line">  -R, -r, --recursive          copy directories recursively</span><br><span class="line">      --reflink[=WHEN]         control <span class="built_in">clone</span>/CoW copies. See below</span><br><span class="line">      --remove-destination     remove each existing destination file before</span><br><span class="line">                                 attempting to open it (contrast with --force)</span><br><span class="line">      --sparse=WHEN            control creation of sparse files. See below</span><br><span class="line">      --strip-trailing-slashes  remove any trailing slashes from each SOURCE</span><br><span class="line">                                 argument</span><br><span class="line">  -s, --symbolic-link          make symbolic links instead of copying</span><br><span class="line">  -S, --suffix=SUFFIX          override the usual backup suffix</span><br><span class="line">  -t, --target-directory=DIRECTORY  copy all SOURCE arguments into DIRECTORY</span><br><span class="line">  -T, --no-target-directory    treat DEST as a normal file</span><br><span class="line">  -u, --update                 copy only when the SOURCE file is newer</span><br><span class="line">                                 than the destination file or when the</span><br><span class="line">                                 destination file is missing</span><br><span class="line">  -v, --verbose                explain what is being <span class="keyword">done</span></span><br><span class="line">  -x, --one-file-system        stay on this file system</span><br><span class="line">  -Z                           <span class="built_in">set</span> SELinux security context of destination</span><br></pre></td></tr></table></figure>
-<p>在<code>cp</code>命令后添加<code>-r</code>选项(OPTION)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -r <span class="built_in">test</span> test1</span><br></pre></td></tr></table></figure>
-<p>没有报错，复制成功。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux删除文件出现rm: cannot remove .user.ini: Operation not permitted</title>
-    <url>/2019/05/24/Linux%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%87%BA%E7%8E%B0rm-cannot-remove-user-ini-Operation-not-permitted/</url>
-    <content><![CDATA[<p>再使用 <code>rm -rf</code>命令时。居然会报错，报错信息如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rm -rf test</span></span><br><span class="line">rm: cannot remove <span class="built_in">test</span>/.user.ini : Operation not permitted</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：</p>
-<ul>
-<li>a：让文件或目录仅供附加用途。</li>
-<li>b：不更新文件或目录的最后存取时间。</li>
-<li>c：将文件或目录压缩后存放。</li>
-<li>d：将文件或目录排除在倾倒操作之外。</li>
-<li>i：不得任意更动文件或目录。</li>
-<li>s：保密性删除文件或目录。</li>
-<li>S：即时更新文件或目录。</li>
-<li>u：预防以外删除。</li>
-</ul>
-<p>语法<code>chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录...]</code>参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
-<p>进入到<code>.user.ini</code>所在目录，执行一下 <code>lsattr -a</code>，查看文件下下边包含文件的属性，看到<code>.user.ini</code>有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
-<p>然后执行命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr -i .user.ini</span><br></pre></td></tr></table></figure>
-<p>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
       </tags>
   </entry>
   <entry>
@@ -1268,6 +1268,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Thinkphp 在php5.6以上版本显示 &#39;No input file specified&#39;</title>
+    <url>/2019/06/08/Thinkphp-%E5%9C%A8php5-6%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E6%98%BE%E7%A4%BA-No-input-file-specified/</url>
+    <content><![CDATA[<p>安装ThinkPHP5.0.7版本运行项目域名<code>http://test.lo</code>时提示安装ThinkPHP成功，但是运行<code>http://test.lo/index/index</code>时提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No input file specified</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>上网查了一下才知道，<code>PHP5.6</code>以上的是<code>fast_cgi</code>模式，而在某些情况下，不能正确识别<code>path_info</code>所造成的错误，这个时候，你只需要更改<code>.htaccess</code>文件，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>只需要在index.php后面添加<code>?</code>即可，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>再次运行<code>http://test.lo/index/index</code>成功了。</p>
+]]></content>
+      <categories>
+        <category>PHP框架</category>
+        <category>ThinkPHP</category>
+      </categories>
+      <tags>
+        <tag>框架异常</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS上 libreoffice 和 unoconv 安装步骤 实现word转html</title>
     <url>/2019/06/14/CentOS%E4%B8%8A-libreoffice-%E5%92%8C-unoconv-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4-%E5%AE%9E%E7%8E%B0word%E8%BD%AChtml/</url>
     <content><![CDATA[<h2 id="libreoffice安装"><a href="#libreoffice安装" class="headerlink" title="libreoffice安装"></a>libreoffice安装</h2><p><code>yum search libreoffice</code>查询一下系统自带的安装包</p>
@@ -1315,26 +1335,6 @@
       </categories>
       <tags>
         <tag>PHP函数参考</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Thinkphp 在php5.6以上版本显示 &#39;No input file specified&#39;</title>
-    <url>/2019/06/08/Thinkphp-%E5%9C%A8php5-6%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E6%98%BE%E7%A4%BA-No-input-file-specified/</url>
-    <content><![CDATA[<p>安装ThinkPHP5.0.7版本运行项目域名<code>http://test.lo</code>时提示安装ThinkPHP成功，但是运行<code>http://test.lo/index/index</code>时提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No input file specified</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>上网查了一下才知道，<code>PHP5.6</code>以上的是<code>fast_cgi</code>模式，而在某些情况下，不能正确识别<code>path_info</code>所造成的错误，这个时候，你只需要更改<code>.htaccess</code>文件，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
-<p>只需要在index.php后面添加<code>?</code>即可，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
-<p>再次运行<code>http://test.lo/index/index</code>成功了。</p>
-]]></content>
-      <categories>
-        <category>PHP框架</category>
-        <category>ThinkPHP</category>
-      </categories>
-      <tags>
-        <tag>框架异常</tag>
       </tags>
   </entry>
   <entry>
@@ -1488,6 +1488,33 @@
       </tags>
   </entry>
   <entry>
+    <title>VSCode 常用扩展</title>
+    <url>/2019/09/12/VSCode-%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<p>本文记录下自己经常用到的一些扩展，同时也推荐给更多的朋友，希望能对大家有所帮助。</p>
+<h2 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h2><h3 id="Auto-Close-Tag"><a href="#Auto-Close-Tag" class="headerlink" title="Auto Close Tag"></a>Auto Close Tag</h3><p>自动添加 HTML/XML 的闭合标签，像 Visual Studio IDE 或 Sublime Text 一样。</p>
+<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag</a></p>
+<h3 id="Auto-Rename-Tag"><a href="#Auto-Rename-Tag" class="headerlink" title="Auto Rename Tag"></a>Auto Rename Tag</h3><p>自动重命名成对的 HTML/XML 标签，与 Visual Studio IDE 相同。</p>
+<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag</a></p>
+<h3 id="Markdown-Theme-Kit"><a href="#Markdown-Theme-Kit" class="headerlink" title="Markdown Theme Kit"></a>Markdown Theme Kit</h3><p>Visual Studio Code对Markdown的支持非常好，可以打开另一个窗口实时预览Markdown的编辑效果。这个插件主要是提供Markdown编辑器的颜色主题，这样编辑起来更爽快一些。</p>
+<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit</a></p>
+<a id="more"></a>
+<h3 id="Mithril-Emmet"><a href="#Mithril-Emmet" class="headerlink" title="Mithril Emmet"></a>Mithril Emmet</h3><p>Emmet前身是zen-coding，可快速编写HTML代码和快速生成CSS样式</p>
+<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=FallenMax.mithril-emmet" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=FallenMax.mithril-emmet</a></p>
+<h3 id="vscode-fileheader"><a href="#vscode-fileheader" class="headerlink" title="vscode-fileheader"></a>vscode-fileheader</h3><p>自动生成头部注释</p>
+<p>需要先修改插件配置，生成注释快捷键：<code>ctrl + alt + i</code></p>
+<h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint</a></p>
+<h2 id="Laravel-相关"><a href="#Laravel-相关" class="headerlink" title="Laravel 相关"></a>Laravel 相关</h2><h3 id="Laravel-Blade-Snippets"><a href="#Laravel-Blade-Snippets" class="headerlink" title="Laravel Blade Snippets"></a>Laravel Blade Snippets</h3><p>Laravel blade 代码片段和语法高亮支持 Visual Studio Code。如果需要 <code>.blade.php</code>扩展文件支持 <code>Shift+Alt+f</code> 快速格式化代码，点击扩展图片，找到扩展 <code>Laravel Blade Snippets</code> 的配置图标点击 ，会看到有个 <code>Enable Blade Format</code> 选项，选中即可。如下图:</p>
+<p><img src="/2019/09/12/VSCode-常用扩展/20200214142537.jpg" alt="Enable Blade Format"></p>
+<p><a href="https://segmentfault.com/a/1190000018002815" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018002815</a></p>
+]]></content>
+      <categories>
+        <category>软件工具</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开源许可证教程</title>
     <url>/2019/09/12/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>转载地址：<a href="http://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html</a></p>
@@ -1556,33 +1583,6 @@
       </categories>
       <tags>
         <tag>版权</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VSCode 常用扩展</title>
-    <url>/2019/09/12/VSCode-%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<p>本文记录下自己经常用到的一些扩展，同时也推荐给更多的朋友，希望能对大家有所帮助。</p>
-<h2 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h2><h3 id="Auto-Close-Tag"><a href="#Auto-Close-Tag" class="headerlink" title="Auto Close Tag"></a>Auto Close Tag</h3><p>自动添加 HTML/XML 的闭合标签，像 Visual Studio IDE 或 Sublime Text 一样。</p>
-<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag</a></p>
-<h3 id="Auto-Rename-Tag"><a href="#Auto-Rename-Tag" class="headerlink" title="Auto Rename Tag"></a>Auto Rename Tag</h3><p>自动重命名成对的 HTML/XML 标签，与 Visual Studio IDE 相同。</p>
-<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag</a></p>
-<h3 id="Markdown-Theme-Kit"><a href="#Markdown-Theme-Kit" class="headerlink" title="Markdown Theme Kit"></a>Markdown Theme Kit</h3><p>Visual Studio Code对Markdown的支持非常好，可以打开另一个窗口实时预览Markdown的编辑效果。这个插件主要是提供Markdown编辑器的颜色主题，这样编辑起来更爽快一些。</p>
-<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit</a></p>
-<a id="more"></a>
-<h3 id="Mithril-Emmet"><a href="#Mithril-Emmet" class="headerlink" title="Mithril Emmet"></a>Mithril Emmet</h3><p>Emmet前身是zen-coding，可快速编写HTML代码和快速生成CSS样式</p>
-<p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=FallenMax.mithril-emmet" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=FallenMax.mithril-emmet</a></p>
-<h3 id="vscode-fileheader"><a href="#vscode-fileheader" class="headerlink" title="vscode-fileheader"></a>vscode-fileheader</h3><p>自动生成头部注释</p>
-<p>需要先修改插件配置，生成注释快捷键：<code>ctrl + alt + i</code></p>
-<h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><p>地址：<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint</a></p>
-<h2 id="Laravel-相关"><a href="#Laravel-相关" class="headerlink" title="Laravel 相关"></a>Laravel 相关</h2><h3 id="Laravel-Blade-Snippets"><a href="#Laravel-Blade-Snippets" class="headerlink" title="Laravel Blade Snippets"></a>Laravel Blade Snippets</h3><p>Laravel blade 代码片段和语法高亮支持 Visual Studio Code。如果需要 <code>.blade.php</code>扩展文件支持 <code>Shift+Alt+f</code> 快速格式化代码，点击扩展图片，找到扩展 <code>Laravel Blade Snippets</code> 的配置图标点击 ，会看到有个 <code>Enable Blade Format</code> 选项，选中即可。如下图:</p>
-<p><img src="/2019/09/12/VSCode-常用扩展/20200214142537.jpg" alt="Enable Blade Format"></p>
-<p><a href="https://segmentfault.com/a/1190000018002815" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018002815</a></p>
-]]></content>
-      <categories>
-        <category>软件工具</category>
-      </categories>
-      <tags>
-        <tag>VSCode</tag>
       </tags>
   </entry>
   <entry>
@@ -2903,22 +2903,6 @@
       </tags>
   </entry>
   <entry>
-    <title>XMLHttpRequest使用教程</title>
-    <url>/2019/12/31/XMLHttpRequest%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="XMLHttpRequest-兼容性"><a href="#XMLHttpRequest-兼容性" class="headerlink" title="XMLHttpRequest 兼容性"></a>XMLHttpRequest 兼容性</h2><p>关于 XMLHttpRequest 的浏览器兼容性，大家可以直接查看“Can I use”这个网站提供的结果<a href="https://caniuse.com/#search=XMLHttpRequest" target="_blank" rel="noopener">XMLHttpRequest</a>兼容性。</p>
-<a id="more"></a>
-<h2 id="使用-XMLHttpRequest-提交表单数据"><a href="#使用-XMLHttpRequest-提交表单数据" class="headerlink" title="使用 XMLHttpRequest 提交表单数据"></a>使用 XMLHttpRequest 提交表单数据</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 构造表单数据</span></span><br><span class="line">  <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">  formData.append(<span class="string">'username'</span>, <span class="string">'johndoe'</span>);</span><br><span class="line">  formData.append(<span class="string">'id'</span>, <span class="number">123456</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 创建xhr对象 </span></span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  <span class="comment">// 设置xhr请求的超时时间</span></span><br><span class="line">  xhr.timeout = <span class="number">3000</span>;<span class="comment">// 3秒</span></span><br><span class="line">  <span class="comment">// 设置响应返回的数据格式</span></span><br><span class="line">  xhr.responseType = <span class="string">"text"</span>;</span><br><span class="line">  <span class="comment">// 创建一个 post 请求,采用异步</span></span><br><span class="line">  xhr.open(<span class="string">'POST'</span>, <span class="string">'/server.php'</span>, <span class="literal">true</span>);</span><br><span class="line">  <span class="comment">// 注册相关事件回调处理函数</span></span><br><span class="line">  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>||<span class="keyword">this</span>.status == <span class="number">304</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="string">'response'</span> <span class="keyword">in</span> xhr ? xhr.response : xhr.responseText</span><br><span class="line">        <span class="built_in">console</span>.log(res);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line">  xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line">  xhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//发送数据</span></span><br><span class="line">  xhr.send(formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>开发文档:<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpReques" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpReques</a><br>参考链接:<a href="https://segmentfault.com/a/1190000004322487#articleHeader16" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004322487#articleHeader16</a></p>
-]]></content>
-      <categories>
-        <category>前端开发</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript对象</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>XMLHttpRequest Level 2 使用指南</title>
     <url>/2019/12/31/XMLHttpRequest-Level-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>转载地址：<a href="http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html</a></p>
@@ -3070,6 +3054,22 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Server-Side_Access_Control" target="_blank" rel="noopener">Server-Side Access Control</a>：服务器端CORS设置。</li>
 <li><a href="http://enable-cors.org/" target="_blank" rel="noopener">Enable CORS</a>：服务端CORS设置。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>XMLHttpRequest使用教程</title>
+    <url>/2019/12/31/XMLHttpRequest%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="XMLHttpRequest-兼容性"><a href="#XMLHttpRequest-兼容性" class="headerlink" title="XMLHttpRequest 兼容性"></a>XMLHttpRequest 兼容性</h2><p>关于 XMLHttpRequest 的浏览器兼容性，大家可以直接查看“Can I use”这个网站提供的结果<a href="https://caniuse.com/#search=XMLHttpRequest" target="_blank" rel="noopener">XMLHttpRequest</a>兼容性。</p>
+<a id="more"></a>
+<h2 id="使用-XMLHttpRequest-提交表单数据"><a href="#使用-XMLHttpRequest-提交表单数据" class="headerlink" title="使用 XMLHttpRequest 提交表单数据"></a>使用 XMLHttpRequest 提交表单数据</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 构造表单数据</span></span><br><span class="line">  <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">  formData.append(<span class="string">'username'</span>, <span class="string">'johndoe'</span>);</span><br><span class="line">  formData.append(<span class="string">'id'</span>, <span class="number">123456</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 创建xhr对象 </span></span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  <span class="comment">// 设置xhr请求的超时时间</span></span><br><span class="line">  xhr.timeout = <span class="number">3000</span>;<span class="comment">// 3秒</span></span><br><span class="line">  <span class="comment">// 设置响应返回的数据格式</span></span><br><span class="line">  xhr.responseType = <span class="string">"text"</span>;</span><br><span class="line">  <span class="comment">// 创建一个 post 请求,采用异步</span></span><br><span class="line">  xhr.open(<span class="string">'POST'</span>, <span class="string">'/server.php'</span>, <span class="literal">true</span>);</span><br><span class="line">  <span class="comment">// 注册相关事件回调处理函数</span></span><br><span class="line">  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>||<span class="keyword">this</span>.status == <span class="number">304</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="string">'response'</span> <span class="keyword">in</span> xhr ? xhr.response : xhr.responseText</span><br><span class="line">        <span class="built_in">console</span>.log(res);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line">  xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line">  xhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//发送数据</span></span><br><span class="line">  xhr.send(formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开发文档:<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpReques" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpReques</a><br>参考链接:<a href="https://segmentfault.com/a/1190000004322487#articleHeader16" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004322487#articleHeader16</a></p>
 ]]></content>
       <categories>
         <category>前端开发</category>
@@ -3307,6 +3307,20 @@
       </tags>
   </entry>
   <entry>
+    <title>解决GitHub无法访问</title>
+    <url>/2020/02/02/%E8%A7%A3%E5%86%B3GitHub%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</url>
+    <content><![CDATA[<p>在系统的 <code>hosts</code> 文件里面加上以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">192.30.253.112 github.com</span><br><span class="line">185.199.108.153 assets-cdn.github.com</span><br><span class="line">185.199.109.153 assets-cdn.github.com</span><br><span class="line">185.199.110.153 assets-cdn.github.com</span><br><span class="line">185.199.111.153 assets-cdn.github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+<p>使hosts生效即可。</p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PHP去掉cURL头信息</title>
     <url>/2020/01/13/How-to-remove-HTTP-headers-from-cURL-response/</url>
     <content><![CDATA[<h2 id="设置CURLOPT-HEADER为FALSE"><a href="#设置CURLOPT-HEADER为FALSE" class="headerlink" title="设置CURLOPT_HEADER为FALSE"></a>设置<code>CURLOPT_HEADER</code>为<code>FALSE</code></h2><p>如果设置<code>CURLOPT_HEADER</code>为<code>FALSE</code>则响应结果不含HTTP头信息</p>
@@ -3324,17 +3338,65 @@
       </tags>
   </entry>
   <entry>
-    <title>解决GitHub无法访问</title>
-    <url>/2020/02/02/%E8%A7%A3%E5%86%B3GitHub%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</url>
-    <content><![CDATA[<p>在系统的 <code>hosts</code> 文件里面加上以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">192.30.253.112 github.com</span><br><span class="line">185.199.108.153 assets-cdn.github.com</span><br><span class="line">185.199.109.153 assets-cdn.github.com</span><br><span class="line">185.199.110.153 assets-cdn.github.com</span><br><span class="line">185.199.111.153 assets-cdn.github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
-<p>使hosts生效即可。</p>
+    <title>Composer镜像地址</title>
+    <url>/2020/02/11/Composer%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<p>由于大家都懂的原因，Composer官方的镜像地址，可能会无法访问，所以我们要把镜像地址更换为国内的。之前一直是 Laravel China 在维护国内的镜像，随着 <a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">阿里开源镜像</a> 发布以后，Laravel China 也宣布停用，<a href="https://learnku.com/articles/30758" target="_blank" rel="noopener">Laravel China 镜像完成历史使命，将于两个月后停用</a>。</p>
+<p>全局配置镜像地址：</p>
+<a id="more"></a>
+<p><strong>全局配置（推荐）</strong></p>
+<p>所有项目都会使用该镜像地址：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+<p>取消配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
+<p><strong>项目配置</strong></p>
+<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+<p>取消配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
+<p><strong>镜像管理器:</strong></p>
+<p><a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
 ]]></content>
       <categories>
         <category>版本管理</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
+        <tag>Composer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes</title>
+    <url>/2020/02/14/%E8%A7%A3%E5%86%B3-Syntax-error-or-access-violation-1071-Specified-key-was-too-long-max-key-length-is-1000-bytes/</url>
+    <content><![CDATA[<p>解决 <code>Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes</code> 报错。</p>
+<p>这个错误信息是说，需要1071个字节，但是当前数据库最大长度是1000字节。</p>
+<p>这里我们需要修改 <code>app\Providers\AppServiceProvider.php</code> 文件</p>
+<a id="more"></a>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Providers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">ServiceProvider</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppServiceProvider</span> <span class="keyword">extends</span> <span class="title">ServiceProvider</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Bootstrap any application services.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// mb4string 1000/4=250</span></span><br><span class="line">        Schema::defaultStringLength(<span class="number">250</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Register any application services.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>boot 方法是所有应用执行前运行的方法;</li>
+<li><code>Schema::defaultStringLength(250);</code> 设置默认字符串长度为250</li>
+<li>在Laravel5.4之后默认的字符串使用类型是mb4string，一个长度为4个字节，这里用<code>1000/4=250</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>PHP框架</category>
+        <category>Laravel</category>
+      </categories>
+      <tags>
+        <tag>migrate</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 Base table or view already exists: 1050 Table &#39;users&#39; already exists</title>
+    <url>/2020/02/14/%E8%A7%A3%E5%86%B3-Base-table-or-view-already-exists-1050-Table-users-already-exists/</url>
+    <content><![CDATA[<p>解决 <code>Base table or view already exists: 1050 Table &#39;users&#39; already exists&#39;</code> 错误。</p>
+<p>这个报错说明表 <code>users</code>已经存在了，如果 表 <code>migrations</code> 中没有<code>users</code>的记录，则删除表 <code>users</code> 再次执行命令 <code>php artisan migrate</code></p>
+]]></content>
+      <categories>
+        <category>PHP框架</category>
+        <category>Laravel</category>
+      </categories>
+      <tags>
+        <tag>migrate</tag>
       </tags>
   </entry>
   <entry>
@@ -3705,68 +3767,6 @@
       </categories>
       <tags>
         <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Composer镜像地址</title>
-    <url>/2020/02/11/Composer%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<p>由于大家都懂的原因，Composer官方的镜像地址，可能会无法访问，所以我们要把镜像地址更换为国内的。之前一直是 Laravel China 在维护国内的镜像，随着 <a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">阿里开源镜像</a> 发布以后，Laravel China 也宣布停用，<a href="https://learnku.com/articles/30758" target="_blank" rel="noopener">Laravel China 镜像完成历史使命，将于两个月后停用</a>。</p>
-<p>全局配置镜像地址：</p>
-<a id="more"></a>
-<p><strong>全局配置（推荐）</strong></p>
-<p>所有项目都会使用该镜像地址：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
-<p>取消配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config -g --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
-<p><strong>项目配置</strong></p>
-<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
-<p>取消配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer config --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
-<p><strong>镜像管理器:</strong></p>
-<p><a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>Composer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 Base table or view already exists: 1050 Table &#39;users&#39; already exists</title>
-    <url>/2020/02/14/%E8%A7%A3%E5%86%B3-Base-table-or-view-already-exists-1050-Table-users-already-exists/</url>
-    <content><![CDATA[<p>解决 <code>Base table or view already exists: 1050 Table &#39;users&#39; already exists&#39;</code> 错误。</p>
-<p>这个报错说明表 <code>users</code>已经存在了，如果 表 <code>migrations</code> 中没有<code>users</code>的记录，则删除表 <code>users</code> 再次执行命令 <code>php artisan migrate</code></p>
-]]></content>
-      <categories>
-        <category>PHP框架</category>
-        <category>Laravel</category>
-      </categories>
-      <tags>
-        <tag>migrate</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes</title>
-    <url>/2020/02/14/%E8%A7%A3%E5%86%B3-Syntax-error-or-access-violation-1071-Specified-key-was-too-long-max-key-length-is-1000-bytes/</url>
-    <content><![CDATA[<p>解决 <code>Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes</code> 报错。</p>
-<p>这个错误信息是说，需要1071个字节，但是当前数据库最大长度是1000字节。</p>
-<p>这里我们需要修改 <code>app\Providers\AppServiceProvider.php</code> 文件</p>
-<a id="more"></a>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Providers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">ServiceProvider</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppServiceProvider</span> <span class="keyword">extends</span> <span class="title">ServiceProvider</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Bootstrap any application services.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// mb4string 1000/4=250</span></span><br><span class="line">        Schema::defaultStringLength(<span class="number">250</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Register any application services.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>boot 方法是所有应用执行前运行的方法;</li>
-<li><code>Schema::defaultStringLength(250);</code> 设置默认字符串长度为250</li>
-<li>在Laravel5.4之后默认的字符串使用类型是mb4string，一个长度为4个字节，这里用<code>1000/4=250</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>PHP框架</category>
-        <category>Laravel</category>
-      </categories>
-      <tags>
-        <tag>migrate</tag>
       </tags>
   </entry>
   <entry>
@@ -4586,6 +4586,24 @@
       </tags>
   </entry>
   <entry>
+    <title>关于PHP程序员技术职业生涯规划</title>
+    <url>/2020/05/15/%E5%85%B3%E4%BA%8EPHP%E7%A8%8B%E5%BA%8F%E5%91%98%E6%8A%80%E6%9C%AF%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<p>转载地址：<a href="http://rango.swoole.com/" target="_blank" rel="noopener">http://rango.swoole.com/</a></p>
+<p>看到很多PHP程序员职业规划的文章，都是直接上来就提Linux、PHP、MySQL、Nginx、Redis、Memcache、jQuery这些，然后就直接上手搭环境、做项目，中级就是学习各种PHP框架和类库，高级阶段就是MySQL优化、PHP内核与扩展、架构设计这些了。</p>
+<a id="more"></a>
+<p>这些文章都存在一个严重的缺陷，<strong>不重视基础</strong>。就好比练武功，只求速成，不修炼内功和心法，只练各种招式，这样能高到哪里去？我所见过的PHP大牛每一个都是具备非常扎实的基础，他们之所以能成为大牛，是因为基础足够好。基础不稳，面对技术复杂的系统，如同盲人摸象、管中窥豹，只得其门不得其法。而且如果基础不扎实，也没办法进入大公司。国外的Google、Facebook，国内的腾讯、阿里、百度、滴滴、京东、新浪等知名互联网企业，无论哪一家公司面试必然会考验应聘者的技术功底。无法进入一个拥有大规模并发请求的项目中得到历练，不坚持提升自己，那也只能在小公司混日子了。</p>
+<p>我最开始工作也是在2家小公司，后来加入腾讯阿里，主要原因还是我坚持学习基础知识，从而得倒了这个机会。有几个方面的基础知识，我建议每一位PHP程序员都应该好好学习一下。我推荐几本书给大家，包括深入理解计算机系统、现代操作系统、C程序设计语言、C语言数据结构和算法、Unix环境高级编程、TCP/IP网络通信详解。另外我建议大家学习一下面向对象方面知识，PHP这方面的书不太多，建议看Java面向对象编程、Java编程思想、J2EE这些书。PHP语言基础方面，建议认真地把<strong>PHP5权威编程</strong>这本书好好读完。另外不光要读，还要照着书中的讲解动手去编程实践。</p>
+<p>总之有一个好的基础，再去学LAMP、Redis、PHP框架、前端，这样取得的成就更大。这与年龄无关、与学历无关、与智力无关，与天赋也无关。只要肯努力学习，人人可以成为技术大牛。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>人生</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Html固定头部后锚点定位偏移调整</title>
     <url>/2020/05/14/Html%E5%9B%BA%E5%AE%9A%E5%A4%B4%E9%83%A8%E5%90%8E%E9%94%9A%E7%82%B9%E5%AE%9A%E4%BD%8D%E5%81%8F%E7%A7%BB%E8%B0%83%E6%95%B4/</url>
     <content><![CDATA[<p>有时候在头部菜单，我们会使用锚点定位，如果此时头部菜单我们设置成固定到头部，那么我们在使用锚点定位的时候，定位到的页面位置向上偏移了。</p>
@@ -4606,24 +4624,6 @@
       <tags>
         <tag>CSS</tag>
         <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于PHP程序员技术职业生涯规划</title>
-    <url>/2020/05/15/%E5%85%B3%E4%BA%8EPHP%E7%A8%8B%E5%BA%8F%E5%91%98%E6%8A%80%E6%9C%AF%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/</url>
-    <content><![CDATA[<p>转载地址：<a href="http://rango.swoole.com/" target="_blank" rel="noopener">http://rango.swoole.com/</a></p>
-<p>看到很多PHP程序员职业规划的文章，都是直接上来就提Linux、PHP、MySQL、Nginx、Redis、Memcache、jQuery这些，然后就直接上手搭环境、做项目，中级就是学习各种PHP框架和类库，高级阶段就是MySQL优化、PHP内核与扩展、架构设计这些了。</p>
-<a id="more"></a>
-<p>这些文章都存在一个严重的缺陷，<strong>不重视基础</strong>。就好比练武功，只求速成，不修炼内功和心法，只练各种招式，这样能高到哪里去？我所见过的PHP大牛每一个都是具备非常扎实的基础，他们之所以能成为大牛，是因为基础足够好。基础不稳，面对技术复杂的系统，如同盲人摸象、管中窥豹，只得其门不得其法。而且如果基础不扎实，也没办法进入大公司。国外的Google、Facebook，国内的腾讯、阿里、百度、滴滴、京东、新浪等知名互联网企业，无论哪一家公司面试必然会考验应聘者的技术功底。无法进入一个拥有大规模并发请求的项目中得到历练，不坚持提升自己，那也只能在小公司混日子了。</p>
-<p>我最开始工作也是在2家小公司，后来加入腾讯阿里，主要原因还是我坚持学习基础知识，从而得倒了这个机会。有几个方面的基础知识，我建议每一位PHP程序员都应该好好学习一下。我推荐几本书给大家，包括深入理解计算机系统、现代操作系统、C程序设计语言、C语言数据结构和算法、Unix环境高级编程、TCP/IP网络通信详解。另外我建议大家学习一下面向对象方面知识，PHP这方面的书不太多，建议看Java面向对象编程、Java编程思想、J2EE这些书。PHP语言基础方面，建议认真地把<strong>PHP5权威编程</strong>这本书好好读完。另外不光要读，还要照着书中的讲解动手去编程实践。</p>
-<p>总之有一个好的基础，再去学LAMP、Redis、PHP框架、前端，这样取得的成就更大。这与年龄无关、与学历无关、与智力无关，与天赋也无关。只要肯努力学习，人人可以成为技术大牛。</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>人生</tag>
       </tags>
   </entry>
   <entry>
@@ -5194,24 +5194,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx 负载均衡配置</title>
-    <url>/2020/08/31/Nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>现在有4台服务器，x.x.x.211、x.x.x.212、x.x.x.213、x.x.x.214，其中使用211做负载均衡，212和213为应用服务器，214为数据存储服务器，平台端、店铺端和接口上传文件走214服务器。</p>
-<p>服务器统一用lnmp集成一键安装。</p>
-<p>212、213和124的nginx配置文件内容为</p>
-<p>nginx.conf 或 vhost/<strong>**</strong>.conf</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root  /data/www/project/public;</span><br><span class="line"></span><br><span class="line">    include enable-php-pathinfo.conf;</span><br><span class="line"></span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      30d;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      12h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /.well-known &#123;</span><br><span class="line">        allow all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.</span><br><span class="line">    &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    access_log  off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>211服务器nginx配置文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">    upstream backend &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 192.16.18.212;</span><br><span class="line">        server 192.16.18.213;</span><br><span class="line">    &#125;</span><br><span class="line">    upstream admin_seller &#123;</span><br><span class="line">        server 192.16.18.214;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 监听80端口，对所有域名进行https重定向</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80; #监听端口</span><br><span class="line">    server_name peak.xin; #请求域名</span><br><span class="line">    client_max_body_size 1024M; #文件大小限制，默认1M</span><br><span class="line"></span><br><span class="line">    return 301 https://$host$request_uri; #重定向至https访问。	</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 443 ssl; #监听端口</span><br><span class="line">    server_name peak.xin; #请求域名</span><br><span class="line">    #ssl on; #开启ssl(1.15之后的版本都是推荐listen … ssl)</span><br><span class="line">    client_max_body_size 1024M; #文件大小限制，默认1M</span><br><span class="line">	</span><br><span class="line">    # 加强xss的过滤</span><br><span class="line">    add_header X-Frame-Options &quot;SAMEORIGIN&quot;;</span><br><span class="line">    add_header X-XSS-Protection &quot;1; mode=block&quot;;</span><br><span class="line">    add_header X-Content-Type-Options &quot;nosniff&quot;;</span><br><span class="line">    </span><br><span class="line">    # 证书配置</span><br><span class="line">    ssl_certificate   ../cert/4322799_www.qtvnews.com.pem; #pem证书路径</span><br><span class="line">    ssl_certificate_key  ../cert/4322799_www.qtvnews.com.key; #pem证书key路径</span><br><span class="line">    ssl_session_timeout 5m; #会话超时时间</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4; #加密算法</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #SSL协议</span><br><span class="line">    ssl_prefer_server_ciphers on; # 是否由服务器决定采用哪种加密算法</span><br><span class="line"></span><br><span class="line">    location ~ /(admin|seller|storage)/ &#123;</span><br><span class="line">        proxy_http_version 1.1; #代理使用的http协议</span><br><span class="line">        proxy_pass http://admin_seller; #代理转发</span><br><span class="line">        proxy_set_header Host $host; #header添加请求host信息</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr; #header增加请求来源IP信息</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; #增加代理记录</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;# 使用https协议时用到</span><br><span class="line"></span><br><span class="line">        # 响应头部添加实际响应服务器信息</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">        # 解决后端服务传输数据过多</span><br><span class="line">        proxy_buffer_size 64k;</span><br><span class="line">        proxy_buffers 32 32k;</span><br><span class="line">        proxy_busy_buffers_size 128k;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~ /api/v4/user/material &#123;</span><br><span class="line">        proxy_pass http://admin_seller;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        #proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    # 拦截所有请求</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        #proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 拦截websocket请求</span><br><span class="line">    location /socket</span><br><span class="line">    &#123;</span><br><span class="line">        proxy_pass http://192.16.18.214:2347;</span><br><span class="line">        proxy_read_timeout 60;</span><br><span class="line">        proxy_connect_timeout 60;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line"></span><br><span class="line">        # Allow the use of websockets</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &apos;upgrade&apos;;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_cache_bypass $http_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    access_log  /data/wwwlogs/peak.xin.access.log;</span><br><span class="line">    error_log  /data/wwwlogs/peak.xin.error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>负载均衡</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nginx 配置location和rewrite规则写法总结</title>
     <url>/2020/09/01/Nginx-%E9%85%8D%E7%BD%AElocation%E5%92%8Crewrite%E8%A7%84%E5%88%99%E5%86%99%E6%B3%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>location 块的基本语法是：</p>
@@ -5309,6 +5291,39 @@
       </categories>
       <tags>
         <tag>负载均衡</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx 负载均衡配置</title>
+    <url>/2020/08/31/Nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>现在有4台服务器，x.x.x.211、x.x.x.212、x.x.x.213、x.x.x.214，其中使用211做负载均衡，212和213为应用服务器，214为数据存储服务器，平台端、店铺端和接口上传文件走214服务器。</p>
+<p>服务器统一用lnmp集成一键安装。</p>
+<p>212、213和124的nginx配置文件内容为</p>
+<p>nginx.conf 或 vhost/<strong>**</strong>.conf</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root  /data/www/project/public;</span><br><span class="line"></span><br><span class="line">    include enable-php-pathinfo.conf;</span><br><span class="line"></span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      30d;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      12h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /.well-known &#123;</span><br><span class="line">        allow all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.</span><br><span class="line">    &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    access_log  off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>211服务器nginx配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">    upstream backend &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 192.16.18.212;</span><br><span class="line">        server 192.16.18.213;</span><br><span class="line">    &#125;</span><br><span class="line">    upstream admin_seller &#123;</span><br><span class="line">        server 192.16.18.214;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 监听80端口，对所有域名进行https重定向</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80; #监听端口</span><br><span class="line">    server_name peak.xin; #请求域名</span><br><span class="line">    client_max_body_size 1024M; #文件大小限制，默认1M</span><br><span class="line"></span><br><span class="line">    return 301 https://$host$request_uri; #重定向至https访问。	</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 443 ssl; #监听端口</span><br><span class="line">    server_name peak.xin; #请求域名</span><br><span class="line">    #ssl on; #开启ssl(1.15之后的版本都是推荐listen … ssl)</span><br><span class="line">    client_max_body_size 1024M; #文件大小限制，默认1M</span><br><span class="line">	</span><br><span class="line">    # 加强xss的过滤</span><br><span class="line">    add_header X-Frame-Options &quot;SAMEORIGIN&quot;;</span><br><span class="line">    add_header X-XSS-Protection &quot;1; mode=block&quot;;</span><br><span class="line">    add_header X-Content-Type-Options &quot;nosniff&quot;;</span><br><span class="line">    </span><br><span class="line">    # 证书配置</span><br><span class="line">    ssl_certificate   ../cert/4322799_www.qtvnews.com.pem; #pem证书路径</span><br><span class="line">    ssl_certificate_key  ../cert/4322799_www.qtvnews.com.key; #pem证书key路径</span><br><span class="line">    ssl_session_timeout 5m; #会话超时时间</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4; #加密算法</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #SSL协议</span><br><span class="line">    ssl_prefer_server_ciphers on; # 是否由服务器决定采用哪种加密算法</span><br><span class="line"></span><br><span class="line">    location ~ /(admin|seller|storage)/ &#123;</span><br><span class="line">        proxy_http_version 1.1; #代理使用的http协议</span><br><span class="line">        proxy_pass http://admin_seller; #代理转发</span><br><span class="line">        proxy_set_header Host $host; #header添加请求host信息</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr; #header增加请求来源IP信息</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; #增加代理记录</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;# 使用https协议时用到</span><br><span class="line"></span><br><span class="line">        # 响应头部添加实际响应服务器信息</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">        # 解决后端服务传输数据过多</span><br><span class="line">        proxy_buffer_size 64k;</span><br><span class="line">        proxy_buffers 32 32k;</span><br><span class="line">        proxy_busy_buffers_size 128k;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~ /api/v4/user/material &#123;</span><br><span class="line">        proxy_pass http://admin_seller;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        #proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    # 拦截所有请求</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        #proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        add_header backendIP $upstream_addr;</span><br><span class="line">        add_header backendCode $upstream_status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 拦截websocket请求</span><br><span class="line">    location /socket</span><br><span class="line">    &#123;</span><br><span class="line">        proxy_pass http://192.16.18.214:2347;</span><br><span class="line">        proxy_read_timeout 60;</span><br><span class="line">        proxy_connect_timeout 60;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line"></span><br><span class="line">        # Allow the use of websockets</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &apos;upgrade&apos;;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_cache_bypass $http_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    access_log  /data/wwwlogs/peak.xin.access.log;</span><br><span class="line">    error_log  /data/wwwlogs/peak.xin.error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>负载均衡</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS查看是否安装了某个软件</title>
+    <url>/2020/09/25/CentOS%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="rpm包安装的"><a href="#rpm包安装的" class="headerlink" title="rpm包安装的"></a>rpm包安装的</h2><p>可以使用<code>rpm -qa</code> 查看，如果要查看指定的软件包是否安装用<code>rpm -qa | grep 软件或者包名</code></p>
+<h2 id="deb包安装的"><a href="#deb包安装的" class="headerlink" title="deb包安装的"></a>deb包安装的</h2><p>可以使用<code>dpkg -l</code> 查看，如果要查看指定的软件包是否安装用<code>dpkg -l | grep 软件或者包名</code></p>
+<h2 id="yum安装的"><a href="#yum安装的" class="headerlink" title="yum安装的"></a>yum安装的</h2><p>可以使用<code>yum list installed</code> 查看，如果要查看指定的软件包是否安装用<code>yum list installed | grep 软件或者包名</code></p>
+<h2 id="源码包编译安装的"><a href="#源码包编译安装的" class="headerlink" title="源码包编译安装的"></a>源码包编译安装的</h2><p>以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
       </tags>
   </entry>
   <entry>
@@ -5580,21 +5595,6 @@
 <h2 id="df"><a href="#df" class="headerlink" title="df"></a>df</h2><p>查看硬盘</p>
 <h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><p>系统启动时间也可以看负载</p>
 <p>参考链接：<a href="https://wzfou.com/linux-jiankong/" target="_blank" rel="noopener">https://wzfou.com/linux-jiankong/</a></p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS查看是否安装了某个软件</title>
-    <url>/2020/09/25/CentOS%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="rpm包安装的"><a href="#rpm包安装的" class="headerlink" title="rpm包安装的"></a>rpm包安装的</h2><p>可以使用<code>rpm -qa</code> 查看，如果要查看指定的软件包是否安装用<code>rpm -qa | grep 软件或者包名</code></p>
-<h2 id="deb包安装的"><a href="#deb包安装的" class="headerlink" title="deb包安装的"></a>deb包安装的</h2><p>可以使用<code>dpkg -l</code> 查看，如果要查看指定的软件包是否安装用<code>dpkg -l | grep 软件或者包名</code></p>
-<h2 id="yum安装的"><a href="#yum安装的" class="headerlink" title="yum安装的"></a>yum安装的</h2><p>可以使用<code>yum list installed</code> 查看，如果要查看指定的软件包是否安装用<code>yum list installed | grep 软件或者包名</code></p>
-<h2 id="源码包编译安装的"><a href="#源码包编译安装的" class="headerlink" title="源码包编译安装的"></a>源码包编译安装的</h2><p>以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了</p>
 ]]></content>
       <categories>
         <category>运维</category>
@@ -5920,6 +5920,23 @@
       </tags>
   </entry>
   <entry>
+    <title>设置HTTP请求自动跳转HTTPS</title>
+    <url>/2020/10/27/%E8%AE%BE%E7%BD%AEHTTP%E8%AF%B7%E6%B1%82%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%ACHTTPS/</url>
+    <content><![CDATA[<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>在需要跳转的HTTP站点下添加以下rewrite语句，实现HTTP访问自动跳转到HTTPS页面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.certificatestests.com; #将www.certificatestests.com修改为您证书绑定的域名，例如：www.example.com。</span><br><span class="line">    rewrite ^(.*)$ https://$host$1 permanent; #将所有HTTP请求通过rewrite重定向到HTTPS。</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><p>在httpd.conf文件中的<virtualhost *:80> </virtualhost>中间，添加以下重定向代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;SERVER_PORT&#125; !^443$</span><br><span class="line">RewriteRule ^(.*)$ https://%&#123;SERVER_NAME&#125;$1 [L,R]</span><br></pre></td></tr></table></figure>
+<h2 id="htaccess"><a href="#htaccess" class="headerlink" title=".htaccess"></a>.htaccess</h2><p>在Web目录下打开.htaccess文件（如没有，需新建该文件），添加以下rewrite语句，实现HTTP访问自动跳转到HTTPS页面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;HTTP:From-Https&#125; !^on$ [NC]</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www.)?yourdomain.com$ [NC]                # 将yourdomain.com修改为您证书绑定的域名，例如：example.com。</span><br><span class="line">RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R=301,L]           # 将yourdomain.com修改为您证书绑定的域名，例如：example.com。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PHP高并发情况下防止商品库存超卖</title>
     <url>/2020/10/24/PHP%E9%AB%98%E5%B9%B6%E5%8F%91%E6%83%85%E5%86%B5%E4%B8%8B%E9%98%B2%E6%AD%A2%E5%95%86%E5%93%81%E5%BA%93%E5%AD%98%E8%B6%85%E5%8D%96/</url>
     <content><![CDATA[<p>商城系统中，抢购和秒杀是很常见的营销场景，在一定时间内有大量的用户访问商场下单，主要需要解决的问题有两个：</p>
@@ -5964,23 +5981,6 @@
       </categories>
       <tags>
         <tag>高并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设置HTTP请求自动跳转HTTPS</title>
-    <url>/2020/10/27/%E8%AE%BE%E7%BD%AEHTTP%E8%AF%B7%E6%B1%82%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%ACHTTPS/</url>
-    <content><![CDATA[<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>在需要跳转的HTTP站点下添加以下rewrite语句，实现HTTP访问自动跳转到HTTPS页面。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.certificatestests.com; #将www.certificatestests.com修改为您证书绑定的域名，例如：www.example.com。</span><br><span class="line">    rewrite ^(.*)$ https://$host$1 permanent; #将所有HTTP请求通过rewrite重定向到HTTPS。</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><p>在httpd.conf文件中的<virtualhost *:80> </virtualhost>中间，添加以下重定向代码。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;SERVER_PORT&#125; !^443$</span><br><span class="line">RewriteRule ^(.*)$ https://%&#123;SERVER_NAME&#125;$1 [L,R]</span><br></pre></td></tr></table></figure>
-<h2 id="htaccess"><a href="#htaccess" class="headerlink" title=".htaccess"></a>.htaccess</h2><p>在Web目录下打开.htaccess文件（如没有，需新建该文件），添加以下rewrite语句，实现HTTP访问自动跳转到HTTPS页面。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;HTTP:From-Https&#125; !^on$ [NC]</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www.)?yourdomain.com$ [NC]                # 将yourdomain.com修改为您证书绑定的域名，例如：example.com。</span><br><span class="line">RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R=301,L]           # 将yourdomain.com修改为您证书绑定的域名，例如：example.com。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
       </tags>
   </entry>
   <entry>
@@ -6594,22 +6594,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ThinkPHP 数据库无法连接 Could not connect: No such file or directory</title>
-    <url>/2021/08/03/ThinkPHP-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5-Could-not-connect-No-such-file-or-directory/</url>
-    <content><![CDATA[<p>使用ThinkPHP框架数据库无法连接，报错<code>Could not connect: No such file or directory</code>，原因是<code>/tmp/</code>目录下没有<code>mysql.sock</code>文件。</p>
-<p>解决方法：</p>
-<p>先找到mysql的<code>mysql.sock</code>文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find / -name mysql.sock</span></span><br><span class="line">/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure></p>
-<p>创建软连接<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>PHP框架</category>
-        <category>ThinkPHP</category>
-      </categories>
-      <tags>
-        <tag>数据库操作</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux服务器性能查看常用命令</title>
     <url>/2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="实时显示系统中各个进程的资源占用状况"><a href="#实时显示系统中各个进程的资源占用状况" class="headerlink" title="实时显示系统中各个进程的资源占用状况"></a>实时显示系统中各个进程的资源占用状况</h2><p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</p>
@@ -6627,6 +6611,22 @@
       </categories>
       <tags>
         <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ThinkPHP 数据库无法连接 Could not connect: No such file or directory</title>
+    <url>/2021/08/03/ThinkPHP-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5-Could-not-connect-No-such-file-or-directory/</url>
+    <content><![CDATA[<p>使用ThinkPHP框架数据库无法连接，报错<code>Could not connect: No such file or directory</code>，原因是<code>/tmp/</code>目录下没有<code>mysql.sock</code>文件。</p>
+<p>解决方法：</p>
+<p>先找到mysql的<code>mysql.sock</code>文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find / -name mysql.sock</span></span><br><span class="line">/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure></p>
+<p>创建软连接<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>PHP框架</category>
+        <category>ThinkPHP</category>
+      </categories>
+      <tags>
+        <tag>数据库操作</tag>
       </tags>
   </entry>
   <entry>
@@ -6894,6 +6894,32 @@
       </tags>
   </entry>
   <entry>
+    <title>JS实现复制到剪贴板功能</title>
+    <url>/2021/11/12/JS%E5%AE%9E%E7%8E%B0%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h2 id="原生JS实现"><a href="#原生JS实现" class="headerlink" title="原生JS实现"></a>原生JS实现</h2><p>原生JS，先使用 <code>select()</code> 选中<em>输入框</em>文本，然后使用 <code>document.execCommand(&quot;Copy&quot;)</code>复制到剪贴板</p>
+<p><strong>前提条件</strong></p>
+<ul>
+<li><code>select()</code> 方法只对 <code>&lt;input&gt;</code> 和 <code>&lt;textarea&gt;</code> 有效</li>
+<li>输入框不能有<code>disabled</code>属性</li>
+<li>输入框不能有<code>hidden</code>属性</li>
+<li>输入框的 <code>width</code> 和 <code>height</code> 不能为0</li>
+</ul>
+<p><strong>实现代码</strong></p>
+<a id="more"></a>
+<p>HTML</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"copyInput"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"需要复制的文本"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>JS</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">"copyInput"</span>);</span><br><span class="line">ele.select();</span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">document</span>.execCommand(<span class="string">"Copy"</span>);</span><br><span class="line"><span class="keyword">if</span> (c) &#123;</span><br><span class="line">    alert(<span class="string">"复制链接成功！"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"复制失败！当前浏览器不支持此功能，请手动复制。"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端开发</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS方法</tag>
+        <tag>JS技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yii2如何在View中加入JS代码</title>
     <url>/2021/11/12/Yii2%E5%A6%82%E4%BD%95%E5%9C%A8View%E4%B8%AD%E5%8A%A0%E5%85%A5JS%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<p>如果在view中直接添加js代码，如下：</p>
@@ -6928,32 +6954,6 @@
       </categories>
       <tags>
         <tag>Yii技巧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS实现复制到剪贴板功能</title>
-    <url>/2021/11/12/JS%E5%AE%9E%E7%8E%B0%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<h2 id="原生JS实现"><a href="#原生JS实现" class="headerlink" title="原生JS实现"></a>原生JS实现</h2><p>原生JS，先使用 <code>select()</code> 选中<em>输入框</em>文本，然后使用 <code>document.execCommand(&quot;Copy&quot;)</code>复制到剪贴板</p>
-<p><strong>前提条件</strong></p>
-<ul>
-<li><code>select()</code> 方法只对 <code>&lt;input&gt;</code> 和 <code>&lt;textarea&gt;</code> 有效</li>
-<li>输入框不能有<code>disabled</code>属性</li>
-<li>输入框不能有<code>hidden</code>属性</li>
-<li>输入框的 <code>width</code> 和 <code>height</code> 不能为0</li>
-</ul>
-<p><strong>实现代码</strong></p>
-<a id="more"></a>
-<p>HTML</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"copyInput"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"需要复制的文本"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>JS</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">"copyInput"</span>);</span><br><span class="line">ele.select();</span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">document</span>.execCommand(<span class="string">"Copy"</span>);</span><br><span class="line"><span class="keyword">if</span> (c) &#123;</span><br><span class="line">    alert(<span class="string">"复制链接成功！"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"复制失败！当前浏览器不支持此功能，请手动复制。"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>前端开发</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS方法</tag>
-        <tag>JS技巧</tag>
       </tags>
   </entry>
   <entry>
@@ -8131,11 +8131,11 @@
     <url>/2024/04/26/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%B8%B8%E8%A7%81%E6%94%BB%E5%87%BB%E5%8F%8A%E9%98%B2%E8%8C%83%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<p>在Web开发的世界里，网络攻击是一种常见且潜在的威胁。理解这些攻击如何运作并采取措施防范它们对于构建安全的Web应用至关重要。本文将介绍几种常见的Web攻击，提供防范策略，并以实例说明如何防止这些攻击。</p>
 <a id="more"></a>
-<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p><strong>概要: </strong></p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p><strong>概要:</strong></p>
 <p>SQL注入攻击是攻击者在Web表单输入或URL查询参数中插入恶意的SQL语句，旨在操作后端数据库。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>假设一个网站的登录URL是<code>http://example.com/login?username=user&amp;password=pass</code>，<br>如果攻击者更改此URL为<code>http://example.com/login?username=admin&#39;%20--%20&amp;password=aabb</code>, 并且应用程序没有将输入作为字符串处理，<br>则会执行<code>SELECT * FROM users WHERE username=&#39;admin&#39; -- &#39; AND password=&#39;aabb&#39;</code>，<br>由于<code>--</code>注释了后面的SQL语句，所以最终SQL语句为<code>SELECT * FROM users WHERE username=&#39;admin&#39;</code>，<br>那么这个SQL注入就会绕过身份验证。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>使用参数化查询</strong>：使用参数化查询可以有效防止SQL注入攻击，因为参数化查询会将用户输入的数据作为参数传递，而不是直接拼接到SQL语句中。</li>
 <li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li>
@@ -8143,11 +8143,11 @@
 <li><strong>错误消息处理</strong>：避免将数据库错误信息直接暴露给用户，这可能会泄露敏感信息给攻击者。</li>
 <li><strong>定期更新和监控</strong>：定期更新数据库和应用程序，监控数据库操作日志，及时发现异常操作。</li>
 </ol>
-<h2 id="跨站脚本攻击（XSS）"><a href="#跨站脚本攻击（XSS）" class="headerlink" title="跨站脚本攻击（XSS）"></a>跨站脚本攻击（XSS）</h2><p><strong>概要: </strong></p>
+<h2 id="跨站脚本攻击（XSS）"><a href="#跨站脚本攻击（XSS）" class="headerlink" title="跨站脚本攻击（XSS）"></a>跨站脚本攻击（XSS）</h2><p><strong>概要:</strong></p>
 <p>跨站脚本攻击（XSS）是一种利用Web应用漏洞将恶意代码注入到Web页面上的攻击。攻击者可以利用XSS漏洞将恶意代码注入到Web页面中，然后通过用户点击链接或打开特殊链接来执行恶意代码。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>假设一个网站有一个评论功能，用户可以输入评论内容，然后评论内容会显示在页面上。如果攻击者将恶意代码（例如<code>&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code>）注入到评论内容中，<br>当其他用户查看这条评论时，这段脚本会在他们的浏览器上执行，从而窃取用户信息或执行其他恶意操作。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li>
 <li><strong>输出编码</strong>：对输出数据进行编码，以防止攻击者通过编码方式注入恶意代码。</li>
@@ -8155,11 +8155,11 @@
 <li><strong>严格Content-Security-Policy（CSP）</strong>：使用CSP来限制页面加载的资源，防止攻击者通过非法资源注入恶意代码。</li>
 <li><strong>定期更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li>
 </ol>
-<h2 id="跨站请求伪造（CSRF）"><a href="#跨站请求伪造（CSRF）" class="headerlink" title="跨站请求伪造（CSRF）"></a>跨站请求伪造（CSRF）</h2><p><strong>概要: </strong></p>
+<h2 id="跨站请求伪造（CSRF）"><a href="#跨站请求伪造（CSRF）" class="headerlink" title="跨站请求伪造（CSRF）"></a>跨站请求伪造（CSRF）</h2><p><strong>概要:</strong></p>
 <p>跨站请求伪造（CSRF）是一种利用Web应用漏洞将恶意请求注入到Web页面上的攻击。攻击者可以利用CSRF漏洞将恶意请求注入到Web页面中，然后通过用户点击链接或打开特殊链接来执行恶意请求。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>用户登录到他们的银行账户，并在另一个标签页打开了一个看似无害的网站。这个网站包含了一个看不见的表单，自动提交转账到攻击者账户的请求。由于用户已经登录，请求带有有效的认证，所以转账得以执行。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>验证来源</strong>：在请求中验证来源，确保请求来自受信任的来源。</li>
 <li><strong>使用CSRF令牌</strong>：在每个请求中包含一个唯一的CSRF令牌，并在服务器端验证令牌。</li>
@@ -8167,33 +8167,33 @@
 <li><strong>严格Content-Security-Policy（CSP）</strong>：使用CSP来限制页面加载的资源，防止攻击者通过非法资源注入请求。</li>
 <li><strong>定期更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li>
 </ol>
-<h2 id="拒绝服务攻击（DoS）"><a href="#拒绝服务攻击（DoS）" class="headerlink" title="拒绝服务攻击（DoS）"></a>拒绝服务攻击（DoS）</h2><p><strong>概要: </strong></p>
+<h2 id="拒绝服务攻击（DoS）"><a href="#拒绝服务攻击（DoS）" class="headerlink" title="拒绝服务攻击（DoS）"></a>拒绝服务攻击（DoS）</h2><p><strong>概要:</strong></p>
 <p>拒绝服务攻击（DoS）是一种利用Web应用漏洞将服务器或网络资源耗尽的攻击。攻击者可以利用DoS漏洞将服务器或网络资源耗尽，导致服务不可用或拒绝服务。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>假设一个网站有一个评论功能，用户可以输入评论内容，然后评论内容会显示在页面上。如果攻击者将大量的恶意请求注入到评论功能中，<br>当服务器或网络资源耗尽时，攻击者可以导致服务器或网络资源耗尽，从而导致服务不可用或拒绝服务。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>负载均衡</strong>：使用负载均衡来分散请求，防止单个服务器或网络资源耗尽。</li>
 <li><strong>流量控制</strong>：使用流量控制来限制请求的速率，防止单个服务器或网络资源耗尽。</li>
 <li><strong>采用云防御服务</strong>：使用云防御服务来保护Web应用，例如AWS Shield、Cloudflare、阿里云的云盾等。</li>
 <li><strong>定时更新和监控</strong>：定期更新Web应用和浏览器，监控Web应用和浏览器的日志，及时发现异常操作。</li>
 </ol>
-<h2 id="本地文件包含（LFI）"><a href="#本地文件包含（LFI）" class="headerlink" title="本地文件包含（LFI）"></a>本地文件包含（LFI）</h2><p><strong>概要: </strong></p>
+<h2 id="本地文件包含（LFI）"><a href="#本地文件包含（LFI）" class="headerlink" title="本地文件包含（LFI）"></a>本地文件包含（LFI）</h2><p><strong>概要:</strong></p>
 <p>本地文件包含攻击发生在应用程序包含动态文件时，但没有适当验证用户的输入。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>网站URL如<code>http://example.com/index.php?page=about</code>用于动态加载页面内容。攻击者可以通过更改URL为<code>http://example.com/index.php?page=../../../../etc/passwd</code>来尝试访问敏感的服务器文件。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>输入验证和过滤</strong>：对用户输入的数据进行验证和过滤，确保只接受符合预期格式的数据。</li>
 <li><strong>白名单过滤</strong>：使用白名单过滤，只允许指定的文件类型，防止攻击者通过非法文件类型注入恶意代码。</li>
 <li><strong>限制文件包含函数只能加载特定目录下的文件</strong>：使用限制文件包含函数只能加载特定目录下的文件，防止攻击者通过非法文件路径注入恶意代码。</li>
 <li><strong>禁用不必要的PHP功能</strong>：例如eval()函数，防止攻击者通过非法函数注入恶意代码。</li>
 </ol>
-<h2 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h2><p><strong>概要: </strong></p>
+<h2 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h2><p><strong>概要:</strong></p>
 <p>DNS劫持攻击发生在DNS服务器被攻击时，攻击者可以劫持DNS服务器，将用户指向恶意网站。</p>
-<p><strong>实例: </strong></p>
+<p><strong>实例:</strong></p>
 <p>假设DNS服务器被攻击，攻击者可以劫持DNS服务器，将用户指向恶意网站。</p>
-<p><strong>防范策略: </strong></p>
+<p><strong>防范策略:</strong></p>
 <ol>
 <li><strong>定期更新DNS服务器</strong>：定期更新DNS服务器，确保DNS服务器的配置正确。</li>
 <li><strong>使用DNS缓存</strong>：使用DNS缓存，防止攻击者通过DNS劫持攻击。</li>
