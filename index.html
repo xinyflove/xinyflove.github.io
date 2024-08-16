@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  911
+                  930
                 </span>
               
 
@@ -445,55 +445,20 @@
 
       
         
-          
-            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在开发和测试过程中，使用 HTTPS 进行本地开发可以模拟生产环境，确保应用程序在实际部署时的安全性。本文将介绍如何在 Windows 环境中生成本地 SSL 证书，并将其配置到 Nginx 服务器上，以便通过 HTTPS 访问本地服务器。</p>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在开发和测试过程中，使用 HTTPS 进行本地开发可以模拟生产环境，确保应用程序在实际部署时的安全性。本文将介绍如何在 Windows 环境中生成本地 SSL 证书，并将其配置到 Nginx 服务器上，以便通过 HTTPS 访问本地服务器。</p>
 <h2 id="安装必要工具"><a href="#安装必要工具" class="headerlink" title="安装必要工具"></a>安装必要工具</h2><h3 id="安装-OpenSSL"><a href="#安装-OpenSSL" class="headerlink" title="安装 OpenSSL"></a>安装 OpenSSL</h3><p>OpenSSL 是一个用于生成和管理 SSL/TLS 证书的工具。下载并安装 OpenSSL：</p>
 <ol>
 <li>访问 <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener">OpenSSL 的 Windows 安装程序</a>。</li>
 <li>下载适合你 Windows 版本的安装程序（例如 Win64 OpenSSL v3.3.1）。<br>按照安装程序的提示完成安装。</li>
+<li>安装后配置把<code>D:\Program Files\OpenSSL-Win64\bin</code>配置到环境变量。</li>
 </ol>
-<h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>我使用的是PHPStudy集成环境，自带Nginx服务器。</p>
-<h2 id="生成本地-SSL-证书"><a href="#生成本地-SSL-证书" class="headerlink" title="生成本地 SSL 证书"></a>生成本地 SSL 证书</h2><h3 id="创建证书和私钥"><a href="#创建证书和私钥" class="headerlink" title="创建证书和私钥"></a>创建证书和私钥</h3><ol>
-<li>打开命令提示符（cmd）或 PowerShell。</li>
-<li>运行以下命令生成一个新的私钥和自签名证书：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</span><br></pre></td></tr></table></figure>
-<p>参数说明：</p>
-<ul>
-<li><code>-x509</code>：指定生成自签名证书。</li>
-<li><code>-nodes</code>：不对私钥加密。</li>
-<li><code>-days 365</code>：证书有效期为 365 天。</li>
-<li><code>-newkey rsa:2048</code>：生成一个新的 RSA 密钥。</li>
-<li><code>-keyout</code>：指定私钥输出路径。</li>
-<li><code>-out</code>：指定证书输出路径。</li>
-</ul>
-<ol start="3">
-<li>在提示符下，输入证书信息<ul>
-<li>国家：填写<code>CN</code></li>
-<li>州/省：填写<code>ShandDong</code>（根据自身情况填写即可）</li>
-<li>市：填写<code>QingDao</code>（根据自身情况填写即可）</li>
-<li>组织：填写公司名称英文即可（根据自身情况填写即可）</li>
-<li>组织单位：填写部门名称英文即可（根据自身情况填写即可）</li>
-<li>公共名称：对于本地开发，Common Name 应设置为 <code>localhost</code></li>
-<li>电子邮件: （根据自身情况填写即可）</li>
-</ul>
-</li>
-</ol>
-<h2 id="配置-Nginx-使用-SSL"><a href="#配置-Nginx-使用-SSL" class="headerlink" title="配置 Nginx 使用 SSL"></a>配置 Nginx 使用 SSL</h2><h3 id="修改-Nginx-配置文件"><a href="#修改-Nginx-配置文件" class="headerlink" title="修改 Nginx 配置文件"></a>修改 Nginx 配置文件</h3><p>打开 Nginx 配置文件（nginx.conf）。该文件通常位于 Nginx 安装目录的 conf 子目录下。或者vhost目录下的子域名配置文件。</p>
-<p>编辑配置文件，添加以下内容以启用 HTTPS：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>        <span class="number">443</span> ssl;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">        <span class="attribute">root</span>   <span class="string">"D:/phpstudy_pro/WWW"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="attribute">ssl_certificate</span> D:/phpstudy_pro/Extensions/Nginx1.<span class="number">15</span>.<span class="number">11</span>/conf/ssl/localhost.crt;</span><br><span class="line">		<span class="attribute">ssl_certificate_key</span> D:/phpstudy_pro/Extensions/Nginx1.<span class="number">15</span>.<span class="number">11</span>/conf/ssl/localhost.key;</span><br><span class="line">	</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">index</span> index.php index.html;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ \.php(.*)$</span> &#123;</span><br><span class="line">            <span class="attribute">fastcgi_pass</span>   <span class="number">127.0.0.1:9009</span>;</span><br><span class="line">            <span class="attribute">fastcgi_index</span>  index.php;</span><br><span class="line">            <span class="attribute">fastcgi_split_path_info</span> <span class="regexp"> ^((?U).+\.php)(/?.+)$</span>;</span><br><span class="line">            <span class="attribute">fastcgi_param</span>  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            <span class="attribute">fastcgi_param</span>  PATH_INFO  <span class="variable">$fastcgi_path_info</span>;</span><br><span class="line">            <span class="attribute">fastcgi_param</span>  PATH_TRANSLATED  <span class="variable">$document_root</span><span class="variable">$fastcgi_path_info</span>;</span><br><span class="line">            <span class="attribute">include</span>        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置了 HTTPS 监听（端口 443），并指定了证书和私钥的位置。配置文件内容根据自己的实际情况配置。</p>
-<h3 id="重新启动-Nginx"><a href="#重新启动-Nginx" class="headerlink" title="重新启动 Nginx"></a>重新启动 Nginx</h3><p>根据实际情况重启Nginx服务器。</p>
-<h2 id="测试-HTTPS-配置"><a href="#测试-HTTPS-配置" class="headerlink" title="测试 HTTPS 配置"></a>测试 HTTPS 配置</h2><ol>
-<li>打开浏览器，访问 <code>https://localhost</code>。</li>
-<li>浏览器可能会提示不安全的证书。由于我们使用的是自签名证书，浏览器无法验证其真实性。你可以选择忽略警告并继续访问。</li>
-<li>如果一切配置正确，你应该能够看到 Nginx 的欢迎页面或你配置的网页内容。</li>
-</ol>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="浏览器警告"><a href="#浏览器警告" class="headerlink" title="浏览器警告"></a>浏览器警告</h3><p>自签名证书不会被浏览器信任，你可以将证书添加到受信任的根证书颁发机构来避免警告。操作方法因浏览器不同而有所不同。</p>
-<h3 id="证书过期"><a href="#证书过期" class="headerlink" title="证书过期"></a>证书过期</h3><p>自签名证书有一个有效期（本文中设置为 365 天）。证书过期后，你需要重新生成证书并更新 Nginx 配置。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上步骤，你已成功在 Windows 环境中生成本地 SSL 证书，并配置 Nginx 以支持 HTTPS。使用 HTTPS 进行本地开发可以确保你的应用在实际部署时符合安全要求，并提供更好的用户体验。如果你遇到任何问题或有任何疑问，请在评论区留言讨论。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2024/08/16/在-Windows-上生成本地-SSL-证书并使用-HTTPS-访问本地-Nginx-服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

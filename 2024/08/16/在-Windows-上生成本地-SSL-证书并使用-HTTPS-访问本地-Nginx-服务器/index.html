@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Peak Xin">
 <meta property="og:description" content="引言在开发和测试过程中，使用 HTTPS 进行本地开发可以模拟生产环境，确保应用程序在实际部署时的安全性。本文将介绍如何在 Windows 环境中生成本地 SSL 证书，并将其配置到 Nginx 服务器上，以便通过 HTTPS 访问本地服务器。 安装必要工具安装 OpenSSLOpenSSL 是一个用于生成和管理 SSL/TLS 证书的工具。下载并安装 OpenSSL：  访问 OpenSSL 的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-08-16T08:51:17.198Z">
+<meta property="og:updated_time" content="2024-08-16T08:59:50.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Windows 上生成本地 SSL 证书并使用 HTTPS 访问本地 Nginx 服务器">
 <meta name="twitter:description" content="引言在开发和测试过程中，使用 HTTPS 进行本地开发可以模拟生产环境，确保应用程序在实际部署时的安全性。本文将介绍如何在 Windows 环境中生成本地 SSL 证书，并将其配置到 Nginx 服务器上，以便通过 HTTPS 访问本地服务器。 安装必要工具安装 OpenSSLOpenSSL 是一个用于生成和管理 SSL/TLS 证书的工具。下载并安装 OpenSSL：  访问 OpenSSL 的">
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  911
+                  930
                 </span>
               
 
@@ -454,7 +454,9 @@
 <ol>
 <li>访问 <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener">OpenSSL 的 Windows 安装程序</a>。</li>
 <li>下载适合你 Windows 版本的安装程序（例如 Win64 OpenSSL v3.3.1）。<br>按照安装程序的提示完成安装。</li>
+<li>安装后配置把<code>D:\Program Files\OpenSSL-Win64\bin</code>配置到环境变量。</li>
 </ol>
+<a id="more"></a>
 <h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>我使用的是PHPStudy集成环境，自带Nginx服务器。</p>
 <h2 id="生成本地-SSL-证书"><a href="#生成本地-SSL-证书" class="headerlink" title="生成本地 SSL 证书"></a>生成本地 SSL 证书</h2><h3 id="创建证书和私钥"><a href="#创建证书和私钥" class="headerlink" title="创建证书和私钥"></a>创建证书和私钥</h3><ol>
 <li>打开命令提示符（cmd）或 PowerShell。</li>
