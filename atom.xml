@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2024-08-16T08:59:50.173Z</updated>
+  <updated>2024-08-28T08:09:25.064Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快速搭建和运行Spring Boot项目的简易指南</title>
+    <link href="https://xinyufeng.net/2024/08/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%92%8C%E8%BF%90%E8%A1%8CSpring-Boot%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/"/>
+    <id>https://xinyufeng.net/2024/08/28/快速搭建和运行Spring-Boot项目的简易指南/</id>
+    <published>2024-08-28T06:58:59.000Z</published>
+    <updated>2024-08-28T08:09:25.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于非Java开发的后端开发人员而言，即便未曾接触过Java，也可能听说过Spring Boot这一框架。若想要快速搭建并运行一个Spring Boot项目，可以遵循以下步骤：</p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul><li><strong>安装Java JDK：</strong>确保您的开发环境中安装了Java JDK8（JDK1.8或JDK8）或更高版本，我这里用的是JDK8。</li><li><strong>安装Maven：</strong>Maven是Java项目构建和依赖管理工具，确保已安装并配置好环境变量。</li><li><strong>IDE（集成开发环境）：</strong>推荐使用IntelliJ IDEA或Eclipse，这些工具可以帮助你轻松管理和运行Java项目，我这里使用的是IntelliJ IDEA。</li></ul><a id="more"></a><h2 id="使用Spring-Initializr生成项目"><a href="#使用Spring-Initializr生成项目" class="headerlink" title="使用Spring Initializr生成项目"></a>使用Spring Initializr生成项目</h2><p>Spring Initializr是一个在线工具，可以快速生成Spring Boot项目的初始结构。以下是使用Spring Initializr生成项目的步骤：</p><p>这里我们使用的是阿里云云原生应用脚手架（Cloud Native App Initializer），打开浏览器访问<a href="https://start.aliyun.com" target="_blank" rel="noopener">https://start.aliyun.com</a>，填写配置项目配置参数</p><p><img src="/2024/08/28/快速搭建和运行Spring-Boot项目的简易指南/1.png" alt="在这里插入图片描述"></p><p><strong>配置项目参数：</strong></p><ul><li>项目构建方式（Project）: 选择“Maven Project”</li><li>开发语言（Language）: 选择“Java”</li><li>Spring Boot版本（Spring Boot）: 默认选择最新稳定版</li><li>项目基本信息（Project Metadata）:<ul><li>Group: 输入项目的组织名，例如com.example</li><li>Artifact: 输入项目的名称，例如demo（项目的唯一标识）</li><li>项目名称（Name）：输入项目的名称，例如demo</li><li>项目描述（Description）：输入项目的描述，例如一个简单的Spring Boot项目</li><li>基础包（Package name）：输入项目的基础包，例如com.example.demo</li><li>打包方式（Packaging）: 选择“Jar”</li><li>Java版本: 选择你安装的Java版本（如8）。</li></ul></li><li>应用架构： 选择“单模块”</li><li>组件与示例（Dependencies）: 选择你需要的依赖。通常，选择“Spring Web”就足够了，它会提供基本的Web开发支持。</li></ul><p>生成并下载项目： 点击“获取代码（Generate）”按钮，下载生成的项目压缩包。</p><h2 id="导入项目到IDE"><a href="#导入项目到IDE" class="headerlink" title="导入项目到IDE"></a>导入项目到IDE</h2><p>解压缩项目： 将下载的压缩包解压到本地目录。</p><p>导入到IDE：</p><ul><li>IntelliJ IDEA:</li></ul><p>打开IDE，选择“Open”并选择解压后的项目目录。<br>IDEA会自动识别Maven项目并进行初始化。</p><ul><li>Eclipse:</li></ul><p>打开IDE，选择“File” -&gt; “Import”。<br>选择“Maven” -&gt; “Existing Maven Projects”，然后选择解压后的项目目录。</p><h2 id="运行Spring-Boot应用"><a href="#运行Spring-Boot应用" class="headerlink" title="运行Spring Boot应用"></a>运行Spring Boot应用</h2><p>找到主程序类： 在IDE中，找到主程序类（通常是<code>Application.java</code>），这个类位于<code>src/main/java/com/example/demo</code>目录下（具体路径取决于你在Spring Initializr中设置的包名）。</p><p>运行主程序（这里的主程序文件是<code>DemoApplication.java</code>）：</p><ul><li>IntelliJ IDEA:</li></ul><p>右键点击<code>DemoApplication.java</code>，选择“Run ‘DemoApplication’”。</p><ul><li>Eclipse:</li></ul><p>右键点击<code>DemoApplication.java</code>，选择“Run As” -&gt; “Java DemoApplication”。</p><p>访问应用： 启动成功后，打开浏览器并访问<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a>，你应该能够看到Spring Boot的欢迎页面或者你自定义的内容。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>即使你没有Java开发经验，使用Spring Boot搭建和运行项目也变得非常简单。通过Spring Initializr生成项目模板，然后通过IDE导入和运行，你可以快速上手并体验Spring Boot的强大功能。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于非Java开发的后端开发人员而言，即便未曾接触过Java，也可能听说过Spring Boot这一框架。若想要快速搭建并运行一个Spring Boot项目，可以遵循以下步骤：&lt;/p&gt;
+&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安装Java JDK：&lt;/strong&gt;确保您的开发环境中安装了Java JDK8（JDK1.8或JDK8）或更高版本，我这里用的是JDK8。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安装Maven：&lt;/strong&gt;Maven是Java项目构建和依赖管理工具，确保已安装并配置好环境变量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE（集成开发环境）：&lt;/strong&gt;推荐使用IntelliJ IDEA或Eclipse，这些工具可以帮助你轻松管理和运行Java项目，我这里使用的是IntelliJ IDEA。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Java框架" scheme="https://xinyufeng.net/categories/Java%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Spring Boot" scheme="https://xinyufeng.net/categories/Java%E6%A1%86%E6%9E%B6/Spring-Boot/"/>
+    
+    
+      <category term="Java" scheme="https://xinyufeng.net/tags/Java/"/>
+    
+      <category term="Spring Boot" scheme="https://xinyufeng.net/tags/Spring-Boot/"/>
+    
+  </entry>
   
   <entry>
     <title>在 Windows 上生成本地 SSL 证书并使用 HTTPS 访问本地 Nginx 服务器</title>
@@ -591,38 +622,6 @@
     
     
       <category term="Laravel技巧" scheme="https://xinyufeng.net/tags/Laravel%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL 导入数据</title>
-    <link href="https://xinyufeng.net/2022/04/18/MySQL-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/"/>
-    <id>https://xinyufeng.net/2022/04/18/MySQL-导入数据/</id>
-    <published>2022-04-18T01:42:05.000Z</published>
-    <updated>2022-04-24T02:21:23.353Z</updated>
-    
-    <content type="html"><![CDATA[<p>给大家介绍几种常用简单的MySQL导入数据命令</p><ol><li>MySQL命令导入</li></ol><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -u用户名 -p 表名 &lt; /要导入的文件路径.sql </span></span><br><span class="line">Enter password: 输入密码</span><br></pre></td></tr></table></figure><p>实例：</p><p>使用 mysql 命令导入语法格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mysql -uroot -p test &lt; /usr/local/src/test.sql </span></span><br><span class="line">Enter password: 123123</span><br></pre></td></tr></table></figure><p>以上命令将将备份的整个数据库 test.sql 导入。</p><ol start="2"><li>source 命令导入</li></ol><p>source 命令导入数据库需要先登录到数库终端：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database db1;      <span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; use db1;                  <span class="comment"># 使用已创建的数据库 </span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8;           <span class="comment"># 设置编码</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span>/usr/<span class="built_in">local</span>/src/db1.sql  <span class="comment"># 导入备份数据库</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;给大家介绍几种常用简单的MySQL导入数据命令&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;MySQL命令导入&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;使用 mysql 命令导入语法格式为：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="https://xinyufeng.net/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
-    
-    
-      <category term="MySQL命令" scheme="https://xinyufeng.net/tags/MySQL%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
