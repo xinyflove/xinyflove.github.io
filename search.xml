@@ -59,20 +59,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 如何撤销修改</title>
-    <url>/2019/02/11/Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
-    <content><![CDATA[<h2 id="工作区撤销修改"><a href="#工作区撤销修改" class="headerlink" title="工作区撤销修改"></a>工作区撤销修改</h2><p>我们在工作区修改了文件内容，还没有添加（git add）到缓存区，想要撤销修改，使用 <code>git checkout -- file</code> 命令  </p>
-<p><strong>撤销修改指定文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- filename</span><br></pre></td></tr></table></figure></p>
-<p><strong>撤销修改全部文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安装VirtualBox后 VMware桥接模式的虚拟机无法联网</title>
     <url>/2019/01/21/%E5%AE%89%E8%A3%85VirtualBox%E5%90%8E-VMware%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91/</url>
     <content><![CDATA[<p>在安装了 VirtualBox 后，VMware原本通过桥接模式联网的机器，无法获得正常IP。经过查询资料，发现原因是 VMware 桥接到 VirtualBox 的虚拟网卡了<br><img src="/2019/01/21/安装VirtualBox后-VMware桥接模式的虚拟机无法联网/2019012102303436.png" alt></p>
@@ -108,6 +94,20 @@
       </categories>
       <tags>
         <tag>数据库查询</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 如何撤销修改</title>
+    <url>/2019/02/11/Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
+    <content><![CDATA[<h2 id="工作区撤销修改"><a href="#工作区撤销修改" class="headerlink" title="工作区撤销修改"></a>工作区撤销修改</h2><p>我们在工作区修改了文件内容，还没有添加（git add）到缓存区，想要撤销修改，使用 <code>git checkout -- file</code> 命令  </p>
+<p><strong>撤销修改指定文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- filename</span><br></pre></td></tr></table></figure></p>
+<p><strong>撤销修改全部文件</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -199,6 +199,104 @@
       </categories>
       <tags>
         <tag>artisan</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Warning: require(): open_basedir restriction in effect.</title>
+    <url>/2019/02/25/Warning-require-open-basedir-restriction-in-effect/</url>
+    <content><![CDATA[<p>php环境为lnmp一键安装包，php5.6。运行项目代码显示</p>
+<p>Warning: require(): open_basedir restriction in effect. File(/mnt/hgfs/extraproject/yoga/simplewind/等信息</p>
+<p>解决方案</p>
+<a id="more"></a>
+<p>修改<br><code>/usr/local/nginx/conf/fastcgi.conf</code></p>
+<p>将<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=$document_root/:/tmp/:/proc/&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>此行注释，重启nginx即可。</p>
+<p>如果再不生效，则将<code>open_basedir</code>设置为NULL<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=NULL&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>重启nginx</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>PHP报错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lnmp1.5 安装 fileinfo 扩展</title>
+    <url>/2019/02/25/lnmp1-5-%E5%AE%89%E8%A3%85-fileinfo-%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<p>打开保存安装包目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /usr/local/src</span><br></pre></td></tr></table></figure></p>
+<p>下载php5.6安装包（我使用的是php5.6.36，根据自己使用的php版本下载）<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http://cn.php.net/distributions/php-5.6.36.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>解压php安装包<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvf php-5.6.36.tar.gz</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>进入扩展目录的fileinfo目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd php-5.6.36/ext/fileinfo</span><br></pre></td></tr></table></figure></p>
+<p>配置安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p>完成后提示<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Build complete.</span><br><span class="line">Don&apos;t forget to run &apos;make test&apos;.</span><br><span class="line"></span><br><span class="line">Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/</span><br></pre></td></tr></table></figure></p>
+<p>fileinfo扩展文件生成目录为<code>/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/</code></p>
+<p>编辑php配置文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /usr/local/php/etc/php.ini</span><br></pre></td></tr></table></figure></p>
+<p>修添加如下代码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/fileinfo.so</span><br><span class="line"># 或</span><br><span class="line">extension=fileinfo.so</span><br></pre></td></tr></table></figure></p>
+<p>重启lnmp<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lnmp restart</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/02/25/lnmp1-5-安装-fileinfo-扩展/2019022512594030.png" alt="在这里插入图片描述"><br>搞定！</p>
+<p>提示：<br>访问<a href="http://php.net/get/php-5.6.36.tar.gz/from/a/mirror可以通过变更版本号查看相应的镜像。" target="_blank" rel="noopener">http://php.net/get/php-5.6.36.tar.gz/from/a/mirror可以通过变更版本号查看相应的镜像。</a></p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>PHP扩展</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>thinkcmf5 的 nginx 常用配置</title>
+    <url>/2019/02/25/thinkcmf5-%E7%9A%84-nginx-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name 域名;</span><br><span class="line">        index index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        root  /home/wwwroot/域名/public;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">          index  index.php index.html index.htm;</span><br><span class="line">          <span class="comment">#如果请求既不是一个文件，也不是一个目录，则执行一下重写规则</span></span><br><span class="line">          <span class="keyword">if</span> (!-e <span class="variable">$request_filename</span>)</span><br><span class="line">          &#123;</span><br><span class="line">             <span class="comment">#地址作为将参数rewrite到index.php上。</span></span><br><span class="line">             rewrite ^/(.*)$ /index.php?s=<span class="variable">$1</span>;</span><br><span class="line">             <span class="comment">#若是子目录则使用下面这句，将subdir改成目录名称即可。</span></span><br><span class="line">             <span class="comment">#rewrite ^/subdir/(.*)$ /subdir/index.php?s=$1;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        location ~ \.php(.*)$ &#123;</span><br><span class="line">            fastcgi_pass   unix:/tmp/php-cgi.sock;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            <span class="comment">#fastcgi_split_path_info ^(.+\.php)(.*)$;</span></span><br><span class="line">            <span class="comment">#fastcgi_param   PATH_INFO $fastcgi_path_info;</span></span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME   <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">            expires      30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">            expires      12h;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ /.well-known &#123;</span><br><span class="line">            allow all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ /\.</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">#deny all;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        access_log  /home/wwwlogs/access.log2.log;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certific</title>
+    <url>/2019/03/12/PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certific/</url>
+    <content><![CDATA[<p>报错信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cURL error 60: SSL certificate problem: unable to get local issuer certific   ate (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：</p>
+<a id="more"></a>
+<p>要解决此错误，需要定义CURL证书颁发机构信息路径<br>要做到些,</p>
+<ol>
+<li>在这里下载最新的curl认可证书:<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="noopener">https://curl.haxx.se/ca/cacert.pem</a></li>
+<li>保存cacert.pem文件在一个可以引入的目录。</li>
+<li>然后，在php.ini文件中，向下滚动到找到[curl]的位置。</li>
+<li>您应该看到CURLOPT_CAINFO选项被注释掉了。取消注释并指向cacert.pem文件。你应该有这样一行:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl.cainfo = “证书目录\cacert.pem”</span><br></pre></td></tr></table></figure>
+<p>保存并关闭php.ini。重新启动web服务器并再次尝试您的请求。<br>如果没有设置正确的位置，将会得到CURL 77错误。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cURL error 77: error setting certificate verify locations:</span><br><span class="line">    CAfile: certificate D:\phpStudy\PHPTutorial\php\php-7.2.1-nts\extras\ssl\</span><br><span class="line">  cacert.pem</span><br><span class="line">    CApath: none (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure>
+<p>参考文档：<br><a href="https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)" target="_blank" rel="noopener">https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)</a></p>
+]]></content>
+      <categories>
+        <category>后端开发</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>cURL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN被锁定 提示：svn is already locked 解决方案</title>
+    <url>/2019/03/14/SVN%E8%A2%AB%E9%94%81%E5%AE%9A-%E6%8F%90%E7%A4%BA%EF%BC%9Asvn-is-already-locked-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>今天使用SVN，在项目根目录下，拉取项目代码的时候提示<code>svn is already locked</code>SVN被锁定错误，<br>解决方法：<br>在项目根目录，右击，选择<code>clean up</code><br><img src="/2019/03/14/SVN被锁定-提示：svn-is-already-locked-解决方案/2019031405455722.png" alt="在这里插入图片描述"></p>
+<a id="more"></a>
+<p>弹出框勾选<code>Break locks</code>点击ok</p>
+<p><img src="/2019/03/14/SVN被锁定-提示：svn-is-already-locked-解决方案/2019031405475817.png" alt="在这里插入图片描述"></p>
+<p>然后再次拉取项目代码，就可以了。</p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -331,104 +429,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Warning: require(): open_basedir restriction in effect.</title>
-    <url>/2019/02/25/Warning-require-open-basedir-restriction-in-effect/</url>
-    <content><![CDATA[<p>php环境为lnmp一键安装包，php5.6。运行项目代码显示</p>
-<p>Warning: require(): open_basedir restriction in effect. File(/mnt/hgfs/extraproject/yoga/simplewind/等信息</p>
-<p>解决方案</p>
-<a id="more"></a>
-<p>修改<br><code>/usr/local/nginx/conf/fastcgi.conf</code></p>
-<p>将<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=$document_root/:/tmp/:/proc/&quot;;</span><br></pre></td></tr></table></figure></p>
-<p>此行注释，重启nginx即可。</p>
-<p>如果再不生效，则将<code>open_basedir</code>设置为NULL<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=NULL&quot;;</span><br></pre></td></tr></table></figure></p>
-<p>重启nginx</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>PHP报错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lnmp1.5 安装 fileinfo 扩展</title>
-    <url>/2019/02/25/lnmp1-5-%E5%AE%89%E8%A3%85-fileinfo-%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<p>打开保存安装包目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /usr/local/src</span><br></pre></td></tr></table></figure></p>
-<p>下载php5.6安装包（我使用的是php5.6.36，根据自己使用的php版本下载）<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http://cn.php.net/distributions/php-5.6.36.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>解压php安装包<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvf php-5.6.36.tar.gz</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>进入扩展目录的fileinfo目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd php-5.6.36/ext/fileinfo</span><br></pre></td></tr></table></figure></p>
-<p>配置安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<p>完成后提示<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Build complete.</span><br><span class="line">Don&apos;t forget to run &apos;make test&apos;.</span><br><span class="line"></span><br><span class="line">Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/</span><br></pre></td></tr></table></figure></p>
-<p>fileinfo扩展文件生成目录为<code>/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/</code></p>
-<p>编辑php配置文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /usr/local/php/etc/php.ini</span><br></pre></td></tr></table></figure></p>
-<p>修添加如下代码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/fileinfo.so</span><br><span class="line"># 或</span><br><span class="line">extension=fileinfo.so</span><br></pre></td></tr></table></figure></p>
-<p>重启lnmp<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lnmp restart</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2019/02/25/lnmp1-5-安装-fileinfo-扩展/2019022512594030.png" alt="在这里插入图片描述"><br>搞定！</p>
-<p>提示：<br>访问<a href="http://php.net/get/php-5.6.36.tar.gz/from/a/mirror可以通过变更版本号查看相应的镜像。" target="_blank" rel="noopener">http://php.net/get/php-5.6.36.tar.gz/from/a/mirror可以通过变更版本号查看相应的镜像。</a></p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>PHP扩展</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>thinkcmf5 的 nginx 常用配置</title>
-    <url>/2019/02/25/thinkcmf5-%E7%9A%84-nginx-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name 域名;</span><br><span class="line">        index index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        root  /home/wwwroot/域名/public;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">          index  index.php index.html index.htm;</span><br><span class="line">          <span class="comment">#如果请求既不是一个文件，也不是一个目录，则执行一下重写规则</span></span><br><span class="line">          <span class="keyword">if</span> (!-e <span class="variable">$request_filename</span>)</span><br><span class="line">          &#123;</span><br><span class="line">             <span class="comment">#地址作为将参数rewrite到index.php上。</span></span><br><span class="line">             rewrite ^/(.*)$ /index.php?s=<span class="variable">$1</span>;</span><br><span class="line">             <span class="comment">#若是子目录则使用下面这句，将subdir改成目录名称即可。</span></span><br><span class="line">             <span class="comment">#rewrite ^/subdir/(.*)$ /subdir/index.php?s=$1;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        location ~ \.php(.*)$ &#123;</span><br><span class="line">            fastcgi_pass   unix:/tmp/php-cgi.sock;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            <span class="comment">#fastcgi_split_path_info ^(.+\.php)(.*)$;</span></span><br><span class="line">            <span class="comment">#fastcgi_param   PATH_INFO $fastcgi_path_info;</span></span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME   <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">            expires      30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">            expires      12h;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ /.well-known &#123;</span><br><span class="line">            allow all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ /\.</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">#deny all;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        access_log  /home/wwwlogs/access.log2.log;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certific</title>
-    <url>/2019/03/12/PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certific/</url>
-    <content><![CDATA[<p>报错信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cURL error 60: SSL certificate problem: unable to get local issuer certific   ate (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure></p>
-<p>解决方法：</p>
-<a id="more"></a>
-<p>要解决此错误，需要定义CURL证书颁发机构信息路径<br>要做到些,</p>
-<ol>
-<li>在这里下载最新的curl认可证书:<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="noopener">https://curl.haxx.se/ca/cacert.pem</a></li>
-<li>保存cacert.pem文件在一个可以引入的目录。</li>
-<li>然后，在php.ini文件中，向下滚动到找到[curl]的位置。</li>
-<li>您应该看到CURLOPT_CAINFO选项被注释掉了。取消注释并指向cacert.pem文件。你应该有这样一行:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl.cainfo = “证书目录\cacert.pem”</span><br></pre></td></tr></table></figure>
-<p>保存并关闭php.ini。重新启动web服务器并再次尝试您的请求。<br>如果没有设置正确的位置，将会得到CURL 77错误。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cURL error 77: error setting certificate verify locations:</span><br><span class="line">    CAfile: certificate D:\phpStudy\PHPTutorial\php\php-7.2.1-nts\extras\ssl\</span><br><span class="line">  cacert.pem</span><br><span class="line">    CApath: none (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)</span><br></pre></td></tr></table></figure>
-<p>参考文档：<br><a href="https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)" target="_blank" rel="noopener">https://github.com/yabacon/paystack-php/wiki/cURL-error-60:-SSL-certificate-problem:-unable-to-get-local-issuer-certificate-(see-http:--curl.haxx.se-libcurl-c-libcurl-errors.html)</a></p>
-]]></content>
-      <categories>
-        <category>后端开发</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>cURL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SVN被锁定 提示：svn is already locked 解决方案</title>
-    <url>/2019/03/14/SVN%E8%A2%AB%E9%94%81%E5%AE%9A-%E6%8F%90%E7%A4%BA%EF%BC%9Asvn-is-already-locked-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<p>今天使用SVN，在项目根目录下，拉取项目代码的时候提示<code>svn is already locked</code>SVN被锁定错误，<br>解决方法：<br>在项目根目录，右击，选择<code>clean up</code><br><img src="/2019/03/14/SVN被锁定-提示：svn-is-already-locked-解决方案/2019031405455722.png" alt="在这里插入图片描述"></p>
-<a id="more"></a>
-<p>弹出框勾选<code>Break locks</code>点击ok</p>
-<p><img src="/2019/03/14/SVN被锁定-提示：svn-is-already-locked-解决方案/2019031405475817.png" alt="在这里插入图片描述"></p>
-<p>然后再次拉取项目代码，就可以了。</p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Windows Docker 安装</title>
     <url>/2019/03/30/Windows-Docker-%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="win7、win8-系统"><a href="#win7、win8-系统" class="headerlink" title="win7、win8 系统"></a>win7、win8 系统</h2><p>win7、win8 等需要利用 docker toolbox 来安装，国内可以使用阿里云的镜像来下载，下载地址：<a href="http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/" target="_blank" rel="noopener">http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/</a></p>
@@ -449,64 +449,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux下使用svn创建仓库</title>
-    <url>/2019/04/01/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8svn%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<p>假设已经Linux搭建了svn服务器</p>
-<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>语法：<code>svnadmin create /directory</code><br>我是在 <code>/data/svnrepos</code>下新建myproject仓库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data</span><br><span class="line">mkdir svnrepos</span><br><span class="line">svnadmin create /data/svnrepos/myproject</span><br></pre></td></tr></table></figure>
-<p>仓库创建成功以后，会出现一个仓库名字的文件夹 文件夹下面有以下几个文件和目录</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">myproject</span><br><span class="line">|-conf</span><br><span class="line">|-db</span><br><span class="line">|-format</span><br><span class="line">|-hooks</span><br><span class="line">|-locks</span><br><span class="line">|-README.txt</span><br></pre></td></tr></table></figure>
-<p>其中conf文件夹下面包含三个重要文件 authz passwd svnserve.conf </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conf</span><br><span class="line">|-authz</span><br><span class="line">|-passwd</span><br><span class="line">|-svnserve.conf</span><br></pre></td></tr></table></figure>
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><h3 id="增加用户"><a href="#增加用户" class="headerlink" title="增加用户"></a>增加用户</h3><p>修改passwd文件<br>passwd的配置语法格式： 用户名=密码<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi passwd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### This file is an example password file for svnserve.</span></span><br><span class="line"><span class="comment">### Its format is similar to that of svnserve.conf. As shown in the</span></span><br><span class="line"><span class="comment">### example below it contains one section labelled [users].</span></span><br><span class="line"><span class="comment">### The name and password for each user follow, one account per line.</span></span><br><span class="line"></span><br><span class="line">[users]</span><br><span class="line"><span class="comment"># harry = harryssecret</span></span><br><span class="line"><span class="comment"># sally = sallyssecret</span></span><br><span class="line">xiaozhang = 123 <span class="comment">#修改处</span></span><br></pre></td></tr></table></figure></p>
-<p>之后可以通过帐号xiaozhang密码123进行操作。</p>
-<h3 id="配置用户权限"><a href="#配置用户权限" class="headerlink" title="配置用户权限"></a>配置用户权限</h3><p>修改authz文件<br>注意：</p>
-<ul>
-<li>权限配置文件中出现的用户名必须已在用户配置文件中定义。</li>
-<li>对权限配置文件的修改立即生效，不必重启svn。</li>
-</ul>
-<p>用户组格式：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[groups]</span><br><span class="line">&lt;用户组名&gt; = &lt;用户1&gt;,&lt;用户2&gt;</span><br></pre></td></tr></table></figure></p>
-<p>其中，1个用户组可以包含1个或多个用户，用户间以逗号分隔。<br>版本库目录格式：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[&lt;版本库&gt;:/项目/目录]</span><br><span class="line">@&lt;用户组名&gt; = &lt;权限&gt;</span><br><span class="line">&lt;用户名&gt; = &lt;权限&gt;</span><br></pre></td></tr></table></figure></p>
-<p>其中，方框号内部分可以有多种写法:<br><code>/</code>表示根目录及以下。根目录是svnserve启动时指定的，我们指定为<code>/data/svnrepos/myproject</code>。这样，<code>/</code>就是表示对全部版本库设置权限。<br><code>repos1:/</code> 表示对版本库1设置权限<br><code>repos2:/a</code> 表示对版本库2中的a项目设置权限<br><code>repos2:/a/b</code> 表示对版本库2中的a项目的b目录设置权限<br>权限主体可以是用户组、用户或<em>，用户组在前面加@，</em>表示全部用户。权限可以是w、r、wr和空，空表示没有任何权限。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim authz </span></span><br><span class="line"><span class="comment">### This file is an example authorization file for svnserve.</span></span><br><span class="line"><span class="comment">### Its format is identical to that of mod_authz_svn authorization</span></span><br><span class="line"><span class="comment">### files.</span></span><br><span class="line"><span class="comment">### As shown below each section defines authorizations for the path and</span></span><br><span class="line"><span class="comment">### (optional) repository specified by the section name.</span></span><br><span class="line"><span class="comment">### The authorizations follow. An authorization line can refer to:</span></span><br><span class="line"><span class="comment">###  - a single user,</span></span><br><span class="line"><span class="comment">###  - a group of users defined in a special [groups] section,</span></span><br><span class="line"><span class="comment">###  - an alias defined in a special [aliases] section,</span></span><br><span class="line"><span class="comment">###  - all authenticated users, using the '$authenticated' token,</span></span><br><span class="line"><span class="comment">###  - only anonymous users, using the '$anonymous' token,</span></span><br><span class="line"><span class="comment">###  - anyone, using the '*' wildcard.</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment">### A match can be inverted by prefixing the rule with '~'. Rules can</span></span><br><span class="line"><span class="comment">### grant read ('r') access, read-write ('rw') access, or no access</span></span><br><span class="line"><span class="comment">### ('').</span></span><br><span class="line"></span><br><span class="line">[aliases]</span><br><span class="line"><span class="comment"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</span></span><br><span class="line"></span><br><span class="line">[groups]</span><br><span class="line"><span class="comment"># harry_and_sally = harry,sally</span></span><br><span class="line"><span class="comment"># harry_sally_and_joe = harry,sally,&amp;joe</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [/foo/bar]</span></span><br><span class="line"><span class="comment"># harry = rw</span></span><br><span class="line"><span class="comment"># &amp;joe = r</span></span><br><span class="line"><span class="comment"># * =</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [repository:/baz/fuz]</span></span><br><span class="line"><span class="comment"># @harry_and_sally = rw</span></span><br><span class="line"><span class="comment"># * = r</span></span><br><span class="line"></span><br><span class="line">[/] <span class="comment">#修改处</span></span><br><span class="line">xiaozhang = rw <span class="comment">#修改处</span></span><br></pre></td></tr></table></figure>
-<p>意思是，在根目录下xiaozhang用户拥有读写权限。</p>
-<h2 id="修改svn启动项参数"><a href="#修改svn启动项参数" class="headerlink" title="修改svn启动项参数"></a>修改svn启动项参数</h2><p>修改svnserve.conf文件<br>svn服务配置文件为版本库目录中的文件conf/svnserve.conf。该文件仅由一个[general]配置段组成</p>
-<p><strong>[general]配置段中配置行格式如下：</strong><br>&lt;配置项&gt; = &lt;值&gt;</p>
-<p><strong>配置项分为以下5项：</strong><br>1.<code>anon-access</code> 控制非鉴权用户访问版本库的权限。取值范围为”write”、”read”和”none”。<br>即”write”为可读可写，”read”为只读，”none”表示无访问权限。<br>缺省值：read</p>
-<p>2.<code>auth-access</code> 控制鉴权用户访问版本库的权限。取值范围为”write”、”read”和”none”。<br>即”write”为可读可写，”read”为只读，”none”表示无访问权限。<br>缺省值：write</p>
-<p>3.<code>password-db</code> 指定用户名口令文件名。除非指定绝对路径，否则文件位置为相对conf<br>目录的相对路径。<br>缺省值：passwd</p>
-<p>4.<code>authz-db</code> 指定权限配置文件名，通过该文件可以实现以路径为基础的访问控制。<br>除非指定绝对路径，否则文件位置为相对conf目录的相对路径。<br>缺省值：authz</p>
-<p>5.<code>realm</code> 指定版本库的认证域，即在登录时提示的认证域名称。若两个版本库的<br>认证域相同，建议使用相同的用户名口令数据文件。<br>缺省值：一个UUID(Universal Unique IDentifier，全局唯一标示)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim svnserve.conf </span></span><br><span class="line"><span class="comment">### This file controls the configuration of the svnserve daemon, if you</span></span><br><span class="line"><span class="comment">### use it to allow access to this repository.  (If you only allow</span></span><br><span class="line"><span class="comment">### access through http: and/or file: URLs, then this file is</span></span><br><span class="line"><span class="comment">### irrelevant.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Visit http://subversion.tigris.org/ for more information.</span></span><br><span class="line"></span><br><span class="line">[general]</span><br><span class="line"><span class="comment">### These options control access to the repository for unauthenticated</span></span><br><span class="line"><span class="comment">### and authenticated users.  Valid values are "write", "read",</span></span><br><span class="line"><span class="comment">### and "none".  The sample settings below are the defaults.</span></span><br><span class="line">anon-access = none <span class="comment">#修改处</span></span><br><span class="line">auth-access = write <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### The password-db option controls the location of the password</span></span><br><span class="line"><span class="comment">### database file.  Unless you specify a path starting with a /,</span></span><br><span class="line"><span class="comment">### the file's location is relative to the directory containing</span></span><br><span class="line"><span class="comment">### this configuration file.</span></span><br><span class="line"><span class="comment">### If SASL is enabled (see below), this file will NOT be used.</span></span><br><span class="line"><span class="comment">### Uncomment the line below to use the default password file.</span></span><br><span class="line">password-db = passwd <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### The authz-db option controls the location of the authorization</span></span><br><span class="line"><span class="comment">### rules for path-based access control.  Unless you specify a path</span></span><br><span class="line"><span class="comment">### starting with a /, the file's location is relative to the the</span></span><br><span class="line"><span class="comment">### directory containing this file.  If you don't specify an</span></span><br><span class="line"><span class="comment">### authz-db, no path-based access control is done.</span></span><br><span class="line"><span class="comment">### Uncomment the line below to use the default authorization file.</span></span><br><span class="line">authz-db = authz <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### This option specifies the authentication realm of the repository.</span></span><br><span class="line"><span class="comment">### If two repositories have the same authentication realm, they should</span></span><br><span class="line"><span class="comment">### have the same password database, and vice versa.  The default realm</span></span><br><span class="line"><span class="comment">### is repository's uuid.</span></span><br><span class="line"><span class="comment"># realm = My First Repository</span></span><br><span class="line"></span><br><span class="line">[sasl]</span><br><span class="line"><span class="comment">### This option specifies whether you want to use the Cyrus SASL</span></span><br><span class="line"><span class="comment">### library for authentication. Default is false.</span></span><br><span class="line"><span class="comment">### This section will be ignored if svnserve is not built with Cyrus</span></span><br><span class="line"><span class="comment">### SASL support; to check, run 'svnserve --version' and look for a line</span></span><br><span class="line"><span class="comment">### reading 'Cyrus SASL authentication is available.'</span></span><br><span class="line"><span class="comment"># use-sasl = true</span></span><br><span class="line"><span class="comment">### These options specify the desired strength of the security layer</span></span><br><span class="line"><span class="comment">### that you want SASL to provide. 0 means no encryption, 1 means</span></span><br><span class="line"><span class="comment">### integrity-checking only, values larger than 1 are correlated</span></span><br><span class="line"><span class="comment">### to the effective key length for encryption (e.g. 128 means 128-bit</span></span><br><span class="line"><span class="comment">### encryption). The values below are the defaults.</span></span><br><span class="line"><span class="comment"># min-encryption = 0</span></span><br><span class="line"><span class="comment"># max-encryption = 256</span></span><br></pre></td></tr></table></figure>
-<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>语法：<code>svnserve -d -r svn仓库目录</code><br><code>svnserve -d -r /data/svnrepos/myproject/</code><br>如果启动提示<code>svnserve: Can&#39;t bind server socket: Address already in use</code>，是由于已经启动了svn，你的配置文件应该已经生效了。</p>
-<p>查看svn进程<br><code>ps -ef|grep svn</code></p>
-<h2 id="访问svn服务"><a href="#访问svn服务" class="headerlink" title="访问svn服务"></a>访问svn服务</h2><p>使用svn客户端  输入地址  svn://ip/myproject 就可以访问到这个仓库。</p>
-]]></content>
-      <categories>
-        <category>版本管理</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mysql根据身份证号计算用户年龄并统计年龄段人数</title>
-    <url>/2019/04/02/Mysql%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E8%AE%A1%E7%AE%97%E7%94%A8%E6%88%B7%E5%B9%B4%E9%BE%84%E5%B9%B6%E7%BB%9F%E8%AE%A1%E5%B9%B4%E9%BE%84%E6%AE%B5%E4%BA%BA%E6%95%B0/</url>
-    <content><![CDATA[<p>根据身份证号计算用户年龄SQL语句：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT DATE_FORMAT(NOW(), <span class="string">'%Y'</span>) - SUBSTRING(<span class="string">'370687199005050000'</span>,7,4) AS age FROM table_name</span><br></pre></td></tr></table></figure></p>
-<p>统计年龄段人数SQL语句：</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	(</span><br><span class="line">		CASE</span><br><span class="line">		WHEN age &lt; 50 THEN</span><br><span class="line">			<span class="string">'50岁以下'</span></span><br><span class="line">		WHEN age &lt; 60 THEN</span><br><span class="line">			<span class="string">'50-59岁'</span></span><br><span class="line">		WHEN age &lt; 70 THEN</span><br><span class="line">			<span class="string">'60-69岁'</span></span><br><span class="line">		WHEN age &lt; 80 THEN</span><br><span class="line">			<span class="string">'70-79岁'</span></span><br><span class="line">		ELSE</span><br><span class="line">			<span class="string">'80岁以上'</span></span><br><span class="line">		END</span><br><span class="line">	) AS age_range,</span><br><span class="line">	COUNT(age) AS count</span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">		SELECT</span><br><span class="line">			(</span><br><span class="line">				DATE_FORMAT(NOW(), <span class="string">'%Y'</span>) - SUBSTRING(sq_party_card_id, 7, 4)</span><br><span class="line">			) AS age</span><br><span class="line">		FROM</span><br><span class="line">			table_name</span><br><span class="line">	) AS a</span><br><span class="line">GROUP BY</span><br><span class="line">	age_range</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据库</category>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL语句</tag>
       </tags>
   </entry>
   <entry>
@@ -543,6 +485,22 @@
       </categories>
       <tags>
         <tag>MySQL错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql根据身份证号计算用户年龄并统计年龄段人数</title>
+    <url>/2019/04/02/Mysql%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E8%AE%A1%E7%AE%97%E7%94%A8%E6%88%B7%E5%B9%B4%E9%BE%84%E5%B9%B6%E7%BB%9F%E8%AE%A1%E5%B9%B4%E9%BE%84%E6%AE%B5%E4%BA%BA%E6%95%B0/</url>
+    <content><![CDATA[<p>根据身份证号计算用户年龄SQL语句：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT DATE_FORMAT(NOW(), <span class="string">'%Y'</span>) - SUBSTRING(<span class="string">'370687199005050000'</span>,7,4) AS age FROM table_name</span><br></pre></td></tr></table></figure></p>
+<p>统计年龄段人数SQL语句：</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	(</span><br><span class="line">		CASE</span><br><span class="line">		WHEN age &lt; 50 THEN</span><br><span class="line">			<span class="string">'50岁以下'</span></span><br><span class="line">		WHEN age &lt; 60 THEN</span><br><span class="line">			<span class="string">'50-59岁'</span></span><br><span class="line">		WHEN age &lt; 70 THEN</span><br><span class="line">			<span class="string">'60-69岁'</span></span><br><span class="line">		WHEN age &lt; 80 THEN</span><br><span class="line">			<span class="string">'70-79岁'</span></span><br><span class="line">		ELSE</span><br><span class="line">			<span class="string">'80岁以上'</span></span><br><span class="line">		END</span><br><span class="line">	) AS age_range,</span><br><span class="line">	COUNT(age) AS count</span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">		SELECT</span><br><span class="line">			(</span><br><span class="line">				DATE_FORMAT(NOW(), <span class="string">'%Y'</span>) - SUBSTRING(sq_party_card_id, 7, 4)</span><br><span class="line">			) AS age</span><br><span class="line">		FROM</span><br><span class="line">			table_name</span><br><span class="line">	) AS a</span><br><span class="line">GROUP BY</span><br><span class="line">	age_range</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL语句</tag>
       </tags>
   </entry>
   <entry>
@@ -714,6 +672,48 @@
       </categories>
       <tags>
         <tag>ThinkPHP5.1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下使用svn创建仓库</title>
+    <url>/2019/04/01/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8svn%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<p>假设已经Linux搭建了svn服务器</p>
+<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>语法：<code>svnadmin create /directory</code><br>我是在 <code>/data/svnrepos</code>下新建myproject仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data</span><br><span class="line">mkdir svnrepos</span><br><span class="line">svnadmin create /data/svnrepos/myproject</span><br></pre></td></tr></table></figure>
+<p>仓库创建成功以后，会出现一个仓库名字的文件夹 文件夹下面有以下几个文件和目录</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">myproject</span><br><span class="line">|-conf</span><br><span class="line">|-db</span><br><span class="line">|-format</span><br><span class="line">|-hooks</span><br><span class="line">|-locks</span><br><span class="line">|-README.txt</span><br></pre></td></tr></table></figure>
+<p>其中conf文件夹下面包含三个重要文件 authz passwd svnserve.conf </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conf</span><br><span class="line">|-authz</span><br><span class="line">|-passwd</span><br><span class="line">|-svnserve.conf</span><br></pre></td></tr></table></figure>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><h3 id="增加用户"><a href="#增加用户" class="headerlink" title="增加用户"></a>增加用户</h3><p>修改passwd文件<br>passwd的配置语法格式： 用户名=密码<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi passwd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### This file is an example password file for svnserve.</span></span><br><span class="line"><span class="comment">### Its format is similar to that of svnserve.conf. As shown in the</span></span><br><span class="line"><span class="comment">### example below it contains one section labelled [users].</span></span><br><span class="line"><span class="comment">### The name and password for each user follow, one account per line.</span></span><br><span class="line"></span><br><span class="line">[users]</span><br><span class="line"><span class="comment"># harry = harryssecret</span></span><br><span class="line"><span class="comment"># sally = sallyssecret</span></span><br><span class="line">xiaozhang = 123 <span class="comment">#修改处</span></span><br></pre></td></tr></table></figure></p>
+<p>之后可以通过帐号xiaozhang密码123进行操作。</p>
+<h3 id="配置用户权限"><a href="#配置用户权限" class="headerlink" title="配置用户权限"></a>配置用户权限</h3><p>修改authz文件<br>注意：</p>
+<ul>
+<li>权限配置文件中出现的用户名必须已在用户配置文件中定义。</li>
+<li>对权限配置文件的修改立即生效，不必重启svn。</li>
+</ul>
+<p>用户组格式：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[groups]</span><br><span class="line">&lt;用户组名&gt; = &lt;用户1&gt;,&lt;用户2&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中，1个用户组可以包含1个或多个用户，用户间以逗号分隔。<br>版本库目录格式：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[&lt;版本库&gt;:/项目/目录]</span><br><span class="line">@&lt;用户组名&gt; = &lt;权限&gt;</span><br><span class="line">&lt;用户名&gt; = &lt;权限&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中，方框号内部分可以有多种写法:<br><code>/</code>表示根目录及以下。根目录是svnserve启动时指定的，我们指定为<code>/data/svnrepos/myproject</code>。这样，<code>/</code>就是表示对全部版本库设置权限。<br><code>repos1:/</code> 表示对版本库1设置权限<br><code>repos2:/a</code> 表示对版本库2中的a项目设置权限<br><code>repos2:/a/b</code> 表示对版本库2中的a项目的b目录设置权限<br>权限主体可以是用户组、用户或<em>，用户组在前面加@，</em>表示全部用户。权限可以是w、r、wr和空，空表示没有任何权限。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim authz </span></span><br><span class="line"><span class="comment">### This file is an example authorization file for svnserve.</span></span><br><span class="line"><span class="comment">### Its format is identical to that of mod_authz_svn authorization</span></span><br><span class="line"><span class="comment">### files.</span></span><br><span class="line"><span class="comment">### As shown below each section defines authorizations for the path and</span></span><br><span class="line"><span class="comment">### (optional) repository specified by the section name.</span></span><br><span class="line"><span class="comment">### The authorizations follow. An authorization line can refer to:</span></span><br><span class="line"><span class="comment">###  - a single user,</span></span><br><span class="line"><span class="comment">###  - a group of users defined in a special [groups] section,</span></span><br><span class="line"><span class="comment">###  - an alias defined in a special [aliases] section,</span></span><br><span class="line"><span class="comment">###  - all authenticated users, using the '$authenticated' token,</span></span><br><span class="line"><span class="comment">###  - only anonymous users, using the '$anonymous' token,</span></span><br><span class="line"><span class="comment">###  - anyone, using the '*' wildcard.</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment">### A match can be inverted by prefixing the rule with '~'. Rules can</span></span><br><span class="line"><span class="comment">### grant read ('r') access, read-write ('rw') access, or no access</span></span><br><span class="line"><span class="comment">### ('').</span></span><br><span class="line"></span><br><span class="line">[aliases]</span><br><span class="line"><span class="comment"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</span></span><br><span class="line"></span><br><span class="line">[groups]</span><br><span class="line"><span class="comment"># harry_and_sally = harry,sally</span></span><br><span class="line"><span class="comment"># harry_sally_and_joe = harry,sally,&amp;joe</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [/foo/bar]</span></span><br><span class="line"><span class="comment"># harry = rw</span></span><br><span class="line"><span class="comment"># &amp;joe = r</span></span><br><span class="line"><span class="comment"># * =</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [repository:/baz/fuz]</span></span><br><span class="line"><span class="comment"># @harry_and_sally = rw</span></span><br><span class="line"><span class="comment"># * = r</span></span><br><span class="line"></span><br><span class="line">[/] <span class="comment">#修改处</span></span><br><span class="line">xiaozhang = rw <span class="comment">#修改处</span></span><br></pre></td></tr></table></figure>
+<p>意思是，在根目录下xiaozhang用户拥有读写权限。</p>
+<h2 id="修改svn启动项参数"><a href="#修改svn启动项参数" class="headerlink" title="修改svn启动项参数"></a>修改svn启动项参数</h2><p>修改svnserve.conf文件<br>svn服务配置文件为版本库目录中的文件conf/svnserve.conf。该文件仅由一个[general]配置段组成</p>
+<p><strong>[general]配置段中配置行格式如下：</strong><br>&lt;配置项&gt; = &lt;值&gt;</p>
+<p><strong>配置项分为以下5项：</strong><br>1.<code>anon-access</code> 控制非鉴权用户访问版本库的权限。取值范围为”write”、”read”和”none”。<br>即”write”为可读可写，”read”为只读，”none”表示无访问权限。<br>缺省值：read</p>
+<p>2.<code>auth-access</code> 控制鉴权用户访问版本库的权限。取值范围为”write”、”read”和”none”。<br>即”write”为可读可写，”read”为只读，”none”表示无访问权限。<br>缺省值：write</p>
+<p>3.<code>password-db</code> 指定用户名口令文件名。除非指定绝对路径，否则文件位置为相对conf<br>目录的相对路径。<br>缺省值：passwd</p>
+<p>4.<code>authz-db</code> 指定权限配置文件名，通过该文件可以实现以路径为基础的访问控制。<br>除非指定绝对路径，否则文件位置为相对conf目录的相对路径。<br>缺省值：authz</p>
+<p>5.<code>realm</code> 指定版本库的认证域，即在登录时提示的认证域名称。若两个版本库的<br>认证域相同，建议使用相同的用户名口令数据文件。<br>缺省值：一个UUID(Universal Unique IDentifier，全局唯一标示)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim svnserve.conf </span></span><br><span class="line"><span class="comment">### This file controls the configuration of the svnserve daemon, if you</span></span><br><span class="line"><span class="comment">### use it to allow access to this repository.  (If you only allow</span></span><br><span class="line"><span class="comment">### access through http: and/or file: URLs, then this file is</span></span><br><span class="line"><span class="comment">### irrelevant.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Visit http://subversion.tigris.org/ for more information.</span></span><br><span class="line"></span><br><span class="line">[general]</span><br><span class="line"><span class="comment">### These options control access to the repository for unauthenticated</span></span><br><span class="line"><span class="comment">### and authenticated users.  Valid values are "write", "read",</span></span><br><span class="line"><span class="comment">### and "none".  The sample settings below are the defaults.</span></span><br><span class="line">anon-access = none <span class="comment">#修改处</span></span><br><span class="line">auth-access = write <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### The password-db option controls the location of the password</span></span><br><span class="line"><span class="comment">### database file.  Unless you specify a path starting with a /,</span></span><br><span class="line"><span class="comment">### the file's location is relative to the directory containing</span></span><br><span class="line"><span class="comment">### this configuration file.</span></span><br><span class="line"><span class="comment">### If SASL is enabled (see below), this file will NOT be used.</span></span><br><span class="line"><span class="comment">### Uncomment the line below to use the default password file.</span></span><br><span class="line">password-db = passwd <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### The authz-db option controls the location of the authorization</span></span><br><span class="line"><span class="comment">### rules for path-based access control.  Unless you specify a path</span></span><br><span class="line"><span class="comment">### starting with a /, the file's location is relative to the the</span></span><br><span class="line"><span class="comment">### directory containing this file.  If you don't specify an</span></span><br><span class="line"><span class="comment">### authz-db, no path-based access control is done.</span></span><br><span class="line"><span class="comment">### Uncomment the line below to use the default authorization file.</span></span><br><span class="line">authz-db = authz <span class="comment">#修改处</span></span><br><span class="line"><span class="comment">### This option specifies the authentication realm of the repository.</span></span><br><span class="line"><span class="comment">### If two repositories have the same authentication realm, they should</span></span><br><span class="line"><span class="comment">### have the same password database, and vice versa.  The default realm</span></span><br><span class="line"><span class="comment">### is repository's uuid.</span></span><br><span class="line"><span class="comment"># realm = My First Repository</span></span><br><span class="line"></span><br><span class="line">[sasl]</span><br><span class="line"><span class="comment">### This option specifies whether you want to use the Cyrus SASL</span></span><br><span class="line"><span class="comment">### library for authentication. Default is false.</span></span><br><span class="line"><span class="comment">### This section will be ignored if svnserve is not built with Cyrus</span></span><br><span class="line"><span class="comment">### SASL support; to check, run 'svnserve --version' and look for a line</span></span><br><span class="line"><span class="comment">### reading 'Cyrus SASL authentication is available.'</span></span><br><span class="line"><span class="comment"># use-sasl = true</span></span><br><span class="line"><span class="comment">### These options specify the desired strength of the security layer</span></span><br><span class="line"><span class="comment">### that you want SASL to provide. 0 means no encryption, 1 means</span></span><br><span class="line"><span class="comment">### integrity-checking only, values larger than 1 are correlated</span></span><br><span class="line"><span class="comment">### to the effective key length for encryption (e.g. 128 means 128-bit</span></span><br><span class="line"><span class="comment">### encryption). The values below are the defaults.</span></span><br><span class="line"><span class="comment"># min-encryption = 0</span></span><br><span class="line"><span class="comment"># max-encryption = 256</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>语法：<code>svnserve -d -r svn仓库目录</code><br><code>svnserve -d -r /data/svnrepos/myproject/</code><br>如果启动提示<code>svnserve: Can&#39;t bind server socket: Address already in use</code>，是由于已经启动了svn，你的配置文件应该已经生效了。</p>
+<p>查看svn进程<br><code>ps -ef|grep svn</code></p>
+<h2 id="访问svn服务"><a href="#访问svn服务" class="headerlink" title="访问svn服务"></a>访问svn服务</h2><p>使用svn客户端  输入地址  svn://ip/myproject 就可以访问到这个仓库。</p>
+]]></content>
+      <categories>
+        <category>版本管理</category>
+      </categories>
+      <tags>
+        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -1276,18 +1276,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PHPStorm常用快捷键</title>
-    <url>/2019/06/10/PHPStorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p><code>Ctrl + F</code> 文件内搜索<br><code>Ctrl + R</code> 文件内替换<br><code>Ctrl + Shift F</code> 项目内搜索<br><code>Ctrl + Shift R</code> 项目内替换<br><code>Ctrl + Shift N</code> 项目内查找文件名<br><code>Ctrl + Alt O</code> 清除文件内未使用use</p>
-]]></content>
-      <categories>
-        <category>软件工具</category>
-      </categories>
-      <tags>
-        <tag>PHPStorm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS上 libreoffice 和 unoconv 安装步骤 实现word转html</title>
     <url>/2019/06/14/CentOS%E4%B8%8A-libreoffice-%E5%92%8C-unoconv-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4-%E5%AE%9E%E7%8E%B0word%E8%BD%AChtml/</url>
     <content><![CDATA[<h2 id="libreoffice安装"><a href="#libreoffice安装" class="headerlink" title="libreoffice安装"></a>libreoffice安装</h2><p><code>yum search libreoffice</code>查询一下系统自带的安装包</p>
@@ -1315,6 +1303,18 @@
       </categories>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHPStorm常用快捷键</title>
+    <url>/2019/06/10/PHPStorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p><code>Ctrl + F</code> 文件内搜索<br><code>Ctrl + R</code> 文件内替换<br><code>Ctrl + Shift F</code> 项目内搜索<br><code>Ctrl + Shift R</code> 项目内替换<br><code>Ctrl + Shift N</code> 项目内查找文件名<br><code>Ctrl + Alt O</code> 清除文件内未使用use</p>
+]]></content>
+      <categories>
+        <category>软件工具</category>
+      </categories>
+      <tags>
+        <tag>PHPStorm</tag>
       </tags>
   </entry>
   <entry>
@@ -1368,25 +1368,6 @@
       </categories>
       <tags>
         <tag>数据类型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP接口有返回值，但是却报500错误解决</title>
-    <url>/2019/07/10/PHP%E6%8E%A5%E5%8F%A3%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8D%B4%E6%8A%A5500%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<p>使用ThinkPHP5框架，本地上传图片没问题，但是在线上上传图片却报500错误，查看请求链接，居然有返回值。</p>
-<p><img src="/2019/07/10/PHP接口有返回值，但是却报500错误解决/20190710111407.jpg" alt="请求链接"></p>
-<a id="more"></a>
-<p><img src="/2019/07/10/PHP接口有返回值，但是却报500错误解决/20190710111434.jpg" alt="返回值"></p>
-<p>把 <code>runtime</code> 权限改为777：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># chmod -R 777 runtime</span><br></pre></td></tr></table></figure>
-<p>再试，问题解决了。</p>
-]]></content>
-      <categories>
-        <category>后端开发</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP报错</tag>
       </tags>
   </entry>
   <entry>
@@ -1460,6 +1441,25 @@
       </categories>
       <tags>
         <tag>canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP接口有返回值，但是却报500错误解决</title>
+    <url>/2019/07/10/PHP%E6%8E%A5%E5%8F%A3%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8D%B4%E6%8A%A5500%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>使用ThinkPHP5框架，本地上传图片没问题，但是在线上上传图片却报500错误，查看请求链接，居然有返回值。</p>
+<p><img src="/2019/07/10/PHP接口有返回值，但是却报500错误解决/20190710111407.jpg" alt="请求链接"></p>
+<a id="more"></a>
+<p><img src="/2019/07/10/PHP接口有返回值，但是却报500错误解决/20190710111434.jpg" alt="返回值"></p>
+<p>把 <code>runtime</code> 权限改为777：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># chmod -R 777 runtime</span><br></pre></td></tr></table></figure>
+<p>再试，问题解决了。</p>
+]]></content>
+      <categories>
+        <category>后端开发</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP报错</tag>
       </tags>
   </entry>
   <entry>
@@ -2575,34 +2575,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Next主题引用块加颜色(Bootstrap Callout)</title>
-    <url>/2019/12/17/Next%E4%B8%BB%E9%A2%98%E5%BC%95%E7%94%A8%E5%9D%97%E5%8A%A0%E9%A2%9C%E8%89%B2-Bootstrap-Callout/</url>
-    <content><![CDATA[<p>我们在写文章时，经常会有一些警告、注意和提示等信息，如果单纯放在引用块里不是很明显，如果你使用的是NexT主题，那么可以使用 <strong>Bootstrap Callout</strong> 来改变引用块的颜色。</p>
-<p>使用方式：</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125; Content (md partial supported) &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，<code>class_name</code> 可以是以下列表中的一个值：</p>
-<ul>
-<li>default</li>
-<li>primary</li>
-<li>success</li>
-<li>info</li>
-<li>warning</li>
-<li>danger</li>
-</ul>
-<p><code>Content</code> 为提示内容</p>
-<p>效果示例:</p>
-<p><img src="/2019/12/17/Next主题引用块加颜色-Bootstrap-Callout/bootstrap-callout.png" alt="效果示例"></p>
-]]></content>
-      <categories>
-        <category>前端框架</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Next主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Composer 安装与使用</title>
     <url>/2019/12/19/Composer-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>原文地址：<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/composer-install-and-usage.html</a></p>
@@ -2721,6 +2693,34 @@
       </categories>
       <tags>
         <tag>Composer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题引用块加颜色(Bootstrap Callout)</title>
+    <url>/2019/12/17/Next%E4%B8%BB%E9%A2%98%E5%BC%95%E7%94%A8%E5%9D%97%E5%8A%A0%E9%A2%9C%E8%89%B2-Bootstrap-Callout/</url>
+    <content><![CDATA[<p>我们在写文章时，经常会有一些警告、注意和提示等信息，如果单纯放在引用块里不是很明显，如果你使用的是NexT主题，那么可以使用 <strong>Bootstrap Callout</strong> 来改变引用块的颜色。</p>
+<p>使用方式：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125; Content (md partial supported) &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>class_name</code> 可以是以下列表中的一个值：</p>
+<ul>
+<li>default</li>
+<li>primary</li>
+<li>success</li>
+<li>info</li>
+<li>warning</li>
+<li>danger</li>
+</ul>
+<p><code>Content</code> 为提示内容</p>
+<p>效果示例:</p>
+<p><img src="/2019/12/17/Next主题引用块加颜色-Bootstrap-Callout/bootstrap-callout.png" alt="效果示例"></p>
+]]></content>
+      <categories>
+        <category>前端框架</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Next主题</tag>
       </tags>
   </entry>
   <entry>
@@ -4609,24 +4609,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于PHP程序员技术职业生涯规划</title>
-    <url>/2020/05/15/%E5%85%B3%E4%BA%8EPHP%E7%A8%8B%E5%BA%8F%E5%91%98%E6%8A%80%E6%9C%AF%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/</url>
-    <content><![CDATA[<p>转载地址：<a href="http://rango.swoole.com/" target="_blank" rel="noopener">http://rango.swoole.com/</a></p>
-<p>看到很多PHP程序员职业规划的文章，都是直接上来就提Linux、PHP、MySQL、Nginx、Redis、Memcache、jQuery这些，然后就直接上手搭环境、做项目，中级就是学习各种PHP框架和类库，高级阶段就是MySQL优化、PHP内核与扩展、架构设计这些了。</p>
-<a id="more"></a>
-<p>这些文章都存在一个严重的缺陷，<strong>不重视基础</strong>。就好比练武功，只求速成，不修炼内功和心法，只练各种招式，这样能高到哪里去？我所见过的PHP大牛每一个都是具备非常扎实的基础，他们之所以能成为大牛，是因为基础足够好。基础不稳，面对技术复杂的系统，如同盲人摸象、管中窥豹，只得其门不得其法。而且如果基础不扎实，也没办法进入大公司。国外的Google、Facebook，国内的腾讯、阿里、百度、滴滴、京东、新浪等知名互联网企业，无论哪一家公司面试必然会考验应聘者的技术功底。无法进入一个拥有大规模并发请求的项目中得到历练，不坚持提升自己，那也只能在小公司混日子了。</p>
-<p>我最开始工作也是在2家小公司，后来加入腾讯阿里，主要原因还是我坚持学习基础知识，从而得倒了这个机会。有几个方面的基础知识，我建议每一位PHP程序员都应该好好学习一下。我推荐几本书给大家，包括深入理解计算机系统、现代操作系统、C程序设计语言、C语言数据结构和算法、Unix环境高级编程、TCP/IP网络通信详解。另外我建议大家学习一下面向对象方面知识，PHP这方面的书不太多，建议看Java面向对象编程、Java编程思想、J2EE这些书。PHP语言基础方面，建议认真地把<strong>PHP5权威编程</strong>这本书好好读完。另外不光要读，还要照着书中的讲解动手去编程实践。</p>
-<p>总之有一个好的基础，再去学LAMP、Redis、PHP框架、前端，这样取得的成就更大。这与年龄无关、与学历无关、与智力无关，与天赋也无关。只要肯努力学习，人人可以成为技术大牛。</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>人生</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Next主题 配置</title>
     <url>/2020/05/25/Hexo-Next%E4%B8%BB%E9%A2%98-%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="增加侧边阅读百分比进度条"><a href="#增加侧边阅读百分比进度条" class="headerlink" title="增加侧边阅读百分比进度条"></a>增加侧边阅读百分比进度条</h2><p>打开位于 themes/next/_config.yml 文件，修改如下:</p>
@@ -4665,6 +4647,24 @@
       </categories>
       <tags>
         <tag>Next主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于PHP程序员技术职业生涯规划</title>
+    <url>/2020/05/15/%E5%85%B3%E4%BA%8EPHP%E7%A8%8B%E5%BA%8F%E5%91%98%E6%8A%80%E6%9C%AF%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<p>转载地址：<a href="http://rango.swoole.com/" target="_blank" rel="noopener">http://rango.swoole.com/</a></p>
+<p>看到很多PHP程序员职业规划的文章，都是直接上来就提Linux、PHP、MySQL、Nginx、Redis、Memcache、jQuery这些，然后就直接上手搭环境、做项目，中级就是学习各种PHP框架和类库，高级阶段就是MySQL优化、PHP内核与扩展、架构设计这些了。</p>
+<a id="more"></a>
+<p>这些文章都存在一个严重的缺陷，<strong>不重视基础</strong>。就好比练武功，只求速成，不修炼内功和心法，只练各种招式，这样能高到哪里去？我所见过的PHP大牛每一个都是具备非常扎实的基础，他们之所以能成为大牛，是因为基础足够好。基础不稳，面对技术复杂的系统，如同盲人摸象、管中窥豹，只得其门不得其法。而且如果基础不扎实，也没办法进入大公司。国外的Google、Facebook，国内的腾讯、阿里、百度、滴滴、京东、新浪等知名互联网企业，无论哪一家公司面试必然会考验应聘者的技术功底。无法进入一个拥有大规模并发请求的项目中得到历练，不坚持提升自己，那也只能在小公司混日子了。</p>
+<p>我最开始工作也是在2家小公司，后来加入腾讯阿里，主要原因还是我坚持学习基础知识，从而得倒了这个机会。有几个方面的基础知识，我建议每一位PHP程序员都应该好好学习一下。我推荐几本书给大家，包括深入理解计算机系统、现代操作系统、C程序设计语言、C语言数据结构和算法、Unix环境高级编程、TCP/IP网络通信详解。另外我建议大家学习一下面向对象方面知识，PHP这方面的书不太多，建议看Java面向对象编程、Java编程思想、J2EE这些书。PHP语言基础方面，建议认真地把<strong>PHP5权威编程</strong>这本书好好读完。另外不光要读，还要照着书中的讲解动手去编程实践。</p>
+<p>总之有一个好的基础，再去学LAMP、Redis、PHP框架、前端，这样取得的成就更大。这与年龄无关、与学历无关、与智力无关，与天赋也无关。只要肯努力学习，人人可以成为技术大牛。</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>人生</tag>
       </tags>
   </entry>
   <entry>
@@ -4790,6 +4790,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Laravel How to create a custom Log file</title>
+    <url>/2020/06/01/Laravel-How-to-create-a-custom-Log-file/</url>
+    <content><![CDATA[<p>On Laravel 5.8, you cannot use <code>Log::useFiles()</code> to create custom log files,after some digging around I found that I could add a channel to <code>config/logging.php</code> like this</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'customlog'</span> =&gt; [</span><br><span class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'single'</span>,</span><br><span class="line">            <span class="string">'path'</span> =&gt; storage_path(<span class="string">'logs/custom.log'</span>),</span><br><span class="line">            <span class="string">'level'</span> =&gt; <span class="string">'info'</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>and write to it like this</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Log::channel(<span class="string">'customlog'</span>)-&gt;info(<span class="string">'Hello world!!'</span>);</span><br></pre></td></tr></table></figure>
+<p>IF you want to create a log file using date format, modify in <code>config/logging.php</code> like this</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'customlog'</span> =&gt; [</span><br><span class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'daily'</span>,</span><br><span class="line">            <span class="string">'path'</span> =&gt; storage_path(<span class="string">'logs/custom.log'</span>),</span><br><span class="line">            <span class="string">'level'</span> =&gt; <span class="string">'info'</span>,</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>PHP框架</category>
+        <category>Laravel</category>
+      </categories>
+      <tags>
+        <tag>Laravel技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Using jQuery ajax and FormData to upload a file</title>
     <url>/2020/06/04/Using-jQuery-ajax-and-FormData-to-upload-a-file/</url>
     <content><![CDATA[<h2 id="使用form表单初始化FormData对象方式上传文件"><a href="#使用form表单初始化FormData对象方式上传文件" class="headerlink" title="使用form表单初始化FormData对象方式上传文件"></a>使用form表单初始化FormData对象方式上传文件</h2><p>html</p>
@@ -4826,24 +4844,6 @@
       </categories>
       <tags>
         <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Laravel How to create a custom Log file</title>
-    <url>/2020/06/01/Laravel-How-to-create-a-custom-Log-file/</url>
-    <content><![CDATA[<p>On Laravel 5.8, you cannot use <code>Log::useFiles()</code> to create custom log files,after some digging around I found that I could add a channel to <code>config/logging.php</code> like this</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'customlog'</span> =&gt; [</span><br><span class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'single'</span>,</span><br><span class="line">            <span class="string">'path'</span> =&gt; storage_path(<span class="string">'logs/custom.log'</span>),</span><br><span class="line">            <span class="string">'level'</span> =&gt; <span class="string">'info'</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>and write to it like this</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Log::channel(<span class="string">'customlog'</span>)-&gt;info(<span class="string">'Hello world!!'</span>);</span><br></pre></td></tr></table></figure>
-<p>IF you want to create a log file using date format, modify in <code>config/logging.php</code> like this</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'customlog'</span> =&gt; [</span><br><span class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'daily'</span>,</span><br><span class="line">            <span class="string">'path'</span> =&gt; storage_path(<span class="string">'logs/custom.log'</span>),</span><br><span class="line">            <span class="string">'level'</span> =&gt; <span class="string">'info'</span>,</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>PHP框架</category>
-        <category>Laravel</category>
-      </categories>
-      <tags>
-        <tag>Laravel技巧</tag>
       </tags>
   </entry>
   <entry>
@@ -5312,6 +5312,21 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS查看是否安装了某个软件</title>
+    <url>/2020/09/25/CentOS%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="rpm包安装的"><a href="#rpm包安装的" class="headerlink" title="rpm包安装的"></a>rpm包安装的</h2><p>可以使用<code>rpm -qa</code> 查看，如果要查看指定的软件包是否安装用<code>rpm -qa | grep 软件或者包名</code></p>
+<h2 id="deb包安装的"><a href="#deb包安装的" class="headerlink" title="deb包安装的"></a>deb包安装的</h2><p>可以使用<code>dpkg -l</code> 查看，如果要查看指定的软件包是否安装用<code>dpkg -l | grep 软件或者包名</code></p>
+<h2 id="yum安装的"><a href="#yum安装的" class="headerlink" title="yum安装的"></a>yum安装的</h2><p>可以使用<code>yum list installed</code> 查看，如果要查看指定的软件包是否安装用<code>yum list installed | grep 软件或者包名</code></p>
+<h2 id="源码包编译安装的"><a href="#源码包编译安装的" class="headerlink" title="源码包编译安装的"></a>源码包编译安装的</h2><p>以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 监控命令整理</title>
     <url>/2020/09/11/Linux-%E7%9B%91%E6%8E%A7%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h2 id="Linux系统监控命令速查手册"><a href="#Linux系统监控命令速查手册" class="headerlink" title="Linux系统监控命令速查手册"></a>Linux系统监控命令速查手册</h2><table>
@@ -5606,21 +5621,6 @@
       </categories>
       <tags>
         <tag>Hexo主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS查看是否安装了某个软件</title>
-    <url>/2020/09/25/CentOS%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="rpm包安装的"><a href="#rpm包安装的" class="headerlink" title="rpm包安装的"></a>rpm包安装的</h2><p>可以使用<code>rpm -qa</code> 查看，如果要查看指定的软件包是否安装用<code>rpm -qa | grep 软件或者包名</code></p>
-<h2 id="deb包安装的"><a href="#deb包安装的" class="headerlink" title="deb包安装的"></a>deb包安装的</h2><p>可以使用<code>dpkg -l</code> 查看，如果要查看指定的软件包是否安装用<code>dpkg -l | grep 软件或者包名</code></p>
-<h2 id="yum安装的"><a href="#yum安装的" class="headerlink" title="yum安装的"></a>yum安装的</h2><p>可以使用<code>yum list installed</code> 查看，如果要查看指定的软件包是否安装用<code>yum list installed | grep 软件或者包名</code></p>
-<h2 id="源码包编译安装的"><a href="#源码包编译安装的" class="headerlink" title="源码包编译安装的"></a>源码包编译安装的</h2><p>以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
       </tags>
   </entry>
   <entry>
@@ -6341,25 +6341,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JS点击空白处关闭弹窗方法</title>
-    <url>/2021/03/11/JS%E7%82%B9%E5%87%BB%E7%A9%BA%E7%99%BD%E5%A4%84%E5%85%B3%E9%97%AD%E5%BC%B9%E7%AA%97%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="第一种-jQuery-写法"><a href="#第一种-jQuery-写法" class="headerlink" title="第一种  jQuery 写法"></a>第一种  jQuery 写法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">		html,</span><br><span class="line">		body &#123;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			border: 0;</span><br><span class="line">			margin: 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> &#123;</span></span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			position: relative;</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0, 0, 0, 0<span class="selector-class">.1</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> <span class="selector-class">.dialog-content</span> &#123;</span></span><br><span class="line">			width: 200px;</span><br><span class="line"><span class="css">			<span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#eeeeee</span>;</span></span><br><span class="line">			position: absolute;</span><br><span class="line">			top: 50%;</span><br><span class="line">			left: 50%;</span><br><span class="line">			transform: translate(-50%, -50%);</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-id">#FFF</span>;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">box-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> <span class="selector-id">#888888</span>;</span></span><br><span class="line">			text-align: center;</span><br><span class="line">			line-height: 100px;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog-content"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">p</span>&gt;</span>这是弹窗<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			$(<span class="built_in">document</span>).mouseup(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> dc = $(<span class="string">'.dialog-content'</span>); <span class="comment">// 目标区域,弹窗内容区域</span></span></span><br><span class="line"><span class="javascript">				<span class="comment">// 如果点击的 不是目标区域 并且 不是目标区域的子元素</span></span></span><br><span class="line">				if (!dc.is(e.target) &amp;&amp; dc.has(e.target).length === 0) &#123;</span><br><span class="line"><span class="javascript">					<span class="comment">// some code... </span></span></span><br><span class="line"><span class="javascript">					$(<span class="string">'.dialog'</span>).hide();</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>判断点击事件发生在区域外的条件是：</strong></p>
-<ul>
-<li>点击事件的对象不是目标区域本身</li>
-<li>事件对象同时也不是目标区域的子元素</li>
-</ul>
-<a id="more"></a>
-<h2 id="第二种-源生JS写法"><a href="#第二种-源生JS写法" class="headerlink" title="第二种 源生JS写法"></a>第二种 源生JS写法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">		html,</span><br><span class="line">		body &#123;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			border: 0;</span><br><span class="line">			margin: 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> &#123;</span></span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			position: relative;</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0, 0, 0, 0<span class="selector-class">.1</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> <span class="selector-class">.dialog-content</span> &#123;</span></span><br><span class="line">			width: 200px;</span><br><span class="line"><span class="css">			<span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#eeeeee</span>;</span></span><br><span class="line">			position: absolute;</span><br><span class="line">			top: 50%;</span><br><span class="line">			left: 50%;</span><br><span class="line">			transform: translate(-50%, -50%);</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-id">#FFF</span>;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">box-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> <span class="selector-id">#888888</span>;</span></span><br><span class="line">			text-align: center;</span><br><span class="line">			line-height: 100px;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog-content"</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">p</span>&gt;</span>这是弹窗<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.addEventListener(<span class="string">'mouseup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> dc = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'dialog-content'</span>)[<span class="number">0</span>];</span></span><br><span class="line">				if (dc &amp;&amp; !dc.contains(e.target)) &#123;</span><br><span class="line"><span class="javascript">					<span class="comment">// some code...</span></span></span><br><span class="line"><span class="javascript">					$(<span class="string">'.dialog'</span>).hide();</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>前端开发</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS方法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安装 closurecompiler@1.6.1 失败</title>
     <url>/2021/04/13/%E5%AE%89%E8%A3%85-closurecompiler-1-6-1-%E5%A4%B1%E8%B4%A5/</url>
     <content><![CDATA[<p>在安装<code>grunt</code>的时候，提示：</p>
@@ -6377,6 +6358,25 @@
         <tag>npm</tag>
         <tag>cnpm</tag>
         <tag>grunt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS点击空白处关闭弹窗方法</title>
+    <url>/2021/03/11/JS%E7%82%B9%E5%87%BB%E7%A9%BA%E7%99%BD%E5%A4%84%E5%85%B3%E9%97%AD%E5%BC%B9%E7%AA%97%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="第一种-jQuery-写法"><a href="#第一种-jQuery-写法" class="headerlink" title="第一种  jQuery 写法"></a>第一种  jQuery 写法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">		html,</span><br><span class="line">		body &#123;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			border: 0;</span><br><span class="line">			margin: 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> &#123;</span></span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			position: relative;</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0, 0, 0, 0<span class="selector-class">.1</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> <span class="selector-class">.dialog-content</span> &#123;</span></span><br><span class="line">			width: 200px;</span><br><span class="line"><span class="css">			<span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#eeeeee</span>;</span></span><br><span class="line">			position: absolute;</span><br><span class="line">			top: 50%;</span><br><span class="line">			left: 50%;</span><br><span class="line">			transform: translate(-50%, -50%);</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-id">#FFF</span>;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">box-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> <span class="selector-id">#888888</span>;</span></span><br><span class="line">			text-align: center;</span><br><span class="line">			line-height: 100px;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog-content"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">p</span>&gt;</span>这是弹窗<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			$(<span class="built_in">document</span>).mouseup(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> dc = $(<span class="string">'.dialog-content'</span>); <span class="comment">// 目标区域,弹窗内容区域</span></span></span><br><span class="line"><span class="javascript">				<span class="comment">// 如果点击的 不是目标区域 并且 不是目标区域的子元素</span></span></span><br><span class="line">				if (!dc.is(e.target) &amp;&amp; dc.has(e.target).length === 0) &#123;</span><br><span class="line"><span class="javascript">					<span class="comment">// some code... </span></span></span><br><span class="line"><span class="javascript">					$(<span class="string">'.dialog'</span>).hide();</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>判断点击事件发生在区域外的条件是：</strong></p>
+<ul>
+<li>点击事件的对象不是目标区域本身</li>
+<li>事件对象同时也不是目标区域的子元素</li>
+</ul>
+<a id="more"></a>
+<h2 id="第二种-源生JS写法"><a href="#第二种-源生JS写法" class="headerlink" title="第二种 源生JS写法"></a>第二种 源生JS写法</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">		html,</span><br><span class="line">		body &#123;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			border: 0;</span><br><span class="line">			margin: 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> &#123;</span></span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			position: relative;</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0, 0, 0, 0<span class="selector-class">.1</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.dialog</span> <span class="selector-class">.dialog-content</span> &#123;</span></span><br><span class="line">			width: 200px;</span><br><span class="line"><span class="css">			<span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#eeeeee</span>;</span></span><br><span class="line">			position: absolute;</span><br><span class="line">			top: 50%;</span><br><span class="line">			left: 50%;</span><br><span class="line">			transform: translate(-50%, -50%);</span><br><span class="line"><span class="css">			<span class="selector-tag">background</span>: <span class="selector-id">#FFF</span>;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">box-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> <span class="selector-id">#888888</span>;</span></span><br><span class="line">			text-align: center;</span><br><span class="line">			line-height: 100px;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dialog-content"</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">p</span>&gt;</span>这是弹窗<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.addEventListener(<span class="string">'mouseup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> dc = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'dialog-content'</span>)[<span class="number">0</span>];</span></span><br><span class="line">				if (dc &amp;&amp; !dc.contains(e.target)) &#123;</span><br><span class="line"><span class="javascript">					<span class="comment">// some code...</span></span></span><br><span class="line"><span class="javascript">					$(<span class="string">'.dialog'</span>).hide();</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端开发</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS方法</tag>
       </tags>
   </entry>
   <entry>
@@ -6568,6 +6568,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux服务器性能查看常用命令</title>
+    <url>/2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="实时显示系统中各个进程的资源占用状况"><a href="#实时显示系统中各个进程的资源占用状况" class="headerlink" title="实时显示系统中各个进程的资源占用状况"></a>实时显示系统中各个进程的资源占用状况</h2><p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</p>
+<p><a href="https://www.runoob.com/linux/linux-comm-top.html" target="_blank" rel="noopener">详情</a></p>
+<a id="more"></a>
+<h2 id="显示系统内存的使用情况"><a href="#显示系统内存的使用情况" class="headerlink" title="显示系统内存的使用情况"></a>显示系统内存的使用情况</h2><p>free 命令显示系统内存的使用情况，包括物理内存、交换内存(swap)和内核缓冲区内存</p>
+<p><a href="https://www.runoob.com/linux/linux-comm-free.html" target="_blank" rel="noopener">详情</a></p>
+<h2 id="显示目前文件系统磁盘使用情况统计"><a href="#显示目前文件系统磁盘使用情况统计" class="headerlink" title="显示目前文件系统磁盘使用情况统计"></a>显示目前文件系统磁盘使用情况统计</h2><p>Linux df（英文全拼：disk free） 命令用于显示目前在 Linux 系统上的文件系统磁盘使用情况统计。</p>
+<p><a href="https://www.runoob.com/linux/linux-comm-df.html" target="_blank" rel="noopener">详情</a></p>
+<h2 id="展现给定时间间隔的服务器的状态值"><a href="#展现给定时间间隔的服务器的状态值" class="headerlink" title="展现给定时间间隔的服务器的状态值"></a>展现给定时间间隔的服务器的状态值</h2><p>vmstat命令是最常见的Linux/Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。</p>
+<h2 id="获取主机运行时间和查询系统负载信息"><a href="#获取主机运行时间和查询系统负载信息" class="headerlink" title="获取主机运行时间和查询系统负载信息"></a>获取主机运行时间和查询系统负载信息</h2><p>uptime命令主要用于获取主机运行时间和查询linux系统负载等信息</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决PHP报错 cURL error 60: SSL certificate problem: unable to get local issuer certifica</title>
     <url>/2021/07/29/%E8%A7%A3%E5%86%B3PHP%E6%8A%A5%E9%94%99-cURL-error-60-SSL-certificate-problem-unable-to-get-local-issuer-certifica/</url>
     <content><![CDATA[<p>PHP程序在调用<code>https</code>链接时报错”cURL error 60: SSL certificate problem: unable to get local issuer<br>  certifica”，这是因为没有配置信任的服务器HTTPS验证。默认情况下，cURL被设为不信任任何CAS，因此浏览器无法通过HTTPS访问你服务器</p>
@@ -6591,26 +6611,6 @@
       </categories>
       <tags>
         <tag>PHP报错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux服务器性能查看常用命令</title>
-    <url>/2021/08/03/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="实时显示系统中各个进程的资源占用状况"><a href="#实时显示系统中各个进程的资源占用状况" class="headerlink" title="实时显示系统中各个进程的资源占用状况"></a>实时显示系统中各个进程的资源占用状况</h2><p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</p>
-<p><a href="https://www.runoob.com/linux/linux-comm-top.html" target="_blank" rel="noopener">详情</a></p>
-<a id="more"></a>
-<h2 id="显示系统内存的使用情况"><a href="#显示系统内存的使用情况" class="headerlink" title="显示系统内存的使用情况"></a>显示系统内存的使用情况</h2><p>free 命令显示系统内存的使用情况，包括物理内存、交换内存(swap)和内核缓冲区内存</p>
-<p><a href="https://www.runoob.com/linux/linux-comm-free.html" target="_blank" rel="noopener">详情</a></p>
-<h2 id="显示目前文件系统磁盘使用情况统计"><a href="#显示目前文件系统磁盘使用情况统计" class="headerlink" title="显示目前文件系统磁盘使用情况统计"></a>显示目前文件系统磁盘使用情况统计</h2><p>Linux df（英文全拼：disk free） 命令用于显示目前在 Linux 系统上的文件系统磁盘使用情况统计。</p>
-<p><a href="https://www.runoob.com/linux/linux-comm-df.html" target="_blank" rel="noopener">详情</a></p>
-<h2 id="展现给定时间间隔的服务器的状态值"><a href="#展现给定时间间隔的服务器的状态值" class="headerlink" title="展现给定时间间隔的服务器的状态值"></a>展现给定时间间隔的服务器的状态值</h2><p>vmstat命令是最常见的Linux/Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。</p>
-<h2 id="获取主机运行时间和查询系统负载信息"><a href="#获取主机运行时间和查询系统负载信息" class="headerlink" title="获取主机运行时间和查询系统负载信息"></a>获取主机运行时间和查询系统负载信息</h2><p>uptime命令主要用于获取主机运行时间和查询linux系统负载等信息</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
       </tags>
   </entry>
   <entry>
@@ -7612,6 +7612,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Bootstrap3 实现穿梭框</title>
+    <url>/2022/08/23/Bootstrap3-%E5%AE%9E%E7%8E%B0%E7%A9%BF%E6%A2%AD%E6%A1%86/</url>
+    <content><![CDATA[<p>使用 Bootstrap3 框架实现穿梭框代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap3 穿梭框<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Bootstrap --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">      &lt;script src="https://cdn.jsdelivr.cn/npm/html5shiv@3.7.3/dist/html5shiv.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">      &lt;script src="https://cdn.jsdelivr.cn/npm/respond.js@1.4.2/dest/respond.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">    &lt;![endif]--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>Bootstrap3 穿梭框<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-bordered dchannel-table"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"item-default"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50%;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"sel_all_area"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">style</span>=<span class="string">"width:100%;"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"4"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_select_all_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-forward"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_choose_selected_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_remove_selected_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_remove_all_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-backward"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50%;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"sel_selected_areas"</span>  <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">style</span>=<span class="string">"width:100%;"</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> all_area = $(<span class="string">"#sel_all_area"</span>), selected_areas = $(<span class="string">"#sel_selected_areas"</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_select_all_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                all_area.find(<span class="string">"option"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                    $(<span class="keyword">this</span>).appendTo(selected_areas);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'add'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_choose_selected_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                all_area.find(<span class="string">"option:selected"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                    $(<span class="keyword">this</span>).appendTo(selected_areas);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'add'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_remove_selected_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                selected_areas.find(<span class="string">"option:selected"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                     $(<span class="keyword">this</span>).appendTo(all_area);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'del'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_remove_all_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                selected_areas.find(<span class="string">"option"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                     $(<span class="keyword">this</span>).appendTo(all_area);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'del'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    </span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">doSubmit</span>(<span class="params">select_type, key</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">`更新 类型: <span class="subst">$&#123;select_type&#125;</span>, KEY: <span class="subst">$&#123;key&#125;</span>`</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端框架</category>
+        <category>Bootstrap</category>
+      </categories>
+      <tags>
+        <tag>Bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Laravel 缓存操作</title>
     <url>/2022/04/29/Laravel-%E7%BC%93%E5%AD%98%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>Laravel为不同的缓存系统封装了统一的API，缓存配置文件<code>./config/cache.php</code></p>
@@ -7645,19 +7658,6 @@
       </categories>
       <tags>
         <tag>Laravel技巧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bootstrap3 实现穿梭框</title>
-    <url>/2022/08/23/Bootstrap3-%E5%AE%9E%E7%8E%B0%E7%A9%BF%E6%A2%AD%E6%A1%86/</url>
-    <content><![CDATA[<p>使用 Bootstrap3 框架实现穿梭框代码</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap3 穿梭框<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Bootstrap --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">      &lt;script src="https://cdn.jsdelivr.cn/npm/html5shiv@3.7.3/dist/html5shiv.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">      &lt;script src="https://cdn.jsdelivr.cn/npm/respond.js@1.4.2/dest/respond.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">    &lt;![endif]--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>Bootstrap3 穿梭框<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-bordered dchannel-table"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"item-default"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50%;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"sel_all_area"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">style</span>=<span class="string">"width:100%;"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"4"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_select_all_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-forward"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_choose_selected_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_remove_selected_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-small"</span> <span class="attr">id</span>=<span class="string">"btn_remove_all_area"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-backward"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width: 50%;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"sel_selected_areas"</span>  <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">style</span>=<span class="string">"width:100%;"</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> all_area = $(<span class="string">"#sel_all_area"</span>), selected_areas = $(<span class="string">"#sel_selected_areas"</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_select_all_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                all_area.find(<span class="string">"option"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                    $(<span class="keyword">this</span>).appendTo(selected_areas);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'add'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_choose_selected_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                all_area.find(<span class="string">"option:selected"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                    $(<span class="keyword">this</span>).appendTo(selected_areas);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'add'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_remove_selected_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                selected_areas.find(<span class="string">"option:selected"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                     $(<span class="keyword">this</span>).appendTo(all_area);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'del'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">"#btn_remove_all_area"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> selectedAreaArray = [];</span></span><br><span class="line"><span class="javascript">                selected_areas.find(<span class="string">"option"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    selectedAreaArray[i] = $(<span class="keyword">this</span>).val();</span></span><br><span class="line"><span class="javascript">                     $(<span class="keyword">this</span>).appendTo(all_area);</span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                doSubmit(<span class="string">'del'</span>, selectedAreaArray.toString());</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    </span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">doSubmit</span>(<span class="params">select_type, key</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">`更新 类型: <span class="subst">$&#123;select_type&#125;</span>, KEY: <span class="subst">$&#123;key&#125;</span>`</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>前端框架</category>
-        <category>Bootstrap</category>
-      </categories>
-      <tags>
-        <tag>Bootstrap</tag>
       </tags>
   </entry>
   <entry>
@@ -7983,6 +7983,23 @@
       </tags>
   </entry>
   <entry>
+    <title>在微信实现链接的分享</title>
+    <url>/2023/05/18/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%AE%9E%E7%8E%B0%E9%93%BE%E6%8E%A5%E7%9A%84%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<p>微信分享会使用到微信JS-SDK，所以需要再微信公众号后台配置<strong>JS接口安全域名</strong></p>
+<p>微信官方关于<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#112" target="_blank" rel="noopener">分享接口开发文档</a></p>
+<p>实现代码如下：</p>
+<a id="more"></a>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>微信分享<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../static/lib/jquery/1.12.4/jquery.min.js"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入jweixin js文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//res2.wx.qq.com/open/js/jweixin-1.6.0.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">getWxConfig</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 获取微信配置参数</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 当前网页的URL，不包含#及其后面部分，要注意当前URL一定是正确的且已经在 JS接口安全域名 配置过</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> url = <span class="built_in">window</span>.location.href.split(<span class="string">'#'</span>)[<span class="number">0</span>];</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">                $.ajax(&#123;</span></span><br><span class="line"><span class="javascript">                    type: <span class="string">"POST"</span>,</span></span><br><span class="line"><span class="javascript">                    url: <span class="string">"获取微信签名等其他配置参数的链接，自行处理"</span>,</span></span><br><span class="line"><span class="javascript">                    dataType: <span class="string">"json"</span>,</span></span><br><span class="line">                    data: &#123;url: url&#125;,</span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span></span><br><span class="line">                        if (response.errorCode == 0) &#123;</span><br><span class="line">                            resolve(response.data);</span><br><span class="line"><span class="javascript">                        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">                            reject(response.msg);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="javascript">                    error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(e);</span></span><br><span class="line">                        reject(e.statusText);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">wxShare</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> res = <span class="keyword">await</span> getSignature();</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> &#123;timestamp, nonceStr, appId, signature&#125; = res;</span></span><br><span class="line">            wx.config(&#123;</span><br><span class="line"><span class="javascript">                debug: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span></span><br><span class="line"><span class="javascript">                appId: appId, <span class="comment">// 必填，公众号的唯一标识</span></span></span><br><span class="line"><span class="javascript">                timestamp: timestamp, <span class="comment">// 必填，生成签名的时间戳</span></span></span><br><span class="line"><span class="javascript">                nonceStr: nonceStr, <span class="comment">// 必填，生成签名的随机串</span></span></span><br><span class="line"><span class="javascript">                signature: signature, <span class="comment">// 必填，签名</span></span></span><br><span class="line"><span class="javascript">                jsApiList: [<span class="string">"onMenuShareTimeline"</span>, <span class="string">"onMenuShareAppMessage"</span>] <span class="comment">// 必填，需要使用的JS接口列表</span></span></span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">            wx.ready(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">                wx.onMenuShareTimeline(&#123;</span><br><span class="line"><span class="javascript">                    title: <span class="string">'测试分享朋友圈'</span>, <span class="comment">// 分享标题</span></span></span><br><span class="line"><span class="javascript">                    link: url,<span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span></span><br><span class="line"><span class="javascript">                    imgUrl: <span class="string">'logo.jpg'</span>,<span class="comment">// 分享图标</span></span></span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// 设置成功</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'用户点击了分享后执行的回调函数1'</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                wx.onMenuShareAppMessage(&#123;</span><br><span class="line"><span class="javascript">                    title: <span class="string">'测试分享朋友'</span>, <span class="comment">// 分享标题</span></span></span><br><span class="line"><span class="javascript">                    desc: <span class="string">'一个测试的分享'</span>, <span class="comment">// 分享描述</span></span></span><br><span class="line"><span class="javascript">                    link: url, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span></span><br><span class="line"><span class="javascript">                    imgUrl: <span class="string">'logo.jpg'</span>, <span class="comment">// 分享图标</span></span></span><br><span class="line"><span class="javascript">                    type: <span class="string">""</span>, <span class="comment">// 分享类型,music、video或link，不填默认为link</span></span></span><br><span class="line"><span class="javascript">                    dataUrl: <span class="string">""</span>, <span class="comment">// 如果type是music或video，则要提供数据链接，默认为空</span></span></span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// 设置成功</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'用户点击了分享后执行的回调函数2'</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        wxShare();</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>微信开发</category>
+        <category>微信公众号</category>
+      </categories>
+      <tags>
+        <tag>微信公众号</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis、Memcached和MongoDB的区别和应用场景</title>
     <url>/2023/07/06/Redis%E3%80%81Memcached%E5%92%8CMongoDB%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<p>Redis、Memcached和MongoDB是三种常用的<em>NoSQL</em>数据库，它们各自有着不同的特点和应用场景。</p>
@@ -8010,23 +8027,6 @@
         <tag>Redis</tag>
         <tag>Memcached</tag>
         <tag>MongoDB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在微信实现链接的分享</title>
-    <url>/2023/05/18/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%AE%9E%E7%8E%B0%E9%93%BE%E6%8E%A5%E7%9A%84%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<p>微信分享会使用到微信JS-SDK，所以需要再微信公众号后台配置<strong>JS接口安全域名</strong></p>
-<p>微信官方关于<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#112" target="_blank" rel="noopener">分享接口开发文档</a></p>
-<p>实现代码如下：</p>
-<a id="more"></a>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>微信分享<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../static/lib/jquery/1.12.4/jquery.min.js"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入jweixin js文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//res2.wx.qq.com/open/js/jweixin-1.6.0.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">getWxConfig</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 获取微信配置参数</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 当前网页的URL，不包含#及其后面部分，要注意当前URL一定是正确的且已经在 JS接口安全域名 配置过</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> url = <span class="built_in">window</span>.location.href.split(<span class="string">'#'</span>)[<span class="number">0</span>];</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">                $.ajax(&#123;</span></span><br><span class="line"><span class="javascript">                    type: <span class="string">"POST"</span>,</span></span><br><span class="line"><span class="javascript">                    url: <span class="string">"获取微信签名等其他配置参数的链接，自行处理"</span>,</span></span><br><span class="line"><span class="javascript">                    dataType: <span class="string">"json"</span>,</span></span><br><span class="line">                    data: &#123;url: url&#125;,</span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span></span><br><span class="line">                        if (response.errorCode == 0) &#123;</span><br><span class="line">                            resolve(response.data);</span><br><span class="line"><span class="javascript">                        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">                            reject(response.msg);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="javascript">                    error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(e);</span></span><br><span class="line">                        reject(e.statusText);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">wxShare</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> res = <span class="keyword">await</span> getSignature();</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> &#123;timestamp, nonceStr, appId, signature&#125; = res;</span></span><br><span class="line">            wx.config(&#123;</span><br><span class="line"><span class="javascript">                debug: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span></span><br><span class="line"><span class="javascript">                appId: appId, <span class="comment">// 必填，公众号的唯一标识</span></span></span><br><span class="line"><span class="javascript">                timestamp: timestamp, <span class="comment">// 必填，生成签名的时间戳</span></span></span><br><span class="line"><span class="javascript">                nonceStr: nonceStr, <span class="comment">// 必填，生成签名的随机串</span></span></span><br><span class="line"><span class="javascript">                signature: signature, <span class="comment">// 必填，签名</span></span></span><br><span class="line"><span class="javascript">                jsApiList: [<span class="string">"onMenuShareTimeline"</span>, <span class="string">"onMenuShareAppMessage"</span>] <span class="comment">// 必填，需要使用的JS接口列表</span></span></span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">            wx.ready(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">                wx.onMenuShareTimeline(&#123;</span><br><span class="line"><span class="javascript">                    title: <span class="string">'测试分享朋友圈'</span>, <span class="comment">// 分享标题</span></span></span><br><span class="line"><span class="javascript">                    link: url,<span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span></span><br><span class="line"><span class="javascript">                    imgUrl: <span class="string">'logo.jpg'</span>,<span class="comment">// 分享图标</span></span></span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// 设置成功</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'用户点击了分享后执行的回调函数1'</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                wx.onMenuShareAppMessage(&#123;</span><br><span class="line"><span class="javascript">                    title: <span class="string">'测试分享朋友'</span>, <span class="comment">// 分享标题</span></span></span><br><span class="line"><span class="javascript">                    desc: <span class="string">'一个测试的分享'</span>, <span class="comment">// 分享描述</span></span></span><br><span class="line"><span class="javascript">                    link: url, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span></span><br><span class="line"><span class="javascript">                    imgUrl: <span class="string">'logo.jpg'</span>, <span class="comment">// 分享图标</span></span></span><br><span class="line"><span class="javascript">                    type: <span class="string">""</span>, <span class="comment">// 分享类型,music、video或link，不填默认为link</span></span></span><br><span class="line"><span class="javascript">                    dataUrl: <span class="string">""</span>, <span class="comment">// 如果type是music或video，则要提供数据链接，默认为空</span></span></span><br><span class="line"><span class="javascript">                    success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// 设置成功</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'用户点击了分享后执行的回调函数2'</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        wxShare();</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>微信开发</category>
-        <category>微信公众号</category>
-      </categories>
-      <tags>
-        <tag>微信公众号</tag>
       </tags>
   </entry>
   <entry>
@@ -8490,6 +8490,62 @@
       <tags>
         <tag>Java</tag>
         <tag>Spring Boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot 项目打包及在宝塔面板上部署的简易指南</title>
+    <url>/2024/08/29/Spring%20Boot%20%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%8F%8A%E5%9C%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E4%B8%8A%E9%83%A8%E7%BD%B2%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>一个可以访问的服务器，已安装宝塔面板。</li>
+<li>Java开发环境（JDK）已安装在服务器上。</li>
+<li>Maven或Gradle等构建工具，用于打包 Spring Boot 项目，我这里用的是 Maven</li>
+<li>集成开发环境，我这里使用的是IntelliJ IDEA。</li>
+</ul>
+<h2 id="项目打包"><a href="#项目打包" class="headerlink" title="项目打包"></a>项目打包</h2><ol>
+<li>配置 pom.xml（针对 Maven）：</li>
+</ol>
+<p>因为我这边是通过阿里云云原生应用脚手架生成的 Spring Boot 项目，所以在 <code>pom.xml</code> 文件中包含了 Spring Boot 插件，示例如下：</p>
+<a id="more"></a>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 其他配置信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">encoding</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-boot.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>com.pennon.javaservice.JavaServiceApplication<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">skip</span>&gt;</span>false<span class="tag">&lt;/<span class="name">skip</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">id</span>&gt;</span>repackage<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>repackage<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>要注意的是，<code>spring-boot-maven-plugin</code> 插件配置中的 <code>skip</code> 属性要设置为 <code>false</code>。 默认被设置为 <code>true</code>，这会导致 <code>Spring Boot</code> 在打包时跳过构建可执行 <code>JAR</code> 文件的操作，在生成的 <code>JAR</code> 文件中缺少必要的主清单属性，从而会导致 “no main manifest attribute” 的错误。</p>
+<ol start="2">
+<li>打包项目：</li>
+</ol>
+<p>我这里直接通过 IntelliJ IDEA 右边栏的 Maven 插件，先执行 <code>clean</code> 命令，然后选择 <code>package</code> 命令，然后等待打包完成。</p>
+<p>在 <code>target</code> 目录下，就会生成一个 <code>jar</code> 文件，这个文件就是我们最终要部署的 Spring Boot 项目。</p>
+<h2 id="部署到宝塔面板"><a href="#部署到宝塔面板" class="headerlink" title="部署到宝塔面板"></a>部署到宝塔面板</h2><ol>
+<li>上传构建产物</li>
+</ol>
+<p>使用FTP客户端或宝塔面板的文件管理功能，将构建好的JAR文件上传到服务器的指定目录（比如<code>/www/wwwroot/your_project</code>目录下）。</p>
+<ol start="2">
+<li>新建Java项目</li>
+</ol>
+<p>在“网站”管理中的“Java项目”Tab页下，点击“添加Java项目”，填写项目信息：</p>
+<ul>
+<li>项目类型：选择 SpringBoot</li>
+<li>项目jar路径：选择刚刚上传的JAR文件</li>
+<li>项目名称：自定义填写</li>
+<li>项目端口：默认8080即可，并选中“放行端口”选项</li>
+<li>项目JDK：选择已安装的JDK版本</li>
+<li>项目执行命令：默认即可，无需修改</li>
+<li>其他参数：默认即可，无需修改</li>
+</ul>
+<p>然后点击“确定”按钮，等待项目创建完成，一般创建成功后，项目就启动了。</p>
+<p>如果项目状态未显示“运行中”，请点击“设置”按钮，检查项目日志，查看是否有错误信息。</p>
+<ol start="3">
+<li>访问项目</li>
+</ol>
+<p>在浏览器中输入服务器的IP地址和项目端口号，即可访问到Spring Boot项目。</p>
+]]></content>
+      <categories>
+        <category>Java框架</category>
+        <category>Spring Boot</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring Boot</tag>
+        <tag>宝塔</tag>
+        <tag>部署</tag>
       </tags>
   </entry>
 </search>
