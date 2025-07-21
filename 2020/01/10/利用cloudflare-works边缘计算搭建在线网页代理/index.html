@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Workers,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="今天看到阮一峰老师的Twitter发的“关于Cloudflare 正式发布 workers 功能”，搜索了一下关于 workers 功能使用教程，找了一篇文章(Xiaomage’s Blog 利用cloudflare works边缘计算搭建在线网页代理)还不错，先码后续继续研究。">
+<meta name="keywords" content="Workers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用cloudflare works边缘计算搭建在线网页代理">
+<meta property="og:url" content="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="今天看到阮一峰老师的Twitter发的“关于Cloudflare 正式发布 workers 功能”，搜索了一下关于 workers 功能使用教程，找了一篇文章(Xiaomage’s Blog 利用cloudflare works边缘计算搭建在线网页代理)还不错，先码后续继续研究。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/1719250668.png">
+<meta property="og:image" content="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/2606084779.png">
+<meta property="og:image" content="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/2266245004.png">
+<meta property="og:updated_time" content="2021-05-25T07:50:05.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用cloudflare works边缘计算搭建在线网页代理">
+<meta name="twitter:description" content="今天看到阮一峰老师的Twitter发的“关于Cloudflare 正式发布 workers 功能”，搜索了一下关于 workers 功能使用教程，找了一篇文章(Xiaomage’s Blog 利用cloudflare works边缘计算搭建在线网页代理)还不错，先码后续继续研究。">
+<meta name="twitter:image" content="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/1719250668.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/">
+
+
+
+
+
+  <title>利用cloudflare works边缘计算搭建在线网页代理 | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">利用cloudflare works边缘计算搭建在线网页代理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T15:42:00+08:00">
+                2020-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/云服务/" itemprop="url" rel="index">
+                    <span itemprop="name">云服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/云服务/Cloudflare/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloudflare</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天看到阮一峰老师的Twitter发的“关于Cloudflare 正式发布 workers 功能”，搜索了一下关于 workers 功能使用教程，找了一篇文章(Xiaomage’s Blog <a href="https://blog.xmgspace.me/archives/jsproxy-on-cloudflare.html" target="_blank" rel="noopener">利用cloudflare works边缘计算搭建在线网页代理</a>)还不错，先码后续继续研究。</p>
+<a id="more"></a>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
+<li>开源项目<a href="https://github.com/EtherDream/jsproxy" target="_blank" rel="noopener">jsproxy</a></li>
+<li>一个cloudflare账号</li>
+<li>一个Github账号，或者一台服务器+域名</li>
+</ol>
+<p><strong>一点说明：</strong></p>
+<p>要利用cloudflare works边缘计算搭建在线网页代理，需要用到大神<a href="https://github.com/EtherDream" target="_blank" rel="noopener">EtherDream</a>的开源项目<a href="https://github.com/EtherDream/jsproxy" target="_blank" rel="noopener">jsproxy</a></p>
+<p>这个项目使用了Service Worker，它能让 JS 拦截网页产生的请求，并能自定义返回内容，相当于在浏览器内部实现一个反向代理。这使得绝大部分的内容处理都可以在浏览器上完成，服务器只需纯粹的转发流量。</p>
+<p>你可以使用Github pages服务，快速搭建起页面前端，从而做到真正的serverless。当然，如果你有一台服务器+域名，你也可以把服务器放在自己的服务器上。这一步只是给cloudflare一个回源服务器，用户访问的一切流量都要经过cloudflaer服务器，而不是Github或者你的服务器。所以服务器位置并不会影响网页代理的速度，而是用户到所连接到的cloudflare服务器的速度。建议使用Github pages的服务即可，下面的教程也将演示利用Github pages搭建此代理的过程。</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="GitHub方面"><a href="#GitHub方面" class="headerlink" title="GitHub方面"></a>GitHub方面</h3><ol>
+<li>登录你的Github账号，fork <a href="https://github.com/EtherDream/jsproxy" target="_blank" rel="noopener">jsproxy</a>项目到你的仓库中</li>
+<li>进入你fork的jsproxy项目的<code>setting</code>中，启用下方的Github pages，其中项目分支选择<code>gh-pages branch</code>分支即可，配置见下图：<br><img src="/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/1719250668.png" alt="图1"></li>
+<li>进入你fork的jsproxy项目的<code>source(源代码)</code>中，切换到<code>gh-pages branch</code>分支，新建一个<code>index.html</code>，内容为空即可。</li>
+<li>访问你Github pages服务生成的网址，如果为白屏，没有报404错误的话，回到刚才的源代码，将<code>index.html</code>删除即可。3、4两部可以在Github里直接操作，也可以用git命令拉取到本地进行修改，这里不再赘述。</li>
+<li>如果你想自定义页面的样式，可以修改<code>gh-pages branch</code>分支中的<code>index_v3.html</code></li>
+</ol>
+<h3 id="Cloudflare方面"><a href="#Cloudflare方面" class="headerlink" title="Cloudflare方面"></a>Cloudflare方面</h3><ol>
+<li>在<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">https://dash.cloudflare.com/</a>登录你的cloudflare账号，点击右侧大大的<code>workers</code>进入workers控制面板。</li>
+<li>第一次使用workers功能，需要完成一个新手引导教程。第一步，需要选择一个cloudflare提供的<code>*.workers.dev</code>的二级域名，根据自己的喜好填写，按照提示next就可以了。</li>
+<li>新手教程第二步会让你选择plan，我们白嫖党当然要选择Free Plan啦，每天有100000个请求配额，个人使用绰绰有余。</li>
+<li>下一步可能要验证邮箱，到注册cloudflare的邮箱里点击链接激活一下就可以。</li>
+<li>完成新手引导后，回到workers面板，点击蓝色的<code>Create a Worker</code>按钮，新建一个worker。</li>
+<li>这时会打开一个带有代码编辑器的新标签页，在左侧选择Script标签，粘贴以下内容：注意在第六行里填写好你Github pages的网址，即<code>https://xxx.github.io/jsproxy</code><br><img src="/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/2606084779.png" alt="图2"></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * static files (404.html, sw.js, conf.js)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> ASSET_URL = <span class="string">'https://xxx.github.io/jsproxy'</span><span class="comment">//这里填写你Github pages的网址！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> JS_VER = <span class="number">10</span></span><br><span class="line"><span class="keyword">const</span> MAX_RETRY = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** @type &#123;RequestInit&#125; */</span></span><br><span class="line"><span class="keyword">const</span> PREFLIGHT_INIT = &#123;</span><br><span class="line">  status: <span class="number">204</span>,</span><br><span class="line">  headers: <span class="keyword">new</span> Headers(&#123;</span><br><span class="line">    <span class="string">'access-control-allow-origin'</span>: <span class="string">'*'</span>,</span><br><span class="line">    <span class="string">'access-control-allow-methods'</span>: <span class="string">'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS'</span>,</span><br><span class="line">    <span class="string">'access-control-max-age'</span>: <span class="string">'1728000'</span>,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;any&#125; body</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; status</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&lt;string, string&gt;&#125; headers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeRes</span>(<span class="params">body, status = <span class="number">200</span>, headers = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  headers[<span class="string">'--ver'</span>] = JS_VER</span><br><span class="line">  headers[<span class="string">'access-control-allow-origin'</span>] = <span class="string">'*'</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Response(body, &#123;status, headers&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; urlStr </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newUrl</span>(<span class="params">urlStr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> URL(urlStr)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addEventListener(<span class="string">'fetch'</span>, e =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> ret = fetchHandler(e)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> makeRes(<span class="string">'cfworker error:\n'</span> + err.stack, <span class="number">502</span>))</span><br><span class="line">  e.respondWith(ret)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;FetchEvent&#125; e </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchHandler</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> req = e.request</span><br><span class="line">  <span class="keyword">const</span> urlStr = req.url</span><br><span class="line">  <span class="keyword">const</span> urlObj = <span class="keyword">new</span> URL(urlStr)</span><br><span class="line">  <span class="keyword">const</span> path = urlObj.href.substr(urlObj.origin.length)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (urlObj.protocol === <span class="string">'http:'</span>) &#123;</span><br><span class="line">    urlObj.protocol = <span class="string">'https:'</span></span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">''</span>, <span class="number">301</span>, &#123;</span><br><span class="line">      <span class="string">'strict-transport-security'</span>: <span class="string">'max-age=99999999; includeSubDomains; preload'</span>,</span><br><span class="line">      <span class="string">'location'</span>: urlObj.href,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (path.startsWith(<span class="string">'/http/'</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> httpHandler(req, path.substr(<span class="number">6</span>))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (path) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'/http'</span>:</span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">'请更新 cfworker 到最新版本!'</span>)</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'/ws'</span>:</span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">'not support'</span>, <span class="number">400</span>)</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'/works'</span>:</span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">'it works'</span>)</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="comment">// static files</span></span><br><span class="line">    <span class="keyword">return</span> fetch(ASSET_URL + path)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;Request&#125; req</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; pathname</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">httpHandler</span>(<span class="params">req, pathname</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> reqHdrRaw = req.headers</span><br><span class="line">  <span class="keyword">if</span> (reqHdrRaw.has(<span class="string">'x-jsproxy'</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.error()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// preflight</span></span><br><span class="line">  <span class="keyword">if</span> (req.method === <span class="string">'OPTIONS'</span> &amp;&amp;</span><br><span class="line">      reqHdrRaw.has(<span class="string">'access-control-request-headers'</span>)</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Response(<span class="literal">null</span>, PREFLIGHT_INIT)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> acehOld = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> rawSvr = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> rawLen = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> rawEtag = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reqHdrNew = <span class="keyword">new</span> Headers(reqHdrRaw)</span><br><span class="line">  reqHdrNew.set(<span class="string">'x-jsproxy'</span>, <span class="string">'1'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 此处逻辑和 http-dec-req-hdr.lua 大致相同</span></span><br><span class="line">  <span class="comment">// https://github.com/EtherDream/jsproxy/blob/master/lua/http-dec-req-hdr.lua</span></span><br><span class="line">  <span class="keyword">const</span> refer = reqHdrNew.get(<span class="string">'referer'</span>)</span><br><span class="line">  <span class="keyword">const</span> query = refer.substr(refer.indexOf(<span class="string">'?'</span>) + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">if</span> (!query) &#123;</span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">'missing params'</span>, <span class="number">403</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> param = <span class="keyword">new</span> URLSearchParams(query)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [k, v] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(param)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (k.substr(<span class="number">0</span>, <span class="number">2</span>) === <span class="string">'--'</span>) &#123;</span><br><span class="line">      <span class="comment">// 系统信息</span></span><br><span class="line">      <span class="keyword">switch</span> (k.substr(<span class="number">2</span>)) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'aceh'</span>:</span><br><span class="line">        acehOld = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">case</span> <span class="string">'raw-info'</span>:</span><br><span class="line">        [rawSvr, rawLen, rawEtag] = v.split(<span class="string">'|'</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 还原 HTTP 请求头</span></span><br><span class="line">      <span class="keyword">if</span> (v) &#123;</span><br><span class="line">        reqHdrNew.set(k, v)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reqHdrNew.delete(k)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!param.has(<span class="string">'referer'</span>)) &#123;</span><br><span class="line">    reqHdrNew.delete(<span class="string">'referer'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// cfworker 会把路径中的 `//` 合并成 `/`</span></span><br><span class="line">  <span class="keyword">const</span> urlStr = pathname.replace(<span class="regexp">/^(https?):\/+/</span>, <span class="string">'$1://'</span>)</span><br><span class="line">  <span class="keyword">const</span> urlObj = newUrl(urlStr)</span><br><span class="line">  <span class="keyword">if</span> (!urlObj) &#123;</span><br><span class="line">    <span class="keyword">return</span> makeRes(<span class="string">'invalid proxy url: '</span> + urlStr, <span class="number">403</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** @type &#123;RequestInit&#125; */</span></span><br><span class="line">  <span class="keyword">const</span> reqInit = &#123;</span><br><span class="line">    method: req.method,</span><br><span class="line">    headers: reqHdrNew,</span><br><span class="line">    redirect: <span class="string">'manual'</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (req.method === <span class="string">'POST'</span>) &#123;</span><br><span class="line">    reqInit.body = req.body</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> proxy(urlObj, reqInit, acehOld, rawLen, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param &#123;URL&#125; urlObj </span></span><br><span class="line"><span class="comment"> * @param &#123;RequestInit&#125; reqInit </span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; retryTimes </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">proxy</span>(<span class="params">urlObj, reqInit, acehOld, rawLen, retryTimes</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(urlObj.href, reqInit)</span><br><span class="line">  <span class="keyword">const</span> resHdrOld = res.headers</span><br><span class="line">  <span class="keyword">const</span> resHdrNew = <span class="keyword">new</span> Headers(resHdrOld)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> expose = <span class="string">'*'</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [k, v] <span class="keyword">of</span> resHdrOld.entries()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (k === <span class="string">'access-control-allow-origin'</span> ||</span><br><span class="line">        k === <span class="string">'access-control-expose-headers'</span> ||</span><br><span class="line">        k === <span class="string">'location'</span> ||</span><br><span class="line">        k === <span class="string">'set-cookie'</span></span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">const</span> x = <span class="string">'--'</span> + k</span><br><span class="line">      resHdrNew.set(x, v)</span><br><span class="line">      <span class="keyword">if</span> (acehOld) &#123;</span><br><span class="line">        expose = expose + <span class="string">','</span> + x</span><br><span class="line">      &#125;</span><br><span class="line">      resHdrNew.delete(k)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (acehOld &amp;&amp;</span><br><span class="line">      k !== <span class="string">'cache-control'</span> &amp;&amp;</span><br><span class="line">      k !== <span class="string">'content-language'</span> &amp;&amp;</span><br><span class="line">      k !== <span class="string">'content-type'</span> &amp;&amp;</span><br><span class="line">      k !== <span class="string">'expires'</span> &amp;&amp;</span><br><span class="line">      k !== <span class="string">'last-modified'</span> &amp;&amp;</span><br><span class="line">      k !== <span class="string">'pragma'</span></span><br><span class="line">    ) &#123;</span><br><span class="line">      expose = expose + <span class="string">','</span> + k</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (acehOld) &#123;</span><br><span class="line">    expose = expose + <span class="string">',--s'</span></span><br><span class="line">    resHdrNew.set(<span class="string">'--t'</span>, <span class="string">'1'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// verify</span></span><br><span class="line">  <span class="keyword">if</span> (rawLen) &#123;</span><br><span class="line">    <span class="keyword">const</span> newLen = resHdrOld.get(<span class="string">'content-length'</span>) || <span class="string">''</span></span><br><span class="line">    <span class="keyword">const</span> badLen = (rawLen !== newLen)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (badLen) &#123;</span><br><span class="line">      <span class="keyword">if</span> (retryTimes &lt; MAX_RETRY) &#123;</span><br><span class="line">        urlObj = <span class="keyword">await</span> parseYtVideoRedir(urlObj, newLen, res)</span><br><span class="line">        <span class="keyword">if</span> (urlObj) &#123;</span><br><span class="line">          <span class="keyword">return</span> proxy(urlObj, reqInit, acehOld, rawLen, retryTimes + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> makeRes(res.body, <span class="number">400</span>, &#123;</span><br><span class="line">        <span class="string">'--error'</span>: <span class="string">`bad len: <span class="subst">$&#123;newLen&#125;</span>, except: <span class="subst">$&#123;rawLen&#125;</span>`</span>,</span><br><span class="line">        <span class="string">'access-control-expose-headers'</span>: <span class="string">'--error'</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (retryTimes &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      resHdrNew.set(<span class="string">'--retry'</span>, retryTimes)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> status = res.status</span><br><span class="line"></span><br><span class="line">  resHdrNew.set(<span class="string">'access-control-expose-headers'</span>, expose)</span><br><span class="line">  resHdrNew.set(<span class="string">'access-control-allow-origin'</span>, <span class="string">'*'</span>)</span><br><span class="line">  resHdrNew.set(<span class="string">'--s'</span>, status)</span><br><span class="line">  resHdrNew.set(<span class="string">'--ver'</span>, JS_VER)</span><br><span class="line"></span><br><span class="line">  resHdrNew.delete(<span class="string">'content-security-policy'</span>)</span><br><span class="line">  resHdrNew.delete(<span class="string">'content-security-policy-report-only'</span>)</span><br><span class="line">  resHdrNew.delete(<span class="string">'clear-site-data'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">301</span> ||</span><br><span class="line">      status === <span class="number">302</span> ||</span><br><span class="line">      status === <span class="number">303</span> ||</span><br><span class="line">      status === <span class="number">307</span> ||</span><br><span class="line">      status === <span class="number">308</span></span><br><span class="line">  ) &#123;</span><br><span class="line">    status = status + <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Response(res.body, &#123;</span><br><span class="line">    status,</span><br><span class="line">    headers: resHdrNew,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;URL&#125; urlObj </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isYtUrl</span>(<span class="params">urlObj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    urlObj.host.endsWith(<span class="string">'.googlevideo.com'</span>) &amp;&amp;</span><br><span class="line">    urlObj.pathname.startsWith(<span class="string">'/videoplayback'</span>)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;URL&#125; urlObj </span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; newLen </span></span><br><span class="line"><span class="comment"> * @param &#123;Response&#125; res </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">parseYtVideoRedir</span>(<span class="params">urlObj, newLen, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (newLen &gt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!isYtUrl(urlObj)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> res.text()</span><br><span class="line">    urlObj = <span class="keyword">new</span> URL(data)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!isYtUrl(urlObj)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> urlObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后点击下方的<code>save and deploy</code>部署就生效啦！记下cloudflare分配给你的workers.dev的三级域名，这就是你部署好的在线代理网址。</p>
+<p>如果你正巧有托管在Cloudflare或它旗下的Partner的话，你可以就可以自定义网页代理的域名，不必记下冗长的三级域名，方法如下：</p>
+<ol>
+<li>进入你的域名控制台，点击控制台顶部的workers标签，进入对应域名的workers设置。</li>
+<li>点击右侧的<code>Add route</code>按钮，部署一条新规则。</li>
+<li>在弹出的对话框中：Route中填写 example.yourwebstie.com/* ，其中example是网页代理的二级域名，可以自定义，Worker选择你刚刚部署的worker。<br><img src="/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/2266245004.png" alt="图3"></li>
+<li>修改example.yourwebstie.com的DNS记录为cname记录，这条cname记录指向cloudflare分配给你的workers.dev下刚刚部署好的workers站点。</li>
+</ol>
+<p>Then, 在你使用没有翻墙软件的电脑时，也能利用这个网页代理随心上谷歌看油管咯~enjoy it！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/" title="利用cloudflare works边缘计算搭建在线网页代理">https://xinyufeng.net/2020/01/10/利用cloudflare-works边缘计算搭建在线网页代理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Workers/" rel="tag"># Workers</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/07/将本地开发npm包模块链接到运行项目中/" rel="next" title="将本地开发npm包模块链接到运行项目中">
+                <i class="fa fa-chevron-left"></i> 将本地开发npm包模块链接到运行项目中
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/13/How-to-remove-HTTP-headers-from-cURL-response/" rel="prev" title="PHP去掉cURL头信息">
+                PHP去掉cURL头信息 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">198</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作步骤"><span class="nav-number">2.</span> <span class="nav-text">操作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub方面"><span class="nav-number">2.1.</span> <span class="nav-text">GitHub方面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cloudflare方面"><span class="nav-number">2.2.</span> <span class="nav-text">Cloudflare方面</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
