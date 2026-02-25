@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xinyufeng.net/"/>
-  <updated>2025-12-08T06:30:08.668Z</updated>
+  <updated>2026-02-25T05:52:55.213Z</updated>
   <id>https://xinyufeng.net/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>规上企业研发费用统计与报表填报实务笔记</title>
+    <link href="https://xinyufeng.net/2026/02/25/%E8%A7%84%E4%B8%8A%E4%BC%81%E4%B8%9A%E7%A0%94%E5%8F%91%E8%B4%B9%E7%94%A8%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%8A%A5%E8%A1%A8%E5%A1%AB%E6%8A%A5%E5%AE%9E%E5%8A%A1%E7%AC%94%E8%AE%B0/"/>
+    <id>https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/</id>
+    <published>2026-02-25T05:03:17.000Z</published>
+    <updated>2026-02-25T05:52:55.213Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。</p></blockquote><h2 id="一、研发费用的三种常见统计口径"><a href="#一、研发费用的三种常见统计口径" class="headerlink" title="一、研发费用的三种常见统计口径"></a>一、研发费用的三种常见统计口径</h2><p>在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：</p><ol><li><strong>会计核算口径</strong></li><li><strong>高新技术企业认定口径</strong></li><li><strong>研发费用加计扣除口径</strong></li></ol><a id="more"></a><h3 id="1-会计核算口径（基础与最大口径）"><a href="#1-会计核算口径（基础与最大口径）" class="headerlink" title="1. 会计核算口径（基础与最大口径）"></a>1. 会计核算口径（基础与最大口径）</h3><ul><li><strong>归集原则</strong>：只要是<strong>真实发生、与研发活动直接相关</strong>的费用，均可依据《财政部关于企业加强研发费用财务管理的若干意见》（财企〔2007〕194号）及企业会计准则进行归集</li><li><strong>特点</strong>：不受人员工时比例、费用上限等限制，据实反映企业研发投入</li><li><strong>应用场景</strong>：体现在<strong>年度审计报告</strong>中的研发费用金额，是省专精特新、专精特新”小巨人”、单项冠军、研发机构认定等项目的重要参考依据</li></ul><p><strong>实务建议：</strong></p><blockquote><p><strong>以会计核算口径作为研发费用归集的起点和基础</strong>。在合法合规前提下，应完整反映企业实际研发投入，而非被高企或加计扣除的限定条件反向制约。</p></blockquote><h3 id="2-高新技术企业认定口径"><a href="#2-高新技术企业认定口径" class="headerlink" title="2. 高新技术企业认定口径"></a>2. 高新技术企业认定口径</h3><p>相较会计口径，主要存在以下限定：</p><table><thead><tr><th>限定类别</th><th>具体要求</th><th>实务提示</th></tr></thead><tbody><tr><td>人员要求</td><td>需为”科技人员”（含研发人员及研发管理、服务人员），且在企业累计工作时间不少于<strong>183天</strong></td><td>会计核算中入职不满183天但实际参与研发的人员，其费用仍可正常归集，仅在高企申报时按规定剔除</td></tr><tr><td>其他费用比例</td><td>“其他费用”占研发费用总额的比例不得超过<strong>20%</strong></td><td>超出部分需在专项审计报告中调整</td></tr></tbody></table><p>该口径最终体现在高企研发费用辅助账、三年研发费用专项审计报告及《研发费用情况说明》中。</p><h3 id="3-研发费用加计扣除口径（最严格口径）"><a href="#3-研发费用加计扣除口径（最严格口径）" class="headerlink" title="3. 研发费用加计扣除口径（最严格口径）"></a>3. 研发费用加计扣除口径（最严格口径）</h3><ul><li><strong>人员范围</strong>：仅限<strong>直接从事研发活动的人员</strong>（研究人员、技术人员、辅助人员），研发管理及服务人员不计入；同时承担研发与管理工作的人员，以及兼职参与研发的人员，其人工费用应依据实际参与研发的工时进行合理分摊</li><li><strong>折旧与租赁限制</strong>：<ul><li>房屋折旧费<strong>不得</strong>计入加计扣除折旧费用</li><li>房屋租赁费<strong>不得</strong>计入加计扣除直接投入</li></ul></li><li><strong>其他费用比例</strong>：不得超过可加计扣除研发费用总额的<strong>10%</strong></li><li><strong>特殊处理</strong>：研发形成产品对外销售的，对应的材料费用不得加计扣除，需在销售当年冲减</li></ul><p>该口径最终体现在加计扣除研发费用台账、《企业所得税年度纳税申报表》及《研发费用加计扣除优惠明细表》（A107012）中。</p><h2 id="二、加计扣除备查资料的准备重点"><a href="#二、加计扣除备查资料的准备重点" class="headerlink" title="二、加计扣除备查资料的准备重点"></a>二、加计扣除备查资料的准备重点</h2><p>年底至汇算清缴期间，备查资料的完整性是关键，需确保”业务真实、证据链完整”。</p><h3 id="1-研发基础条件资料"><a href="#1-研发基础条件资料" class="headerlink" title="1. 研发基础条件资料"></a>1. 研发基础条件资料</h3><ul><li><strong>机构设立文件</strong>：董事会或总经理办公会关于设立研发机构的决议、通知等</li><li><strong>研发场地</strong>：实际存在的研发场所，标识清晰（如”研发部””技术中心”），与文件一致</li><li><strong>研发设备</strong>：必要的研发、测试仪器设备，保留采购发票、使用记录</li><li><strong>研发人员</strong>：劳动合同中部门、岗位与研发人员名单一致，保留人员花名册</li></ul><h3 id="2-研发台账与凭证"><a href="#2-研发台账与凭证" class="headerlink" title="2. 研发台账与凭证"></a>2. 研发台账与凭证</h3><ul><li><strong>工时记录</strong>：兼职或共用人员需有明确的工时分配表，作为费用分摊依据</li><li><strong>共用设备记录</strong>：生产与研发共用的设备，需留存使用登记表，按实际工时分摊折旧</li><li><strong>领料单据</strong>：研发领用材料需标注”研发项目名称”，与生产领料严格区分</li></ul><h3 id="3-研发活动过程资料"><a href="#3-研发活动过程资料" class="headerlink" title="3. 研发活动过程资料"></a>3. 研发活动过程资料</h3><ul><li>研发立项申请书及立项决议</li><li>研发项目计划书（明确目标、进度、预算、人员）</li><li>研发过程记录（实验记录、测试报告、阶段性总结）</li><li>项目结题或验收报告（已完成项目）</li></ul><blockquote><p>关键原则：形成从”立项→实施→结题”的完整闭环，证明研发活动的真实性与持续性。</p></blockquote><h2 id="三、研发统计报表填报实务要点"><a href="#三、研发统计报表填报实务要点" class="headerlink" title="三、研发统计报表填报实务要点"></a>三、研发统计报表填报实务要点</h2><h3 id="1-重要时间节点"><a href="#1-重要时间节点" class="headerlink" title="1. 重要时间节点"></a>1. 重要时间节点</h3><ul><li>统计局报表107表：上报截止通常为3月10日</li><li>火炬统计报表：一般在2–4月期间填报（具体以当年通知为准）</li></ul><h3 id="2-核心指标填报要点"><a href="#2-核心指标填报要点" class="headerlink" title="2. 核心指标填报要点"></a>2. 核心指标填报要点</h3><table><thead><tr><th>报表项目</th><th>填报要点</th><th>注意事项</th></tr></thead><tbody><tr><td>项目技术经济目标</td><td>一般选”3.开发全新产品”或”4.增加产品功能或提高性能”</td><td>避免选择明显不匹配的选项</td></tr><tr><td>项目当年成果形式</td><td>可选：1.论文/研究报告；4.对已有产品实现突破性变革；7.中间件/新算法；8.基础软件；9.发明专利；12.样机/样品；13.新技术/新工艺</td><td>选择最具代表性的单一成果</td></tr><tr><td>跨年项目进展阶段</td><td>上年开始本年度完成的项目：选”3.中试阶段”；本年新开未完成：选”1.研究阶段”或”2.小试阶段”</td><td>阶段选择需与项目实际进度匹配</td></tr><tr><td>研发人员中全职人员</td><td>指直接从事研发工作且研发时间占工作时间90%以上的人员</td><td>区分于兼职或辅助人员</td></tr><tr><td>研发机构人员数量</td><td>企业可设一个或多个研发机构，每个机构一般不少于5人</td><td>人员名单需可追溯</td></tr><tr><td>新产品销售收入</td><td>指企业自投产之日起<strong>一年内</strong>的新产品销售收入</td><td>≠高新技术产品收入，通常后者范围更广</td></tr></tbody></table><h3 id="3-特别提醒"><a href="#3-特别提醒" class="headerlink" title="3. 特别提醒"></a>3. 特别提醒</h3><ul><li><strong>加计扣除金额申报的谨慎性</strong>：<ul><li>完全不申报可能引发对研发活动真实性的质疑（尤其是高企）</li><li>申报金额过大可能触发核查</li><li>建议：根据企业实际情况稳妥申报，务必做好备查资料</li></ul></li><li><strong>121表产品创新选项</strong>：<ul><li>第1条”是否向市场推出了新的或有重大改进的商品或服务”<strong>必须选”是”</strong></li></ul></li><li><strong>财务报表中研发费用填报</strong>：<ul><li>常见问题：1-11月月报研发费为0，年报突然出现大额研发费，系统可能报错</li><li><strong>建议</strong>：12月填报月度报表时，<strong>先预估填一个合理研发费数据</strong>，保持年度数据衔接</li></ul></li></ul><h2 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h2><p>以上内容结合日常填报经验，聚焦规上企业研发统计与费用归集的实务操作层面。其中，<strong>研发统计报表的指标理解与加计扣除备查资料的完整性</strong>是日常工作的两大重点，建议提前规划、定期核对，确保数据真实、口径合规、证据链完整。</p><blockquote><p>本文仅作为个人学习与实践记录，供参考使用。具体操作请以当年最新政策及主管税务机关、统计部门要求为准。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;一、研发费用的三种常见统计口径&quot;&gt;&lt;a href=&quot;#一、研发费用的三种常见统计口径&quot; class=&quot;headerlink&quot; title=&quot;一、研发费用的三种常见统计口径&quot;&gt;&lt;/a&gt;一、研发费用的三种常见统计口径&lt;/h2&gt;&lt;p&gt;在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;会计核算口径&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高新技术企业认定口径&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;研发费用加计扣除口径&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="项目申报" scheme="https://xinyufeng.net/categories/%E9%A1%B9%E7%9B%AE%E7%94%B3%E6%8A%A5/"/>
+    
+    
+      <category term="研发费归集" scheme="https://xinyufeng.net/tags/%E7%A0%94%E5%8F%91%E8%B4%B9%E5%BD%92%E9%9B%86/"/>
+    
+      <category term="报表填报" scheme="https://xinyufeng.net/tags/%E6%8A%A5%E8%A1%A8%E5%A1%AB%E6%8A%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>Dify 升级到最新版本操作指南</title>
@@ -598,42 +630,6 @@
     
     
       <category term="PHP技巧" scheme="https://xinyufeng.net/tags/PHP%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux环境安装nvm</title>
-    <link href="https://xinyufeng.net/2022/10/18/Linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85nvm/"/>
-    <id>https://xinyufeng.net/2022/10/18/Linux环境安装nvm/</id>
-    <published>2022-10-18T02:24:41.000Z</published>
-    <updated>2022-10-18T02:37:00.089Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>nvm是一个管理node多版本的工具<br>系统为CentOS7</p></blockquote><ol><li>下载nvm安装包</li></ol><p>官方下载：<a href="https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz</a></p><ol start="2"><li>加压nvm压缩包</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 进入文件下载目录</span><br><span class="line">[root@localhost ~]<span class="comment"># cd /usr/local/src</span></span><br><span class="line">// 解压文件到 root/.nvm</span><br><span class="line">[root@localhost ~]<span class="comment"># tar -zxvf nvm-0.39.2.tar.gz --strip-components 1  -C /root/.nvm</span></span><br></pre></td></tr></table></figure><a id="more"></a><ol start="3"><li>配置环境</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vi ~/.bashrc</span></span><br></pre></td></tr></table></figure><p>在<code>~/.bashrc</code>的末尾，添加如下语句：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure><p><code>wq</code>保存文件并退出</p><ol start="4"><li>配置生效(重启配置)</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure><ol start="5"><li>验证nvm是否安装成功</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># nvm -v</span></span><br><span class="line">0.39.2</span><br><span class="line">[root@localhost ~]<span class="comment"># nvm --version</span></span><br><span class="line">0.39.2</span><br></pre></td></tr></table></figure><p><strong>常用操作</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nvm常用命令</span></span><br><span class="line">nvm ls-remote           // 查看目前线上所能安装的所有 node 版本</span><br><span class="line">nvm install 12.22.12    // 安装node</span><br><span class="line">nvm uninstall 14.13.2   // 移除 node</span><br><span class="line">nvm use 14.13.2         // 使用 node </span><br><span class="line">nvm ls                  // 查看目前已安装的 node 及当前所使用的 node</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;nvm是一个管理node多版本的工具&lt;br&gt;系统为CentOS7&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;下载nvm安装包&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;官方下载：&lt;a href=&quot;https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz&lt;/a&gt;&lt;/p&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;加压nvm压缩包&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 进入文件下载目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cd /usr/local/src&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 解压文件到 root/.nvm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# tar -zxvf nvm-0.39.2.tar.gz --strip-components 1  -C /root/.nvm&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="前端框架" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="Nodejs" scheme="https://xinyufeng.net/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Nodejs/"/>
-    
-    
-      <category term="nvm" scheme="https://xinyufeng.net/tags/nvm/"/>
-    
-      <category term="Nodejs" scheme="https://xinyufeng.net/tags/Nodejs/"/>
     
   </entry>
   

@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="研发费归集,报表填报,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。  一、研发费用的三种常见统计口径在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：  会计核算口径 高新技术企业认定口径 研发费用加计扣除口径">
+<meta name="keywords" content="研发费归集,报表填报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="规上企业研发费用统计与报表填报实务笔记">
+<meta property="og:url" content="https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。  一、研发费用的三种常见统计口径在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：  会计核算口径 高新技术企业认定口径 研发费用加计扣除口径">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-02-25T05:52:55.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="规上企业研发费用统计与报表填报实务笔记">
+<meta name="twitter:description" content="本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。  一、研发费用的三种常见统计口径在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：  会计核算口径 高新技术企业认定口径 研发费用加计扣除口径">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/">
+
+
+
+
+
+  <title>规上企业研发费用统计与报表填报实务笔记 | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">规上企业研发费用统计与报表填报实务笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2026-02-25T13:03:17+08:00">
+                2026-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目申报/" itemprop="url" rel="index">
+                    <span itemprop="name">项目申报</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2026/02/25/规上企业研发费用统计与报表填报实务笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2026/02/25/规上企业研发费用统计与报表填报实务笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文基于日常工作经验，系统梳理规上企业在研发统计报表填报、研发费用归集及不同政策口径下的实务操作要点。内容聚焦政策口径理解与实操衔接，旨在为财务与研发协同管理提供实用参考，不涉及理论展开。</p>
+</blockquote>
+<h2 id="一、研发费用的三种常见统计口径"><a href="#一、研发费用的三种常见统计口径" class="headerlink" title="一、研发费用的三种常见统计口径"></a>一、研发费用的三种常见统计口径</h2><p>在企业研发管理与对外申报中，研发费用通常存在三种不同统计口径：</p>
+<ol>
+<li><strong>会计核算口径</strong></li>
+<li><strong>高新技术企业认定口径</strong></li>
+<li><strong>研发费用加计扣除口径</strong></li>
+</ol>
+<a id="more"></a>
+<h3 id="1-会计核算口径（基础与最大口径）"><a href="#1-会计核算口径（基础与最大口径）" class="headerlink" title="1. 会计核算口径（基础与最大口径）"></a>1. 会计核算口径（基础与最大口径）</h3><ul>
+<li><strong>归集原则</strong>：只要是<strong>真实发生、与研发活动直接相关</strong>的费用，均可依据《财政部关于企业加强研发费用财务管理的若干意见》（财企〔2007〕194号）及企业会计准则进行归集</li>
+<li><strong>特点</strong>：不受人员工时比例、费用上限等限制，据实反映企业研发投入</li>
+<li><strong>应用场景</strong>：体现在<strong>年度审计报告</strong>中的研发费用金额，是省专精特新、专精特新”小巨人”、单项冠军、研发机构认定等项目的重要参考依据</li>
+</ul>
+<p><strong>实务建议：</strong></p>
+<blockquote>
+<p><strong>以会计核算口径作为研发费用归集的起点和基础</strong>。在合法合规前提下，应完整反映企业实际研发投入，而非被高企或加计扣除的限定条件反向制约。</p>
+</blockquote>
+<h3 id="2-高新技术企业认定口径"><a href="#2-高新技术企业认定口径" class="headerlink" title="2. 高新技术企业认定口径"></a>2. 高新技术企业认定口径</h3><p>相较会计口径，主要存在以下限定：</p>
+<table>
+<thead>
+<tr>
+<th>限定类别</th>
+<th>具体要求</th>
+<th>实务提示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人员要求</td>
+<td>需为”科技人员”（含研发人员及研发管理、服务人员），且在企业累计工作时间不少于<strong>183天</strong></td>
+<td>会计核算中入职不满183天但实际参与研发的人员，其费用仍可正常归集，仅在高企申报时按规定剔除</td>
+</tr>
+<tr>
+<td>其他费用比例</td>
+<td>“其他费用”占研发费用总额的比例不得超过<strong>20%</strong></td>
+<td>超出部分需在专项审计报告中调整</td>
+</tr>
+</tbody>
+</table>
+<p>该口径最终体现在高企研发费用辅助账、三年研发费用专项审计报告及《研发费用情况说明》中。</p>
+<h3 id="3-研发费用加计扣除口径（最严格口径）"><a href="#3-研发费用加计扣除口径（最严格口径）" class="headerlink" title="3. 研发费用加计扣除口径（最严格口径）"></a>3. 研发费用加计扣除口径（最严格口径）</h3><ul>
+<li><strong>人员范围</strong>：仅限<strong>直接从事研发活动的人员</strong>（研究人员、技术人员、辅助人员），研发管理及服务人员不计入；同时承担研发与管理工作的人员，以及兼职参与研发的人员，其人工费用应依据实际参与研发的工时进行合理分摊</li>
+<li><strong>折旧与租赁限制</strong>：<ul>
+<li>房屋折旧费<strong>不得</strong>计入加计扣除折旧费用</li>
+<li>房屋租赁费<strong>不得</strong>计入加计扣除直接投入</li>
+</ul>
+</li>
+<li><strong>其他费用比例</strong>：不得超过可加计扣除研发费用总额的<strong>10%</strong></li>
+<li><strong>特殊处理</strong>：研发形成产品对外销售的，对应的材料费用不得加计扣除，需在销售当年冲减</li>
+</ul>
+<p>该口径最终体现在加计扣除研发费用台账、《企业所得税年度纳税申报表》及《研发费用加计扣除优惠明细表》（A107012）中。</p>
+<h2 id="二、加计扣除备查资料的准备重点"><a href="#二、加计扣除备查资料的准备重点" class="headerlink" title="二、加计扣除备查资料的准备重点"></a>二、加计扣除备查资料的准备重点</h2><p>年底至汇算清缴期间，备查资料的完整性是关键，需确保”业务真实、证据链完整”。</p>
+<h3 id="1-研发基础条件资料"><a href="#1-研发基础条件资料" class="headerlink" title="1. 研发基础条件资料"></a>1. 研发基础条件资料</h3><ul>
+<li><strong>机构设立文件</strong>：董事会或总经理办公会关于设立研发机构的决议、通知等</li>
+<li><strong>研发场地</strong>：实际存在的研发场所，标识清晰（如”研发部””技术中心”），与文件一致</li>
+<li><strong>研发设备</strong>：必要的研发、测试仪器设备，保留采购发票、使用记录</li>
+<li><strong>研发人员</strong>：劳动合同中部门、岗位与研发人员名单一致，保留人员花名册</li>
+</ul>
+<h3 id="2-研发台账与凭证"><a href="#2-研发台账与凭证" class="headerlink" title="2. 研发台账与凭证"></a>2. 研发台账与凭证</h3><ul>
+<li><strong>工时记录</strong>：兼职或共用人员需有明确的工时分配表，作为费用分摊依据</li>
+<li><strong>共用设备记录</strong>：生产与研发共用的设备，需留存使用登记表，按实际工时分摊折旧</li>
+<li><strong>领料单据</strong>：研发领用材料需标注”研发项目名称”，与生产领料严格区分</li>
+</ul>
+<h3 id="3-研发活动过程资料"><a href="#3-研发活动过程资料" class="headerlink" title="3. 研发活动过程资料"></a>3. 研发活动过程资料</h3><ul>
+<li>研发立项申请书及立项决议</li>
+<li>研发项目计划书（明确目标、进度、预算、人员）</li>
+<li>研发过程记录（实验记录、测试报告、阶段性总结）</li>
+<li>项目结题或验收报告（已完成项目）</li>
+</ul>
+<blockquote>
+<p>关键原则：形成从”立项→实施→结题”的完整闭环，证明研发活动的真实性与持续性。</p>
+</blockquote>
+<h2 id="三、研发统计报表填报实务要点"><a href="#三、研发统计报表填报实务要点" class="headerlink" title="三、研发统计报表填报实务要点"></a>三、研发统计报表填报实务要点</h2><h3 id="1-重要时间节点"><a href="#1-重要时间节点" class="headerlink" title="1. 重要时间节点"></a>1. 重要时间节点</h3><ul>
+<li>统计局报表107表：上报截止通常为3月10日</li>
+<li>火炬统计报表：一般在2–4月期间填报（具体以当年通知为准）</li>
+</ul>
+<h3 id="2-核心指标填报要点"><a href="#2-核心指标填报要点" class="headerlink" title="2. 核心指标填报要点"></a>2. 核心指标填报要点</h3><table>
+<thead>
+<tr>
+<th>报表项目</th>
+<th>填报要点</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目技术经济目标</td>
+<td>一般选”3.开发全新产品”或”4.增加产品功能或提高性能”</td>
+<td>避免选择明显不匹配的选项</td>
+</tr>
+<tr>
+<td>项目当年成果形式</td>
+<td>可选：1.论文/研究报告；4.对已有产品实现突破性变革；7.中间件/新算法；8.基础软件；9.发明专利；12.样机/样品；13.新技术/新工艺</td>
+<td>选择最具代表性的单一成果</td>
+</tr>
+<tr>
+<td>跨年项目进展阶段</td>
+<td>上年开始本年度完成的项目：选”3.中试阶段”；本年新开未完成：选”1.研究阶段”或”2.小试阶段”</td>
+<td>阶段选择需与项目实际进度匹配</td>
+</tr>
+<tr>
+<td>研发人员中全职人员</td>
+<td>指直接从事研发工作且研发时间占工作时间90%以上的人员</td>
+<td>区分于兼职或辅助人员</td>
+</tr>
+<tr>
+<td>研发机构人员数量</td>
+<td>企业可设一个或多个研发机构，每个机构一般不少于5人</td>
+<td>人员名单需可追溯</td>
+</tr>
+<tr>
+<td>新产品销售收入</td>
+<td>指企业自投产之日起<strong>一年内</strong>的新产品销售收入</td>
+<td>≠高新技术产品收入，通常后者范围更广</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-特别提醒"><a href="#3-特别提醒" class="headerlink" title="3. 特别提醒"></a>3. 特别提醒</h3><ul>
+<li><strong>加计扣除金额申报的谨慎性</strong>：<ul>
+<li>完全不申报可能引发对研发活动真实性的质疑（尤其是高企）</li>
+<li>申报金额过大可能触发核查</li>
+<li>建议：根据企业实际情况稳妥申报，务必做好备查资料</li>
+</ul>
+</li>
+<li><strong>121表产品创新选项</strong>：<ul>
+<li>第1条”是否向市场推出了新的或有重大改进的商品或服务”<strong>必须选”是”</strong></li>
+</ul>
+</li>
+<li><strong>财务报表中研发费用填报</strong>：<ul>
+<li>常见问题：1-11月月报研发费为0，年报突然出现大额研发费，系统可能报错</li>
+<li><strong>建议</strong>：12月填报月度报表时，<strong>先预估填一个合理研发费数据</strong>，保持年度数据衔接</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h2><p>以上内容结合日常填报经验，聚焦规上企业研发统计与费用归集的实务操作层面。其中，<strong>研发统计报表的指标理解与加计扣除备查资料的完整性</strong>是日常工作的两大重点，建议提前规划、定期核对，确保数据真实、口径合规、证据链完整。</p>
+<blockquote>
+<p>本文仅作为个人学习与实践记录，供参考使用。具体操作请以当年最新政策及主管税务机关、统计部门要求为准。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/" title="规上企业研发费用统计与报表填报实务笔记">https://xinyufeng.net/2026/02/25/规上企业研发费用统计与报表填报实务笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/研发费归集/" rel="tag"># 研发费归集</a>
+          
+            <a href="/tags/报表填报/" rel="tag"># 报表填报</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2025/12/08/Dify-升级到最新版本操作指南/" rel="next" title="Dify 升级到最新版本操作指南">
+                <i class="fa fa-chevron-left"></i> Dify 升级到最新版本操作指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">202</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、研发费用的三种常见统计口径"><span class="nav-number">1.</span> <span class="nav-text">一、研发费用的三种常见统计口径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-会计核算口径（基础与最大口径）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 会计核算口径（基础与最大口径）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-高新技术企业认定口径"><span class="nav-number">1.2.</span> <span class="nav-text">2. 高新技术企业认定口径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-研发费用加计扣除口径（最严格口径）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 研发费用加计扣除口径（最严格口径）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、加计扣除备查资料的准备重点"><span class="nav-number">2.</span> <span class="nav-text">二、加计扣除备查资料的准备重点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-研发基础条件资料"><span class="nav-number">2.1.</span> <span class="nav-text">1. 研发基础条件资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-研发台账与凭证"><span class="nav-number">2.2.</span> <span class="nav-text">2. 研发台账与凭证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-研发活动过程资料"><span class="nav-number">2.3.</span> <span class="nav-text">3. 研发活动过程资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、研发统计报表填报实务要点"><span class="nav-number">3.</span> <span class="nav-text">三、研发统计报表填报实务要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-重要时间节点"><span class="nav-number">3.1.</span> <span class="nav-text">1. 重要时间节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-核心指标填报要点"><span class="nav-number">3.2.</span> <span class="nav-text">2. 核心指标填报要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-特别提醒"><span class="nav-number">3.3.</span> <span class="nav-text">3. 特别提醒</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、结语"><span class="nav-number">4.</span> <span class="nav-text">四、结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

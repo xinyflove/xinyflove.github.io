@@ -312,6 +312,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/10/27/设置HTTP请求自动跳转HTTPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/27/设置HTTP请求自动跳转HTTPS/" itemprop="url">设置HTTP请求自动跳转HTTPS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-27T09:40:18+08:00">
+                2020-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维实战/" itemprop="url" rel="index">
+                    <span itemprop="name">运维实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/10/27/设置HTTP请求自动跳转HTTPS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/27/设置HTTP请求自动跳转HTTPS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  214
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>在需要跳转的HTTP站点下添加以下rewrite语句，实现HTTP访问自动跳转到HTTPS页面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.certificatestests.com; #将www.certificatestests.com修改为您证书绑定的域名，例如：www.example.com。</span><br><span class="line">    rewrite ^(.*)$ https://$host$1 permanent; #将所有HTTP请求通过rewrite重定向到HTTPS。</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/10/27/设置HTTP请求自动跳转HTTPS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/10/24/PHP高并发情况下防止商品库存超卖/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2027,343 +2215,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2020/09/11/Linux-监控命令整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Peak Xin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peak Xin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/11/Linux-监控命令整理/" itemprop="url">Linux 监控命令整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-11T16:38:24+08:00">
-                2020-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维实战/" itemprop="url" rel="index">
-                    <span itemprop="name">运维实战</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/09/11/Linux-监控命令整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/11/Linux-监控命令整理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  15
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Linux系统监控命令速查手册"><a href="#Linux系统监控命令速查手册" class="headerlink" title="Linux系统监控命令速查手册"></a>Linux系统监控命令速查手册</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能作用</th>
-<th>用法举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>free</code></td>
-<td>查看内存使用情况，包括物理内存和虚拟内存</td>
-<td><code>free -h</code>或<code>free -m</code></td>
-</tr>
-<tr>
-<td><code>vmstat</code></td>
-<td>对系统的整体情况进行统计，包括内核进程、虚拟内存、磁盘、陷阱和 CPU 活动的统计信息</td>
-<td><code>vmstat 2 100</code></td>
-</tr>
-<tr>
-<td><code>top</code></td>
-<td>实时显示系统中各个进程的资源占用状况及总体状况</td>
-<td><code>top</code></td>
-</tr>
-<tr>
-<td><code>mpstat</code></td>
-<td>实时系统监控工具，它会报告与CPU相关的统计信息</td>
-<td><code>mpstat</code></td>
-</tr>
-<tr>
-<td><code>sar</code></td>
-<td>收集、报告和保存CPU、内存、输入输出端口使用情况</td>
-<td><code>sar -n DEV 3 100</code></td>
-</tr>
-<tr>
-<td><code>netstat</code></td>
-<td>检验本机各端口的网络连接情况，用于显示与IP、TCP、UDP和ICMP协议相关的统计数据</td>
-<td><code>netstat -a</code></td>
-</tr>
-<tr>
-<td><code>tcpdump</code></td>
-<td>用于捕捉或者过滤网络上指定接口上接收或者传输的TCP/IP包</td>
-<td><code>tcpdump -i eth0 -c 3</code></td>
-</tr>
-<tr>
-<td><code>IPTraf</code></td>
-<td>用来生成包括TCP信息、UDP计数、ICMP和OSPF信息、以太网负载信息、节点状态信息、IP校验和错误等等统计数据</td>
-<td><code>iptraf</code></td>
-</tr>
-<tr>
-<td><code>df</code></td>
-<td>检查linux的文件系统的磁盘空间占用情况</td>
-<td><code>df -h</code></td>
-</tr>
-<tr>
-<td><code>iostat</code></td>
-<td>收集显示系统存储设备输入和输出状态统计</td>
-<td><code>iostat -x -k 2 100</code></td>
-</tr>
-<tr>
-<td><code>iotop</code></td>
-<td>用来监视磁盘I/O使用状况的top类工具</td>
-<td><code>iotop</code></td>
-</tr>
-<tr>
-<td><code>lsof</code></td>
-<td>用于以列表的形式显示所有打开的文件和进程</td>
-<td><code>lsof</code></td>
-</tr>
-<tr>
-<td><code>atop</code></td>
-<td>显示的是各种系统资源（CPU, memory, network, I/O, kernel）的综合，并且在高负载的情况下进行了彩色标注</td>
-<td><code>atop</code></td>
-</tr>
-<tr>
-<td><code>htop</code></td>
-<td>它和top命令十分相似，高级的交互式的实时linux进程监控工具</td>
-<td><code>htop</code></td>
-</tr>
-<tr>
-<td><code>ps</code></td>
-<td>最基本同时也是非常强大的进程查看命令</td>
-<td><code>ps aux</code></td>
-</tr>
-<tr>
-<td><code>glances</code></td>
-<td>监视 CPU，平均负载，内存，网络流量，磁盘 I/O，其他处理器 和 文件系统 空间的利用情况</td>
-<td><code>glances</code></td>
-</tr>
-<tr>
-<td><code>dstat</code></td>
-<td>全能系统信息统计工具，可用于替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具</td>
-<td><code>dstat</code></td>
-</tr>
-<tr>
-<td><code>uptime</code></td>
-<td>用于查看服务器运行了多长时间以及有多少个用户登录，快速获知服务器的负荷情况</td>
-<td><code>uptime</code></td>
-</tr>
-<tr>
-<td><code>dmesg</code></td>
-<td>主要用来显示内核信息。使用dmesg可以有效诊断机器硬件故障或者添加硬件出现的问题。</td>
-<td><code>dmesg</code></td>
-</tr>
-<tr>
-<td><code>mpstat</code></td>
-<td>用于报告多路CPU主机的每颗CPU活动情况，以及整个主机的CPU情况。</td>
-<td><code>mpstat 2 3</code></td>
-</tr>
-<tr>
-<td><code>nmon</code></td>
-<td>监控CPU、内存、I/O、文件系统及网络资源。对于内存的使用，它可以实时的显示 总/剩余内存、交换空间等信息。</td>
-<td><code>nmon</code></td>
-</tr>
-<tr>
-<td><code>mytop</code></td>
-<td>用于监控 mysql 的线程和性能。它能让你实时查看数据库以及正在处理哪些查询。</td>
-<td><code>mytop</code></td>
-</tr>
-<tr>
-<td><code>iftop</code></td>
-<td>用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等</td>
-<td><code>iftop</code></td>
-</tr>
-<tr>
-<td><code>jnettop</code></td>
-<td>以相同的方式来监测网络流量但比 iftop 更形象。它还支持自定义的文本输出，并能以友好的交互方式来深度分析日志。</td>
-<td><code>jnettop</code></td>
-</tr>
-<tr>
-<td><code>ngrep</code></td>
-<td>网络层的 grep。它使用 pcap ，允许通过指定扩展正则表达式或十六进制表达式来匹配数据包。</td>
-<td><code>ngrep</code></td>
-</tr>
-<tr>
-<td><code>nmap</code></td>
-<td>可以扫描你服务器开放的端口并且可以检测正在使用哪个操作系统</td>
-<td><code>nmap</code></td>
-</tr>
-<tr>
-<td><code>du</code></td>
-<td>查看Linux系统中某目录的大小</td>
-<td><code>du -sh 目录名</code></td>
-</tr>
-<tr>
-<td><code>fdisk</code></td>
-<td>查看硬盘及分区信息</td>
-<td><code>fdisk -l</code></td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/11/Linux-监控命令整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2416,7 +2267,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">201</span>
+                  <span class="site-state-item-count">202</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2427,7 +2278,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2438,7 +2289,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2562,7 +2413,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
