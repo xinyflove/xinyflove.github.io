@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="研发费归集,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文基于多年企业内部研发项目管理经验，系统梳理研发费用归集中的常见误区和实操要点。内容紧扣政策口径，聚焦财务与研发协同场景，旨在帮助企业规范研发管理、降低合规风险。  引言：为什么研发费用归集是个“管理问题”在实际工作中，我发现一个普遍现象：很多企业把研发费用归集单纯看作财务部门的任务，等到年底申报时才临时抱佛脚。结果往往是：数据对不上、资料补不全、口径搞不清。 事实上，研发费用归集不是财务问题">
+<meta name="keywords" content="研发费归集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="研发费用归集实战指南：15个让你少走弯路的实务要点">
+<meta property="og:url" content="https://xinyufeng.net/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="本文基于多年企业内部研发项目管理经验，系统梳理研发费用归集中的常见误区和实操要点。内容紧扣政策口径，聚焦财务与研发协同场景，旨在帮助企业规范研发管理、降低合规风险。  引言：为什么研发费用归集是个“管理问题”在实际工作中，我发现一个普遍现象：很多企业把研发费用归集单纯看作财务部门的任务，等到年底申报时才临时抱佛脚。结果往往是：数据对不上、资料补不全、口径搞不清。 事实上，研发费用归集不是财务问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-02-26T01:54:19.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="研发费用归集实战指南：15个让你少走弯路的实务要点">
+<meta name="twitter:description" content="本文基于多年企业内部研发项目管理经验，系统梳理研发费用归集中的常见误区和实操要点。内容紧扣政策口径，聚焦财务与研发协同场景，旨在帮助企业规范研发管理、降低合规风险。  引言：为什么研发费用归集是个“管理问题”在实际工作中，我发现一个普遍现象：很多企业把研发费用归集单纯看作财务部门的任务，等到年底申报时才临时抱佛脚。结果往往是：数据对不上、资料补不全、口径搞不清。 事实上，研发费用归集不是财务问题">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/">
+
+
+
+
+
+  <title>研发费用归集实战指南：15个让你少走弯路的实务要点 | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">研发费用归集实战指南：15个让你少走弯路的实务要点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2026-02-26T09:37:33+08:00">
+                2026-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目申报/" itemprop="url" rel="index">
+                    <span itemprop="name">项目申报</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文基于多年企业内部研发项目管理经验，系统梳理研发费用归集中的常见误区和实操要点。内容紧扣政策口径，聚焦财务与研发协同场景，旨在帮助企业规范研发管理、降低合规风险。</p>
+</blockquote>
+<h2 id="引言：为什么研发费用归集是个“管理问题”"><a href="#引言：为什么研发费用归集是个“管理问题”" class="headerlink" title="引言：为什么研发费用归集是个“管理问题”"></a>引言：为什么研发费用归集是个“管理问题”</h2><p>在实际工作中，我发现一个普遍现象：很多企业把研发费用归集单纯看作财务部门的任务，等到年底申报时才临时抱佛脚。结果往往是：数据对不上、资料补不全、口径搞不清。</p>
+<p>事实上，<strong>研发费用归集不是财务问题，而是管理问题</strong>。它贯穿项目立项、过程记录、工时统计、费用核算全过程，需要研发与财务的协同配合。越早规范，后期成本越低。</p>
+<p>以下15个实务要点，来自我多年的项目经验总结，希望对你有帮助。</p>
+<h2 id="一、立项篇：好的开始是成功的一半"><a href="#一、立项篇：好的开始是成功的一半" class="headerlink" title="一、立项篇：好的开始是成功的一半"></a>一、立项篇：好的开始是成功的一半</h2><h3 id="1-项目立项要“早”"><a href="#1-项目立项要“早”" class="headerlink" title="1. 项目立项要“早”"></a>1. 项目立项要“早”</h3><p><strong>原则</strong>：不要等年底才补立项。</p>
+<p><strong>建议</strong>：</p>
+<ul>
+<li>项目启动即立项，至少在发生第一笔研发费用前完成立项手续</li>
+<li>立项文件需包含：项目名称、目标、周期、预算、参与人员等要素</li>
+<li>保留立项决议（董事会或总经理办公会纪要）</li>
+</ul>
+<p><strong>为什么重要</strong>：税务核查时，立项时间是证明研发活动真实性的重要依据。事后补立项容易引发对研发起止时间的质疑。</p>
+<h3 id="2-项目名称要“技术化”"><a href="#2-项目名称要“技术化”" class="headerlink" title="2. 项目名称要“技术化”"></a>2. 项目名称要“技术化”</h3><p><strong>错误示例</strong>：</p>
+<ul>
+<li>系统优化项目</li>
+<li>平台升级项目</li>
+<li>APP改版项目</li>
+</ul>
+<p><strong>建议示例</strong>：</p>
+<ul>
+<li>基于××算法的自适应学习推荐模型研发</li>
+<li>面向××场景的三维交互仿真系统关键技术研究</li>
+<li>高能量密度锂离子电池正极材料制备工艺研发</li>
+</ul>
+<p><strong>要点</strong>：项目名称应体现<strong>技术属性</strong>，包含“技术、方法、模型、算法、架构”等关键词。避免纯业务导向的命名。</p>
+<h3 id="3-明确技术问题，而不是业务目标"><a href="#3-明确技术问题，而不是业务目标" class="headerlink" title="3. 明确技术问题，而不是业务目标"></a>3. 明确技术问题，而不是业务目标</h3><p>研发解决的是<strong>技术不确定性</strong>，而不是业务指标。</p>
+<p><strong>可归集的内容</strong>：</p>
+<ul>
+<li>技术难点攻克</li>
+<li>性能瓶颈突破</li>
+<li>实现路径探索</li>
+<li>工艺方法创新</li>
+</ul>
+<p><strong>需谨慎的内容</strong>：</p>
+<ul>
+<li>“提高销量”“扩大市场份额”——这是业务目标</li>
+<li>“提升用户体验”——需转化为具体技术指标（如页面加载速度从3秒降至1秒）</li>
+</ul>
+<p><strong>政策依据</strong>：研发活动是指“为获得科学与技术新知识，创造性运用科学技术新知识，或实质性改进技术、工艺、产品（服务）而持续进行的具有明确目标的活动”。日常升级维护不属于研发。</p>
+<h2 id="二、人员篇：研发费用的核心构成"><a href="#二、人员篇：研发费用的核心构成" class="headerlink" title="二、人员篇：研发费用的核心构成"></a>二、人员篇：研发费用的核心构成</h2><h3 id="4-研发人员要“相对固定”"><a href="#4-研发人员要“相对固定”" class="headerlink" title="4. 研发人员要“相对固定”"></a>4. 研发人员要“相对固定”</h3><p><strong>建议</strong>：</p>
+<ul>
+<li>每个项目明确核心研发人员</li>
+<li>避免“全员平均分摊”——所有人都在每个项目里占一点工时，等于没有真正的研发人员</li>
+<li>人员名单需与项目计划书、工时记录一致</li>
+</ul>
+<h3 id="5-工时记录必须真实"><a href="#5-工时记录必须真实" class="headerlink" title="5. 工时记录必须真实"></a>5. 工时记录必须真实</h3><p><strong>工时表是研发费用的生命线</strong>——这句话怎么强调都不过分。</p>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>工时占比要合理：一个人同时在3-4个项目还都是100%工时，明显不符合逻辑</li>
+<li>避免长期100%研发工时：研发人员也可能有培训、会议、休假等非项目时间</li>
+<li>保留原始记录：电子打卡记录、项目周报等可作为佐证</li>
+</ul>
+<p><strong>特别提醒</strong>：同时从事研发和管理工作的人员，需按实际工时分摊。</p>
+<h3 id="6-人员人工包含范围"><a href="#6-人员人工包含范围" class="headerlink" title="6. 人员人工包含范围"></a>6. 人员人工包含范围</h3><p><strong>可归集内容</strong>：</p>
+<ul>
+<li>工资（含基本工资、绩效工资）</li>
+<li>奖金（项目奖金、年终奖按工时分摊）</li>
+<li>五险一金</li>
+<li>津贴补贴</li>
+</ul>
+<p><strong>前提条件</strong>：</p>
+<ul>
+<li>与研发工时匹配——按实际参与项目的工时分摊</li>
+<li>与项目周期匹配——项目结束后的费用不应再归集</li>
+</ul>
+<h3 id="7-非研发人员不要强行归集"><a href="#7-非研发人员不要强行归集" class="headerlink" title="7. 非研发人员不要强行归集"></a>7. 非研发人员不要强行归集</h3><p><strong>不建议归集的人员</strong>：</p>
+<ul>
+<li>行政人员</li>
+<li>财务人员</li>
+<li>市场销售</li>
+<li>纯管理人员（未直接参与研发）</li>
+</ul>
+<p><strong>政策依据</strong>：加计扣除口径下，仅限“直接从事研发活动的人员”；高企口径可包含“科技人员”（含研发管理、服务人员）。区分清楚再归集，避免后续调整麻烦。</p>
+<h2 id="三、费用篇：各项费用的归集要点"><a href="#三、费用篇：各项费用的归集要点" class="headerlink" title="三、费用篇：各项费用的归集要点"></a>三、费用篇：各项费用的归集要点</h2><h3 id="8-直接投入要“直接”"><a href="#8-直接投入要“直接”" class="headerlink" title="8. 直接投入要“直接”"></a>8. 直接投入要“直接”</h3><p><strong>可归集</strong>：</p>
+<ul>
+<li>研发活动直接消耗的材料</li>
+<li>测试耗材、样品样机</li>
+<li>专用工具、模具</li>
+<li>研发用燃料动力</li>
+</ul>
+<p><strong>需谨慎</strong>：</p>
+<ul>
+<li>通用办公用品（如打印纸、笔）——建议计入管理费用</li>
+<li>日常消耗品——与研发项目无法直接对应的，不宜归集</li>
+</ul>
+<h3 id="9-软件、云资源要能对应项目"><a href="#9-软件、云资源要能对应项目" class="headerlink" title="9. 软件、云资源要能对应项目"></a>9. 软件、云资源要能对应项目</h3><p>随着数字化转型深入，软件和云服务费用占比越来越高。归集时需注意：</p>
+<ul>
+<li>能区分研发/生产用途：研发专用的服务器、软件许可证可全额归集</li>
+<li>能区分项目用途：多项目共用的云资源，需按合理方法分摊（如按使用时长、存储量等）</li>
+<li>保留使用记录：云平台的使用日志可作为分摊依据</li>
+</ul>
+<h3 id="10-折旧与摊销要有依据"><a href="#10-折旧与摊销要有依据" class="headerlink" title="10. 折旧与摊销要有依据"></a>10. 折旧与摊销要有依据</h3><p><strong>可归集</strong>：</p>
+<ul>
+<li>研发专用仪器设备折旧——全额计入</li>
+<li>研发专用软件、专利权摊销——全额计入</li>
+<li>多项目共用的研发设备——按工时分摊</li>
+</ul>
+<p><strong>不可归集（加计扣除口径）</strong>：</p>
+<ul>
+<li>房屋折旧</li>
+<li>房屋租赁费</li>
+</ul>
+<h3 id="11-委外研发必须“技术导向”"><a href="#11-委外研发必须“技术导向”" class="headerlink" title="11. 委外研发必须“技术导向”"></a>11. 委外研发必须“技术导向”</h3><p>委托外部机构进行研发，需满足：</p>
+<ul>
+<li><strong>合同中体现技术内容</strong>：明确研发目标、技术指标、交付成果</li>
+<li><strong>技术成果归属清晰</strong>：委托方应拥有相关成果的使用权或所有权</li>
+<li><strong>单纯人力外包≠委外研发</strong>：只提供人员的“外包服务”不符合研发定义</li>
+</ul>
+<p><strong>注意</strong>：委托方享受加计扣除时，受托方不得再就同一项目加计扣除。</p>
+<h3 id="12-研发成果不等于一定成功"><a href="#12-研发成果不等于一定成功" class="headerlink" title="12. 研发成果不等于一定成功"></a>12. 研发成果不等于一定成功</h3><p>这是一个常见的误解。</p>
+<p><strong>正确理解</strong>：失败研发同样可以归集费用。</p>
+<p><strong>关键在于</strong>：</p>
+<ul>
+<li>是否真实开展了研发活动</li>
+<li>是否有技术探索过程</li>
+<li>是否有记录证明投入</li>
+</ul>
+<p>只要活动本身符合研发定义，即使最终技术目标未达成，相关费用仍可正常归集。</p>
+<h2 id="四、过程篇：贯穿始终的管理要点"><a href="#四、过程篇：贯穿始终的管理要点" class="headerlink" title="四、过程篇：贯穿始终的管理要点"></a>四、过程篇：贯穿始终的管理要点</h2><h3 id="13-研发与生产要分开"><a href="#13-研发与生产要分开" class="headerlink" title="13. 研发与生产要分开"></a>13. 研发与生产要分开</h3><p>这是一个灰色地带，也是最容易出问题的地方。</p>
+<p><strong>已形成稳定产品后，以下活动通常不再作为研发</strong>：</p>
+<ul>
+<li>日常维护</li>
+<li>Bug修复</li>
+<li>版本微调（未涉及技术突破）</li>
+<li>常规升级（直接采用现有技术）</li>
+</ul>
+<p><strong>区分标准</strong>：是否涉及“实质性改进”——是否解决了技术不确定性，是否在技术上有了突破性变化。</p>
+<h3 id="14-财务与技术要“同口径”"><a href="#14-财务与技术要“同口径”" class="headerlink" title="14. 财务与技术要“同口径”"></a>14. 财务与技术要“同口径”</h3><p><strong>三项必须一致</strong>：</p>
+<ul>
+<li><strong>金额一致</strong>：财务账上的研发费用，与技术部门统计的投入要能对应</li>
+<li><strong>项目一致</strong>：财务核算的项目名称，与立项文件、技术资料保持一致</li>
+<li><strong>周期一致</strong>：费用归属期间与项目实施周期匹配</li>
+</ul>
+<p><strong>检查方法</strong>：定期（每季度）组织财务和研发对账，及时发现问题。</p>
+<h3 id="15-资料要“平时留”"><a href="#15-资料要“平时留”" class="headerlink" title="15. 资料要“平时留”"></a>15. 资料要“平时留”</h3><p><strong>建议长期留存</strong>：</p>
+<ul>
+<li>立项资料（立项申请、决议文件、计划书）</li>
+<li>研发文档（实验记录、测试报告、阶段总结）</li>
+<li>成果证明（专利、论文、样机照片、验收报告）</li>
+<li>过程记录（工时表、领料单、使用登记表）</li>
+</ul>
+<p><strong>不要等审计来了才补材料</strong>——临时补的资料，经不起推敲。</p>
+<h2 id="五、补充：常用场景下的应用提示"><a href="#五、补充：常用场景下的应用提示" class="headerlink" title="五、补充：常用场景下的应用提示"></a>五、补充：常用场景下的应用提示</h2><h3 id="高新技术企业认定-复审"><a href="#高新技术企业认定-复审" class="headerlink" title="高新技术企业认定/复审"></a>高新技术企业认定/复审</h3><ul>
+<li>重点关注：科技人员183天要求、其他费用20%上限</li>
+<li>特别提醒：人员名单、劳动合同、社保记录需配套</li>
+</ul>
+<h3 id="专精特新、小巨人申报"><a href="#专精特新、小巨人申报" class="headerlink" title="专精特新、小巨人申报"></a>专精特新、小巨人申报</h3><ul>
+<li>重点关注：研发投入占比、研发机构建设</li>
+<li>特别提醒：以会计核算口径为基础，如实反映投入</li>
+</ul>
+<h3 id="研发费用加计扣除"><a href="#研发费用加计扣除" class="headerlink" title="研发费用加计扣除"></a>研发费用加计扣除</h3><ul>
+<li>重点关注：备查资料完整性、其他费用10%上限</li>
+<li>特别提醒：房屋折旧、房屋租赁费不可计入</li>
+</ul>
+<h3 id="研发统计报表（107表、火炬统计）"><a href="#研发统计报表（107表、火炬统计）" class="headerlink" title="研发统计报表（107表、火炬统计）"></a>研发统计报表（107表、火炬统计）</h3><ul>
+<li>重点关注：数据口径一致性、填报时间节点（3月10日前）</li>
+<li>特别提醒：新产品销售收入≠高新技术产品收入</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>研发费用归集，说到底是<strong>业务与财务的对话</strong>。技术部门懂一些财务规则，财务部门了解一些技术逻辑，协同起来才顺畅。</p>
+<p>本文15个要点，覆盖立项、人员、费用、过程四个维度，希望能帮助你在实际工作中少走弯路。</p>
+<p>最后送大家一句话：<strong>平时多流汗，年底少流泪</strong>。规范管理从现在开始，远比年底突击补救更省心。</p>
+<blockquote>
+<p>本文基于现行政策及实务经验整理，具体操作请以当地税务、科技部门当年要求为准。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/" title="研发费用归集实战指南：15个让你少走弯路的实务要点">https://xinyufeng.net/2026/02/26/研发费用归集实战指南：15个让你少走弯路的实务要点/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/研发费归集/" rel="tag"># 研发费归集</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2026/02/25/规上企业研发费用统计与报表填报实务笔记/" rel="next" title="规上企业研发费用统计与报表填报实务笔记">
+                <i class="fa fa-chevron-left"></i> 规上企业研发费用统计与报表填报实务笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言：为什么研发费用归集是个“管理问题”"><span class="nav-number">1.</span> <span class="nav-text">引言：为什么研发费用归集是个“管理问题”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、立项篇：好的开始是成功的一半"><span class="nav-number">2.</span> <span class="nav-text">一、立项篇：好的开始是成功的一半</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-项目立项要“早”"><span class="nav-number">2.1.</span> <span class="nav-text">1. 项目立项要“早”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-项目名称要“技术化”"><span class="nav-number">2.2.</span> <span class="nav-text">2. 项目名称要“技术化”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-明确技术问题，而不是业务目标"><span class="nav-number">2.3.</span> <span class="nav-text">3. 明确技术问题，而不是业务目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、人员篇：研发费用的核心构成"><span class="nav-number">3.</span> <span class="nav-text">二、人员篇：研发费用的核心构成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-研发人员要“相对固定”"><span class="nav-number">3.1.</span> <span class="nav-text">4. 研发人员要“相对固定”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-工时记录必须真实"><span class="nav-number">3.2.</span> <span class="nav-text">5. 工时记录必须真实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-人员人工包含范围"><span class="nav-number">3.3.</span> <span class="nav-text">6. 人员人工包含范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-非研发人员不要强行归集"><span class="nav-number">3.4.</span> <span class="nav-text">7. 非研发人员不要强行归集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、费用篇：各项费用的归集要点"><span class="nav-number">4.</span> <span class="nav-text">三、费用篇：各项费用的归集要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-直接投入要“直接”"><span class="nav-number">4.1.</span> <span class="nav-text">8. 直接投入要“直接”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-软件、云资源要能对应项目"><span class="nav-number">4.2.</span> <span class="nav-text">9. 软件、云资源要能对应项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-折旧与摊销要有依据"><span class="nav-number">4.3.</span> <span class="nav-text">10. 折旧与摊销要有依据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-委外研发必须“技术导向”"><span class="nav-number">4.4.</span> <span class="nav-text">11. 委外研发必须“技术导向”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-研发成果不等于一定成功"><span class="nav-number">4.5.</span> <span class="nav-text">12. 研发成果不等于一定成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、过程篇：贯穿始终的管理要点"><span class="nav-number">5.</span> <span class="nav-text">四、过程篇：贯穿始终的管理要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-研发与生产要分开"><span class="nav-number">5.1.</span> <span class="nav-text">13. 研发与生产要分开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-财务与技术要“同口径”"><span class="nav-number">5.2.</span> <span class="nav-text">14. 财务与技术要“同口径”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-资料要“平时留”"><span class="nav-number">5.3.</span> <span class="nav-text">15. 资料要“平时留”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、补充：常用场景下的应用提示"><span class="nav-number">6.</span> <span class="nav-text">五、补充：常用场景下的应用提示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高新技术企业认定-复审"><span class="nav-number">6.1.</span> <span class="nav-text">高新技术企业认定/复审</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专精特新、小巨人申报"><span class="nav-number">6.2.</span> <span class="nav-text">专精特新、小巨人申报</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#研发费用加计扣除"><span class="nav-number">6.3.</span> <span class="nav-text">研发费用加计扣除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#研发统计报表（107表、火炬统计）"><span class="nav-number">6.4.</span> <span class="nav-text">研发统计报表（107表、火炬统计）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
