@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Peak Xin" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="在互联网产品（网站、APP等）上线过程中，很多个人或企业都会接触到ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证等相关的概念，但大部分人对这些资质的用途并不是很清楚。本文将从概念解释 + 区别 + 使用场景三个维度，帮你系统梳理。 一、从0到1：一个互联网产品上线全过程如果我们上线一个互联网产品，其实大致会经历这样一个过程： 1. 购买服务器你需要先购置服务器来运行你的系统（网站 /">
+<meta name="keywords" content="Peak Xin, 博客, PHP博客, 技术博客, PHP, Laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）">
+<meta property="og:url" content="https://xinyufeng.net/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/index.html">
+<meta property="og:site_name" content="Peak Xin">
+<meta property="og:description" content="在互联网产品（网站、APP等）上线过程中，很多个人或企业都会接触到ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证等相关的概念，但大部分人对这些资质的用途并不是很清楚。本文将从概念解释 + 区别 + 使用场景三个维度，帮你系统梳理。 一、从0到1：一个互联网产品上线全过程如果我们上线一个互联网产品，其实大致会经历这样一个过程： 1. 购买服务器你需要先购置服务器来运行你的系统（网站 /">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-04-14T08:03:22.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）">
+<meta name="twitter:description" content="在互联网产品（网站、APP等）上线过程中，很多个人或企业都会接触到ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证等相关的概念，但大部分人对这些资质的用途并不是很清楚。本文将从概念解释 + 区别 + 使用场景三个维度，帮你系统梳理。 一、从0到1：一个互联网产品上线全过程如果我们上线一个互联网产品，其实大致会经历这样一个过程： 1. 购买服务器你需要先购置服务器来运行你的系统（网站 /">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xinyufeng.net/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/">
+
+
+
+
+
+  <title>一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景） | Peak Xin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c4ed61ff205f8e3ca5fd1df08f4e3821";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Peak Xin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小峰的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-awesome">
+          <a href="/awesome/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>
+            
+            优秀资源
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinyufeng.net/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peak Xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peak Xin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2026-04-14T16:02:26+08:00">
+                2026-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在互联网产品（网站、APP等）上线过程中，很多个人或企业都会接触到ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证等相关的概念，但大部分人对这些资质的用途并不是很清楚。本文将从<strong>概念解释 + 区别 + 使用</strong>场景三个维度，帮你系统梳理。</p>
+<h1 id="一、从0到1：一个互联网产品上线全过程"><a href="#一、从0到1：一个互联网产品上线全过程" class="headerlink" title="一、从0到1：一个互联网产品上线全过程"></a>一、从0到1：一个互联网产品上线全过程</h1><p>如果我们上线一个互联网产品，其实大致会经历这样一个过程：</p>
+<p><strong>1. 购买服务器</strong><br>你需要先购置服务器来运行你的系统（网站 / APP后端服务），服务器厂商会分配一个<strong>公网IP地址</strong>。</p>
+<p>此时：可以通过“IP地址”访问你的服务，但非常不友好（用户不可能记住一串数字）</p>
+<p><strong>2. 购买域名并解析</strong><br>于是你在域名服务商那里购买一个域名（例如：<code>xxx.com</code>），并将域名（<code>www.xxx.com</code>）解析到服务器IP。</p>
+<p>此时：用户可以通过“域名”访问你的产品（替代IP地址）</p>
+<a id="more"></a>
+<p><strong>3. ICP备案（关键步骤）</strong><br>如果你的服务器在中国大陆，那么在通过域名访问前，必须完成ICP备案。</p>
+<p>否则：域名无法正常访问（会被拦截）</p>
+<p><strong>4️. 默认是HTTP，不安全</strong><br>此时你的网站访问协议是：</p>
+<p><a href="http://xxx.com" target="_blank" rel="noopener">http://xxx.com</a></p>
+<p>浏览器会提示：⚠️ 不安全</p>
+<p><strong>5️. 配置SSL证书（升级HTTPS）</strong><br>于是你需要购买SSL证书，并部署到服务器上。</p>
+<p>升级后：<a href="https://xxx.com" target="_blank" rel="noopener">https://xxx.com</a></p>
+<p>✔ 数据加密<br>✔ 浏览器显示“小锁”<br>✔ 提升用户信任</p>
+<p><strong>6️. 开始商业化（涉及收费）</strong><br>如果你希望：</p>
+<ul>
+<li>用户付费</li>
+<li>开通会员</li>
+<li>在线购买服务</li>
+</ul>
+<p>那你就需要办理：<strong>ICP许可证（经营性许可）</strong></p>
+<p><strong>7️. 平台化升级（多商户/交易撮合）</strong><br>如果你的业务升级为：</p>
+<ul>
+<li>允许商家入驻</li>
+<li>做平台撮合交易（类似电商平台）</li>
+</ul>
+<p>那还需要：<strong>EDI许可证</strong></p>
+<blockquote>
+<p><strong>一句话总结这个过程：</strong><br>服务器 → 域名 → 备案 → HTTPS → 收费 → 平台化</p>
+</blockquote>
+<h1 id="二、核心概念逐个解释"><a href="#二、核心概念逐个解释" class="headerlink" title="二、核心概念逐个解释"></a>二、核心概念逐个解释</h1><h2 id="ICP备案（网站备案）"><a href="#ICP备案（网站备案）" class="headerlink" title="ICP备案（网站备案）"></a>ICP备案（网站备案）</h2><p><strong>定义：</strong> </p>
+<p>网站在中国大陆服务器上线前，必须向工信部登记备案。</p>
+<p>ICP备案（互联网信息服务备案），是指将网站的服务器、域名、运营主体等信息，提交至国家工信部及地方通信管理局登记审核的过程，本质是给网站的“运行载体”和“访问入口”办合规登记，确保网站可追溯、可监管。</p>
+<p>注意：ICP备案 <strong>不收费</strong>，但需要先有国内服务器（阿里云、腾讯云等），备案流程由服务器服务商协助提交，审核通过后会获得专属备案号（如“鲁ICP备XXXX号”），需在网站底部公示。</p>
+<p><strong>作用：</strong> </p>
+<ul>
+<li>合法上线：根据《互联网信息服务管理办法》，使用国内服务器搭建网站，未备案会被服务商拦截，无法正常访问，甚至面临关停风险；</li>
+<li>信任背书：备案号可在工信部系统查询，能提升用户对网站的信任度，避免被误认为“钓鱼网站”；</li>
+<li>流量保障：备案后的网站才能被百度、搜狗等国内搜索引擎正常收录，也能接入微信公众号、抖音等平台的外链。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<p>只要满足“使用国内服务器+搭建网站”，无论个人还是企业，都必须做ICP备案，常见场景：</p>
+<ul>
+<li>个人：个人博客、个人自媒体网站、个人作品集展示；</li>
+<li>企业：企业官网（仅展示产品/服务，无交易功能）、品牌宣传网站、企业资讯发布站；</li>
+<li>其他：公益网站、行业资讯站（非营利性）。</li>
+</ul>
+<p><strong>办理途径：</strong></p>
+<ul>
+<li>通过服务器提供商提交（如：阿里云、腾讯云、华为云等）</li>
+<li>实际由各省通信管理局审核</li>
+</ul>
+<p><strong>常见误区：</strong></p>
+<ul>
+<li><p>误区1：域名备案和ICP备案是两回事？<br>正解：域名备案是ICP备案的一部分，二者同步进行。ICP备案需同时登记服务器信息和域名信息，且域名所有者需与备案主体（个人/企业）一致，不能“个人备案域名用于企业经营”。</p>
+</li>
+<li><p>误区2：用海外服务器就不用备案？<br>正解：是的！只有域名解析指向国内服务器（大陆地区），才需要ICP备案；若用中国香港、美国等海外服务器，无需ICP备案，但需完成公安联网备案。</p>
+</li>
+<li><p>误区3：子域名需要单独备案？<br>正解：不用！只要主域名已完成ICP备案，对应的子域名（如blog.xxx.com）无需单独备案；若主域名未备案，需先备案主域名。</p>
+</li>
+</ul>
+<h2 id="域名备案（容易混淆）"><a href="#域名备案（容易混淆）" class="headerlink" title="域名备案（容易混淆）"></a>域名备案（容易混淆）</h2><p>很多人会单独问“域名备案怎么做”，其实域名备案不能独立办理，它是ICP备案的核心环节之一，本质是给网站的“访问入口”（域名）做合法登记。</p>
+<p>域名备案的核心要求：域名所有者信息需与ICP备案主体一致（企业备案需域名所有者为企业，个人备案需为个人），且需填写域名绑定的服务器IP、服务商信息，确保与服务器备案信息同步。</p>
+<p>关键提醒：域名备案的前提是“域名用于国内网站访问”，若域名仅用于海外服务器，或仅用于邮箱、商标，无需进行工信部域名备案。</p>
+<h2 id="SSL证书（HTTPS安全）"><a href="#SSL证书（HTTPS安全）" class="headerlink" title="SSL证书（HTTPS安全）"></a>SSL证书（HTTPS安全）</h2><p><strong>定义：</strong> </p>
+<p>SSL证书（Secure Sockets Layer），是一种数字证书，安装后可开启网站HTTPS加密，实现用户与网站之间的数据传输加密，相当于给网站加了一层“安全锁”，避免用户信息（账号、密码、表单）被窃取。</p>
+<p>我们平时上网看到浏览器左上角的“小锁”图标，就是SSL证书生效的标志；若没有SSL证书，浏览器会提示“不安全”，用户大概率会直接关闭网站。</p>
+<p><strong>作用：</strong></p>
+<ul>
+<li>数据安全：加密用户提交的敏感信息，防止被黑客截取、篡改；</li>
+<li>提升信任：“小锁”图标+HTTPS前缀，能显著提升用户对网站的信任度，尤其对企业官网、电商平台至关重要；</li>
+<li>合规与流量：百度等搜索引擎优先收录HTTPS网站，排名更有优势；对接小程序、APP、支付接口时，SSL证书是硬性门槛。</li>
+</ul>
+<p><strong>适用场景（建议全场景安装）：</strong></p>
+<p>所有有用户交互、涉及信息提交的网站，都建议安装SSL证书，重点场景：</p>
+<ul>
+<li>企业官网：尤其是有联系方式、表单提交功能的官网；</li>
+<li>电商平台：无论自营还是第三方平台，涉及商品交易、支付的，必须安装；</li>
+<li>用户类平台：社交、论坛、知识付费、在线教育等，涉及用户注册、登录的；</li>
+<li>个人站点：虽非强制，但安装后能提升用户体验，避免被标“不安全”。</li>
+</ul>
+<p><strong>办理途径：</strong></p>
+<ul>
+<li>云服务商购买（阿里云、腾讯云等）</li>
+<li>个人测试证书（免费版本）有效时长90天</li>
+<li>个人测试证书（pro）有效时长6个月</li>
+<li>其他证书价格在几百到几万不等</li>
+</ul>
+<p><strong>免费vs付费SSL证书（怎么选不踩坑）：</strong><br>很多人不知道，SSL证书有免费和付费之分，无需盲目花钱，根据场景选择即可：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>免费SSL证书</th>
+<th>付费SSL证书</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>费用</td>
+<td>0元，到期可续期</td>
+<td>几十到上万元/年，按类型定价</td>
+</tr>
+<tr>
+<td>验证级别</td>
+<td>仅验证域名归属，流程简单</td>
+<td>分DV/OV/EV三级，验证越严，信任度越高</td>
+</tr>
+<tr>
+<td>支持域名</td>
+<td>仅支持单域名/少量子域名，不支持泛域名</td>
+<td>支持单域名、多域名、泛域名，适配各类需求</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>90天，需定期续期</td>
+<td>1-2年，无需频繁操作</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>个人博客、测试站、小官网、自媒体号</td>
+<td>企业官网、电商、金融、支付、小程序</td>
+</tr>
+</tbody>
+</table>
+<p>一句话选型：自己用、做测试，选免费证书（推荐Let’s Encrypt，云厂商可一键申请）；做生意、接用户、要合规，选付费OV/EV证书（企业优先选OV，金融支付优先选EV）。</p>
+<h2 id="ICP许可证（经营性网站必备）"><a href="#ICP许可证（经营性网站必备）" class="headerlink" title="ICP许可证（经营性网站必备）"></a>ICP许可证（经营性网站必备）</h2><p><strong>定义：</strong> </p>
+<p>ICP许可证（增值电信业务经营许可证-信息服务业务），是企业开展「经营性互联网信息服务」的法定资质，由工信部审批，审核通过后有效期5年，到期前90天需续期。</p>
+<p>重点区分：ICP备案是“所有国内网站必做”，而ICP许可证是“经营性网站必做”——简单说，只要你的网站/APP通过提供信息服务赚钱，就需要办ICP许可证。</p>
+<p><strong>作用：</strong></p>
+<ul>
+<li>合法盈利：未取得ICP许可证，开展经营性信息服务属于违法，会被罚款、关停业务；</li>
+<li>平台准入：入驻应用商店（如苹果App Store）、对接微信/支付宝支付接口，必须提供ICP许可证；</li>
+<li>企业信用：招投标、融资时，ICP许可证是企业合规经营的重要证明，提升企业公信力。</li>
+</ul>
+<p><strong>适用场景（盈利必办）：</strong></p>
+<p>核心判断：通过网站/APP提供有偿信息服务，常见场景：</p>
+<ul>
+<li>内容付费类：知识付费平台（得到、知乎Live）、会员制内容平台（爱奇艺VIP）、在线教育（付费课程）；</li>
+<li>广告盈利类：资讯平台、短视频平台（仅展示内容+广告）、广告联盟（百度推广）；</li>
+<li>信息撮合类：招聘平台（BOSS直聘）、房产中介平台（贝壳）、行业信息查询平台（天眼查）；</li>
+<li>其他：SaaS服务（企业邮箱、CRM系统）、网络文学订阅（起点中文网）、游戏充值平台。</li>
+</ul>
+<p><strong>办理途径：</strong></p>
+<ul>
+<li>各省通信管理局（政务服务平台线上申请）</li>
+<li>找第三方代理机构</li>
+</ul>
+<p><strong>申请条件（极简版）：</strong></p>
+<ul>
+<li>主体要求：境内注册的公司（不含外资，外资需走特殊审批），注册资本≥100万元（认缴即可）；</li>
+<li>基础要求：域名已完成ICP备案（主体与公司一致），服务器部署在国内；</li>
+<li>人员要求：至少3名员工近1个月社保缴纳证明（建议计算机相关专业）；</li>
+<li>合规要求：具备信息安全管理制度、用户个人信息保护机制，无重大违法经营记录。</li>
+</ul>
+<p><strong>常见误区：</strong></p>
+<ul>
+<li><p>误区1：有ICP备案，就不用办ICP许可证？<br>正解：错！备案是“登记”，许可证是“经营许可”，只要盈利，两者都需要，缺一不可。</p>
+</li>
+<li><p>误区2：企业官网卖自有商品，需要办ICP许可证？<br>正解：不需要！仅销售自有商品的自营电商，只需ICP备案+营业执照，无需ICP许可证。</p>
+</li>
+</ul>
+<h2 id="EDI许可证（电商平台必备）"><a href="#EDI许可证（电商平台必备）" class="headerlink" title="EDI许可证（电商平台必备）"></a>EDI许可证（电商平台必备）</h2><p><strong>定义：</strong> </p>
+<p>EDI许可证（增值电信业务经营许可证-在线数据处理与交易处理业务），是企业开展「在线交易、交易撮合」业务的法定资质，核心围绕“交易”展开，与ICP许可证的“信息服务”形成区别。</p>
+<p>简单说：ICP许可证管“信息展示/传递”，EDI许可证管“交易/撮合”，如果你的业务既展示信息，又做交易，可能需要同时办两个证。</p>
+<p><strong>作用：</strong></p>
+<ul>
+<li>合法交易：未取得EDI许可证，开展在线交易、撮合业务属于违法，面临处罚；</li>
+<li>支付对接：电商平台、交易撮合平台，想要对接微信/支付宝支付接口，必须提供EDI许可证；</li>
+<li>合规保障：规范交易数据处理，保障买卖双方的合法权益，避免交易纠纷。</li>
+</ul>
+<p><strong>适用场景（交易必办）：</strong></p>
+<p>核心判断：涉及在线交易、交易撮合，常见场景：</p>
+<ul>
+<li>电商平台：淘宝、京东等综合电商，拼多多、抖音电商等直播电商，垂直领域电商（美妆、生鲜）；</li>
+<li>交易撮合平台：瓜子二手车（车辆交易）、BOSS直聘（人才撮合）、工业用品B2B采购平台；</li>
+<li>交易相关服务：第三方支付平台的交易数据处理、电商平台的订单管理与交易统计；</li>
+<li>企业自建交易系统：品牌官网自营商城（直接销售产品/服务，涉及交易）。</li>
+</ul>
+<p><strong>办理途径：</strong></p>
+<ul>
+<li>各省通信管理局</li>
+<li>找第三方代理机构</li>
+</ul>
+<p><strong>ICP许可证 vs EDI许可证（一张表分清）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>ICP许可证</th>
+<th>EDI许可证</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心业务</td>
+<td>信息服务（展示、传递、查询），不碰交易</td>
+<td>在线交易、交易撮合，围绕交易展开</td>
+</tr>
+<tr>
+<td>盈利模式</td>
+<td>广告、会员充值、内容付费（非交易类）</td>
+<td>交易佣金、平台服务费（交易相关）</td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>资讯平台、知识付费、广告联盟</td>
+<td>电商平台、交易撮合、在线订单管理</td>
+</tr>
+<tr>
+<td>合规重点</td>
+<td>信息内容合规、用户信息保护</td>
+<td>交易数据安全、交易流程合规</td>
+</tr>
+</tbody>
+</table>
+<h1 id="最后总结：不同场景怎么搭配资质？（直接对号入座）"><a href="#最后总结：不同场景怎么搭配资质？（直接对号入座）" class="headerlink" title="最后总结：不同场景怎么搭配资质？（直接对号入座）"></a>最后总结：不同场景怎么搭配资质？（直接对号入座）</h1><p>很多人看完还是不知道自己该办什么，整理了4种常见场景，直接对照：</p>
+<ol>
+<li>个人博客/个人展示站：ICP备案（含域名备案）+ 免费SSL证书；</li>
+<li>企业官网（仅展示，无交易、无盈利）：ICP备案（含域名备案）+ 免费/付费SSL证书；</li>
+<li>知识付费/广告盈利平台（无交易）：ICP备案 + SSL证书 + ICP许可证；</li>
+<li>电商/交易撮合平台（有交易）：ICP备案 + SSL证书 + ICP许可证 + EDI许可证。</li>
+</ol>
+<p>补充提醒：所有资质都需在有效期内使用，备案信息、许可证信息若有变更（如服务器更换、域名更换、公司名称变更），需及时提交变更申请，避免违规。</p>
+<p>互联网合规无小事，尤其是现在监管越来越严格，提前办好对应资质，才能避免网站关停、罚款等风险，安心做业务～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Peak Xin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Peak Xin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Peak Xin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xinyufeng.net/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/" title="一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）">https://xinyufeng.net/2026/04/14/一文读懂：ICP备案、域名备案、SSL证书、ICP许可证、EDI许可证（附真实业务场景）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2026/04/08/阿里云-Web-播放器自定义组件实战：实现快进-快退按钮/" rel="next" title="阿里云 Web 播放器自定义组件实战：实现快进/快退按钮">
+                <i class="fa fa-chevron-left"></i> 阿里云 Web 播放器自定义组件实战：实现快进/快退按钮
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Peak Xin">
+            
+              <p class="site-author-name" itemprop="name">Peak Xin</p>
+              <p class="site-description motion-element" itemprop="description">Always keep a learning heart.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">205</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xinyflove" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xinyflove@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/PeakXin" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/peakxin" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitlab.com/peakxin" target="_blank" title="GitLab">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i>GitLab</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://travis-ci.org/xinyflove" target="_blank" title="Travis">
+                      
+                        <i class="fa fa-fw fa-travis"></i>Travis</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/peakxin" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-gitee"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/peakxin" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-segmentfault"></i>SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/xinyflove" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网址
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰的个人网站" target="_blank">阮一峰的个人网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rango.swoole.com/" title="韩天峰(Rango)的博客" target="_blank">韩天峰(Rango)的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、从0到1：一个互联网产品上线全过程"><span class="nav-number">1.</span> <span class="nav-text">一、从0到1：一个互联网产品上线全过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、核心概念逐个解释"><span class="nav-number">2.</span> <span class="nav-text">二、核心概念逐个解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ICP备案（网站备案）"><span class="nav-number">2.1.</span> <span class="nav-text">ICP备案（网站备案）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名备案（容易混淆）"><span class="nav-number">2.2.</span> <span class="nav-text">域名备案（容易混淆）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL证书（HTTPS安全）"><span class="nav-number">2.3.</span> <span class="nav-text">SSL证书（HTTPS安全）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICP许可证（经营性网站必备）"><span class="nav-number">2.4.</span> <span class="nav-text">ICP许可证（经营性网站必备）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EDI许可证（电商平台必备）"><span class="nav-number">2.5.</span> <span class="nav-text">EDI许可证（电商平台必备）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后总结：不同场景怎么搭配资质？（直接对号入座）"><span class="nav-number">3.</span> <span class="nav-text">最后总结：不同场景怎么搭配资质？（直接对号入座）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peak Xin <a href="https://beian.miit.gov.cn" target="_blank">鲁ICP备15013472号-3</a></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+  <div class="footer-custom"><!--<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />--><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">本博客</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="http://xinyufeng.net" property="cc:attributionName" rel="cc:attributionURL">Peak Xin</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享 署名 4.0 国际 许可协议</a>进行许可。</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 站点总访客数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 站点总访问量：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Fgoh95lx5Dj8CrxqA84Gz8Ku-gzGzoHsz',
+        appKey: 'fOND5F3QtNbyGoRrC3m6FwF6',
+        placeholder: '请在此输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
